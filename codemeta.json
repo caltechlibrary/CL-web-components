@@ -48,6 +48,10 @@
     "HTML",
     "CSS"
   ],
+  "relatedLink": [
+    "https://github.com/caltechlibrary/csvtextarea",
+    "https://github.com/caltechlibrary/a_to_z_ul"
+  ],
   "runtimePlatform": "- HTML5-compatible web browser",
   "version": "0.0.1",
   "developmentStatus": "wip",
