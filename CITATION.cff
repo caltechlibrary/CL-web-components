@@ -3,7 +3,15 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: CL-web-components
-abstract: "CL-web-components provides a collection of Web Components used by Caltech Library in various web projects. Currently two components are provided &#x60;csv-textarea&#x60; which extends a textarea containing CSV content into an editable table. The second component is &#x60;a-to-z-ul&#x60; which wraps a UL list and turns it into an A to Z style list with sections linked."
+abstract: "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+
+The following are the components currently provided.
+
+&#x60;csv-textarea&#x60;
+: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
+
+&#x60;a-to-z-ul&#x60;
+: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback."
 authors:
   - family-names: Doiel
     given-names: R. S.

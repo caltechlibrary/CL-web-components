@@ -1,6 +1,14 @@
 ---
 title: CL-web-components
-abstract: "CL-web-components provides a collection of Web Components used by Caltech Library in various web projects. Currently two components are provided &#x60;csv-textarea&#x60; which extends a textarea containing CSV content into an editable table. The second component is &#x60;a-to-z-ul&#x60; which wraps a UL list and turns it into an A to Z style list with sections linked."
+abstract: "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+
+The following are the components currently provided.
+
+&#x60;csv-textarea&#x60;
+: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
+
+&#x60;a-to-z-ul&#x60;
+: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback."
 authors:
   - family_name: Doiel
     given_name: R. S.
@@ -53,7 +61,15 @@ This is a demonstration of Web Components for Caltech Library.
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
 
-CL-web-components provides a collection of Web Components used by Caltech Library in various web projects. Currently two components are provided &#x60;csv-textarea&#x60; which extends a textarea containing CSV content into an editable table. The second component is &#x60;a-to-z-ul&#x60; which wraps a UL list and turns it into an A to Z style list with sections linked.
+CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+
+The following are the components currently provided.
+
+&#x60;csv-textarea&#x60;
+: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
+
+&#x60;a-to-z-ul&#x60;
+: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>

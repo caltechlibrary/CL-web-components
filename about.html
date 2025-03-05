@@ -37,11 +37,21 @@ class="uri">https://mistral.ai</a></li>
 class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 </ul>
 <p>CL-web-components provides a collection of Web Components used by
-Caltech Library in various web projects. Currently two components are
-provided `csv-textarea` which extends a textarea containing CSV content
-into an editable table. The second component is `a-to-z-ul` which wraps
-a UL list and turns it into an A to Z style list with sections
-linked.</p>
+Caltech Library in various web sites and projects.</p>
+<p>The following are the components currently provided.</p>
+<dl>
+<dt>`csv-textarea`</dt>
+<dd>
+This is a textarea like component who's innerHTML content is CSV data.
+The component will display this as an editable table.
+</dd>
+<dt>`a-to-z-ul`</dt>
+<dd>
+This component takes an innerHTML containing a UL list. The UL list is
+then turned into an A to Z navigatable UL List. If JavaScript is
+unavailable then the innerHTML UL remains as a fallback.
+</dd>
+</dl>
 <ul>
 <li>License: <a
 href="https://caltechlibrary.github.io/CL-web-components/LICENSE"
