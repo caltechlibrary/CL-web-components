@@ -23,8 +23,7 @@ if [ "$YES_NO" = "y" ]; then
 	gh release create "${RELEASE_TAG}" \
  		--draft \
 		-F release_notes.tmp \
-		--generate-notes \
-		dist/*.zip 
+		--generate-notes
 	
 	cat <<EOT
 
