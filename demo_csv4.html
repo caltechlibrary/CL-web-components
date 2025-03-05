@@ -70,10 +70,16 @@
   </script>
 </head>
 <body>
+  <p>
+    This version includes the headings in the embedded CSV content as well as the title and placeholder attributes in the inner textarea.
+  </p>
   <form id="exampleForm" action="/submit" method="POST">
-    <csv-textarea name="csvData" rows="3" column-headings="Name,Age,City" max-rows="5" title="Custom CSV Textarea">
-      John,30,New York
-      Jane,25,Los Angeles
+    <csv-textarea rows="3" max-rows="5">
+      <textarea name="csvData" title="Enter CSV data in the textarea" placeholder="one, two, three">
+        Name,Age,City
+        John,30,New York
+        Jane,25,Los Angeles  
+      </textarea>
     </csv-textarea>
     <button type="submit">Submit</button>
   </form>

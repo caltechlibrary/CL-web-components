@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea</title>
-  <script src="csvtextarea.js" defer></script>
+  <script type="module" src="csvtextarea.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const csvTextarea = document.querySelector('csv-textarea');
@@ -24,10 +24,14 @@
   </script>
 </head>
 <body>
+  <p>This is a minimal test of the csv-textarea component. The column headings should be taken from the first row of CSV content.</p>
   <form>
-    <csv-textarea name="csvData" rows="3" column-headings="Name,Age,City" max-rows="5">
-      John,30,New York
-      Jane,25,Los Angeles
+    <csv-textarea>
+      <textarea name="csvData">
+        Name,Age,City
+        John,30,New York
+        Jane,25,Los Angeles  
+      </textarea>
     </csv-textarea>
     <p></p>
     <button type="submit">Submit</button>

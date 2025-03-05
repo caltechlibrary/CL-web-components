@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea Only Example</title>
+  <p>This implementation should fallback to the innerHTML containing the textarea if JavaScript is disabled.</p>
   <script src="csvtextarea.js" defer></script>
 </head>
 <body>
@@ -15,10 +16,9 @@
       rows="1"
       column-headings="group name,group id"
       max-rows="10"
-    ></csv-textarea>
-    <noscript>
-      <textarea id="groups" name="groups" rows="1" placeholder="Enter group name, comma and then clgid. One per line."></textarea>
-    </noscript>
+    >
+    <textarea id="groups" name="groups" rows="1" placeholder="Enter group name, comma and then clgid. One per line."></textarea>
+  </csv-textarea>
     <p></p>
     <button type="submit">Submit</button>
   </form>

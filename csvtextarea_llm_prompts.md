@@ -196,3 +196,135 @@ The mouse should support selecting content within a cell as well as selecting mu
 The column headings should become the attribute names for objects described in toJSON function. The attribute names should be formed by lower casing the column heading, replacing spaces with a single space between alphanumeric characters in the heading and non-alphanumeric characters should be removed from the attribute name. Example "Group Name" would become "group_name" and "Monday, Wednesday, Friday" would become "monday_wednesday_friday".
 
 A cell is selected and the backspace or delete key are pressed it will set the cell to an empty string.
+
+--
+
+The line containing `${this.columnHeadings.map(heading => `<th>${heading}</th>`).join('')}` throws an browser error saying map is not a function.
+
+When the `this.columnHeadings` is populated in the web component is must be an array so that the `map` function is available.
+
+Apply this change to `csv-textarea` web component.
+
+The class for CsvTextarea should be called CSVTextarea in the implementation of `csv-textarea` component.
+
+The HTML page demo_csv0.html with HTML content of ```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea</title>
+  <script type="module" src="csvtextarea.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const csvTextarea = document.querySelector('csv-textarea');
+
+      // Listen for change events on the csv-textarea
+      csvTextarea.addEventListener('change', () => {
+        console.log('CSV content changed:', csvTextarea.innerHTML);
+      });
+
+      // Listen for form submission
+      document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+        console.log('Form submitted with CSV content:', csvTextarea.innerHTML);
+        // Here you can add code to handle the form submission, e.g., send data to a server
+      });
+    });
+  </script>
+</head>
+<body>
+  <p>This is a minimal test of the csv-textarea component. The column headings should be taken from the first row of CSV content.</p>
+  <form>
+    <csv-textarea>
+      <textarea name="csvData">
+        Name,Age,City
+        John,30,New York
+        Jane,25,Los Angeles  
+      </textarea>
+    </csv-textarea>
+    <p></p>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>``` the csv-textarea is now showing an editable table with the CSV content contained in the innerHTML's textarea's innerHTML. Can you fix this?
+
+The table now displays but the insert row and cleanup buttons are not present.  The cleanup button will remove empty rows in the table and update the inner textarea's CSV content.
+
+The insert row action should set the cursor to be in the first cell of inserted row.
+
+The a cell changes or a row is added the CSV content inside the text area should be updated.
+
+The web component should support the following keyboard findings
+
+`Ctrl+Shift+Spacebar` or `Ctrl+A`
+: Select all the cells in the entire table contents
+
+`Shift+Arrow key`
+: Extend the selection of cells by one cell.
+
+`Ctrl+Shift+Right Arrow key`
+: Extend the selection of cells to end of the row
+
+`Ctrl+Shift+Left Arrow key`
+: Extend the selection of cells to beginning of the row
+
+`Ctrl+Shift+Up Arrow key`
+: Extend the selection of cells to top of table
+
+`Ctrl+Shift+Down Arrow key`
+: Extend the selection of cells to bottom of table
+
+`Ctrl+Spacebar`
+: Select an entire column in the table
+
+`Shift+Spacebar`
+: Select an entire row in the table
+
+`Ctrl+C`
+: Copy selected cells to the clipboard as CSV text.
+
+`Ctrl+V`
+: Pasts the CSV content in the clipboard into the cells agents to the current cell focus
+
+`Shift+Page down`
+: Select all cells from the current location to the last cell of the column.
+
+`Shift+Page up`
+: Select all cells from the current location to the first cell of the column.
+
+`Shift+End`
+: Select all cells from the current location to the last cell of the row.
+
+`Shift+Home`
+: Select all cells from the current location to the first cell of the row.
+
+`Ctrl+Home`
+: Move to the first cell in the upper-left corner of selected table.
+
+`Ctrl+End`
+: Move to the last cell in the lower-right corner of selected table.
+
+`Ctrl+Left arrow key`
+: Move to the first cell of the selected row.
+
+`Ctrl+Right arrow key`
+: Move to the last cell of the selected row.
+
+`Ctrl+Up arrow key`
+: Move to the first cell of the selected column.
+
+`Ctrl+Down arrow key`
+: Move to the last cell of selected column.
+
+`Ctrl+Backspace`
+: Delete the contents of a cell
+
+`Ctrl+Insert` or `Ctrl+Shift+I`
+: Should insert a row below the current cell
+
+The mouse should support selecting content within a cell as well as selecting multiple cells.
+
+When a cell changes it needs to include the column and row in the event details.
+
+The console is showing that rowIndex is not defined when a cell gets focus.
