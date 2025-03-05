@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea Example</title>
+  <script type="module" src="csvtextarea.js"></script>
+</head>
+<body>
+  <h1>CSV Textarea Example</h1>
+  <form id="csv-form" action="/submit" method="POST">
+    <label for="family-name">Family Name</label> <input type="text" id="family-name" name="family-name" placeholder="enter your family name"><br>
+    <label for="given-name">Give Name</label> <input type="text" id="given-name" name="given-name" placeholder="enter your given name"><br>
+
+    <label for="groups">Enter Groups as CSV Data:</label>
+    <csv-textarea
+      id="groups"
+  	  name="groups"
+      cols="2"
+      maxlength="10"
+      rows="1"
+      column-headings="group name,clgid"
+    >
+    </csv-textarea>
+	<p>
+    <input type="submit" value="submit">
+  </form>
+
+  <script>
+  document.getElementById('groups').addEventListener('change', function(event) {
+	  console.log(`DEGUG what is inner text? -> ${this.innerHTML}`);
+  });
+  
+  document.getElementById('csv-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const csvComponent = document.getElementById('groups');
+    const csvData = csvComponent.innerHTML;
+    const familyName = document.getElementById('family-name');
+    const givenName = document.getElementById('given-name');
+
+    const formData = new FormData();
+    formData.set('family-name', familyName.value);
+    formData.set('given-name', givenName.value);
+    formData.set('groups', csvData);
+    fetch('/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  });
+
+  </script>
+</body>
+</html>

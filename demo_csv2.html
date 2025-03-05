@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea Only Example</title>
+  <script src="csvtextarea.js" defer></script>
+</head>
+<body>
+  <form id="csv-form" action="/submit" method="POST">
+    <label for="groups">Enter Groups CSV Data:</label>
+    <csv-textarea
+      id="groups"
+      name="groups"
+      rows="1"
+      column-headings="group name,group id"
+      max-rows="10"
+    ></csv-textarea>
+    <noscript>
+      <textarea id="groups" name="groups" rows="1" placeholder="Enter group name, comma and then clgid. One per line."></textarea>
+    </noscript>
+    <p></p>
+    <button type="submit">Submit</button>
+  </form>
+<script>
+  const csvForm = document.getElementById('csv-form');
+  csvForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const csvComponent = document.getElementById('groups');
+    const csvData = csvComponent.innerHTML;
+
+    const formData = new FormData();
+    formData.set('groups', csvData);
+    fetch(csvForm.action, {
+        method: csvForm.method,
+        body: formData,
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
+</script>
+</body>
+</html>

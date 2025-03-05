@@ -1,0 +1,57 @@
+
+- Create a web component for working with tabular data in a web form
+- The component defined as CSVTextarea in the csvtextarea.js file 
+- Component is embedded into the web page using "<csv-textarea>" element
+- The component is implemented as a HTML table
+- The component has a name attribute which is used by web forms to associate the data with the form data 
+- It can include an optional column headings
+- column headings are specified as an attribute in the web component
+- showing the column headings can be set using an attribute in the web component
+- The number of columns should be configurable using the "cols" attribute
+- The number of rows should be configuration using the "rows" attribute
+- the minimum number of columns is one
+- the minimum number of rows is one
+- the default column is two
+- the default rows is 1
+- the rows and column attributes are required
+- column headings are shown by default
+- the default column headings are "column" followed an underscore an column number
+- the column-headings attribute overwrites the default column name
+- the web component should respond to changes in attributes
+- the value is the web component is held in the element's innerHTML
+- the innerHTML holds a comma separated value of the cells visible in the web component
+- a header row is included in the innerHTML if it is also displayed
+- the web component should include a readonly attribute and if true prevent changes to the content
+- the default status of readonly is false
+- the web component should be usable in a web form and CSV content should update the web form's data
+- when a cell web component changes it should trigger a change event updating the CSV content in the body
+- If all cells in a row are empty then that row should not be included in the CSV content of the body
+- Each column can have a header row holding a column name configured in the attributes of the web component
+- The maximum of rows should be optionally configurable
+- If web component cannot be instantiated it should fallback to a plain textarea
+- The user should be able to add additional rows as needed up to any specified maximum
+- Adding a row show happen when you press shift enter in the last column of the last row
+- There should be a single button below the table that will to add a row to the table on click
+- The column headings, rows, columns and button should accepts CSS styling
+- showing the header row is optional, the default is to show it
+- The web component needs to support W3C recommendations for accessibility
+- the width and size of the component needs to conform to the inheritted styling
+- if the body of the web component is populate then it should populate the table
+- when the table is change the body of the web component needs to be update
+- when the web component is part of a web form the component needs to add the CSV content to the form data using the component's name attribute
+- The componment should have a read-only attribute that works like read-only for input attributes
+- The default column headings should be the word column, followed by an underscore and the column number
+- There should only be one add row button in the component
+- The column headings should be down by default
+- Use an HTML template to structure the component
+- the HTML template should include the header row
+- when a row is added the focus should  go to the first cell of the added row
+- If a cell contains a comma then the value of the cell needs to be quoted in the CSV output
+- The web component needs to add the contents when the web form is encoded and sent to the web service.
+- The change event trigger for a cell should only happen when the cell looses focus
+- Add a toJSON function. Represent each row as an object with the attribute name matching the column heading and the value matching the cell value.
+- CSVTextarea needs to include cell column and row number in the change event.
+- The change event detail should include include column name, column number and row number in the change event.
+- There also needs to be a function to update a cell in the table given a column, row and value
+- The update cell function should allow the column name or column number in the column parameter
+- Add a function to retrieve a cell's value from the table given a column name or number, and a row number

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea</title>
+  <script src="csvtextarea.js" defer></script>
+  <script src="formHandler.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const csvTextarea = document.querySelector('csv-textarea');
+
+      // Listen for change events on the csv-textarea
+      csvTextarea.addEventListener('change', (event) => {
+        console.log('Cell changed:', event.detail);
+      });
+
+      // Convert CSV content to JSON
+      const jsonButton = document.createElement('button');
+      jsonButton.textContent = 'Convert to JSON';
+      jsonButton.addEventListener('click', () => {
+        console.log('JSON content:', csvTextarea.toJSON());
+      });
+      document.body.appendChild(jsonButton);
+
+      // Update a specific cell by column name
+      const updateByNameButton = document.createElement('button');
+      updateByNameButton.textContent = 'Update Cell (1, "Age") to "New Value"';
+      updateByNameButton.addEventListener('click', () => {
+        csvTextarea.setCellValue(1, 'Age', 'New Value');
+      });
+      document.body.appendChild(updateByNameButton);
+
+      // Update a specific cell by column number
+      const updateByNumberButton = document.createElement('button');
+      updateByNumberButton.textContent = 'Update Cell (1, 2) to "Another Value"';
+      updateByNumberButton.addEventListener('click', () => {
+        csvTextarea.setCellValue(1, 2, 'Another Value');
+      });
+      document.body.appendChild(updateByNumberButton);
+
+      // Get a specific cell value by column name
+      const getByNameButton = document.createElement('button');
+      getByNameButton.textContent = 'Get Cell Value (1, "Age")';
+      getByNameButton.addEventListener('click', () => {
+        const value = csvTextarea.getCellValue(1, 'Age');
+        console.log('Cell value:', value);
+      });
+      document.body.appendChild(getByNameButton);
+
+      // Get a specific cell value by column number
+      const getByNumberButton = document.createElement('button');
+      getByNumberButton.textContent = 'Get Cell Value (1, 2)';
+      getByNumberButton.addEventListener('click', () => {
+        const value = csvTextarea.getCellValue(1, 2);
+        console.log('Cell value:', value);
+      });
+      document.body.appendChild(getByNumberButton);
+
+      // Submit the form using the hybrid form submission function
+      const submitButton = document.createElement('button');
+      submitButton.textContent = 'Submit Form';
+      submitButton.addEventListener('click', () => {
+        submitHybridForm('exampleForm', (response) => {
+          console.log('Form submitted successfully:', response);
+        });
+      });
+      document.body.appendChild(submitButton);
+    });
+  </script>
+</head>
+<body>
+  <form id="exampleForm" action="/submit" method="POST">
+    <csv-textarea name="csvData" rows="3" column-headings="Name,Age,City" max-rows="5" title="Custom CSV Textarea">
+      John,30,New York
+      Jane,25,Los Angeles
+    </csv-textarea>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

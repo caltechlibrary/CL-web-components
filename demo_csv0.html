@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea</title>
+  <script src="csvtextarea.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const csvTextarea = document.querySelector('csv-textarea');
+
+      // Listen for change events on the csv-textarea
+      csvTextarea.addEventListener('change', () => {
+        console.log('CSV content changed:', csvTextarea.innerHTML);
+      });
+
+      // Listen for form submission
+      document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+        console.log('Form submitted with CSV content:', csvTextarea.innerHTML);
+        // Here you can add code to handle the form submission, e.g., send data to a server
+      });
+    });
+  </script>
+</head>
+<body>
+  <form>
+    <csv-textarea name="csvData" rows="3" column-headings="Name,Age,City" max-rows="5">
+      John,30,New York
+      Jane,25,Los Angeles
+    </csv-textarea>
+    <p></p>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
