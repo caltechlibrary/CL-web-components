@@ -28,11 +28,13 @@ This is a demonstration of Web Components for Caltech Library.
 - Doiel, R. S.
 
 
-Uses: - HTML5-compatible web browser
+Uses:
+
+- HTML5-compatible web browser
 
 ## Related resources
 
-
+- [User Manaual](user_manual.md)
 - [Download](https://github.com/caltechlibrary/CL-web-components/releases)
 - [Getting Help, Reporting bugs](https://github.com/caltechlibrary/CL-web-components/issues)
 - [LICENSE](https://caltechlibrary.github.io/CL-web-components/LICENSE)
