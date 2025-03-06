@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea</title>
   <script src="csvtextarea.js" defer></script>
+  <script src="formHandler.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const csvTextarea = document.querySelector('csv-textarea');
@@ -55,17 +56,30 @@
         console.log('Cell value:', value);
       });
       document.body.appendChild(getByNumberButton);
+
+      // Submit the form using the hybrid form submission function
+      const submitButton = document.createElement('button');
+      submitButton.textContent = 'Submit Form';
+      submitButton.addEventListener('click', () => {
+        submitHybridForm('exampleForm', (response) => {
+          console.log('Form submitted successfully:', response);
+        });
+      });
+      document.body.appendChild(submitButton);
     });
   </script>
 </head>
 <body>
-  <p>Testing how the csv-textarea works when both the inner textarea has an id and name when the outer csv-textarea differnent id and name.</p>
-  <form>
-    <csv-textarea id="csvDataToo" name="csvDataToo" rows="3" column-headings="Name,Age,City" max-rows="5" title="Custom CSV Textarea">
-    <textarea id="csvData" name="csvData">
-      John,30,New York
-      Jane,25,Los Angeles
-    </textarea>
+  <p>
+    This version includes the headings in the embedded CSV content as well as the title and placeholder attributes in the inner textarea.
+  </p>
+  <form id="exampleForm" action="/submit" method="POST">
+    <csv-textarea rows="3" max-rows="5">
+      <textarea name="csvData" title="Enter CSV data in the textarea" placeholder="one, two, three">
+        Name,Age,City
+        John,30,New York
+        Jane,25,Los Angeles  
+      </textarea>
     </csv-textarea>
     <button type="submit">Submit</button>
   </form>

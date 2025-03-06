@@ -1,41 +1,18 @@
+// csvtextarea.js
 class CSVTextarea extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-
-    // Initialize columnHeadings and csvData as arrays
-    this.columnHeadings = [];
-    this.csvData = [];
-    this.selectedCells = [];
   }
 
   connectedCallback() {
-    this.parseCsvData();
     this.render();
-    this.attachEventListeners();
-  }
-
-  // Method to parse CSV data from the inner textarea
-  parseCsvData() {
-    const textarea = this.querySelector('textarea');
-    if (textarea) {
-      const csvString = textarea.value.trim();
-      const rows = csvString.split('\n');
-      if (rows.length > 0) {
-        this.columnHeadings = this.parseCsvRow(rows[0]);
-        this.csvData = rows.slice(1).map(row => this.parseCsvRow(row));
-      }
-    }
-  }
-
-  // Helper method to parse a CSV row into an array
-  parseCsvRow(row) {
-    return row.split(',').map(cell => cell.trim());
+    this.initializeTable();
+    this.populateTableFromCSV();
+    this.setupEventListeners();
   }
 
   render() {
-    const tableHead = this.renderTableHead();
-    const tableBody = this.renderTableBody();
     this.shadowRoot.innerHTML = `
       <style>
         table {
@@ -43,374 +20,290 @@ class CSVTextarea extends HTMLElement {
           border-collapse: collapse;
         }
         th, td {
-          border: 1px solid black;
+          border: 1px solid #ddd;
           padding: 8px;
-          text-align: left;
+        }
+        th {
+          background-color: #f2f2f2;
         }
         td {
-          padding: 5px;
+          cursor: pointer;
         }
-        input[type="text"] {
-          width: 100%;
-          border: none;
-          padding: 5px;
+        caption {
+          caption-side: top;
+          font-weight: bold;
+          margin-bottom: 5px;
         }
-        .controls {
+        .actions {
           margin-top: 10px;
         }
         button {
           margin-right: 5px;
         }
-        .selected {
-          background-color: lightblue;
-        }
       </style>
-      <table>
-        ${tableHead}
-        ${tableBody}
+      <table id="csv-table">
+        ${this.hasCaption() ? `<caption>${this.getAttribute('caption')}</caption>` : ''}
+        <thead id="csv-header"></thead>
+        <tbody id="csv-body"></tbody>
       </table>
-      <div class="controls">
-        <button id="insert-row">Insert Row</button>
-        <button id="cleanup">Cleanup</button>
+      <div class="actions">
+        <button id="insert-row-btn">Insert Row</button>
+        <button id="cleanup-btn">Cleanup</button>
+        ${this.getAttribute('debug') === 'true' ? '<button id="debug-btn">Debug</button>' : ''}
       </div>
     `;
   }
 
-  attachEventListeners() {
-    // Insert Row button event listener
-    const insertRowButton = this.shadowRoot.querySelector('#insert-row');
-    insertRowButton.addEventListener('click', () => {
-      this.csvData.push(Array(this.columnHeadings.length).fill(''));
-      this.render();
-      this.attachEventListeners();
+  hasCaption() {
+    const caption = this.getAttribute('caption');
+    return caption !== null && caption.trim() !== '';
+  }
 
-      // Focus on the first cell of the new row
-      const newRowIndex = this.csvData.length - 1;
-      const firstCellInput = this.shadowRoot.querySelector(`input[data-row="${newRowIndex}"][data-col="0"]`);
-      if (firstCellInput) {
-        firstCellInput.focus();
+  initializeTable() {
+    const columnHeadings = this.getAttribute('column-headings');
+    if (!columnHeadings) {
+      throw new Error('column-headings attribute is required');
+    }
+
+    const headers = this.parseCSVRow(columnHeadings);
+    const rows = parseInt(this.getAttribute('rows')) || 1;
+    const cols = headers.length;
+    const maxRows = parseInt(this.getAttribute('max-rows')) || Number.MAX_SAFE_INTEGER;
+
+    this.createTable(headers, rows, cols, maxRows);
+  }
+
+  parseCSVRow(csvRow) {
+    const rows = [];
+    let cell = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < csvRow.length; i++) {
+      const char = csvRow[i];
+
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        rows.push(cell.trim());
+        cell = '';
+      } else if (i === csvRow.length - 1) {
+        cell += char;
+        rows.push(cell.trim());
+      } else {
+        cell += char;
       }
-
-      // Update the textarea content
-      this.updateTextarea();
-    });
-
-    // Cleanup button event listener
-    const cleanupButton = this.shadowRoot.querySelector('#cleanup');
-    cleanupButton.addEventListener('click', () => {
-      this.cleanupTable();
-      this.updateTextarea();
-    });
-
-    // Add event listeners to input fields for cell changes
-    const inputFields = this.shadowRoot.querySelectorAll('input[type="text"]');
-    inputFields.forEach(input => {
-      const rowIndex = input.getAttribute('data-row');
-      const colIndex = input.getAttribute('data-col');
-
-      input.addEventListener('input', (event) => {
-        this.csvData[rowIndex][colIndex] = input.value;
-
-        // Dispatch custom event with row and column details
-        const cellChangeEvent = new CustomEvent('cell-change', {
-          detail: { row: rowIndex, col: colIndex, value: input.value },
-          bubbles: true,
-          composed: true
-        });
-        this.dispatchEvent(cellChangeEvent);
-
-        this.updateTextarea();
-      });
-
-      input.addEventListener('focus', () => {
-        this.selectedCells = [{ row: rowIndex, col: colIndex }];
-        this.updateSelectedCells();
-      });
-
-      input.addEventListener('keydown', event => this.handleKeyDown(event, rowIndex, colIndex));
-    });
-
-    // Mouse events for cell selection
-    inputFields.forEach(input => {
-      input.addEventListener('mousedown', event => {
-        const rowIndex = input.getAttribute('data-row');
-        const colIndex = input.getAttribute('data-col');
-        if (event.shiftKey) {
-          this.extendSelection(event, rowIndex, colIndex);
-        } else {
-          this.selectedCells = [{ row: rowIndex, col: colIndex }];
-          this.updateSelectedCells();
-        }
-      });
-    });
-  }
-
-  handleKeyDown(event, rowIndex, colIndex) {
-    const { key, ctrlKey, shiftKey } = event;
-
-    if (ctrlKey && shiftKey && key === ' ') {
-      this.selectAll();
-      event.preventDefault();
-    } else if (ctrlKey && key === 'a') {
-      this.selectAll();
-      event.preventDefault();
-    } else if (shiftKey && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
-      this.extendSelectionByArrowKey(key, rowIndex, colIndex);
-      event.preventDefault();
-    } else if (ctrlKey && shiftKey && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
-      this.extendSelectionToEdge(key);
-      event.preventDefault();
-    } else if (ctrlKey && key === ' ') {
-      this.selectColumn(colIndex);
-      event.preventDefault();
-    } else if (shiftKey && key === ' ') {
-      this.selectRow(rowIndex);
-      event.preventDefault();
-    } else if (ctrlKey && key === 'c') {
-      this.copySelection();
-      event.preventDefault();
-    } else if (ctrlKey && key === 'v') {
-      this.pasteSelection(rowIndex, colIndex);
-      event.preventDefault();
-    } else if (shiftKey && key === 'PageDown') {
-      this.selectToEndOfColumn(rowIndex, colIndex);
-      event.preventDefault();
-    } else if (shiftKey && key === 'PageUp') {
-      this.selectToStartOfColumn(rowIndex, colIndex);
-      event.preventDefault();
-    } else if (shiftKey && key === 'End') {
-      this.selectToEndOfRow(rowIndex);
-      event.preventDefault();
-    } else if (shiftKey && key === 'Home') {
-      this.selectToStartOfRow(rowIndex);
-      event.preventDefault();
-    } else if (ctrlKey && key === 'Home') {
-      this.moveToFirstCell();
-      event.preventDefault();
-    } else if (ctrlKey && key === 'End') {
-      this.moveToLastCell();
-      event.preventDefault();
-    } else if (ctrlKey && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
-      this.moveToEdge(key);
-      event.preventDefault();
-    } else if (ctrlKey && key === 'Backspace') {
-      this.clearCell(rowIndex, colIndex);
-      event.preventDefault();
-    } else if (ctrlKey && key === 'Insert') {
-      this.insertRowBelow(rowIndex);
-      event.preventDefault();
     }
+
+    return rows;
   }
 
-  selectAll() {
-    this.selectedCells = this.csvData.flatMap((row, rowIndex) =>
-      row.map((_, colIndex) => ({ row: rowIndex, col: colIndex }))
-    );
-    this.updateSelectedCells();
-  }
-
-  extendSelectionByArrowKey(key, rowIndex, colIndex) {
-    const directions = {
-      ArrowUp: { row: -1, col: 0 },
-      ArrowDown: { row: 1, col: 0 },
-      ArrowLeft: { row: 0, col: -1 },
-      ArrowRight: { row: 0, col: 1 }
-    };
-    const { row, col } = directions[key];
-    const newRowIndex = rowIndex + row;
-    const newColIndex = colIndex + col;
-    if (this.isValidCell(newRowIndex, newColIndex)) {
-      this.selectedCells.push({ row: newRowIndex, col: newColIndex });
-      this.updateSelectedCells();
-    }
-  }
-
-  extendSelectionToEdge(key) {
-    if (this.selectedCells.length === 0) return;
-    const { row: startRow, col: startCol } = this.selectedCells[0];
-    let endRow = startRow, endCol = startCol;
-
-    if (key === 'ArrowUp') endRow = 0;
-    else if (key === 'ArrowDown') endRow = this.csvData.length - 1;
-    else if (key === 'ArrowLeft') endCol = 0;
-    else if (key === 'ArrowRight') endCol = this.columnHeadings.length - 1;
-
-    this.selectedCells = this.csvData.slice(Math.min(startRow, endRow), Math.max(startRow, endRow) + 1)
-      .flatMap((_, rowIndex) =>
-        this.columnHeadings.slice(Math.min(startCol, endCol), Math.max(startCol, endCol) + 1)
-          .map((_, colIndex) => ({ row: rowIndex, col: colIndex }))
-      );
-    this.updateSelectedCells();
-  }
-
-  selectColumn(colIndex) {
-    this.selectedCells = this.csvData.map((_, rowIndex) => ({ row: rowIndex, col: colIndex }));
-    this.updateSelectedCells();
-  }
-
-  selectRow(rowIndex) {
-    this.selectedCells = this.columnHeadings.map((_, colIndex) => ({ row: rowIndex, col: colIndex }));
-    this.updateSelectedCells();
-  }
-
-  copySelection() {
-    if (this.selectedCells.length === 0) return;
-    const selectedData = this.selectedCells.map(({ row, col }) => this.csvData[row][col]);
-    const csvContent = selectedData.join(',');
-    navigator.clipboard.writeText(csvContent);
-  }
-
-  pasteSelection(rowIndex, colIndex) {
-    navigator.clipboard.readText().then(clipText => {
-      const pastedData = clipText.split(',');
-      pastedData.forEach((data, index) => {
-        const newRowIndex = rowIndex + Math.floor(index / this.columnHeadings.length);
-        const newColIndex = (colIndex + index) % this.columnHeadings.length;
-        if (this.isValidCell(newRowIndex, newColIndex)) {
-          this.csvData[newRowIndex][newColIndex] = data.trim();
-        }
-      });
-      this.render();
-      this.updateTextarea();
+  createTable(headers, rows, cols, maxRows) {
+    const headerRow = document.createElement('tr');
+    headers.forEach(header => {
+      const th = document.createElement('th');
+      th.textContent = header;
+      headerRow.appendChild(th);
     });
-  }
+    this.shadowRoot.querySelector('#csv-header').appendChild(headerRow);
 
-  selectToEndOfColumn(rowIndex, colIndex) {
-    this.selectedCells = this.csvData.slice(rowIndex).map((_, rIndex) => ({ row: rIndex + rowIndex, col: colIndex }));
-    this.updateSelectedCells();
-  }
-
-  selectToStartOfColumn(rowIndex, colIndex) {
-    this.selectedCells = this.csvData.slice(0, rowIndex + 1).map((_, rIndex) => ({ row: rIndex, col: colIndex }));
-    this.updateSelectedCells();
-  }
-
-  selectToEndOfRow(rowIndex) {
-    this.selectedCells = this.columnHeadings.map((_, colIndex) => ({ row: rowIndex, col: colIndex }));
-    this.updateSelectedCells();
-  }
-
-  selectToStartOfRow(rowIndex) {
-    this.selectedCells = this.columnHeadings.slice(0, rowIndex + 1).map((_, colIndex) => ({ row: rowIndex, col: colIndex }));
-    this.updateSelectedCells();
-  }
-
-  moveToFirstCell() {
-    this.selectedCells = [{ row: 0, col: 0 }];
-    this.updateSelectedCells();
-    this.focusCell(0, 0);
-  }
-
-  moveToLastCell() {
-    const lastRow = this.csvData.length - 1;
-    const lastCol = this.columnHeadings.length - 1;
-    this.selectedCells = [{ row: lastRow, col: lastCol }];
-    this.updateSelectedCells();
-    this.focusCell(lastRow, lastCol);
-  }
-
-  moveToEdge(key) {
-    if (this.selectedCells.length === 0) return;
-    const { row: startRow, col: startCol } = this.selectedCells[0];
-    let endRow = startRow, endCol = startCol;
-
-    if (key === 'ArrowUp') endRow = 0;
-    else if (key === 'ArrowDown') endRow = this.csvData.length - 1;
-    else if (key === 'ArrowLeft') endCol = 0;
-    else if (key === 'ArrowRight') endCol = this.columnHeadings.length - 1;
-
-    this.selectedCells = [{ row: endRow, col: endCol }];
-    this.updateSelectedCells();
-    this.focusCell(endRow, endCol);
-  }
-
-  clearCell(rowIndex, colIndex) {
-    this.csvData[rowIndex][colIndex] = '';
-    this.render();
-    this.updateTextarea();
-  }
-
-  insertRowBelow(rowIndex) {
-    this.csvData.splice(rowIndex + 1, 0, Array(this.columnHeadings.length).fill(''));
-    this.render();
-    this.updateTextarea();
-  }
-
-  isValidCell(rowIndex, colIndex) {
-    return rowIndex >= 0 && rowIndex < this.csvData.length && colIndex >= 0 && colIndex < this.columnHeadings.length;
-  }
-
-  updateSelectedCells() {
-    this.shadowRoot.querySelectorAll('input[type="text"]').forEach(input => {
-      input.classList.remove('selected');
-    });
-    this.selectedCells.forEach(({ row, col }) => {
-      const input = this.shadowRoot.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
-      if (input) {
-        input.classList.add('selected');
+    const tbody = this.shadowRoot.querySelector('#csv-body');
+    for (let i = 0; i < Math.min(rows, maxRows); i++) {
+      const tr = document.createElement('tr');
+      for (let j = 0; j < cols; j++) {
+        const td = document.createElement('td');
+        td.contentEditable = true;
+        td.addEventListener('blur', this.handleCellChange.bind(this, i, j, headers[j]));
+        tr.appendChild(td);
       }
-    });
-  }
-
-  focusCell(rowIndex, colIndex) {
-    const input = this.shadowRoot.querySelector(`input[data-row="${rowIndex}"][data-col="${colIndex}"]`);
-    if (input) {
-      input.focus();
+      tbody.appendChild(tr);
     }
   }
 
-  cleanupTable() {
-    this.csvData = this.csvData.filter(row => row.some(cell => cell.trim() !== ''));
-    this.render();
-    this.attachEventListeners();
-  }
-
-  updateTextarea() {
+  populateTableFromCSV() {
     const textarea = this.querySelector('textarea');
-    if (textarea) {
-      const csvRows = [this.columnHeadings.join(',')];
-      csvRows.push(...this.csvData.map(row => row.join(',')));
-      textarea.value = csvRows.join('\n');
+    if (!textarea) return;
+
+    const csvContent = textarea.value.trim();
+    if (!csvContent) return;
+
+    const rows = csvContent.split('\n');
+    const tbody = this.shadowRoot.querySelector('#csv-body');
+    tbody.innerHTML = ''; // Clear existing rows
+
+    rows.forEach((row, rowIndex) => {
+      const cols = this.parseCSVRow(row);
+      const tr = document.createElement('tr');
+      cols.forEach((col, colIndex) => {
+        const td = document.createElement('td');
+        td.contentEditable = true;
+        td.textContent = col.replace(/^"|"$/g, ''); // Unquote the cell value
+        td.addEventListener('blur', this.handleCellChange.bind(this, rowIndex, colIndex, this.getAttribute('column-headings').split(',')[colIndex]));
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  setupEventListeners() {
+    this.shadowRoot.querySelector('#insert-row-btn').addEventListener('click', this.insertRow.bind(this));
+    this.shadowRoot.querySelector('#cleanup-btn').addEventListener('click', this.cleanupCSV.bind(this));
+
+    if (this.getAttribute('debug') === 'true') {
+      this.shadowRoot.querySelector('#debug-btn').addEventListener('click', this.logDebugInfo.bind(this));
     }
   }
 
-  renderTableHead() {
-    if (!Array.isArray(this.columnHeadings)) {
-      console.error('columnHeadings is not an array.');
-      return '';
-    }
+  insertRow() {
+    const tbody = this.shadowRoot.querySelector('#csv-body');
+    const headers = this.getAttribute('column-headings').split(',');
+    const newRow = document.createElement('tr');
 
-    return `
-      <thead>
-        <tr>
-          ${this.columnHeadings.map(heading => `<th>${heading}</th>`).join('')}
-        </tr>
-      </thead>
-    `;
+    // Create a new row with empty cells
+    const emptyCells = Array(headers.length).fill('');
+    const newCSVRow = emptyCells.join(',');
+
+    // Add the new row to the CSV content
+    const textarea = this.querySelector('textarea');
+    const csvContent = textarea.value.trim();
+    textarea.value = csvContent ? `${csvContent}\n${newCSVRow}` : newCSVRow;
+
+    // Add the new row to the table
+    headers.forEach((_, colIndex) => {
+      const td = document.createElement('td');
+      td.contentEditable = true;
+      td.addEventListener('blur', this.handleCellChange.bind(this, tbody.rows.length, colIndex, headers[colIndex]));
+      newRow.appendChild(td);
+    });
+
+    tbody.appendChild(newRow);
+    newRow.cells[0].focus();
   }
 
-  renderTableBody() {
-    if (!Array.isArray(this.csvData)) {
-      console.error('csvData is not an array.');
-      return '';
+  cleanupCSV() {
+    const textarea = this.querySelector('textarea');
+    const csvContent = textarea.value;
+
+    // Log CSV content before cleanup
+    console.log('CSV Content Before Cleanup:', csvContent);
+
+    const rows = csvContent.split('\n');
+    const cleanedRows = rows.filter(row => this.parseCSVRow(row).some(cell => cell.trim() !== ''));
+    textarea.value = cleanedRows.join('\n');
+
+    // Log CSV content after cleanup
+    console.log('CSV Content After Cleanup:', textarea.value);
+
+    this.populateTableFromCSV();
+  }
+
+  handleCellChange(row, col, heading, event) {
+    const textarea = this.querySelector('textarea');
+    const rows = textarea.value.split('\n');
+    const debug = this.getAttribute('debug') === 'true';
+
+    if (debug) {
+      // Log the cell, row, and CSV content before the change
+      console.log(`Before Change - Cell (${row}, ${col}):`, rows[row].split(',')[col]);
+      console.log(`Before Change - Row ${row}:`, rows[row]);
+      console.log('Before Change - CSV Content:', textarea.value);
     }
 
-    return `
-      <tbody>
-        ${this.csvData.map((row, rowIndex) => `
-          <tr>
-            ${row.map((cell, colIndex) => `
-              <td>
-                <input type="text" value="${cell}" data-row="${rowIndex}" data-col="${colIndex}">
-              </td>
-            `).join('')}
-          </tr>
-        `).join('')}
-      </tbody>
-    `;
+    const newValue = event.target.textContent;
+    this.updateCSVContent(row, col, newValue);
+
+    if (debug) {
+      // Log the cell, row, and CSV content after the change
+      console.log(`After Change - Cell (${row}, ${col}):`, newValue);
+      console.log(`After Change - Row ${row}:`, textarea.value.split('\n')[row]);
+      console.log('After Change - CSV Content:', textarea.value);
+    }
+
+    // Dispatch a custom event with details of the change, including the full cell value
+    const changeEvent = new CustomEvent('cell-changed', {
+      detail: {
+        row: row,
+        col: col,
+        heading: heading,
+        value: newValue.includes(',') || newValue.includes('"') ? `"${newValue.replace(/"/g, '""')}"` : newValue
+      },
+      bubbles: true,
+      composed: true // Allow the event to escape the shadow DOM
+    });
+    this.dispatchEvent(changeEvent);
+  }
+
+  logDebugInfo() {
+    const textarea = this.querySelector('textarea');
+    const rows = textarea.value.split('\n');
+    const tbody = this.shadowRoot.querySelector('#csv-body');
+    const focusedCell = document.activeElement;
+
+    if (focusedCell && focusedCell.tagName === 'TD') {
+      const rowIndex = focusedCell.parentNode.rowIndex - 1; // Adjust for thead
+      const colIndex = Array.from(focusedCell.parentNode.children).indexOf(focusedCell);
+
+      // Log the current state of the focused cell, row, and CSV content
+      console.log(`Focused Cell (${rowIndex}, ${colIndex}):`, focusedCell.textContent);
+      console.log(`Row ${rowIndex}:`, rows[rowIndex]);
+      console.log('CSV Content:', textarea.value);
+    } else {
+      console.log('No cell is currently focused.');
+    }
+  }
+
+  updateCSVContent(row, col, value) {
+    const textarea = this.querySelector('textarea');
+    const rows = textarea.value.split('\n');
+    if (rows.length <= row) {
+      rows.push(','.repeat(col));
+    }
+
+    // Parse the existing row to handle quoted values correctly
+    let cols = this.parseCSVRow(rows[row]);
+    cols[col] = value.includes(',') || value.includes('"') ? `"${value.replace(/"/g, '""')}"` : value;
+
+    // Ensure the number of columns remains consistent
+    while (cols.length < this.getAttribute('column-headings').split(',').length) {
+      cols.push('');
+    }
+
+    // Reconstruct the row with proper quoting
+    rows[row] = cols.map(cell => cell.includes(',') || cell.includes('"') ? `"${cell.replace(/"/g, '""')}"` : cell).join(',');
+    textarea.value = rows.join('\n');
+  }
+
+  submitCSVContent(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Cleanup CSV before submission
+    this.cleanupCSV();
+
+    const textarea = this.querySelector('textarea');
+    const form = this.closest('form');
+    if (form) {
+      const formData = new FormData(form);
+      // Append the CSV content from the specific instance
+      formData.append('csv-content', textarea.value);
+
+      // Log form data for demonstration purposes
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
+
+      // Here you would typically submit the formData using fetch or XMLHttpRequest
+      // Example:
+      // fetch(form.action, {
+      //   method: form.method,
+      //   body: formData
+      // });
+    }
   }
 }
 
 customElements.define('csv-textarea', CSVTextarea);
 
-export { CSVTextarea };
+// Add an event listener for the custom 'cell-changed' event
+document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {
+  console.log('Cell changed:', event.detail);
+});

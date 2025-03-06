@@ -3,60 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Textarea Example</title>
+  <title>CSV Textarea</title>
   <script type="module" src="csvtextarea.js"></script>
-</head>
-<body>
-  <h1>CSV Textarea Example</h1>
-  <form id="csv-form" action="/submit" method="POST">
-    <label for="family-name">Family Name</label> <input type="text" id="family-name" name="family-name" placeholder="enter your family name"><br>
-    <label for="given-name">Give Name</label> <input type="text" id="given-name" name="given-name" placeholder="enter your given name"><br>
-
-    <label for="groups">Enter Groups as CSV Data:</label>
-    <csv-textarea
-      id="groups"
-  	  name="groups"
-      cols="2"
-      maxlength="10"
-      rows="1"
-      column-headings="group name,clgid"
-    >
-    <textarea id="csvData" name="csvData"></textarea>
-    </csv-textarea>
-	<p>
-    <input type="submit" value="submit">
-  </form>
-
   <script>
-  document.getElementById('groups').addEventListener('change', function(event) {
-	  console.log(`DEGUG what is inner text? -> ${this.innerHTML}`);
-  });
-  
-  document.getElementById('csv-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const csvComponent = document.getElementById('groups');
-    const csvData = csvComponent.innerHTML;
-    const familyName = document.getElementById('family-name');
-    const givenName = document.getElementById('given-name');
+    document.addEventListener('DOMContentLoaded', () => {
+      const csvTextarea = document.querySelector('csv-textarea');
 
-    const formData = new FormData();
-    formData.set('family-name', familyName.value);
-    formData.set('given-name', givenName.value);
-    formData.set('groups', csvData);
-    fetch('/submit', {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response => response.text())
-      .then(result => {
-        console.log('Success:', result);
-      })
-      .catch(error => {
-        console.error('Error:', error);
+      // Listen for change events on the csv-textarea
+      csvTextarea.addEventListener('change', () => {
+        console.log('CSV content changed:', csvTextarea.innerHTML);
       });
 
-  });
-
+      // Listen for form submission
+      document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+        console.log('Form submitted with CSV content:', csvTextarea.innerHTML);
+        // Here you can add code to handle the form submission, e.g., send data to a server
+      });
+    });
   </script>
+</head>
+<body>
+  <p>This tests how quoted cells are handled. The first columns holds values that contain a quote in the CSV content.</p>
+  <form>
+    <csv-textarea name="csvData" column-headings="Name,Age,City" debug="true">
+      <textarea name="csvData">
+"John, of the devine",30,New York
+"Jane, of Mary of the fields",25,Los Angeles
+      </textarea>
+    </csv-textarea>
+    <p></p>
+    <button type="submit">Submit</button>
+  </form>
+<script>
+  // Example usage
+document.querySelector('csv-textarea').closest('form').addEventListener('submit', (event) => document.querySelector('csv-textarea').submitCSVContent(event));
+
+// Add an event listener for the custom 'cell-changed' event
+document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {
+  console.log('Cell changed:', event.detail);
+});
+</script>
 </body>
 </html>

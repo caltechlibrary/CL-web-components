@@ -3,71 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Textarea</title>
+  <title>CSV Textarea Only Example</title>
+  <p>This implementation should fallback to the innerHTML containing the textarea if JavaScript is disabled.</p>
   <script src="csvtextarea.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const csvTextarea = document.querySelector('csv-textarea');
-
-      // Listen for change events on the csv-textarea
-      csvTextarea.addEventListener('change', (event) => {
-        console.log('Cell changed:', event.detail);
-      });
-
-      // Convert CSV content to JSON
-      const jsonButton = document.createElement('button');
-      jsonButton.textContent = 'Convert to JSON';
-      jsonButton.addEventListener('click', () => {
-        console.log('JSON content:', csvTextarea.toJSON());
-      });
-      document.body.appendChild(jsonButton);
-
-      // Update a specific cell by column name
-      const updateByNameButton = document.createElement('button');
-      updateByNameButton.textContent = 'Update Cell (1, "Age") to "New Value"';
-      updateByNameButton.addEventListener('click', () => {
-        csvTextarea.setCellValue(1, 'Age', 'New Value');
-      });
-      document.body.appendChild(updateByNameButton);
-
-      // Update a specific cell by column number
-      const updateByNumberButton = document.createElement('button');
-      updateByNumberButton.textContent = 'Update Cell (1, 2) to "Another Value"';
-      updateByNumberButton.addEventListener('click', () => {
-        csvTextarea.setCellValue(1, 2, 'Another Value');
-      });
-      document.body.appendChild(updateByNumberButton);
-
-      // Get a specific cell value by column name
-      const getByNameButton = document.createElement('button');
-      getByNameButton.textContent = 'Get Cell Value (1, "Age")';
-      getByNameButton.addEventListener('click', () => {
-        const value = csvTextarea.getCellValue(1, 'Age');
-        console.log('Cell value:', value);
-      });
-      document.body.appendChild(getByNameButton);
-
-      // Get a specific cell value by column number
-      const getByNumberButton = document.createElement('button');
-      getByNumberButton.textContent = 'Get Cell Value (1, 2)';
-      getByNumberButton.addEventListener('click', () => {
-        const value = csvTextarea.getCellValue(1, 2);
-        console.log('Cell value:', value);
-      });
-      document.body.appendChild(getByNumberButton);
-    });
-  </script>
 </head>
 <body>
-  <p>Testing how the csv-textarea works when both the inner textarea has an id and name when the outer csv-textarea differnent id and name.</p>
-  <form>
-    <csv-textarea id="csvDataToo" name="csvDataToo" rows="3" column-headings="Name,Age,City" max-rows="5" title="Custom CSV Textarea">
-    <textarea id="csvData" name="csvData">
-      John,30,New York
-      Jane,25,Los Angeles
-    </textarea>
-    </csv-textarea>
+  <form id="csv-form" action="/submit" method="POST">
+    <label for="groups">Enter Groups CSV Data:</label>
+    <csv-textarea
+      id="groups"
+      name="groups"
+      rows="1"
+      column-headings="group name,group id"
+      max-rows="10"
+    >
+    <textarea id="groups" name="groups" rows="1" placeholder="Enter group name, comma and then clgid. One per line."></textarea>
+  </csv-textarea>
+    <p></p>
     <button type="submit">Submit</button>
   </form>
+<script>
+  const csvForm = document.getElementById('csv-form');
+  csvForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const csvComponent = document.getElementById('groups');
+    const csvData = csvComponent.innerHTML;
+
+    const formData = new FormData();
+    formData.set('groups', csvData);
+    fetch(csvForm.action, {
+        method: csvForm.method,
+        body: formData,
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
+</script>
 </body>
 </html>

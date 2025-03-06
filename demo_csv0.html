@@ -26,15 +26,23 @@
 <body>
   <p>This is a minimal test of the csv-textarea component. The column headings should be taken from the first row of CSV content.</p>
   <form>
-    <csv-textarea>
+    <csv-textarea name="csvData" column-headings="Name,Age,City">
       <textarea name="csvData">
-        Name,Age,City
-        John,30,New York
-        Jane,25,Los Angeles  
+John,30,New York
+Jane,25,Los Angeles
       </textarea>
     </csv-textarea>
     <p></p>
     <button type="submit">Submit</button>
   </form>
+<script>
+  // Example usage
+document.querySelector('csv-textarea').closest('form').addEventListener('submit', (event) => document.querySelector('csv-textarea').submitCSVContent(event));
+
+// Add an event listener for the custom 'cell-changed' event
+document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {
+  console.log('Cell changed:', event.detail);
+});
+</script>
 </body>
 </html>
