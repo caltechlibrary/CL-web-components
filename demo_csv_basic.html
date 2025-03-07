@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea</title>
+  <script type="module" src="csvtextarea.js"></script>
+</head>
+<body>
+  <csv-textarea 
+  id="my-csv" 
+  name="csv-table"
+  class="csv-component"
+  title="CSV Editor"
+  placeholder="Enter CSV data"
+  caption="CSV Table"
+  column-headings="Name,Age,City"
+  cols="3" rows="5"
+  debug="true">
+    <textarea>
+      "Doe, Jane", 20, Rancho Cucamonga
+      "Doe, John", 25, Cocomo
+    </textarea>
+  </csv-textarea>
+</body>
+</html>
