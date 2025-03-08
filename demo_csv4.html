@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea</title>
-  <script src="csvtextarea.js" defer></script>
+  <script type="module" src="csvtextarea.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const csvTextarea = document.querySelector('csv-textarea');
 
       // Listen for change events on the csv-textarea
-      csvTextarea.addEventListener('change', (event) => {
+      csvTextarea.addEventListener('cell-change', (event) => {
         console.log('Cell changed:', event.detail);
       });
 
@@ -61,7 +61,7 @@
 <body>
   <p>Testing how the csv-textarea works when both the inner textarea has an id and name when the outer csv-textarea differnent id and name.</p>
   <form>
-    <csv-textarea id="csvDataToo" name="csvDataToo" rows="3" column-headings="Name,Age,City" max-rows="5" title="Custom CSV Textarea">
+    <csv-textarea id="csvDataToo" name="csvDataToo" rows="3" column-headings="Name,Age,City" title="Custom CSV Textarea">
     <textarea id="csvData" name="csvData">
       John,30,New York
       Jane,25,Los Angeles

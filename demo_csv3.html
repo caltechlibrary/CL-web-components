@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea Only Example</title>
   <p>This implementation should fallback to the innerHTML containing the textarea if JavaScript is disabled.</p>
-  <script src="csvtextarea.js" defer></script>
+  <script type="module" src="csvtextarea.js" defer></script>
 </head>
 <body>
   <form id="csv-form" action="/submit" method="POST">
@@ -13,11 +13,9 @@
     <csv-textarea
       id="groups"
       name="groups"
-      rows="1"
-      column-headings="group name,group id"
-      max-rows="10"
+      column-headings="group name, group id"
     >
-    <textarea id="groups" name="groups" rows="1" placeholder="Enter group name, comma and then clgid. One per line."></textarea>
+    <textarea id="groups" name="groups" placeholder="Enter group name, comma and then clgid. One per line."></textarea>
   </csv-textarea>
     <p></p>
     <button type="submit">Submit</button>
@@ -27,7 +25,7 @@
   csvForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const csvComponent = document.getElementById('groups');
-    const csvData = csvComponent.innerHTML;
+    const csvData = csvComponent.toCSV();
 
     const formData = new FormData();
     formData.set('groups', csvData);

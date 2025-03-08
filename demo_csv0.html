@@ -13,20 +13,13 @@
       csvTextarea.addEventListener('change', () => {
         console.log('CSV content changed:', csvTextarea.innerHTML);
       });
-
-      // Listen for form submission
-      document.querySelector('form').addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
-        console.log('Form submitted with CSV content:', csvTextarea.innerHTML);
-        // Here you can add code to handle the form submission, e.g., send data to a server
-      });
     });
   </script>
 </head>
 <body>
   <p>This is a minimal test of the csv-textarea component. The column headings should be taken from the first row of CSV content.</p>
-  <form>
-    <csv-textarea name="csvData" column-headings="Name,Age,City" debug="true">
+  <form id="csvDataTest">
+    <csv-textarea id="csvData" name="csvData" column-headings="Name,Age,City" debug="true">
       <textarea name="csvData">
 John,30,New York
 Jane,25,Los Angeles
@@ -37,7 +30,26 @@ Jane,25,Los Angeles
   </form>
 <script>
   // Example usage
-document.querySelector('csv-textarea').closest('form').addEventListener('submit', (event) => document.querySelector('csv-textarea').submitCSVContent(event));
+document.getElementById('csvDataTest').addEventListener('submit', async function(event) {
+  event.preventDefault();
+  const csvTextarea = document.getElementById('csvData');
+  const src = csvTextarea.toCSV();
+  const data = new FormData(event.target);
+  data.delete('csvData');
+  data.set('csvData', src);
+  for (const pair of data.entries()) {
+    console.log(pair[0], pair[1]);
+  }
+  /*
+  const response = await fetch(data.action, {
+    method: data.method,
+    body: data.body
+  })
+  if (! response.ok) {
+    console.log(`failed with ${response.status}`);
+  }
+  */
+});
 
 // Add an event listener for the custom 'cell-changed' event
 document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {

@@ -11,23 +11,16 @@
 
       // Listen for change events on the csv-textarea
       csvTextarea.addEventListener('change', () => {
-        console.log('CSV content changed:', csvTextarea.innerHTML);
-      });
-
-      // Listen for form submission
-      document.querySelector('form').addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
-        console.log('Form submitted with CSV content:', csvTextarea.innerHTML);
-        // Here you can add code to handle the form submission, e.g., send data to a server
+        console.log('CSV content changed:', csvTextarea.innerHTML.innerText);
       });
     });
   </script>
 </head>
 <body>
   <p>This tests how quoted cells are handled. The first columns holds values that contain a quote in the CSV content.</p>
-  <form>
-    <csv-textarea name="csvData" column-headings="Name,Age,City" debug="true">
-      <textarea name="csvData">
+  <form id="csvDataTest">
+    <csv-textarea id="csvData" name="csvData" column-headings="Name,Age,City" debug="true">
+      <textarea id="csvData" name="csvData">
 "John, of the devine",30,New York
 "Jane, of Mary of the fields",25,Los Angeles
       </textarea>
@@ -37,10 +30,14 @@
   </form>
 <script>
   // Example usage
-document.querySelector('csv-textarea').closest('form').addEventListener('submit', (event) => document.querySelector('csv-textarea').submitCSVContent(event));
+document.getElementById('csvDataTest').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const elem = document.getElementById('csvData');
+  console.log(`DEBUG csvDATA: ${elem.toCSV()}`);
+});
 
 // Add an event listener for the custom 'cell-changed' event
-document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {
+document.getElementById('csvData').addEventListener('blur', (event) => {
   console.log('Cell changed:', event.detail);
 });
 </script>
