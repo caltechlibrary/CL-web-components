@@ -5,6 +5,7 @@ class CSVTextarea extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.helpVisible = false;
   }
 
   static get observedAttributes() {
@@ -37,6 +38,18 @@ class CSVTextarea extends HTMLElement {
       <style>
         ${this.defaultCSS}
         ${this.customCSS}
+        .help-icon {
+          cursor: pointer;
+          margin-left: 10px;
+          font-size: 1.2em;
+        }
+        .help-description {
+          display: none;
+          margin-top: 10px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          background-color: #f9f9f9;
+        }
       </style>
       <table ${this.getAttribute('id') ? `id="${this.getAttribute('id')}"` : ''} ${this.getAttribute('class') ? `class="${this.getAttribute('class')}"` : ''}>
         <caption>${this.getAttribute('caption') || ''}</caption>
@@ -45,9 +58,23 @@ class CSVTextarea extends HTMLElement {
         </thead>
         <tbody></tbody>
       </table>
-      <button id="append-row">Append Row</button>
-      <button id="cleanup">Cleanup</button>
-      ${this.debug ? '<button id="debug-btn">Debug</button>' : ''}
+      <div>
+        <button id="append-row">Append Row</button>
+        <button id="cleanup">Cleanup</button>
+        ${this.debug ? '<button id="debug-btn">Debug</button>' : ''}
+        <span class="help-icon" title="display help">ⓘ</span>
+      </div>
+      <div class="help-description">
+        <h4>Help Description</h4>
+        <p>${this.getAttribute('caption') || 'CSV Editor'}</p>
+        <p>Keybinds:
+          <ul>
+            <li><strong>Backspace</strong>: Delete character or selected text.</li>
+            <li><strong>Tab</strong>: Move to the next cell.</li>
+            <li><strong>Shift+Tab</strong>: Move to the previous cell.</li>
+          </ul>
+        </p>
+      </div>
     `;
 
     this.table = this.shadowRoot.querySelector('table');
@@ -59,6 +86,8 @@ class CSVTextarea extends HTMLElement {
     if (this.debug) {
       this.shadowRoot.querySelector('#debug-btn').addEventListener('click', () => this.debugTable());
     }
+
+    this.shadowRoot.querySelector('.help-icon').addEventListener('click', () => this.toggleHelp());
   }
 
   initializeTable() {
@@ -307,6 +336,12 @@ class CSVTextarea extends HTMLElement {
       }
     }
     return '';
+  }
+
+  toggleHelp() {
+    this.helpVisible = !this.helpVisible;
+    const helpDescription = this.shadowRoot.querySelector('.help-description');
+    helpDescription.style.display = this.helpVisible ? 'block' : 'none';
   }
 
   toTextarea() {
