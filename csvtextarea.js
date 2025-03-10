@@ -76,7 +76,7 @@ class CSVTextarea extends HTMLElement {
       if (event.target.tagName === 'TD') {
         const rowIndex = event.target.parentNode.rowIndex - 1;
         const colIndex = event.target.cellIndex;
-        const value = event.target.innerHTML;
+        const value = event.target.innerText; // Changed to innerText
         this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
         if (this.debug) {
           console.log(`Cell changed: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
@@ -88,7 +88,7 @@ class CSVTextarea extends HTMLElement {
       if (event.target.tagName === 'TD') {
         const rowIndex = event.target.parentNode.rowIndex - 1;
         const colIndex = event.target.cellIndex;
-        const value = event.target.innerHTML;
+        const value = event.target.innerText; // Changed to innerText
         this.dispatchEvent(new CustomEvent('cell-focus', { detail: { rowIndex, colIndex, value } }));
         if (this.debug) {
           console.log(`Cell focused: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
@@ -98,8 +98,30 @@ class CSVTextarea extends HTMLElement {
 
     this.tbody.addEventListener('keydown', event => {
       if (event.key === 'Backspace' && event.target.tagName === 'TD') {
-        document.execCommand('delete', false, null);
-        event.preventDefault();
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0 && !selection.isCollapsed) {
+          const range = selection.getRangeAt(0);
+          range.deleteContents();
+          event.preventDefault();
+
+          // Dispatch cell-change event after deletion
+          const rowIndex = event.target.parentNode.rowIndex - 1;
+          const colIndex = event.target.cellIndex;
+          const value = event.target.innerText;
+          this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
+          if (this.debug) {
+            console.log(`Cell changed (backspace): Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
+          }
+        } else {
+          // Allow default backspace behavior
+          const rowIndex = event.target.parentNode.rowIndex - 1;
+          const colIndex = event.target.cellIndex;
+          const value = event.target.innerText;
+          this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
+          if (this.debug) {
+            console.log(`Cell changed (backspace default): Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
+          }
+        }
       }
     });
   }
@@ -198,6 +220,16 @@ class CSVTextarea extends HTMLElement {
     return stringifyCSV(rows);
   }
 
+  toJSON() {
+    const objects = this.toObjects();
+    return JSON.stringify(objects, null, 2);
+  }
+
+  fromJSON(jsonString) {
+    const objects = JSON.parse(jsonString);
+    this.fromObjects(objects);
+  }
+
   fromCSV(csv) {
     const rows = parseCSV(csv);
     this.tbody.innerHTML = '';
@@ -236,6 +268,45 @@ class CSVTextarea extends HTMLElement {
       row.cells[obj.colIndex].contentEditable = true;
       row.cells[obj.colIndex].innerHTML = obj.value;
     });
+  }
+
+  setCellValue(rowIndex, colIndex, value) {
+    if (typeof colIndex !== 'number') {
+      colIndex = this.headings.indexOf(colIndex);
+      if (colIndex === -1) {
+        console.error(`Column heading "${colIndex}" not found.`);
+        return;
+      }
+    }
+    const row = this.tbody.rows[rowIndex];
+    if (row) {
+      const cell = row.cells[colIndex];
+      if (cell) {
+        cell.innerHTML = value;
+        this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
+        if (this.debug) {
+          console.log(`Cell updated: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
+        }
+      }
+    }
+  }
+
+  getCellValue(rowIndex, colIndex) {
+    if (typeof colIndex !== 'number') {
+      colIndex = this.headings.indexOf(colIndex);
+      if (colIndex === -1) {
+        console.error(`Column heading "${colIndex}" not found.`);
+        return '';
+      }
+    }
+    const row = this.tbody.rows[rowIndex];
+    if (row) {
+      const cell = row.cells[colIndex];
+      if (cell) {
+        return cell.innerText;
+      }
+    }
+    return '';
   }
 
   toTextarea() {

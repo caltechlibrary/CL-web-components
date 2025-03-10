@@ -22,6 +22,7 @@
       rows="3"
       column-headings="group name,clgid"
       caption="Groups List Manager"
+      debug="true"
     >
     <textarea id="csvData" name="csvData"></textarea>
     </csv-textarea>
@@ -37,7 +38,7 @@
   document.getElementById('csv-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const csvComponent = document.getElementById('groups');
-    const csvData = csvComponent.innerHTML;
+    const csvData = csvComponent.toCSV();
     const familyName = document.getElementById('family-name');
     const givenName = document.getElementById('given-name');
 
@@ -45,6 +46,12 @@
     formData.set('family-name', familyName.value);
     formData.set('given-name', givenName.value);
     formData.set('groups', csvData);
+    // Display the submitted form data.
+    for (const pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
+
+    /*
     fetch('/submit', {
         method: 'POST',
         body: formData,
@@ -56,11 +63,8 @@
       .catch(error => {
         console.error('Error:', error);
       });
-
+      */
   });
-
-// Example usage
-document.querySelector('csv-textarea').closest('form').addEventListener('submit', (event) => document.querySelector('csv-textarea').submitCSVContent(event));
 
 // Add an event listener for the custom 'cell-changed' event
 document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {

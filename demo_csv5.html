@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea</title>
-  <script src="csvtextarea.js" defer></script>
-  <script src="formHandler.js" defer></script>
+  <script type="module" src="csvtextarea.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const csvTextarea = document.querySelector('csv-textarea');
@@ -57,15 +56,20 @@
       });
       document.body.appendChild(getByNumberButton);
 
-      // Submit the form using the hybrid form submission function
-      const submitButton = document.createElement('button');
-      submitButton.textContent = 'Submit Form';
-      submitButton.addEventListener('click', () => {
-        submitHybridForm('exampleForm', (response) => {
-          console.log('Form submitted successfully:', response);
-        });
+      let csvForm = document.getElementById('exampleForm');
+
+      csvForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const csvComponent = document.getElementById('csvData');
+        const csvData = csvComponent.toCSV();
+
+        const formData = new FormData();
+        formData.set('csvData', csvData);
+        // Display the submitted form data.
+        for (const pair of formData.entries()) {
+          console.log(pair[0], pair[1]);
+        }
       });
-      document.body.appendChild(submitButton);
     });
   </script>
 </head>
@@ -74,9 +78,8 @@
     This version includes the headings in the embedded CSV content as well as the title and placeholder attributes in the inner textarea.
   </p>
   <form id="exampleForm" action="/submit" method="POST">
-    <csv-textarea rows="3" max-rows="5">
+    <csv-textarea id="csvData" rows="3" max-rows="5" debug="true" column-headings="Name,Age,City">
       <textarea name="csvData" title="Enter CSV data in the textarea" placeholder="one, two, three">
-        Name,Age,City
         John,30,New York
         Jane,25,Los Angeles  
       </textarea>
