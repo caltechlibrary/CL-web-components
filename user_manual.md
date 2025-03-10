@@ -5,6 +5,8 @@
 - [LICENSE](LICENSE)
 - CSV Textarea
   - [CSV Textarea LLM Prompts](csvtextarea_llm_prompts.md), the description given to Mistral Le Chat to bootstrap component
+  - Example Usage of [Autocomplete Data](autocomplete.js)
+    - [Demo Autocomplete Data 0](demo_autocompletedata0.html)
   - Example Usage of [CSV Textarea](csvtextarea.js)
     - [demo csv 0](demo_csv0.html)
     - [demo csv 1](demo_csv1.html)
