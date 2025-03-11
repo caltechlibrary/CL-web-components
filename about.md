@@ -8,7 +8,9 @@ The following are the components currently provided.
 : This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
 &#x60;a-to-z-ul&#x60;
-: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback."
+: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
+
+One additional helper module is currently provided, &#x60;parseCSV.js&#x60;, that provides stringify and parse functions for CSV rows and strings."
 authors:
   - family_name: Doiel
     given_name: R. S.
@@ -70,6 +72,8 @@ The following are the components currently provided.
 
 &#x60;a-to-z-ul&#x60;
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
+
+One additional helper module is currently provided, &#x60;parseCSV.js&#x60;, that provides stringify and parse functions for CSV rows and strings.
 
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>
