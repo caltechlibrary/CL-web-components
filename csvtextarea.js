@@ -1,7 +1,7 @@
 // csvtextarea.js
 import { parseCSV, parseCSVRow, stringifyCSV } from './parseCSV.js';
 
-class CSVTextarea extends HTMLElement {
+export class CSVTextarea extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

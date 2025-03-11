@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h3 id="csvtextarea-web-component-specification">CSVTextarea Web
+Component Specification</h3>
+<h4 id="overview">Overview</h4>
+<p>The <code>CSVTextarea</code> web component is designed to manage and
+display tabular data in an editable HTML table format. It supports CSV
+data input and output, autocomplete functionality, and various
+customization options.</p>
+<h4 id="dependencies">Dependencies</h4>
+<ul>
+<li><code>parseCSV</code>, <code>parseCSVRow</code>,
+<code>stringifyCSV</code>: Functions imported from
+<code>./parseCSV.js</code> for parsing and stringifying CSV data.</li>
+</ul>
+<h4 id="html-structure">HTML Structure</h4>
+<ul>
+<li><strong>Shadow DOM</strong>: The component uses Shadow DOM to
+encapsulate its styles and structure.</li>
+<li><strong>Template</strong>: The component’s template includes a table
+with a <code>thead</code> and <code>tbody</code>, and buttons for
+appending rows and cleaning up the table.</li>
+</ul>
+<h4 id="attributes">Attributes</h4>
+<ul>
+<li><strong><code>column-headings</code></strong> (required): A
+comma-delimited list of column headings. This attribute is parsed to
+create the table headers.</li>
+<li><strong><code>id</code></strong>: Sets the ID of the component.</li>
+<li><strong><code>class</code></strong>: Sets the class of the
+component.</li>
+<li><strong><code>caption</code></strong>: Sets the caption of the
+table.</li>
+<li><strong><code>text</code></strong>: Sets the text content of the
+component.</li>
+<li><strong><code>placeholder</code></strong>: Sets the placeholder text
+for input fields in the table.</li>
+<li><strong><code>css-href</code></strong>: A URL to custom CSS that
+replaces the default CSS provided by the HTML template.</li>
+<li><strong><code>debug</code></strong>: A boolean attribute that, when
+true, enables debug logging to the console.</li>
+</ul>
+<h4 id="methods">Methods</h4>
+<ol type="1">
+<li><strong>Lifecycle Methods</strong>
+<ul>
+<li><strong><code>constructor()</code></strong>: Initializes the
+component and attaches a Shadow DOM.</li>
+<li><strong><code>connectedCallback()</code></strong>: Called when the
+component is added to the DOM. Initializes the component and sets up
+event listeners.</li>
+<li><strong><code>attributeChangedCallback(name, old, newVal)</code></strong>:
+Called when an observed attribute is added, removed, or changed.</li>
+</ul></li>
+<li><strong>Initialization Methods</strong>
+<ul>
+<li><strong><code>initializeComponent()</code></strong>: Sets up the
+component’s template and styles. Returns a promise that resolves when
+the component is fully initialized.</li>
+<li><strong><code>initializeTable()</code></strong>: Initializes the
+table structure based on the <code>column-headings</code> attribute and
+populates the table body.</li>
+</ul></li>
+<li><strong>Event Handling</strong>
+<ul>
+<li><strong><code>setupEventListeners()</code></strong>: Sets up event
+listeners for the component’s buttons and table cells.</li>
+</ul></li>
+<li><strong>Table Management</strong>
+<ul>
+<li><strong><code>rowCount()</code></strong>: Returns the number of rows
+in the table body.</li>
+<li><strong><code>columnCount()</code></strong>: Returns the number of
+columns in the table headings.</li>
+<li><strong><code>isEmptyRow(rowIndex)</code></strong>: Checks if a row
+is empty.</li>
+<li><strong><code>appendRow()</code></strong>: Adds an empty row to the
+table body.</li>
+<li><strong><code>cleanupTable()</code></strong>: Removes empty rows
+from the table body.</li>
+</ul></li>
+<li><strong>Data Conversion</strong>
+<ul>
+<li><strong><code>toCSV()</code></strong>: Converts the table body to a
+CSV string.</li>
+<li><strong><code>fromCSV(csvText)</code></strong>: Populates the table
+body from a CSV string.</li>
+<li><strong><code>toObjects()</code></strong>: Converts the table body
+to an array of objects representing each cell.</li>
+<li><strong><code>fromObjects(objects)</code></strong>: Populates the
+table body from an array of objects.</li>
+<li><strong><code>toJSON()</code></strong>: Converts the table body to a
+JSON string.</li>
+<li><strong><code>fromJSON(jsonString)</code></strong>: Populates the
+table body from a JSON string.</li>
+</ul></li>
+<li><strong>Textarea Integration</strong>
+<ul>
+<li><strong><code>fromTextarea()</code></strong>: Reads CSV data from an
+inner <code>&lt;textarea&gt;</code> and populates the table body.</li>
+<li><strong><code>toTextarea()</code></strong>: Writes the table body’s
+CSV data to an inner <code>&lt;textarea&gt;</code>.</li>
+</ul></li>
+<li><strong>Cell Management</strong>
+<ul>
+<li><strong><code>getCellValue(rowIndex, colIndexOrName)</code></strong>:
+Gets the value of a cell.</li>
+<li><strong><code>setCellValue(rowIndex, colIndexOrName, value)</code></strong>:
+Sets the value of a cell.</li>
+</ul></li>
+<li><strong>Autocomplete Functionality</strong>
+<ul>
+<li><strong><code>setAutocomplete(colIndexOrName, options)</code></strong>:
+Associates a datalist with a column’s input elements.</li>
+<li><strong><code>getAutocomplete(colIndexOrName)</code></strong>:
+Returns the options associated with a column’s datalist.</li>
+</ul></li>
+<li><strong>Utility Methods</strong>
+<ul>
+<li><strong><code>getColumnIndexByName(colName)</code></strong>: Gets
+the index of a column by its name.</li>
+</ul></li>
+</ol>
+<h4 id="events">Events</h4>
+<ul>
+<li><strong><code>cell-change</code></strong>: Emitted when the value of
+a cell changes. Contains the row index, column index, and new
+value.</li>
+<li><strong><code>cell-focus</code></strong>: Emitted when a cell gains
+focus. Contains the row index, column index, and value.</li>
+</ul>
+<h4 id="accessibility">Accessibility</h4>
+<ul>
+<li>The component follows W3C accessibility guidelines by providing
+keyboard navigation and focus management.</li>
+<li>Includes a clickable help icon (ⓘ) that displays help text if the
+<code>title</code> or <code>help-description</code> attributes are
+present.</li>
+</ul>
+<h4 id="customization">Customization</h4>
+<ul>
+<li>Supports custom CSS via the <code>css-href</code> attribute.</li>
+<li>Allows customization of table captions, placeholder text, and debug
+logging.</li>
+</ul>
+<h4 id="usage-example">Usage Example</h4>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">csv-textarea</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;my-csv&quot;</span><span class="ot"> column-headings</span><span class="op">=</span><span class="st">&quot;Name,Age,City&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;csv-component&quot;</span><span class="ot"> title</span><span class="op">=</span><span class="st">&quot;CSV Editor&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;Enter CSV data&quot;</span><span class="ot"> caption</span><span class="op">=</span><span class="st">&quot;CSV Table&quot;</span><span class="ot"> debug</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">datalist</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;city&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Azusa&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Cocomo&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Malibu&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Topanga&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Rancho Cucamonga&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Zuma&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">datalist</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    &quot;Doe, Jane&quot;, 20, Rancho Cucamonga</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    &quot;Doe, John&quot;, 25, Cocomo</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">csv-textarea</span><span class="dt">&gt;</span></span></code></pre></div>
+</section>
+</body>
+</html>

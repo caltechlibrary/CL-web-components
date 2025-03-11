@@ -30,7 +30,7 @@
   "dateCreated": "2025-02-26",
   "dateModified": "2025-03-11",
   "datePublished": "2025-03-11",
-  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n`csv-textarea`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`a-to-z-ul`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.",
+  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n`csv-textarea`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`a-to-z-ul`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\nOne additional helper module is currently provided, `parseCSV.js`, that provides stringify and parse functions for CSV rows and strings.",
   "funder": [
     "Caltech Library"
   ],
