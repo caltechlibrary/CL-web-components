@@ -24,7 +24,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.1
+version: 0.0.2
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -39,15 +39,15 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-03-05
+date_released: 2025-03-11
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.1
+## CL-web-components 0.0.2
 
-This is a demonstration of Web Components for Caltech Library.
+Improved CSVTextarea, now handles imbedded datalist elements for autocomplete.
 
 ### Authors
 
