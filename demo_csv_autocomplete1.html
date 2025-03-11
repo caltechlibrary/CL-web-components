@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea Example</title>
+  <script type="module" src="csvtextarea.js"></script>
+</head>
+<body>
+  <h1>CSV Textarea Example</h1>
+
+  <form id="csv-form">
+  <!-- Define the CSVTextarea component with column headings and autocomplete list -->
+  <csv-textarea
+    id="csv-data"
+    column-headings="name,age,city"
+    caption="Personal Information"
+    debug="true">
+
+  <!-- Textarea to load CSV data into the table -->
+  <textarea placeholder="Paste CSV data here...">
+"Doe, Jane", 33, Milwakee
+  </textarea>
+
+  <!-- Datalist for city autocomplete -->
+  <datalist id="city">
+    <option value="Los Angeles">
+    <option value="Los Olivos">
+  </datalist>
+
+  </csv-textarea>
+
+  </form>
+<script>
+const csvData = document.getElementById('csv-data');
+const cityStats = [
+  {
+    "value": "Los Angeles",
+    "pop": 3971883
+  },
+  {
+    "value": "San Diego",
+    "pop": 1419516
+  },
+  {
+    "value": "San Jose",
+    "pop": 1030119
+  },
+  {
+    "value": "San Francisco",
+    "pop": 873965
+  },
+  {
+    "value": "Fresno",
+    "pop": 531576
+  },
+  {
+    "value": "Sacramento",
+    "pop": 525398
+  },
+  {
+    "value": "Long Beach",
+    "pop": 466742
+  },
+  {
+    "value": "Oakland",
+    "pop": 433031
+  },
+  {
+    "value": "Bakersfield",
+    "pop": 403455
+  },
+  {
+    "value": "Anaheim",
+    "pop": 352005
+  },
+  {
+    "value": "Santa Ana",
+    "pop": 334418
+  },
+  {
+    "value": "Riverside",
+    "pop": 326742
+  },
+  {
+    "value": "Stockton",
+    "pop": 320554
+  },
+  {
+    "value": "Chula Vista",
+    "pop": 274492
+  },
+  {
+    "value": "Irvine",
+    "pop": 273785
+  },
+  {
+    "value": "Fremont",
+    "pop": 230504
+  },
+  {
+    "value": "San Bernardino",
+    "pop": 217946
+  },
+  {
+    "value": "Modesto",
+    "pop": 215701
+  },
+  {
+    "value": "Fontana",
+    "pop": 211815
+  },
+  {
+    "value": "Oxnard",
+    "pop": 209879
+  },
+  {
+    "value": "Moreno Valley",
+    "pop": 208634
+  },
+  {
+    "value": "Huntington Beach",
+    "pop": 200809
+  },
+  {
+    "value": "Glendale",
+    "pop": 196021
+  },
+  {
+    "value": "Santa Clarita",
+    "pop": 179590
+  },
+  {
+    "value": "Rancho Cucamonga",
+    "pop": 175236
+  },
+  {
+    "value": "Ontario",
+    "pop": 175265
+  }
+];
+//csvData.setDatalist("city", cityStats);
+</script>
+</body>
+</html>

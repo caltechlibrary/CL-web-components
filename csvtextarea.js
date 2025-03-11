@@ -1,11 +1,10 @@
-// csv-textarea.js
+// csvtextarea.js
 import { parseCSV, parseCSVRow, stringifyCSV } from './parseCSV.js';
 
 class CSVTextarea extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.helpVisible = false;
   }
 
   static get observedAttributes() {
@@ -14,399 +13,256 @@ class CSVTextarea extends HTMLElement {
 
   attributeChangedCallback(name, old, newVal) {
     if (name === 'column-headings') {
-      this.initializeComponent();
+      this.initializeTable();
     }
   }
 
-  connectedCallback() {
-    this.initializeComponent();
-  }
-
-  initializeComponent() {
-    const columnHeadings = this.getAttribute('column-headings');
-    if (!columnHeadings) {
-      throw new Error('The "column-headings" attribute is required.');
-    }
-
-    this.headings = parseCSVRow(columnHeadings);
-    this.render();
+  async connectedCallback() {
+    await this.initializeComponent();
     this.initializeTable();
-    this.setupAutocomplete();
+    this.setupEventListeners();
   }
 
-  render() {
-    this.shadowRoot.innerHTML = `
+  async initializeComponent() {
+    const template = document.createElement('template');
+    template.innerHTML = `
       <style>
-        ${this.defaultCSS}
-        ${this.customCSS}
-        .help-icon {
-          cursor: pointer;
-          margin-left: 10px;
-          font-size: 1.2em;
-        }
-        .help-description {
-          display: none;
-          margin-top: 10px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          background-color: #f9f9f9;
-        }
-        .autocomplete-list {
-          position: absolute;
-          border: 1px solid #d4d4d4;
-          border-bottom: none;
-          border-top: none;
-          z-index: 99;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background-color: white;
-          max-height: 150px;
-          overflow-y: auto;
-        }
-        .autocomplete-list div {
-          padding: 10px;
-          cursor: pointer;
-          background-color: #fff;
-          border-bottom: 1px solid #d4d4d4;
-        }
-        .autocomplete-list div:hover {
-          background-color: #e9e9e9;
-        }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        input { width: 100%; }
       </style>
-      <table ${this.getAttribute('id') ? `id="${this.getAttribute('id')}"` : ''} ${this.getAttribute('class') ? `class="${this.getAttribute('class')}"` : ''}>
-        <caption>${this.getAttribute('caption') || ''}</caption>
-        <thead>
-          <tr>${this.headings.map(heading => `<th>${heading}</th>`).join('')}</tr>
-        </thead>
+      <table>
+        <thead></thead>
         <tbody></tbody>
       </table>
-      <div>
-        <button id="append-row">Append Row</button>
-        <button id="cleanup">Cleanup</button>
-        ${this.debug ? '<button id="debug-btn">Debug</button>' : ''}
-        <span class="help-icon" title="display help">ⓘ</span>
-      </div>
-      <div class="help-description">
-        <h4>Help Description</h4>
-        <p>${this.getAttribute('caption') || 'CSV Editor'}</p>
-        <p>Keybinds:
-          <ul>
-            <li><strong>Backspace</strong>: Delete character or selected text.</li>
-            <li><strong>Tab</strong>: Move to the next cell.</li>
-            <li><strong>Shift+Tab</strong>: Move to the previous cell.</li>
-          </ul>
-        </p>
-      </div>
+      <button id="append-row">Append Row</button>
+      <button id="cleanup">Cleanup</button>
+      ${this.hasAttribute('debug') ? '<button id="debug">Debug</button>' : ''}
+      ${this.hasAttribute('title') || this.hasAttribute('help-description') ? '<span id="help-icon">ⓘ</span>' : ''}
     `;
 
-    this.table = this.shadowRoot.querySelector('table');
-    this.tbody = this.table.querySelector('tbody');
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.shadowRoot.querySelector('#append-row').addEventListener('click', () => this.appendRow());
-    this.shadowRoot.querySelector('#cleanup').addEventListener('click', () => this.cleanupTable());
-
-    if (this.debug) {
-      this.shadowRoot.querySelector('#debug-btn').addEventListener('click', () => this.debugTable());
+    if (this.hasAttribute('css-href')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = this.getAttribute('css-href');
+      this.shadowRoot.appendChild(link);
     }
 
-    this.shadowRoot.querySelector('.help-icon').addEventListener('click', () => this.toggleHelp());
+    if (this.hasAttribute('title') || this.hasAttribute('help-description')) {
+      const helpIcon = this.shadowRoot.getElementById('help-icon');
+      helpIcon.addEventListener('click', () => {
+        alert(`${this.getAttribute('title') || ''}\n${this.getAttribute('help-description') || ''}`);
+      });
+    }
   }
 
   initializeTable() {
-    const textarea = this.querySelector('textarea');
-    if (textarea) {
-      this.fromTextarea(textarea.value);
-    }
+    const headings = parseCSVRow(this.getAttribute('column-headings'));
+    const table = this.shadowRoot.querySelector('table');
+    const thead = table.querySelector('thead');
+    const tbody = table.querySelector('tbody');
 
-    // If the table body is empty after initialization, add one empty row
-    if (this.tbody.rows.length === 0) {
+    // Clear existing headings
+    thead.innerHTML = '';
+
+    // Create table headings
+    const tr = document.createElement('tr');
+    headings.forEach(heading => {
+      const th = document.createElement('th');
+      th.textContent = heading;
+      tr.appendChild(th);
+    });
+    thead.appendChild(tr);
+
+    // Populate table body
+    const textarea = this.querySelector('textarea');
+    if (textarea && textarea.value.trim()) {
+      this.fromTextarea();
+    } else {
       this.appendRow();
     }
 
-    this.tbody.addEventListener('input', event => {
-      if (event.target.tagName === 'TD') {
-        const rowIndex = event.target.parentNode.rowIndex - 1;
-        const colIndex = event.target.cellIndex;
-        const value = event.target.innerText; // Changed to innerText
-        this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
-        if (this.debug) {
-          console.log(`Cell changed: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
-        }
-        this.handleAutocomplete(event.target, rowIndex, colIndex);
-      }
+    // Clone datalists into the shadow DOM
+    const datalists = this.querySelectorAll('datalist');
+    datalists.forEach(datalist => {
+      this.shadowRoot.appendChild(datalist.cloneNode(true));
     });
 
-    this.tbody.addEventListener('focusin', event => {
-      if (event.target.tagName === 'TD') {
-        const rowIndex = event.target.parentNode.rowIndex - 1;
-        const colIndex = event.target.cellIndex;
-        const value = event.target.innerText; // Changed to innerText
-        this.dispatchEvent(new CustomEvent('cell-focus', { detail: { rowIndex, colIndex, value } }));
-        if (this.debug) {
-          console.log(`Cell focused: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
-        }
-      }
-    });
-
-    this.tbody.addEventListener('keydown', event => {
-      if (event.key === 'Backspace' && event.target.tagName === 'TD') {
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0 && !selection.isCollapsed) {
-          const range = selection.getRangeAt(0);
-          range.deleteContents();
-          event.preventDefault();
-
-          // Dispatch cell-change event after deletion
-          const rowIndex = event.target.parentNode.rowIndex - 1;
-          const colIndex = event.target.cellIndex;
-          const value = event.target.innerText;
-          this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
-          if (this.debug) {
-            console.log(`Cell changed (backspace): Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
-          }
-        } else {
-          // Allow default backspace behavior
-          const rowIndex = event.target.parentNode.rowIndex - 1;
-          const colIndex = event.target.cellIndex;
-          const value = event.target.innerText;
-          this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
-          if (this.debug) {
-            console.log(`Cell changed (backspace default): Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
-          }
-        }
-      }
-    });
-  }
-
-  setupAutocomplete() {
-    this.autocompleteLists = {};
-    this.headings.forEach((heading, index) => {
-      const datalist = this.querySelector(`datalist#${heading}`);
+    // Associate datalists with columns
+    headings.forEach((heading, index) => {
+      const datalist = this.shadowRoot.querySelector(`datalist#${heading.toLowerCase()}`);
       if (datalist) {
-        this.autocompleteLists[index] = Array.from(datalist.querySelectorAll('option')).map(option => option.value);
+        this.setAutocomplete(index, Array.from(datalist.options).map(option => ({ value: option.value })));
       }
     });
   }
 
-  handleAutocomplete(cell, rowIndex, colIndex) {
-    const autocompleteList = this.autocompleteLists[colIndex];
-    if (!autocompleteList) return;
+  setupEventListeners() {
+    this.shadowRoot.querySelector('#append-row').addEventListener('click', () => this.appendRow());
+    this.shadowRoot.querySelector('#cleanup').addEventListener('click', () => this.cleanupTable());
 
-    const value = cell.innerText;
-    const suggestions = autocompleteList.filter(item => item.toLowerCase().includes(value.toLowerCase()));
-
-    // Remove any existing autocomplete list
-    const existingList = cell.querySelector('.autocomplete-list');
-    if (existingList) {
-      existingList.remove();
-    }
-
-    if (suggestions.length > 0) {
-      const div = document.createElement('div');
-      div.className = 'autocomplete-list';
-      suggestions.forEach(suggestion => {
-        const item = document.createElement('div');
-        item.innerText = suggestion;
-        item.addEventListener('click', () => {
-          cell.innerText = suggestion;
-          this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value: suggestion } }));
-          div.remove();
-        });
-        div.appendChild(item);
+    if (this.hasAttribute('debug')) {
+      this.shadowRoot.querySelector('#debug').addEventListener('click', () => {
+        console.log(this.toCSV());
       });
-      cell.appendChild(div);
     }
-  }
 
-  get defaultCSS() {
-    return `
-      table {
-        width: 100%;
-        border-collapse: collapse;
+    this.shadowRoot.querySelector('tbody').addEventListener('input', event => {
+      if (event.target.tagName === 'INPUT') {
+        const rowIndex = event.target.closest('tr').rowIndex - 1;
+        const colIndex = event.target.closest('td').cellIndex;
+        const value = event.target.value;
+        this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
+        if (this.hasAttribute('debug')) {
+          console.log(`Cell changed: Row ${rowIndex}, Col ${colIndex}, Value ${value}`);
+        }
       }
-      th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-      td {
-        cursor: text;
-        position: relative;
-      }
-      td[contenteditable="true"] {
-        outline: none;
-      }
-      button {
-        margin-top: 10px;
-      }
-    `;
-  }
+    });
 
-  get customCSS() {
-    const cssHref = this.getAttribute('css-href');
-    return cssHref ? `@import url('${cssHref}');` : '';
-  }
+    this.shadowRoot.querySelector('tbody').addEventListener('focus', event => {
+      if (event.target.tagName === 'INPUT') {
+        const rowIndex = event.target.closest('tr').rowIndex - 1;
+        const colIndex = event.target.closest('td').cellIndex;
+        const value = event.target.value;
+        this.dispatchEvent(new CustomEvent('cell-focus', { detail: { rowIndex, colIndex, value } }));
+        if (this.hasAttribute('debug')) {
+          console.log(`Cell focused: Row ${rowIndex}, Col ${colIndex}, Value ${value}`);
+        }
+      }
+    }, true);
 
-  get debug() {
-    return this.getAttribute('debug') === 'true';
+    this.shadowRoot.querySelector('tbody').addEventListener('keydown', event => {
+      if (event.key === 'Backspace' && event.target.tagName === 'INPUT') {
+        const input = event.target;
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+        if (start === end && start > 0) {
+          input.value = input.value.slice(0, start - 1) + input.value.slice(end);
+          input.selectionStart = input.selectionEnd = start - 1;
+          event.preventDefault();
+        }
+      }
+    });
   }
 
   rowCount() {
-    return this.tbody.rows.length;
+    return this.shadowRoot.querySelector('tbody').rows.length;
   }
 
   columnCount() {
-    return this.headings.length;
+    return this.shadowRoot.querySelector('thead').rows[0].cells.length;
   }
 
   isEmptyRow(rowIndex) {
-    const row = this.tbody.rows[rowIndex];
-    return Array.from(row.cells).every(cell => {
-      const content = cell.innerHTML.replace(/<br>|&nbsp;/g, '').trim();
-      return content === '';
-    });
+    const row = this.shadowRoot.querySelector(`tbody tr:nth-child(${rowIndex + 1})`);
+    return Array.from(row.cells).every(cell => cell.querySelector('input').value === '');
   }
 
   appendRow() {
-    const row = this.tbody.insertRow();
-    this.headings.forEach(() => {
-      const cell = row.insertCell();
-      cell.contentEditable = true;
-    });
-    row.cells[0].focus();
-    if (this.debug) {
-      console.log('Row appended');
+    const tbody = this.shadowRoot.querySelector('tbody');
+    const row = document.createElement('tr');
+    for (let i = 0; i < this.columnCount(); i++) {
+      const td = document.createElement('td');
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = this.getAttribute('placeholder') || '';
+      const datalist = this.shadowRoot.querySelector(`datalist#column-${i}`);
+      if (datalist) {
+        input.setAttribute('list', `column-${i}`);
+      }
+      td.appendChild(input);
+      row.appendChild(td);
     }
+    tbody.appendChild(row);
+    row.cells[0].querySelector('input').focus();
   }
 
   cleanupTable() {
-    // Iterate over the rows in reverse order to avoid index issues when deleting rows
-    for (let index = this.tbody.rows.length - 1; index >= 0; index--) {
-      if (this.isEmptyRow(index)) {
-        this.tbody.deleteRow(index);
+    const tbody = this.shadowRoot.querySelector('tbody');
+    const rows = tbody.rows;
+    for (let i = rows.length - 1; i >= 0; i--) {
+      if (this.isEmptyRow(i)) {
+        tbody.deleteRow(i);
       }
-    }
-    if (this.debug) {
-      console.log('Table cleaned up');
     }
   }
 
   toCSV() {
-    const rows = Array.from(this.tbody.rows).map(row =>
-      Array.from(row.cells).map(cell => {
-        let content = cell.innerHTML;
-        // Convert HTML entities to UTF-8 characters
-        const textArea = document.createElement('textarea');
-        textArea.innerHTML = content;
-        content = textArea.value;
-        // Replace <br> with escaped newline
-        content = content.replace(/<br>/g, '\\n');
-        // Remove <div> and replace </div> with newline
-        content = content.replace(/<div>/g, '').replace(/<\/div>/g, '\n');
-        // Remove <span> and </span>
-        content = content.replace(/<\/?span>/g, '');
-        return content;
-      })
-    );
+    const rows = [];
+    const tbody = this.shadowRoot.querySelector('tbody').rows;
+    for (let i = 0; i < tbody.length; i++) {
+      const cells = tbody[i].cells;
+      const row = [];
+      for (let j = 0; j < cells.length; j++) {
+        row.push(cells[j].querySelector('input').value);
+      }
+      rows.push(row);
+    }
     return stringifyCSV(rows);
   }
 
-  toJSON() {
-    const objects = this.toObjects();
-    return JSON.stringify(objects, null, 2);
-  }
-
-  fromJSON(jsonString) {
-    const objects = JSON.parse(jsonString);
-    this.fromObjects(objects);
-  }
-
-  fromCSV(csv) {
-    const rows = parseCSV(csv);
-    this.tbody.innerHTML = '';
+  fromCSV(csvText) {
+    const rows = parseCSV(csvText);
+    const tbody = this.shadowRoot.querySelector('tbody');
+    tbody.innerHTML = '';
     rows.forEach(row => {
-      const tr = this.tbody.insertRow();
+      const tr = document.createElement('tr');
       row.forEach(cell => {
-        const td = tr.insertCell();
-        td.contentEditable = true;
-        td.innerHTML = cell;
+        const td = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = cell;
+        td.appendChild(input);
+        tr.appendChild(td);
       });
+      tbody.appendChild(tr);
     });
-  }
-
-  fromTextarea(text) {
-    if (text.trim() === '') {
-      return;
-    }
-    this.fromCSV(text);
   }
 
   toObjects() {
-    return Array.from(this.tbody.rows).map((row, rowIndex) =>
-      Array.from(row.cells).map((cell, colIndex) => ({
-        rowIndex,
-        colIndex,
-        value: cell.innerHTML
-      }))
-    ).flat();
+    const objects = [];
+    const tbody = this.shadowRoot.querySelector('tbody').rows;
+    for (let i = 0; i < tbody.length; i++) {
+      const cells = tbody[i].cells;
+      for (let j = 0; j < cells.length; j++) {
+        objects.push({ rowIndex: i, colIndex: j, value: cells[j].querySelector('input').value });
+      }
+    }
+    return objects;
   }
 
   fromObjects(objects) {
-    this.tbody.innerHTML = '';
+    const tbody = this.shadowRoot.querySelector('tbody');
+    tbody.innerHTML = '';
     objects.forEach(obj => {
-      const row = this.tbody.rows[obj.rowIndex] || this.tbody.insertRow();
-      row.cells[obj.colIndex] = row.cells[obj.colIndex] || row.insertCell();
-      row.cells[obj.colIndex].contentEditable = true;
-      row.cells[obj.colIndex].innerHTML = obj.value;
+      let row = tbody.rows[obj.rowIndex];
+      if (!row) {
+        row = document.createElement('tr');
+        tbody.appendChild(row);
+      }
+      let cell = row.cells[obj.colIndex];
+      if (!cell) {
+        cell = document.createElement('td');
+        row.appendChild(cell);
+      }
+      let input = cell.querySelector('input');
+      if (!input) {
+        input = document.createElement('input');
+        input.type = 'text';
+        cell.appendChild(input);
+      }
+      input.value = obj.value;
     });
   }
 
-  setCellValue(rowIndex, colIndex, value) {
-    if (typeof colIndex !== 'number') {
-      colIndex = this.headings.indexOf(colIndex);
-      if (colIndex === -1) {
-        console.error(`Column heading "${colIndex}" not found.`);
-        return;
-      }
+  fromTextarea() {
+    const textarea = this.querySelector('textarea');
+    if (textarea) {
+      this.fromCSV(textarea.value.trim());
     }
-    const row = this.tbody.rows[rowIndex];
-    if (row) {
-      const cell = row.cells[colIndex];
-      if (cell) {
-        cell.innerHTML = value;
-        this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
-        if (this.debug) {
-          console.log(`Cell updated: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
-        }
-      }
-    }
-  }
-
-  getCellValue(rowIndex, colIndex) {
-    if (typeof colIndex !== 'number') {
-      colIndex = this.headings.indexOf(colIndex);
-      if (colIndex === -1) {
-        console.error(`Column heading "${colIndex}" not found.`);
-        return '';
-      }
-    }
-    const row = this.tbody.rows[rowIndex];
-    if (row) {
-      const cell = row.cells[colIndex];
-      if (cell) {
-        return cell.innerText;
-      }
-    }
-    return '';
-  }
-
-  toggleHelp() {
-    this.helpVisible = !this.helpVisible;
-    const helpDescription = this.shadowRoot.querySelector('.help-description');
-    helpDescription.style.display = this.helpVisible ? 'block' : 'none';
   }
 
   toTextarea() {
@@ -416,9 +272,59 @@ class CSVTextarea extends HTMLElement {
     }
   }
 
-  debugTable() {
-    console.log(this.toCSV());
-    this.toTextarea();
+  getCellValue(rowIndex, colIndexOrName) {
+    const colIndex = typeof colIndexOrName === 'number' ? colIndexOrName : this.getColumnIndexByName(colIndexOrName);
+    const cell = this.shadowRoot.querySelector(`tbody tr:nth-child(${rowIndex + 1}) td:nth-child(${colIndex + 1}) input`);
+    return cell ? cell.value : '';
+  }
+
+  setCellValue(rowIndex, colIndexOrName, value) {
+    const colIndex = typeof colIndexOrName === 'number' ? colIndexOrName : this.getColumnIndexByName(colIndexOrName);
+    const cell = this.shadowRoot.querySelector(`tbody tr:nth-child(${rowIndex + 1}) td:nth-child(${colIndex + 1}) input`);
+    if (cell) {
+      cell.value = value;
+    }
+  }
+
+  toJSON() {
+    return JSON.stringify(this.toObjects());
+  }
+
+  fromJSON(jsonString) {
+    this.fromObjects(JSON.parse(jsonString));
+  }
+
+  setAutocomplete(colIndexOrName, options) {
+    const colIndex = typeof colIndexOrName === 'number' ? colIndexOrName : this.getColumnIndexByName(colIndexOrName);
+    const datalist = this.shadowRoot.querySelector(`datalist#column-${colIndex}`) || document.createElement('datalist');
+    datalist.id = `column-${colIndex}`;
+    datalist.innerHTML = '';
+    options.forEach(option => {
+      const opt = document.createElement('option');
+      opt.value = option.value;
+      datalist.appendChild(opt);
+    });
+    this.shadowRoot.appendChild(datalist);
+    const inputs = this.shadowRoot.querySelectorAll(`tbody td:nth-child(${colIndex + 1}) input`);
+    inputs.forEach(input => input.setAttribute('list', `column-${colIndex}`));
+  }
+
+  getAutocomplete(colIndexOrName) {
+    const colIndex = typeof colIndexOrName === 'number' ? colIndexOrName : this.getColumnIndexByName(colIndexOrName);
+    const datalist = this.shadowRoot.querySelector(`datalist#column-${colIndex}`);
+    if (datalist) {
+      const options = [];
+      datalist.querySelectorAll('option').forEach(option => {
+        options.push({ value: option.value });
+      });
+      return options;
+    }
+    return undefined;
+  }
+
+  getColumnIndexByName(colName) {
+    const headings = parseCSVRow(this.getAttribute('column-headings'));
+    return headings.indexOf(colName);
   }
 }
 

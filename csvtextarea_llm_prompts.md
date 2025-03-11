@@ -11,13 +11,17 @@ The CSVTextarea element has an attribute called "column-headings". This is a req
 
 The CSVTextarea may of the following attributes, "id", "class", "caption", "text", "placeholder", "css-href".
 
-The CSVTextarea "css-href" attribute is used to fetch custom CSS for the CSVTextarea and replaces the default CSS provided by the HTMLTemplate. 
+The CSVTextarea "css-href" attribute is used to fetch custom CSS for the CSVTextarea and replaces the default CSS provided by the HTML Template. 
+
+If the CSVTextarea's innerHTML includes one or more datalist HTML elements those to be cloned into the HTML Template.
 
 The CSVTextarea the async initializeComponent should instantiate the HTML template and return a promise if successfully complete.
 
 The CSVTextarea initializeTable method is called after initializeComponent has completed and it should populate the HTML5 table. The HTML5 table heading should be populated from by using the imported "parseCSVRow" method on the "column-headings" attribute. Each string in the array should become a column heading.
 
-The CSVTextarea emits a "cell-change" event consisting of the row index, column index and value for the editable HTML5 table body TD's that change.
+The CSVTextarea's table body's TD elements should use input elements to hold editable content. If there is a datalist associated with the column of the TD then each input element in the column should point to the datalist with it's "list" attribute.
+
+The CSVTextarea emits a "cell-change" event consisting of the row index, column index and value for the editable HTML5 table body TD's input element change.
 
 The CSVTextarea emits a "cell-focus" event consisting of the row index, column index and value for the editable HTML5 table body TD's recieves focus.
 
@@ -33,15 +37,17 @@ The CSVTextarea has a method called "isEmptyRow". It takes a row index. The meth
 
 The CSVTextarea has a method "appendRow" that adds an row of empty TD at the bottom of the HTML5 table body. Set the input fosuc to the first TD in the added row.
 
-The CSVTextarea has a method "cleanupTable" that looks at each row in the HTML5 table's body and removes it if "isEmptyRow" returns true.
+The CSVTextarea has a method "cleanupTable" that looks at each row in the HTML5 table's body and removes it if "isEmptyRow" returns true. It should start checking for the empty rows from the bottom and work it's way to the top.
 
-The CSVTextarea has a method "toCSV" method that returns the HTML5 table's body and a CSV text.
+The CSVTextarea has a method "toCSV" method that returns the HTML5 table's body and a CSV text. The toCSV method should use "stringifyCSV"  imported from "./parseCSV.js" to encode the rows array in CSV format.
 
 The CSVTextarea has a method "fromCSV" that takes CSV text, uses the imported "parseCSV" function and result rows into the HTML5 table body.
 
 The CSVTextarea has a method "toObjects". The method returns a array objects representing each TD in the HTML5 table's body. The objects will have the row index, column index and value of the TDs.
 
 The CSVTextarea has a method "fromObjects". The method takes an array of objects that have the row index, column index and value. It maps the objects into the HTML5 table body replacing or creating TD has needed.
+
+When the CSVTextarea's inner TEXTAREA's innerText is an empty string then display the HTML5 table with a single empty row with the same number of cells as the number of column headings.
 
 CSVTextarea should have methods the correspond to a HTML5 table's methods. 
 
@@ -53,12 +59,20 @@ The CSVTextarea will normally be used to wrap a TEXTAREA element. The innerHTML 
 
 The CSVTextarea has a method "fromTextarea" that reads an innerHTML's TEXTAREA, parses the content using "parseCSV" method and updates the HTML5 table body.
 
-The CSVTextarea has a method "toTextarea" that takes the contents of the HTML5 table body and renders it as a CSV setting the innerHTML's of TEXTAREA.
+The CSVTextarea has a method "toTextarea" that takes the contents of the HTML5 table body and uses "stringifyCSV" when setting the innerHTML's of TEXTAREA.
 
 Example usage of the CSVTextarea should look like this.
 
 ```html
 <csv-textarea id="my-csv" name="csv-table" class="csv-component" title="CSV Editor" placeholder="Enter CSV data" caption="CSV Table" column-headings="Name,Age,City" cols="3" rows="5">
+<datalist id="city">
+<option value="Azuza">
+<option value="Cocomo">
+<option value="Malibu">
+<option vlaue="Topanga">
+<option value="Rancho Cucamonga">
+<option vlaue="Zuma">
+</datalist>
 <textarea>
 "Doe, Jane", 20, Rancho Cucamonga
 "Doe, John", 25, Cocomo
@@ -72,14 +86,24 @@ The CSVTextarea has two buttons below the HTML5 table. The first button is label
 
 If the CSVTextarea "debug" attribute is true then a third button with a label "Debug". When clicked the the current fucus information and the content CSVTextarea's TEXTAREA's innerHTML will be display the results for toCSV in the console.
 
-Please display the ES6 module, "csv-textarea.js".
+Please display the ES6 module, "csvtextarea.js".
 
 When text in a TD is selected and the backspace key is pressed delete the selected text. If not text is selected and the backspace key is pressed delete the character before the cursor.
 
-A TD that contains only space characters, '<br>' and '&nbsp;' is considered empty.
+When CSVTextarea is initialized without any CSV data the HTML5 table the header and use the appendRow method to add an empty row to the HTML5 table's body.
 
-'<br>' and '&nbsp;' should be converted to a single space character in toCSV.
+CSVTextarea should include "getCellValue" method that take a row index and column index or name. It should return the value of the corresponding input element contained in the TD of the table's body corresponding row and index. If column index is not a number the column index value is dereved by matching the string against a column-heading.
 
-HTML entities in a TD should be converted to their UTF-8 values in the toCSV method.  A '<br>' should be converted to an escaped newline character when invoking toCSV. An '<div>' should be deleted. An '</div>' should become a newline character. '<span>' and `</span>` should be removed.
+CSVTextarea should include a "setCellValue" method that takes a row index, column index or name, and a value. It sets the value of the input element contained in the TD corresponding the the row and column index. If column index is not a number the column index value is dereved by matching the string against a column-heading.
 
-When CSVTextarea is initialized without and CSV data the HTML5 table body should contain one row of empty TD conforming to the number of headings.
+CSVTextarea should include a method `toJSON` that uses `toObjects` and returns the results by using `JSON.stringify`.
+
+CSVTextarea should include a method `fromJSON` that takes a JSON string and used `JSON.parse` and `fromObjects` to update the CSVTextarea table.
+
+CSVTextarea should include a method called `setAutocomplete` that will associated a datalist in the HTML Template with a column's input elements. The `setAutocomplate` takes a column index or name and an array of objects where each object's value is used when creating the datalist's options.
+
+CSVTextarea should include a method called `getAutocomplete`. This method takes a column index or name.  It returns an array of objects representing the options associated with the column's datalist. If no datalist is found it returns undefined.
+
+If the CSVTextarea as a title attribute, "help-description" attribute a 
+clickable "ⓘ" should be included after the buttons. Clicking toggles the a help message. The help message is composed from the CSVTextarea's title if available, the value in a "help-text" attribute if available and should describe navigating and editing the table.
+

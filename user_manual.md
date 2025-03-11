@@ -13,7 +13,8 @@
     - [demo csv 4](demo_csv4.html)
     - [demo csv 5](demo_csv5.html)
     - [demo csv basic](demo_csv_basic.html)
-    - [demo csv autocomplete](demo_csv_autocomplete.html)
+    - [demo csv autocomplete](demo_csv_autocomplete0.html)
+    - [demo csv autocomplete populated programatically](demo_csv_autocomplete1.html)
 - A to Z UL
   - Example Usage of [A to Z UL](a_to_z_ul.js)
     - [demo short list](demo_short_list.html), simple short A to Z list

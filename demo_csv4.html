@@ -4,7 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Textarea</title>
-  <script type="module" src="csvtextarea.js" defer></script>
+  <script type="module" src="csvtextarea.js"></script>
+</head>
+<body>
+  <p>Testing how the csv-textarea works when both the inner textarea has an id and name when the outer csv-textarea differnent id and name.</p>
+  <form id="csv-form">
+    <csv-textarea
+      id="csvDataToo"
+      name="csvDataToo"
+      rows="3"
+      column-headings="Name,Age,City"
+      title="Custom CSV Textarea"
+      debug="true"
+    >
+    <textarea id="csvData" name="csvData">
+      John,30,New York
+      Jane,25,Los Angeles
+    </textarea>
+    </csv-textarea>
+    <button type="submit">Submit</button>
+  </form>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const csvTextarea = document.querySelector('csv-textarea');
@@ -60,37 +79,18 @@
     let csvForm = document.getElementById('csv-form');
 
     csvForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    const csvComponent = document.getElementById('groups');
-    const csvData = csvComponent.toCSV();
+      event.preventDefault();
+      const csvComponent = document.getElementById('csvDataToo');
+      const csvData = csvComponent.toCSV();
 
-    const formData = new FormData();
-    formData.set('groups', csvData);
-    // Display the submitted form data.
-    for (const pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-    }
-  });
+      const formData = new FormData();
+      formData.set('groups', csvData);
+      // Display the submitted form data.
+      for (const pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+    });
 
 </script>
-</head>
-<body>
-  <p>Testing how the csv-textarea works when both the inner textarea has an id and name when the outer csv-textarea differnent id and name.</p>
-  <form id=csv-form">
-    <csv-textarea
-      id="csvDataToo"
-      name="csvDataToo"
-      rows="3"
-      column-headings="Name,Age,City"
-      title="Custom CSV Textarea"
-      debug="true"
-    >
-    <textarea id="csvData" name="csvData">
-      John,30,New York
-      Jane,25,Los Angeles
-    </textarea>
-    </csv-textarea>
-    <button type="submit">Submit</button>
-  </form>
 </body>
 </html>
