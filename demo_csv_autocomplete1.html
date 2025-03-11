@@ -32,114 +32,128 @@
 
   </form>
 <script>
-const csvData = document.getElementById('csv-data');
-const cityStats = [
-  {
-    "value": "Los Angeles",
-    "pop": 3971883
-  },
-  {
-    "value": "San Diego",
-    "pop": 1419516
-  },
-  {
-    "value": "San Jose",
-    "pop": 1030119
-  },
-  {
-    "value": "San Francisco",
-    "pop": 873965
-  },
-  {
-    "value": "Fresno",
-    "pop": 531576
-  },
-  {
-    "value": "Sacramento",
-    "pop": 525398
-  },
-  {
-    "value": "Long Beach",
-    "pop": 466742
-  },
-  {
-    "value": "Oakland",
-    "pop": 433031
-  },
-  {
-    "value": "Bakersfield",
-    "pop": 403455
-  },
-  {
-    "value": "Anaheim",
-    "pop": 352005
-  },
-  {
-    "value": "Santa Ana",
-    "pop": 334418
-  },
-  {
-    "value": "Riverside",
-    "pop": 326742
-  },
-  {
-    "value": "Stockton",
-    "pop": 320554
-  },
-  {
-    "value": "Chula Vista",
-    "pop": 274492
-  },
-  {
-    "value": "Irvine",
-    "pop": 273785
-  },
-  {
-    "value": "Fremont",
-    "pop": 230504
-  },
-  {
-    "value": "San Bernardino",
-    "pop": 217946
-  },
-  {
-    "value": "Modesto",
-    "pop": 215701
-  },
-  {
-    "value": "Fontana",
-    "pop": 211815
-  },
-  {
-    "value": "Oxnard",
-    "pop": 209879
-  },
-  {
-    "value": "Moreno Valley",
-    "pop": 208634
-  },
-  {
-    "value": "Huntington Beach",
-    "pop": 200809
-  },
-  {
-    "value": "Glendale",
-    "pop": 196021
-  },
-  {
-    "value": "Santa Clarita",
-    "pop": 179590
-  },
-  {
-    "value": "Rancho Cucamonga",
-    "pop": 175236
-  },
-  {
-    "value": "Ontario",
-    "pop": 175265
-  }
-];
-//csvData.setDatalist("city", cityStats);
+// Example of setting autocomplete for the "city" column
+function updateCityList(csvData) {
+	const cityStats = [
+  		{
+    		"value": "Los Angeles",
+    		"pop": 3971883
+  		},
+  		{
+    		"value": "San Diego",
+    		"pop": 1419516
+  		},
+		  {
+		    "value": "San Jose",
+		    "pop": 1030119
+		  },
+		  {
+		    "value": "San Francisco",
+		    "pop": 873965
+		  },
+		  {
+		    "value": "Fresno",
+		    "pop": 531576
+		  },
+		  {
+		    "value": "Sacramento",
+		    "pop": 525398
+		  },
+		  {
+		    "value": "Long Beach",
+		    "pop": 466742
+		  },
+		  {
+		    "value": "Oakland",
+		    "pop": 433031
+		  },
+		  {
+		    "value": "Bakersfield",
+		    "pop": 403455
+		  },
+		  {
+		    "value": "Anaheim",
+		    "pop": 352005
+		  },
+		  {
+		    "value": "Santa Ana",
+		    "pop": 334418
+		  },
+		  {
+		    "value": "Riverside",
+		    "pop": 326742
+		  },
+		  {
+		    "value": "Stockton",
+		    "pop": 320554
+		  },
+		  {
+		    "value": "Chula Vista",
+		    "pop": 274492
+		  },
+		  {
+		    "value": "Irvine",
+		    "pop": 273785
+		  },
+		  {
+		    "value": "Fremont",
+		    "pop": 230504
+		  },
+		  {
+		    "value": "San Bernardino",
+		    "pop": 217946
+		  },
+		  {
+		    "value": "Modesto",
+		    "pop": 215701
+		  },
+		  {
+		    "value": "Fontana",
+		    "pop": 211815
+		  },
+		  {
+		    "value": "Oxnard",
+		    "pop": 209879
+		  },
+		  {
+		    "value": "Moreno Valley",
+		    "pop": 208634
+		  },
+		  {
+		    "value": "Huntington Beach",
+		    "pop": 200809
+		  },
+		  {
+		    "value": "Glendale",
+		    "pop": 196021
+		  },
+		  {
+		    "value": "Santa Clarita",
+		    "pop": 179590
+		  },
+		  {
+		    "value": "Rancho Cucamonga",
+		    "pop": 175236
+		  },
+		  {
+		    "value": "Ontario",
+		    "pop": 175265
+		  }
+	];
+		
+	console.log("DEBUG typeof csvData", typeof(csvData), csvData);
+	csvData.setAutocomplete(2, cityStats);
+	console.log("DEBUG display autocomplete for city,", csvData.getAutocomplete(1));
+}
+
+
+document.addEventListener('DOMContentLoaded', function(event) {
+	const csvData = document.getElementById('csv-data');
+	console.log(`DEBUG DOMContentLoaded -> ${event}`, csvData);
+	const autocomplete = csvData.getAutocomplete(2);
+	console.log(`DEBUG autcomplete -> ${csvData.innerHTML}`, autocomplete);
+	updateCityList(csvData);
+});
 </script>
 </body>
 </html>

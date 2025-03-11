@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="parsecsv-javascript-module"><code>parseCSV</code> JavaScript
+module</h1>
+<blockquote>
+<p>I generated the Javacript Generated with the DuckDuckGo Anthromophic
+Claude LLM, it did better than Mistral LLM.</p>
+</blockquote>
+<p>This is a JavaScript module with a single exported function called
+“parseCSV”.</p>
+<p>This “parseCSV” function returns a two dimensional array of rows and
+columns. It takes a single string as a parameter. It is intended to
+accurately process CSV data.</p>
+<p>“parseCSV” takes a string containing zero or more lines of text. It
+treats each line as a row. Each row may contain zero or more columns of
+data. Each column in the row may contain any valid UTF8 character. When
+evaluating a row it is scanned for column data. A column starts with the
+first non space character. A column starts with double quotes then the
+column will not end until a matching double quote is encountered. Commas
+are used to eparate the value of each column. Here is an example, this
+row as three columns <code>"Doe, Jane", 20, "Rancho Cucamonga"</code>
+the first column’s value is <code>Doe, Jane</code>, the second column
+value is <code>20</code> and the third column value is
+<code>Rancho Cucamonga</code>. When the rows are evaluated the highest
+column count should be remembered. Whan all rows have been processed
+make sure they call have the same number of columns, if not add the
+necessary columns for them to match. The parseCSV function should avoid
+using regular expressions.</p>
+<p>Here is an example of using the “parseCSV” function.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> data <span class="op">=</span> <span class="fu">parseCSV</span>(<span class="vs">`one,two,three</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="vs">&quot;Dean, Joe&quot;, 22, &quot;And what?&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="vs">    to, &quot;tell, the&quot;, something</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="vs">or other, in , may</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>(data<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">4</span>) <span class="op">?</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`</span><span class="sc">${</span>data<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">$ lines read successfuly`</span>) <span class="op">:</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`error: </span><span class="sc">${</span>data<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> lines read, expected 4`</span>)<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> row <span class="kw">of</span> data) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    (row<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">3</span>) <span class="op">?</span> <span class="st">&#39;&#39;</span> <span class="op">:</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`row </span><span class="sc">${</span>i<span class="sc">}</span><span class="vs"> is wrong length, </span><span class="sc">${</span>row<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The “data” variable should be a two dimensional array of rows and
+columns.</p>
+</section>
+</body>
+</html>

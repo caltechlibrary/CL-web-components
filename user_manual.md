@@ -3,6 +3,10 @@
 
 - [README](README.md)
 - [LICENSE](LICENSE)
+- parseCSV, parseCSV is used by CSVTextarea for working with CSV data
+  - [parseCSV LLM Prompts](parseCSV_llm_prompts.md), the description given to Mistral Le Chat to bootstrap this module
+  - [parseCSV.js](parseCSV.js)
+  - [parseCSV_test.js](parseCSV_test.js)
 - CSV Textarea
   - [CSV Textarea LLM Prompts](csvtextarea_llm_prompts.md), the description given to Mistral Le Chat to bootstrap component
   - Example Usage of [CSV Textarea](csvtextarea.js)

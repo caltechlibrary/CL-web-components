@@ -5,6 +5,7 @@ class CSVTextarea extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.isComponentInitialized = false;
   }
 
   static get observedAttributes() {
@@ -12,13 +13,14 @@ class CSVTextarea extends HTMLElement {
   }
 
   attributeChangedCallback(name, old, newVal) {
-    if (name === 'column-headings') {
+    if (name === 'column-headings' && this.isComponentInitialized) {
       this.initializeTable();
     }
   }
 
   async connectedCallback() {
     await this.initializeComponent();
+    this.isComponentInitialized = true;
     this.initializeTable();
     this.setupEventListeners();
   }
@@ -169,9 +171,10 @@ class CSVTextarea extends HTMLElement {
       const input = document.createElement('input');
       input.type = 'text';
       input.placeholder = this.getAttribute('placeholder') || '';
-      const datalist = this.shadowRoot.querySelector(`datalist#column-${i}`);
+      const datalistId = `column-${i}`;
+      const datalist = this.shadowRoot.querySelector(`datalist#${datalistId}`);
       if (datalist) {
-        input.setAttribute('list', `column-${i}`);
+        input.setAttribute('list', datalistId);
       }
       td.appendChild(input);
       row.appendChild(td);
@@ -296,17 +299,21 @@ class CSVTextarea extends HTMLElement {
 
   setAutocomplete(colIndexOrName, options) {
     const colIndex = typeof colIndexOrName === 'number' ? colIndexOrName : this.getColumnIndexByName(colIndexOrName);
-    const datalist = this.shadowRoot.querySelector(`datalist#column-${colIndex}`) || document.createElement('datalist');
-    datalist.id = `column-${colIndex}`;
+    const datalistId = `column-${colIndex}`;
+    let datalist = this.shadowRoot.querySelector(`datalist#${datalistId}`);
+    if (!datalist) {
+      datalist = document.createElement('datalist');
+      datalist.id = datalistId;
+      this.shadowRoot.appendChild(datalist);
+    }
     datalist.innerHTML = '';
     options.forEach(option => {
       const opt = document.createElement('option');
       opt.value = option.value;
       datalist.appendChild(opt);
     });
-    this.shadowRoot.appendChild(datalist);
     const inputs = this.shadowRoot.querySelectorAll(`tbody td:nth-child(${colIndex + 1}) input`);
-    inputs.forEach(input => input.setAttribute('list', `column-${colIndex}`));
+    inputs.forEach(input => input.setAttribute('list', datalistId));
   }
 
   getAutocomplete(colIndexOrName) {
