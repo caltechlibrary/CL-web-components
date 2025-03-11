@@ -53,9 +53,9 @@
     "https://github.com/caltechlibrary/a_to_z_ul"
   ],
   "runtimePlatform": "- HTML5-compatible web browser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "Improved CSVTextarea, now handles imbedded datalist elements for autocomplete."
+  "releaseNotes": "Improved CSVTextarea, now handles imbedded datalist elements for autocomplete. Includes support to update the autocomplete lists after CSVTextarea is initialized."
 }

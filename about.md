@@ -26,7 +26,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.2
+version: 0.0.3
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -47,9 +47,9 @@ date_released: 2025-03-11
 About this software
 ===================
 
-## CL-web-components 0.0.2
+## CL-web-components 0.0.3
 
-Improved CSVTextarea, now handles imbedded datalist elements for autocomplete.
+Improved CSVTextarea, now handles imbedded datalist elements for autocomplete. Includes support to update the autocomplete lists after CSVTextarea is initialized.
 
 ### Authors
 

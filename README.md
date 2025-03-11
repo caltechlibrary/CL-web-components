@@ -1,6 +1,6 @@
 
 
-# CL-web-components 0.0.2
+# CL-web-components 0.0.3
 
 CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
 
@@ -16,11 +16,11 @@ One additional helper module is currently provided, `parseCSV.js`, that provides
 
 ## Release Notes
 
-- version: 0.0.2
+- version: 0.0.3
 - status: wip
 - released: 2025-03-11
 
-Improved CSVTextarea, now handles imbedded datalist elements for autocomplete.
+Improved CSVTextarea, now handles imbedded datalist elements for autocomplete. Includes support to update the autocomplete lists after CSVTextarea is initialized.
 
 
 ### Authors
