@@ -17,105 +17,124 @@
 </ul>
 </nav>
 <section>
-<ul>
-<li>Create a web component for working with tabular data in a web
-form</li>
-<li>The component defined as CSVTextarea in the csvtextarea.js file</li>
-<li>Component is embedded into the web page using “<csv-textarea>”
-element</li>
-<li>The component is implemented as a HTML table</li>
-<li>The component has a name attribute which is used by web forms to
-associate the data with the form data</li>
-<li>It can include an optional column headings</li>
-<li>column headings are specified as an attribute in the web
-component</li>
-<li>showing the column headings can be set using an attribute in the web
-component</li>
-<li>The number of columns should be configurable using the “cols”
-attribute</li>
-<li>The number of rows should be configuration using the “rows”
-attribute</li>
-<li>the minimum number of columns is one</li>
-<li>the minimum number of rows is one</li>
-<li>the default column is two</li>
-<li>the default rows is 1</li>
-<li>the rows and column attributes are required</li>
-<li>column headings are shown by default</li>
-<li>the default column headings are “column” followed an underscore an
-column number</li>
-<li>the column-headings attribute overwrites the default column
-name</li>
-<li>the web component should respond to changes in attributes</li>
-<li>the value is the web component is held in the element’s
-innerHTML</li>
-<li>the innerHTML holds a comma separated value of the cells visible in
-the web component</li>
-<li>a header row is included in the innerHTML if it is also
-displayed</li>
-<li>the web component should include a readonly attribute and if true
-prevent changes to the content</li>
-<li>the default status of readonly is false</li>
-<li>the web component should be usable in a web form and CSV content
-should update the web form’s data</li>
-<li>when a cell web component changes it should trigger a change event
-updating the CSV content in the body</li>
-<li>If all cells in a row are empty then that row should not be included
-in the CSV content of the body</li>
-<li>Each column can have a header row holding a column name configured
-in the attributes of the web component</li>
-<li>The maximum of rows should be optionally configurable</li>
-<li>If web component cannot be instantiated it should fallback to a
-plain textarea</li>
-<li>The user should be able to add additional rows as needed up to any
-specified maximum</li>
-<li>Adding a row show happen when you press shift enter in the last
-column of the last row</li>
-<li>There should be a single button below the table that will to add a
-row to the table on click</li>
-<li>The column headings, rows, columns and button should accepts CSS
-styling</li>
-<li>showing the header row is optional, the default is to show it</li>
-<li>The web component needs to support W3C recommendations for
-accessibility</li>
-<li>the width and size of the component needs to conform to the
-inheritted styling</li>
-<li>if the body of the web component is populate then it should populate
-the table</li>
-<li>when the table is change the body of the web component needs to be
-update</li>
-<li>when the web component is part of a web form the component needs to
-add the CSV content to the form data using the component’s name
-attribute</li>
-<li>The componment should have a read-only attribute that works like
-read-only for input attributes</li>
-<li>The default column headings should be the word column, followed by
-an underscore and the column number</li>
-<li>There should only be one add row button in the component</li>
-<li>The column headings should be down by default</li>
-<li>Use an HTML template to structure the component</li>
-<li>the HTML template should include the header row</li>
-<li>when a row is added the focus should go to the first cell of the
-added row</li>
-<li>If a cell contains a comma then the value of the cell needs to be
-quoted in the CSV output</li>
-<li>The web component needs to add the contents when the web form is
-encoded and sent to the web service.</li>
-<li>The change event trigger for a cell should only happen when the cell
-looses focus</li>
-<li>Add a toJSON function. Represent each row as an object with the
-attribute name matching the column heading and the value matching the
-cell value.</li>
-<li>CSVTextarea needs to include cell column and row number in the
-change event.</li>
-<li>The change event detail should include include column name, column
-number and row number in the change event.</li>
-<li>There also needs to be a function to update a cell in the table
-given a column, row and value</li>
-<li>The update cell function should allow the column name or column
-number in the column parameter</li>
-<li>Add a function to retrieve a cell’s value from the table given a
-column name or number, and a row number</li>
-</ul>
+<h1 id="csvtextarea-web-component">CSVTextarea Web Component</h1>
+<p>I would like to implement a web component in JavaScript called
+CSVTextarea.</p>
+<p>The CSVTextarea uses an editable HTML5 table element to manage the
+tabular data. The CSVTextarea uses an HTML template to structure the
+table and provide default CSS.</p>
+<p>“parseCSV” and “parseCSVRow” are imported from a module called
+“./parseCSV.js”;</p>
+<p>The CSVTextarea element has an attribute called “column-headings”.
+This is a required attribute. This is a comma delimited list that use an
+imported “parseCSVRow” method to produce a list of headings that will be
+used for the HTML5 table.</p>
+<p>The CSVTextarea may of the following attributes, “id”, “class”,
+“caption”, “text”, “placeholder”, “css-href”.</p>
+<p>The CSVTextarea “css-href” attribute is used to fetch custom CSS for
+the CSVTextarea and replaces the default CSS provided by the
+HTMLTemplate.</p>
+<p>The CSVTextarea the async initializeComponent should instantiate the
+HTML template and return a promise if successfully complete.</p>
+<p>The CSVTextarea initializeTable method is called after
+initializeComponent has completed and it should populate the HTML5
+table. The HTML5 table heading should be populated from by using the
+imported “parseCSVRow” method on the “column-headings” attribute. Each
+string in the array should become a column heading.</p>
+<p>The CSVTextarea emits a “cell-change” event consisting of the row
+index, column index and value for the editable HTML5 table body TD’s
+that change.</p>
+<p>The CSVTextarea emits a “cell-focus” event consisting of the row
+index, column index and value for the editable HTML5 table body TD’s
+recieves focus.</p>
+<p>The CSVTextarea has a debug attribute that is false by default. If
+debug is true the CSVTextarea will use the “toCSV” method to display
+contents of the HTML5 table’s body in the console when CSVTextarea is
+instantiated in the web page. CSVTextarea should emit events when the
+HTML5 table body’s TD are edited. If debug is true events are displayed
+in the console.</p>
+<p>The CSVTextarea has a method called “rowCount” that returns the
+number of rows in the HTML5 table body. The minimum number of rows is
+zero when only the HTML5 table’s headings are populated.</p>
+<p>The CSVTextarea has a method called “columnCount” that returns the
+number of columns in the HTML5 table headings. The minimum column count
+is one. A HTML5 table must have at least one column heading.</p>
+<p>The CSVTextarea HTML5 table body must have the same number of columns
+as the heading columns.</p>
+<p>The CSVTextarea has a method called “isEmptyRow”. It takes a row
+index. The method scans each TD of the row and if each TD has an enpty
+innerHTML then it returns true. If a TD’s innerHTML has content true is
+returned.</p>
+<p>The CSVTextarea has a method “appendRow” that adds an row of empty TD
+at the bottom of the HTML5 table body. Set the input fosuc to the first
+TD in the added row.</p>
+<p>The CSVTextarea has a method “cleanupTable” that looks at each row in
+the HTML5 table’s body and removes it if “isEmptyRow” returns true.</p>
+<p>The CSVTextarea has a method “toCSV” method that returns the HTML5
+table’s body and a CSV text.</p>
+<p>The CSVTextarea has a method “fromCSV” that takes CSV text, uses the
+imported “parseCSV” function and result rows into the HTML5 table
+body.</p>
+<p>The CSVTextarea has a method “toObjects”. The method returns a array
+objects representing each TD in the HTML5 table’s body. The objects will
+have the row index, column index and value of the TDs.</p>
+<p>The CSVTextarea has a method “fromObjects”. The method takes an array
+of objects that have the row index, column index and value. It maps the
+objects into the HTML5 table body replacing or creating TD has
+needed.</p>
+<p>CSVTextarea should have methods the correspond to a HTML5 table’s
+methods.</p>
+<p>CSVTextarea web component must follow W3C accessibilty
+guidelines.</p>
+<p>Multiple CSVTextarea may occur in a web page.</p>
+<p>The CSVTextarea will normally be used to wrap a TEXTAREA element. The
+innerHTML of the TEXTAREA element will provide CSV content used to
+initial the editable HTML5 table element’s body.</p>
+<p>The CSVTextarea has a method “fromTextarea” that reads an innerHTML’s
+TEXTAREA, parses the content using “parseCSV” method and updates the
+HTML5 table body.</p>
+<p>The CSVTextarea has a method “toTextarea” that takes the contents of
+the HTML5 table body and renders it as a CSV setting the innerHTML’s of
+TEXTAREA.</p>
+<p>Example usage of the CSVTextarea should look like this.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">csv-textarea</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;my-csv&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;csv-table&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;csv-component&quot;</span><span class="ot"> title</span><span class="op">=</span><span class="st">&quot;CSV Editor&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;Enter CSV data&quot;</span><span class="ot"> caption</span><span class="op">=</span><span class="st">&quot;CSV Table&quot;</span><span class="ot"> column-headings</span><span class="op">=</span><span class="st">&quot;Name,Age,City&quot;</span><span class="ot"> cols</span><span class="op">=</span><span class="st">&quot;3&quot;</span><span class="ot"> rows</span><span class="op">=</span><span class="st">&quot;5&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>&quot;Doe, Jane&quot;, 20, Rancho Cucamonga</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&quot;Doe, John&quot;, 25, Cocomo</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">csv-textarea</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>When the CSVTextarea is initialized it reads the wrapped TEXTAREA’s
+innerText and has the Table object parse the CSV content and populate
+the table. There should not be a TEXTAREA rendered by the CSVTextarea
+web component.</p>
+<p>The CSVTextarea has two buttons below the HTML5 table. The first
+button is labeled “Append Row”, it triggers the “appendRow” action. The
+second button is called “Cleanup” it triggers the “cleanupTable” action.
+If “debug” is true then those events are shown in the console.</p>
+<p>If the CSVTextarea “debug” attribute is true then a third button with
+a label “Debug”. When clicked the the current fucus information and the
+content CSVTextarea’s TEXTAREA’s innerHTML will be display the results
+for toCSV in the console.</p>
+<p>Please display the ES6 module, “csv-textarea.js”.</p>
+<p>When text in a TD is selected and the backspace key is pressed delete
+the selected text. If not text is selected and the backspace key is
+pressed delete the character before the cursor.</p>
+<p>A TD that contains only space characters, ‘<br>’ and ‘ ’ is
+considered empty.</p>
+<p>‘<br>’ and ‘ ’ should be converted to a single space character in
+toCSV.</p>
+HTML entities in a TD should be converted to their UTF-8 values in the
+toCSV method. A ‘<br>’ should be converted to an escaped newline
+character when invoking toCSV. An ’
+<div>
+’ should be deleted. An ’
+</div>
+<p>’ should become a newline character. ‘<span>’ and
+<code>&lt;/span&gt;</code> should be removed.</p>
+<p>When CSVTextarea is initialized without and CSV data the HTML5 table
+body should contain one row of empty TD conforming to the number of
+headings.</p>
 </section>
 </body>
 </html>

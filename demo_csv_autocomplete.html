@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea Example</title>
+  <script type="module" src="csvtextarea.js"></script>
+</head>
+<body>
+  <h1>CSV Textarea Example</h1>
+
+  <!-- Define the CSVTextarea component with column headings and autocomplete list -->
+  <csv-textarea
+    column-headings="name,age,city"
+    caption="Personal Information"
+    debug="true">
+
+  <!-- Textarea to load CSV data into the table -->
+  <textarea placeholder="Paste CSV data here...">
+"Doe, Jane", 33, Milwakee
+  </textarea>
+
+  <!-- Datalist for city autocomplete -->
+  <datalist id="city">
+    <option value="New York">
+    <option value="Los Angeles">
+    <option value="Chicago">
+    <option value="Houston">
+    <option value="Milwakee">
+    <option value="San Francisco">
+    <option value="San Diego">
+    <option value="Fresno">
+    <option value="Morrobay">
+    <option value="San Luis Obispo">
+    <option value="Ventura">
+    <option value="Pasadena">
+    <option value="Santa Clarita">
+    <option value="Santa Clara">
+    <option value="Phoenix">
+    <option value="Boston">
+    <option value="Cambridge">
+    <option value="Stanford">
+    <option value="Berkeley">
+    <option value="Ann Arbor">
+    <option value="Austin">
+    <option value="Seattle">
+    <option value="Atlanta">
+  </datalist>
+
+  </csv-textarea>
+</body>
+</html>

@@ -31,6 +31,7 @@ class CSVTextarea extends HTMLElement {
     this.headings = parseCSVRow(columnHeadings);
     this.render();
     this.initializeTable();
+    this.setupAutocomplete();
   }
 
   render() {
@@ -49,6 +50,28 @@ class CSVTextarea extends HTMLElement {
           padding: 10px;
           border: 1px solid #ccc;
           background-color: #f9f9f9;
+        }
+        .autocomplete-list {
+          position: absolute;
+          border: 1px solid #d4d4d4;
+          border-bottom: none;
+          border-top: none;
+          z-index: 99;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: white;
+          max-height: 150px;
+          overflow-y: auto;
+        }
+        .autocomplete-list div {
+          padding: 10px;
+          cursor: pointer;
+          background-color: #fff;
+          border-bottom: 1px solid #d4d4d4;
+        }
+        .autocomplete-list div:hover {
+          background-color: #e9e9e9;
         }
       </style>
       <table ${this.getAttribute('id') ? `id="${this.getAttribute('id')}"` : ''} ${this.getAttribute('class') ? `class="${this.getAttribute('class')}"` : ''}>
@@ -110,6 +133,7 @@ class CSVTextarea extends HTMLElement {
         if (this.debug) {
           console.log(`Cell changed: Row ${rowIndex}, Col ${colIndex}, Value: ${value}`);
         }
+        this.handleAutocomplete(event.target, rowIndex, colIndex);
       }
     });
 
@@ -155,6 +179,46 @@ class CSVTextarea extends HTMLElement {
     });
   }
 
+  setupAutocomplete() {
+    this.autocompleteLists = {};
+    this.headings.forEach((heading, index) => {
+      const datalist = this.querySelector(`datalist#${heading}`);
+      if (datalist) {
+        this.autocompleteLists[index] = Array.from(datalist.querySelectorAll('option')).map(option => option.value);
+      }
+    });
+  }
+
+  handleAutocomplete(cell, rowIndex, colIndex) {
+    const autocompleteList = this.autocompleteLists[colIndex];
+    if (!autocompleteList) return;
+
+    const value = cell.innerText;
+    const suggestions = autocompleteList.filter(item => item.toLowerCase().includes(value.toLowerCase()));
+
+    // Remove any existing autocomplete list
+    const existingList = cell.querySelector('.autocomplete-list');
+    if (existingList) {
+      existingList.remove();
+    }
+
+    if (suggestions.length > 0) {
+      const div = document.createElement('div');
+      div.className = 'autocomplete-list';
+      suggestions.forEach(suggestion => {
+        const item = document.createElement('div');
+        item.innerText = suggestion;
+        item.addEventListener('click', () => {
+          cell.innerText = suggestion;
+          this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value: suggestion } }));
+          div.remove();
+        });
+        div.appendChild(item);
+      });
+      cell.appendChild(div);
+    }
+  }
+
   get defaultCSS() {
     return `
       table {
@@ -170,6 +234,7 @@ class CSVTextarea extends HTMLElement {
       }
       td {
         cursor: text;
+        position: relative;
       }
       td[contenteditable="true"] {
         outline: none;
