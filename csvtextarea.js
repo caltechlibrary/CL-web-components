@@ -1,7 +1,7 @@
 // csvtextarea.js
 import { parseCSV, parseCSVRow, stringifyCSV } from './parseCSV.js';
 
-export class CSVTextarea extends HTMLElement {
+class CSVTextarea extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -117,7 +117,7 @@ export class CSVTextarea extends HTMLElement {
         const rowIndex = event.target.closest('tr').rowIndex - 1;
         const colIndex = event.target.closest('td').cellIndex;
         const value = event.target.value;
-        this.dispatchEvent(new CustomEvent('cell-change', { detail: { rowIndex, colIndex, value } }));
+        this.dispatchEvent(new CustomEvent('changed', { detail: { rowIndex, colIndex, value } }));
         if (this.hasAttribute('debug')) {
           console.log(`Cell changed: Row ${rowIndex}, Col ${colIndex}, Value ${value}`);
         }
@@ -129,7 +129,7 @@ export class CSVTextarea extends HTMLElement {
         const rowIndex = event.target.closest('tr').rowIndex - 1;
         const colIndex = event.target.closest('td').cellIndex;
         const value = event.target.value;
-        this.dispatchEvent(new CustomEvent('cell-focus', { detail: { rowIndex, colIndex, value } }));
+        this.dispatchEvent(new CustomEvent('focused', { detail: { rowIndex, colIndex, value } }));
         if (this.hasAttribute('debug')) {
           console.log(`Cell focused: Row ${rowIndex}, Col ${colIndex}, Value ${value}`);
         }
@@ -336,3 +336,5 @@ export class CSVTextarea extends HTMLElement {
 }
 
 customElements.define('csv-textarea', CSVTextarea);
+
+export { CSVTextarea };
