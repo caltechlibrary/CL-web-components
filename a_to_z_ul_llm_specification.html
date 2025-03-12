@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<p>This JavaScript code defines a custom HTML element using the Web
+Components API. This custom element, named
+<code>&lt;a-to-z-ul&gt;</code>, is designed to create an alphabetical
+menu from a list of items. Here’s a detailed specification of the
+module:</p>
+<h3 id="module-specification">Module Specification</h3>
+<h4 id="class-atozul">Class: <code>AToZUL</code></h4>
+<ul>
+<li><strong>Inheritance</strong>: Extends <code>HTMLElement</code>.</li>
+<li><strong>Shadow DOM</strong>: Uses Shadow DOM with an open mode to
+encapsulate styles and markup.</li>
+</ul>
+<h5 id="constructor">Constructor</h5>
+<ul>
+<li><strong>Purpose</strong>: Initializes the custom element and
+attaches a shadow root.</li>
+</ul>
+<h5 id="lifecycle-methods">Lifecycle Methods</h5>
+<ul>
+<li><strong><code>connectedCallback</code></strong>: Called when the
+element is added to the DOM. It triggers the <code>render</code> method
+to set up the component.</li>
+</ul>
+<h5 id="methods">Methods</h5>
+<ul>
+<li><strong><code>render</code></strong>:
+<ul>
+<li><strong>Purpose</strong>: Renders the component’s UI and
+functionality.</li>
+<li><strong>Steps</strong>:
+<ol type="1">
+<li>Creates a template element containing the styles and initial HTML
+structure.</li>
+<li>Appends the template content to the shadow root.</li>
+<li>Selects the list container and menu elements from the shadow
+DOM.</li>
+<li>Retrieves the <code>&lt;ul&gt;</code> element from the light DOM
+(the main document) and processes its <code>&lt;li&gt;</code>
+items.</li>
+<li>Groups the items by their first letter and creates menu links and
+sections accordingly.</li>
+<li>Adds event listeners to menu links and section headings for smooth
+scrolling.</li>
+<li>Optionally adds a “Back to Menu” link if the <code>long</code>
+attribute is present.</li>
+</ol></li>
+</ul></li>
+<li><strong><code>scrollToSection</code></strong>:
+<ul>
+<li><strong>Purpose</strong>: Scrolls smoothly to a specified section
+with an offset.</li>
+<li><strong>Parameters</strong>:
+<ul>
+<li><code>section</code>: The DOM element to scroll to.</li>
+</ul></li>
+<li><strong>Behavior</strong>: Uses <code>window.scrollTo</code> with
+smooth behavior and a customizable offset.</li>
+</ul></li>
+</ul>
+<h5 id="attributes">Attributes</h5>
+<ul>
+<li><strong><code>long</code></strong>: If present, adds a “Back to
+Menu” link at the bottom of the component.</li>
+</ul>
+<h5 id="styles">Styles</h5>
+<ul>
+<li><strong>Menu</strong>: Horizontal list with inline items.</li>
+<li><strong>Letter Sections</strong>: Vertical lists with no text
+decoration.</li>
+<li><strong>Back to Menu Link</strong>: Block-level link with top
+margin.</li>
+</ul>
+<h5 id="event-listeners">Event Listeners</h5>
+<ul>
+<li><strong>Menu Links</strong>: Prevent default link behavior and
+scroll to the corresponding section.</li>
+<li><strong>Section Headings</strong>: Prevent default link behavior and
+scroll back to the menu.</li>
+<li><strong>Back to Menu Link</strong>: Prevent default link behavior
+and scroll back to the menu.</li>
+</ul>
+<h5 id="usage">Usage</h5>
+<ul>
+<li><p><strong>HTML</strong>:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a-to-z-ul</span><span class="ot"> long</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Apple<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Banana<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Cherry<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- More items --&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a-to-z-ul</span><span class="dt">&gt;</span></span></code></pre></div></li>
+<li><p><strong>JavaScript</strong>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { AToZUL } <span class="im">from</span> <span class="st">&#39;./path-to-module&#39;</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>customElements<span class="op">.</span><span class="fu">define</span>(<span class="st">&#39;a-to-z-ul&#39;</span><span class="op">,</span> AToZUL)<span class="op">;</span></span></code></pre></div></li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>The <code>AToZUL</code> component is a reusable web component that
+organizes a list of items into alphabetical sections with a navigable
+menu. It uses Shadow DOM for encapsulation and provides smooth scrolling
+between sections. The component can be extended or modified to fit
+different use cases by adjusting styles, attributes, or event
+listeners.</p>
+</section>
+</body>
+</html>

@@ -3,6 +3,10 @@
 
 - [README](README.md)
 - [LICENSE](LICENSE)
+- Module specifications
+  - [CSVTextarea](csvtextarea_llm_generated_specification.md)
+  - [parseCSV](parseCSV_llm_generated_specification.md) (used by CSVTextarea)
+  - [AToZUL](a_to_z_ul_llm_specification.md)
 - parseCSV, parseCSV is used by CSVTextarea for working with CSV data
   - [parseCSV LLM Prompts](parseCSV_llm_prompts.md), the description given to Mistral Le Chat to bootstrap this module
   - [parseCSV.js](parseCSV.js)
@@ -25,4 +29,3 @@
     - [demo long list](demo_long_list.html), a longer list A to Z list
     - [demo multiple lists](demo_multiple_list.html), a multi-list demo
   - [A to Z UL LLM Prompts](a_to_z_ul_llm_prompts.md), the description given to Mistral Le Chat to bootstrap component
-

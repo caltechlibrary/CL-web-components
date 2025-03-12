@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="function-specifications">Function Specifications</h1>
+<h2 id="parsecsvrow">1. <code>parseCSVRow</code></h2>
+<ul>
+<li><strong>Purpose</strong>: Parses a single row of CSV data into an
+array of columns.</li>
+<li><strong>Input</strong>:
+<ul>
+<li><code>csvRowString</code> (string): A single row of CSV data as a
+string.</li>
+</ul></li>
+<li><strong>Output</strong>:
+<ul>
+<li>An array of strings, where each string represents a column in the
+CSV row.</li>
+</ul></li>
+<li><strong>Behavior</strong>:
+<ul>
+<li>Handles quoted fields, allowing commas within quotes.</li>
+<li>Trims whitespace from each column.</li>
+<li>Ignores commas within quoted fields.</li>
+</ul></li>
+<li><strong>Example</strong>:
+<ul>
+<li>Input: <code>"John,Doe,123"</code></li>
+<li>Output: <code>["John", "Doe", "123"]</code></li>
+</ul></li>
+</ul>
+<h2 id="parsecsv">2. <code>parseCSV</code></h2>
+<ul>
+<li><strong>Purpose</strong>: Parses a full CSV string into a 2D array
+of rows and columns.</li>
+<li><strong>Input</strong>:
+<ul>
+<li><code>csvString</code> (string): The entire CSV data as a
+string.</li>
+</ul></li>
+<li><strong>Output</strong>:
+<ul>
+<li>A 2D array of strings, where each sub-array represents a row of
+columns.</li>
+</ul></li>
+<li><strong>Behavior</strong>:
+<ul>
+<li>Splits the CSV string into rows based on newline characters.</li>
+<li>Uses <code>parseCSVRow</code> to parse each row.</li>
+<li>Ensures all rows have the same number of columns by padding with
+empty strings if necessary.</li>
+</ul></li>
+<li><strong>Example</strong>:
+<ul>
+<li>Input: <code>"John,Doe\nJane,Smith"</code></li>
+<li>Output: <code>[["John", "Doe"], ["Jane", "Smith"]]</code></li>
+</ul></li>
+</ul>
+<h2 id="stringifycsvrow">3. <code>stringifyCSVRow</code></h2>
+<ul>
+<li><strong>Purpose</strong>: Converts an array of strings into a
+CSV-encoded string.</li>
+<li><strong>Input</strong>:
+<ul>
+<li><code>array</code> (array of strings): An array representing a
+single row of CSV data.</li>
+</ul></li>
+<li><strong>Output</strong>:
+<ul>
+<li>A CSV-encoded string.</li>
+</ul></li>
+<li><strong>Behavior</strong>:
+<ul>
+<li>Encloses fields containing commas, newlines, or double quotes in
+double quotes.</li>
+<li>Escapes double quotes within fields by doubling them.</li>
+</ul></li>
+<li><strong>Example</strong>:
+<ul>
+<li>Input: <code>["John", "Doe", "123"]</code></li>
+<li>Output: <code>"John,Doe,123"</code></li>
+</ul></li>
+</ul>
+<h2 id="stringifycsv">4. <code>stringifyCSV</code></h2>
+<ul>
+<li><strong>Purpose</strong>: Converts a 2D array of strings into a
+CSV-encoded string.</li>
+<li><strong>Input</strong>:
+<ul>
+<li><code>data</code> (2D array of strings): A 2D array representing
+rows and columns of CSV data.</li>
+</ul></li>
+<li><strong>Output</strong>:
+<ul>
+<li>A CSV-encoded string.</li>
+</ul></li>
+<li><strong>Behavior</strong>:
+<ul>
+<li>Uses <code>stringifyCSVRow</code> to convert each row into a
+CSV-encoded string.</li>
+<li>Joins the rows with newline characters.</li>
+</ul></li>
+<li><strong>Example</strong>:
+<ul>
+<li>Input: <code>[["John", "Doe"], ["Jane", "Smith"]]</code></li>
+<li>Output: <code>"John,Doe\nJane,Smith"</code></li>
+</ul></li>
+</ul>
+<h2 id="general-requirements">General Requirements</h2>
+<ul>
+<li>The generated code should maintain the same functionality and
+behavior as the original JavaScript code.</li>
+<li>The code should handle edge cases, such as empty strings, fields
+with special characters, and varying numbers of columns per row.</li>
+<li>The code should be written in a clear and maintainable manner, with
+appropriate comments and documentation.</li>
+</ul>
+<p>This specification can be used to guide an LLM in generating
+functionally equivalent code in another programming language or to
+rewrite the JavaScript code with the same functionality.</p>
+</section>
+</body>
+</html>

@@ -1,17 +1,21 @@
 
-### CSVTextarea Web Component Specification
+# CSVTextarea Web Component Specification
 
-#### Overview
-The `CSVTextarea` web component is designed to manage and display tabular data in an editable HTML table format. It supports CSV data input and output, autocomplete functionality, and various customization options.
+## Overview
 
-#### Dependencies
-- `parseCSV`, `parseCSVRow`, `stringifyCSV`: Functions imported from `./parseCSV.js` for parsing and stringifying CSV data.
+The `CSVTextarea` web component is designed to manage and display tabular data in an editable HTML table format. It supports CSV data input and output, autocomplete functionality, and various customization options. The component is built using the Web Components API and leverages Shadow DOM for encapsulation.
 
-#### HTML Structure
+## Dependencies
+
+- **`parseCSV`, `parseCSVRow`, `stringifyCSV`**: Functions imported from `./parseCSV.js` for parsing and stringifying CSV data. These functions are assumed to be available and correctly implemented.
+
+## HTML Structure
+
 - **Shadow DOM**: The component uses Shadow DOM to encapsulate its styles and structure.
 - **Template**: The component's template includes a table with a `thead` and `tbody`, and buttons for appending rows and cleaning up the table.
 
-#### Attributes
+## Attributes
+
 - **`column-headings`** (required): A comma-delimited list of column headings. This attribute is parsed to create the table headers.
 - **`id`**: Sets the ID of the component.
 - **`class`**: Sets the class of the component.
@@ -21,7 +25,7 @@ The `CSVTextarea` web component is designed to manage and display tabular data i
 - **`css-href`**: A URL to custom CSS that replaces the default CSS provided by the HTML template.
 - **`debug`**: A boolean attribute that, when true, enables debug logging to the console.
 
-#### Methods
+## Methods
 
 1. **Lifecycle Methods**
    - **`constructor()`**: Initializes the component and attaches a Shadow DOM.
@@ -65,19 +69,23 @@ The `CSVTextarea` web component is designed to manage and display tabular data i
 9. **Utility Methods**
    - **`getColumnIndexByName(colName)`**: Gets the index of a column by its name.
 
-#### Events
-- **`cell-change`**: Emitted when the value of a cell changes. Contains the row index, column index, and new value.
-- **`cell-focus`**: Emitted when a cell gains focus. Contains the row index, column index, and value.
+## Events
 
-#### Accessibility
+- **`changed`**: Emitted when the value of a cell changes. Contains the row index, column index, and new value.
+- **`focused`**: Emitted when a cell gains focus. Contains the row index, column index, and value.
+
+## Accessibility
+
 - The component follows W3C accessibility guidelines by providing keyboard navigation and focus management.
 - Includes a clickable help icon (ⓘ) that displays help text if the `title` or `help-description` attributes are present.
 
-#### Customization
+## Customization
+
 - Supports custom CSS via the `css-href` attribute.
 - Allows customization of table captions, placeholder text, and debug logging.
 
-#### Usage Example
+## Usage Example
+
 ```html
 <csv-textarea id="my-csv" column-headings="Name,Age,City" class="csv-component" title="CSV Editor" placeholder="Enter CSV data" caption="CSV Table" debug>
   <datalist id="city">
@@ -94,3 +102,11 @@ The `CSVTextarea` web component is designed to manage and display tabular data i
   </textarea>
 </csv-textarea>
 ```
+
+## Detailed Behavior
+
+- **Initialization**: The component initializes its template and sets up the table structure based on the `column-headings` attribute.
+- **Event Handling**: It listens for changes and focus events on table cells, emitting custom events for external handling.
+- **Data Management**: Methods for converting between CSV, JSON, and table data, as well as appending and cleaning up rows.
+- **Autocomplete**: Correctly associates datalists with input fields and ensures options are set up properly.
+- **Debug Mode**: When the `debug` attribute is set, the component logs events and table contents to the console.

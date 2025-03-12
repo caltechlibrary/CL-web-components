@@ -18,20 +18,22 @@
 </ul>
 </nav>
 <section>
-<h3 id="csvtextarea-web-component-specification">CSVTextarea Web
-Component Specification</h3>
-<h4 id="overview">Overview</h4>
+<h1 id="csvtextarea-web-component-specification">CSVTextarea Web
+Component Specification</h1>
+<h2 id="overview">Overview</h2>
 <p>The <code>CSVTextarea</code> web component is designed to manage and
 display tabular data in an editable HTML table format. It supports CSV
 data input and output, autocomplete functionality, and various
-customization options.</p>
-<h4 id="dependencies">Dependencies</h4>
+customization options. The component is built using the Web Components
+API and leverages Shadow DOM for encapsulation.</p>
+<h2 id="dependencies">Dependencies</h2>
 <ul>
-<li><code>parseCSV</code>, <code>parseCSVRow</code>,
-<code>stringifyCSV</code>: Functions imported from
-<code>./parseCSV.js</code> for parsing and stringifying CSV data.</li>
+<li><strong><code>parseCSV</code>, <code>parseCSVRow</code>,
+<code>stringifyCSV</code></strong>: Functions imported from
+<code>./parseCSV.js</code> for parsing and stringifying CSV data. These
+functions are assumed to be available and correctly implemented.</li>
 </ul>
-<h4 id="html-structure">HTML Structure</h4>
+<h2 id="html-structure">HTML Structure</h2>
 <ul>
 <li><strong>Shadow DOM</strong>: The component uses Shadow DOM to
 encapsulate its styles and structure.</li>
@@ -39,7 +41,7 @@ encapsulate its styles and structure.</li>
 with a <code>thead</code> and <code>tbody</code>, and buttons for
 appending rows and cleaning up the table.</li>
 </ul>
-<h4 id="attributes">Attributes</h4>
+<h2 id="attributes">Attributes</h2>
 <ul>
 <li><strong><code>column-headings</code></strong> (required): A
 comma-delimited list of column headings. This attribute is parsed to
@@ -58,7 +60,7 @@ replaces the default CSS provided by the HTML template.</li>
 <li><strong><code>debug</code></strong>: A boolean attribute that, when
 true, enables debug logging to the console.</li>
 </ul>
-<h4 id="methods">Methods</h4>
+<h2 id="methods">Methods</h2>
 <ol type="1">
 <li><strong>Lifecycle Methods</strong>
 <ul>
@@ -139,15 +141,14 @@ Returns the options associated with a column’s datalist.</li>
 the index of a column by its name.</li>
 </ul></li>
 </ol>
-<h4 id="events">Events</h4>
+<h2 id="events">Events</h2>
 <ul>
-<li><strong><code>cell-change</code></strong>: Emitted when the value of
-a cell changes. Contains the row index, column index, and new
-value.</li>
-<li><strong><code>cell-focus</code></strong>: Emitted when a cell gains
+<li><strong><code>changed</code></strong>: Emitted when the value of a
+cell changes. Contains the row index, column index, and new value.</li>
+<li><strong><code>focused</code></strong>: Emitted when a cell gains
 focus. Contains the row index, column index, and value.</li>
 </ul>
-<h4 id="accessibility">Accessibility</h4>
+<h2 id="accessibility">Accessibility</h2>
 <ul>
 <li>The component follows W3C accessibility guidelines by providing
 keyboard navigation and focus management.</li>
@@ -155,13 +156,13 @@ keyboard navigation and focus management.</li>
 <code>title</code> or <code>help-description</code> attributes are
 present.</li>
 </ul>
-<h4 id="customization">Customization</h4>
+<h2 id="customization">Customization</h2>
 <ul>
 <li>Supports custom CSS via the <code>css-href</code> attribute.</li>
 <li>Allows customization of table captions, placeholder text, and debug
 logging.</li>
 </ul>
-<h4 id="usage-example">Usage Example</h4>
+<h2 id="usage-example">Usage Example</h2>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">csv-textarea</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;my-csv&quot;</span><span class="ot"> column-headings</span><span class="op">=</span><span class="st">&quot;Name,Age,City&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;csv-component&quot;</span><span class="ot"> title</span><span class="op">=</span><span class="st">&quot;CSV Editor&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;Enter CSV data&quot;</span><span class="ot"> caption</span><span class="op">=</span><span class="st">&quot;CSV Table&quot;</span><span class="ot"> debug</span><span class="dt">&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">datalist</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;city&quot;</span><span class="dt">&gt;</span></span>
@@ -177,6 +178,23 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    &quot;Doe, John&quot;, 25, Cocomo</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">csv-textarea</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="detailed-behavior">Detailed Behavior</h2>
+<ul>
+<li><strong>Initialization</strong>: The component initializes its
+template and sets up the table structure based on the
+<code>column-headings</code> attribute.</li>
+<li><strong>Event Handling</strong>: It listens for changes and focus
+events on table cells, emitting custom events for external
+handling.</li>
+<li><strong>Data Management</strong>: Methods for converting between
+CSV, JSON, and table data, as well as appending and cleaning up
+rows.</li>
+<li><strong>Autocomplete</strong>: Correctly associates datalists with
+input fields and ensures options are set up properly.</li>
+<li><strong>Debug Mode</strong>: When the <code>debug</code> attribute
+is set, the component logs events and table contents to the
+console.</li>
+</ul>
 </section>
 </body>
 </html>
