@@ -28,8 +28,8 @@
     }
   ],
   "dateCreated": "2025-02-26",
-  "dateModified": "2025-03-12",
-  "datePublished": "2025-03-12",
+  "dateModified": "2025-03-32",
+  "datePublished": "2025-03-32",
   "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n`csv-textarea`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`a-to-z-ul`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\nOne additional helper module is currently provided, `parseCSV.js`, that provides stringify and parse functions for CSV rows and strings.",
   "funder": [
     "Caltech Library"
@@ -53,9 +53,9 @@
     "https://github.com/caltechlibrary/a_to_z_ul"
   ],
   "runtimePlatform": "- HTML5-compatible web browser",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "Bug fix correcting missing events of \"focused\" and \"changed\" in CSVTextarea."
+  "releaseNotes": "Added an optional function `customCleanupFilter` to the csvtextarea web component. The function is expected to operate on an HTML object containing the row being evalated. If the user defined function returns true the row is accepted. If false the row will be removed."
 }

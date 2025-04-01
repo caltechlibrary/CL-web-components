@@ -26,7 +26,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.4
+version: 0.0.5
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -41,15 +41,15 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-03-12
+date_released: NaN-NaN-NaN
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.4
+## CL-web-components 0.0.5
 
-Bug fix correcting missing events of &quot;focused&quot; and &quot;changed&quot; in CSVTextarea.
+Added an optional function &#x60;customCleanupFilter&#x60; to the csvtextarea web component. The function is expected to operate on an HTML object containing the row being evalated. If the user defined function returns true the row is accepted. If false the row will be removed.
 
 ### Authors
 

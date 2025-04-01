@@ -6,6 +6,7 @@ class CSVTextarea extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.isComponentInitialized = false;
+    this.custcomCleanupFilter = undefined;
   }
 
   static get observedAttributes() {
@@ -188,6 +189,10 @@ class CSVTextarea extends HTMLElement {
     const rows = tbody.rows;
     for (let i = rows.length - 1; i >= 0; i--) {
       if (this.isEmptyRow(i)) {
+        tbody.deleteRow(i);
+      }
+      if ((this.customCleanupFilter !== undefined) &&
+          (this.customCleanupFilter(rows[i]) === false)) {
         tbody.deleteRow(i);
       }
     }

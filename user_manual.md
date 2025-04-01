@@ -23,6 +23,7 @@
     - [demo csv basic](demo_csv_basic.html)
     - [demo csv autocomplete](demo_csv_autocomplete0.html)
     - [demo csv autocomplete populated programatically](demo_csv_autocomplete1.html)
+    - [demo csv customCleanupFilter](demo_csv_customCleanupFilter.html)
 - A to Z UL
   - Example Usage of [A to Z UL](a_to_z_ul.js)
     - [demo short list](demo_short_list.html), simple short A to Z list
