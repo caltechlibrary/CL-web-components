@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	// Add a cleanup filter
 	csvData.customCleanupFilter = (row) => {
 		const cells = row.querySelectorAll('input');
+		console.log(`DEBUG cells.length -> ${cells.length}`);
 		for (cell of cells) {
 			console.log(`DEBUG filter on %ccell.value -> '${cell.value}'`, 'color: green'); 
 			// If any cell is empty then clear the row.
