@@ -23,4 +23,5 @@
     - [demo csv autocomplete](demo_csv_autocomplete0.html)
     - [demo csv autocomplete populated programatically](demo_csv_autocomplete1.html)
     - [demo csv customCleanupFilter](demo_csv_customCleanupFilter.html)
-    
+- [Sortable Table](sortable_table.md)
+  - [Sortable Table Demo](sortable_table_demo.html)   

@@ -26,7 +26,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.5
+version: 0.0.6
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -41,27 +41,30 @@ keywords:
   - ES6
   - Web Components
 
-date_released: NaN-NaN-NaN
+date_released: 2025-05-13
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.5
+## CL-web-components 0.0.6
 
-Added an optional function &#x60;customCleanupFilter&#x60; to the csvtextarea web component. The function is expected to operate on an HTML object containing the row being evalated. If the user defined function returns true the row is accepted. If false the row will be removed.
+This release includes a new web component called &#x60;sortable-table&#x60;. The web component wraps an HTML table element and makes the table sortable by columns and provides a filter search input based on column value.
 
 ### Authors
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
 
+
 ### Contributors
 
 - Mistral, <https://mistral.ai>
 
+
 ### Maintainers
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
+
 
 CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
 

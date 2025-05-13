@@ -12,6 +12,9 @@ The following are the components currently provided.
 `a-to-z-ul`
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
+`sortable-table`
+: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
+
 One additional helper module is currently provided, `parseCSV.js`, that provides stringify and parse functions for CSV rows and strings.
 
 ## Release Notes

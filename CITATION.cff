@@ -27,8 +27,8 @@ contacts:
     email: rsdoiel@caltech.edu
 
 repository-code: "https://github.com/caltechlibrary/CL-web-components"
-version: 0.0.5
-date-released: NaN-NaN-NaN
+version: 0.0.6
+date-released: 2025-05-13
 
 license-url: "https://caltechlibrary.github.io/CL-web-components/LICENSE"
 keywords:
