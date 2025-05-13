@@ -1,7 +1,7 @@
 
 # User Manual
 
-- [README](README.md)
+- [README](./)
 - [LICENSE](LICENSE)
 - [A to Z UL](a_to_z_ul.md)
   - Example Usage of [A to Z UL](a_to_z_ul.js)
