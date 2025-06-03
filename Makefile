@@ -15,7 +15,7 @@ DOCS = $(shell ls -1 *.?.md)
 
 PACKAGE = $(shell ls -1 *.go)
 
-VERSION = $(shell grep '"version":' codemeta.json | cut -d"  -f 4)
+VERSION = $(shell grep '"version":' codemeta.json | cut -d\"  -f 4)
 
 BRANCH = $(shell git branch | grep '* ' | cut -d  -f 2)
 
@@ -65,5 +65,20 @@ clean:
 	-rm *.bak >/dev/null
 	@if [ -d dist ]; then rm -fR dist; fi
 	@if [ -d testout ]; then rm -fR testout; fi
+
+dist: .FORCE
+	@mkdir -p dist
+	@rm -fR dist/* >/dev/null
+	cp *.js dist/
+	cp INSTALL.md dist/
+	cp LICENSE dist/
+	cp about.md dist/
+	cp README.md dist/
+	cp codemeta.json dist/
+	cp CITATION.cff dist/
+	cd dist && zip cl-web-components-$(VERSION).zip *.md LICENSE CITATION.cff codemeta.json *.js
+
+release: dist
+	@printf "\nReady to do ./release.bash\n\n"
 
 .FORCE:
