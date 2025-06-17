@@ -1,5 +1,5 @@
 import { assertEquals } from 'jsr:@std/assert';
-import { parseCSV, parseCSVRow, stringifyCSV  } from './parseCSV.js';
+import { parseCSV, parseCSVRow, stringifyCSV  } from './csv-textarea.js';
 
 
 let data = parseCSV(`one,two,three
