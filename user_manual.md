@@ -3,16 +3,16 @@
 
 - [README](./)
 - [LICENSE](LICENSE)
-- [A to Z UL](a_to_z_ul.md)
-  - Example Usage of [A to Z UL](a_to_z_ul.js)
+- [A to Z List](a-to-z-list.md) `<a-to-z-list></a-to-z-list>`
+  - Example Usage of [A to Z List](a-to-z-list.js)
     - [demo short list](demo_short_list.html), simple short A to Z list
     - [demo long list](demo_long_list.html), a longer list A to Z list
     - [demo multiple lists](demo_multiple_list.html), a multi-list demo
-- [CSV Textarea](CSVTextarea.md)
+- [CSV Textarea](csv-textarea.md) `<csv-textarea></csv-textarea>`
   - parseCSV, parseCSV is used by CSVTextarea for working with CSV data
     - [parseCSV.js](parseCSV.js)
     - [parseCSV_test.js](parseCSV_test.js)
-  - Example Usage of [CSV Textarea](csvtextarea.js)
+  - Example Usage of [CSV Textarea](csv-textarea.js)
     - [demo csv 0](demo_csv0.html)
     - [demo csv 1](demo_csv1.html)
     - [demo csv 2](demo_csv2.html)
@@ -23,5 +23,5 @@
     - [demo csv autocomplete](demo_csv_autocomplete0.html)
     - [demo csv autocomplete populated programatically](demo_csv_autocomplete1.html)
     - [demo csv customCleanupFilter](demo_csv_customCleanupFilter.html)
-- [Sortable Table](sortable_table.md)
-  - [Sortable Table Demo](sortable_table_demo.html)   
+- [Sortable Table](sortable-table.md)
+  - [Sortable Table Demo](sortable-table-demo.html)   

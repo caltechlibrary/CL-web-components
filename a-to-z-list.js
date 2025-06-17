@@ -1,4 +1,7 @@
-class AToZUL extends HTMLElement {
+/**
+ * A to Z List wraps a UL list and provides A to Z style navigation.
+ */
+class AtoZList extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -113,6 +116,6 @@ class AToZUL extends HTMLElement {
   }
 }
 
-customElements.define('a-to-z-ul', AToZUL);
+customElements.define('a-to-z-list', AtoZList);
 
-export { AToZUL };
+export { AtoZList };

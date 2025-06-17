@@ -1,4 +1,6 @@
-// csvtextarea.js
+/**
+ * csv-textarea wraps a textarea providing a table like editable experience.
+ */
 import { parseCSV, parseCSVRow, stringifyCSV } from './parseCSV.js';
 
 class CSVTextarea extends HTMLElement {
