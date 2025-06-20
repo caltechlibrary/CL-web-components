@@ -17,6 +17,7 @@
   - [demo csv-textarea csv 4](demo_csv4.html)
   - [demo csv-textarea csv 5](demo_csv5.html)
   - [demo csv-textarea basic](demo_csv_basic.html)
+  - [demo csv-textarea submit](demo_csv_submit.html)
   - [demo csv-textarea autocomplete](demo_csv_autocomplete0.html)
   - [demo csv-textarea autocomplete populated programatically](demo_csv_autocomplete1.html)
   - [demo csv-textarea customCleanupFilter](demo_csv_customCleanupFilter.html)

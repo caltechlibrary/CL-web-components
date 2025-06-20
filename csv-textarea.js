@@ -25,6 +25,48 @@ class CSVTextarea extends HTMLElement {
     this.isComponentInitialized = true;
     this.initializeTable();
     this.setupEventListeners();
+    this.setupMutationObserver();
+  }
+
+setupMutationObserver() {
+  // Select the node that will be observed for mutations
+  const targetNode = this.shadowRoot.querySelector('tbody');
+
+  // Options for the observer (which mutations to observe)
+  const config = {
+    attributes: true,
+    childList: true,
+    subtree: true,
+    attributeFilter: ['value'] // This ensures we only observe changes to the 'value' attribute
+  };
+
+  // Callback function to execute when mutations are observed
+  const callback = (mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
+        // If an input value changes, update the textarea
+        this.toTextarea();
+      } else if (mutation.type === 'childList') {
+        // If there are changes in the child list (like adding or removing rows), update the textarea
+        this.toTextarea();
+      }
+    }
+  };
+
+  // Create an observer instance linked to the callback function
+  this.observer = new MutationObserver(callback);
+
+  // Start observing the target node for configured mutations
+  if (targetNode) {
+    this.observer.observe(targetNode, config);
+  }
+}
+
+  disconnectedCallback() {
+    // Disconnect the observer when the element is removed from the DOM
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   async initializeComponent() {
@@ -202,6 +244,7 @@ class CSVTextarea extends HTMLElement {
   toCSV() {
     const rows = [];
     const tbody = this.shadowRoot.querySelector('tbody').rows;
+    console.log(this.innertHTML);//DEBUG
     for (let i = 0; i < tbody.length; i++) {
       const cells = tbody[i].cells;
       const row = [];
@@ -267,6 +310,7 @@ class CSVTextarea extends HTMLElement {
     });
   }
 
+
   fromTextarea() {
     const textarea = this.querySelector('textarea');
     if (textarea) {
@@ -277,7 +321,17 @@ class CSVTextarea extends HTMLElement {
   toTextarea() {
     const textarea = this.querySelector('textarea');
     if (textarea) {
-      textarea.value = this.toCSV();
+      textarea.value = this.toCSV(); // Convert the current state of the component to CSV and update the textarea
+      console.log('Textarea updated with CSV data:', textarea.value);
+    }
+  }
+
+  setupFormListener() {
+    const form = this.closest('form');
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        this.toTextarea(); // Update the textarea with the latest CSV data
+      });
     }
   }
 

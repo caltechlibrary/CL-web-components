@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Textarea Form Submission Demo</title>
+  <script type="module" src="csv-textarea.js"></script>
+  <style>
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSV Textarea Form Submission Demo</h1>
+  <form id="the-form" method="post">
+    <csv-textarea name="csvData" column-headings="Name,Age,City" debug>
+      <textarea name="csvData">
+        "Doe, Jane",20,"Rancho Cucamonga"
+        "Doe, John",25,"Cocomo"
+      </textarea>
+    </csv-textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <hr>
+  <h2>Form Data Preview</h2>
+  <pre id="form-data"></pre>
+
+  <script>
+    document.getElementById('the-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      // NOTE: We need to force the inner textarea to be update before fetching the form data.
+      const csv_textarea = document.querySelector('csv-textarea');
+      csv_textarea.toTextarea();
+      const formData = new FormData(this);
+      let output = [];
+
+      // Iterate over the form data and build the output string
+      for (let [name, value] of formData.entries()) {
+        output.push(`${name}: ${value}`);
+      }
+
+      // Display the form contents in the pre element
+      document.getElementById('form-data').textContent = output.join('\n');
+    });
+  </script>
+</body>
+</html>
