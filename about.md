@@ -26,7 +26,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.6
+version: 0.0.7
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -41,15 +41,20 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-05-13
+date_released: 2025-06-20
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.6
+## CL-web-components 0.0.7
 
-This release includes a new web component called &#x60;sortable-table&#x60;. The web component wraps an HTML table element and makes the table sortable by columns and provides a filter search input based on column value.
+The files for the web components were normalized around the web componant name.
+
+- csvtextaraa.js became csv-textarea.js for &#x60;&lt;csv-textarea&gt;&lt;/csv-textarea&gt;&#x60;
+- a-to-z-ul.js became a-to-z-list.js for &#x60;&lt;a-to-z-list&gt;&lt;/a-to-z-list&gt;&#x60;
+
+Observer method setup was added to &#x60;&lt;a-to-z-list&gt;&#x60;. &#x60;&lt;csv-textarea&gt;&#x60; was updated with a form setup and observer method setup.
 
 ### Authors
 
@@ -87,6 +92,9 @@ One additional helper module is currently provided, &#x60;parseCSV.js&#x60;, tha
 - JavaScript
 - HTML
 - CSS
+
+
+
 
 
 
