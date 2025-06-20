@@ -9,6 +9,23 @@ class AtoZList extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.setupMutationObserver();
+  }
+
+  setupMutationObserver() {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          this.render();
+        }
+      });
+    });
+
+    observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: true
+    });
   }
 
   render() {
