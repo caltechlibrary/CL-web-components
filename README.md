@@ -20,7 +20,7 @@ The following are the components currently provided.
 
 ## Release Notes
 
-- version: 0.0.8
+- version: 0.0.9
 - status: wip
 - released: 2025-07-03
 

@@ -105,8 +105,7 @@ class InputAgentList extends HTMLElement {
                                 <input type="text" placeholder="Given Name" title="Giveny Name" value="${
               agent.given_name || ""
             }" data-index="${index}" data-field="given_name" style="${styleAttribute}">
-                                <input type="text" pattern="^(?:https:\/\/orcid\.org\/)?\d{4}-\d{4}-\d{4}-\d{3}[\dX]$|^(?:https:\/\/orcid\.org\/)?(\d{4}-){3}\d{3}[\dX]$
-" placeholder="ORCID" title="ORCID" value="${
+                                <input type="text" pattern="^\\d{4}-\\d{4}-\\d{4}-\\d{3}[\\dX]$|^https:\\/\\/orcid\\.org\\/\\d{4}-\\d{4}-\\d{4}-\\d{3}[\\dX]$" placeholder="ORCID" title="ORCID" value="${
               agent.orcid || ""
             }" data-index="${index}" data-field="orcid" style="${styleAttribute}">
                             </div>
