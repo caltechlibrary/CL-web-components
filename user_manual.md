@@ -9,6 +9,7 @@
   - [demo long list](demo_a-to-z-list_long.html), a longer list A to Z list
   - [demo multiple lists](demo_a-to-z-list_multiple.html), a multi-list demo
 - [Input Agent Lists](input-agent-list.md) `<input-agent-list></input-agent-list>`
+  - [demo input agent list](demo_input_agent_list.html )
 - [CSV Textarea](csv-textarea.md) `<csv-textarea></csv-textarea>`
   - Source for [CSV Textarea](csv-textarea.js)
   - [demo csv-textarea csv 0](demo_csv0.html)
