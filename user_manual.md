@@ -10,6 +10,8 @@
   - [demo multiple lists](demo_a-to-z-list_multiple.html), a multi-list demo
 - [Input Agent Lists](input-agent-list.md) `<input-agent-list></input-agent-list>`
   - [demo input agent list](demo_input_agent_list.html )
+  - [demo input agent (people only) list](demo_input_people_list.html)
+  - [demo input agent (organization only) list](demo_input_organization_list.html)
 - [CSV Textarea](csv-textarea.md) `<csv-textarea></csv-textarea>`
   - Source for [CSV Textarea](csv-textarea.js)
   - [demo csv-textarea csv 0](demo_csv0.html)

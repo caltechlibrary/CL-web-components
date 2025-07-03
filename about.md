@@ -28,7 +28,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.9
+version: 0.0.10
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -49,9 +49,9 @@ date_released: 2025-07-03
 About this software
 ===================
 
-## CL-web-components 0.0.9
+## CL-web-components 0.0.10
 
-Fix a bug in my regex for validating the ORCID element of a person agent input for the new &#x60;&lt;input-agent-list&gt;&lt;/input-agent-list&gt;&#x60; web component.
+Added support for &quot;people-only&quot; and &quot;organization-only&quot; attributes in &#x60;&lt;input-agent-list&gt;&lt;/input-agent-list&gt;&#x60;.
 
 ### Authors
 

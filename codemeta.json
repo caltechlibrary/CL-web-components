@@ -46,11 +46,11 @@
     "https://github.com/caltechlibrary/a_to_z_ul"
   ],
   "runtimePlatform": "- HTML5-compatible web browser",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "Fix a bug in my regex for validating the ORCID element of a person agent input for the new `<input-agent-list></input-agent-list>` web component.",
+  "releaseNotes": "Added support for \"people-only\" and \"organization-only\" attributes in `<input-agent-list></input-agent-list>`.",
   "copyrightYear": 2025,
   "copyrightHolder": "California Institute of Technology"
 }

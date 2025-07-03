@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent List Input (Organization only)</title>
+    <script src="input-agent-list.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Example of an input element for lists of agents (organizations only)</h1>
+
+    <h2>An empty list, read to add organizations</h2>
+
+<input-agent-list organization-only>
+    <textarea></textarea>
+</input-agent-list>
+
+
+<h2>A populated list of organizations example</h2>
+
+<input-agent-list organization-only>
+    <textarea>
+    [
+        {
+            "name": "California Institute of Technology",
+            "ror": "https://ror.org/05dxps055"
+        },
+        {
+            "name": "California Institute of the Arts",
+            "ror": "https://ror.org/024e4df17"
+        }
+    ]
+    </textarea>
+</input-agent-list>
+
+
+<script>
+</script>
+
+</body>
+</html>
