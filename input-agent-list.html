@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="inputagentlist">InputAgentList</h1>
+<p>This is a web component targets a textarea that hold JSON of a list
+of agents. Agents are either people or organizations. People have a
+family and given names along with an ORCID. Organizations have a name
+along with a ROR. The list can contain either type of Agent.</p>
+<h3 id="overview">Overview</h3>
+<p>Library and Archives often of lists of people and organizations. In
+bibliographic material this would be the case for authors or
+contributors to a book or other published material. Lists are not
+natively supported in HTML web forms. The closest native element is a
+textarea which can contain an arbitrary number of lines. An early
+practice before JavaScript was envented was to teach people how to type
+in delimited text. After the introduction of JavaScript the JSON
+notation became a native browser structured data representation. For
+complex metadata objects describing a person or organization JSON
+provides a resonably effective representation. How typing JSON into a
+textarea is error prone, hence this web component. If web components are
+not supported by the browser then an inner textarea element functions as
+a fallback. Otherwise the wrapping web component provide a reasonable
+interface for managin the list of agents.</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li>falls back to JSON inside a textarea</li>
+<li>agents support both the concept of a person or an organization</li>
+<li>the form can use POST method and the browser default urlencoding for
+form data</li>
+</ul>
+<h3 id="attributes">Attributes</h3>
+<ul>
+<li><strong>style</strong>: Allows you to set the CSS color and font
+size</li>
+<li><strong>css-href</strong>: Allows you to overwrite the component’s
+own CSS</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ol type="1">
+<li><p><strong>Include the Component</strong>: Ensure the component’s
+JavaScript file is included in your HTML.</p></li>
+<li><p><strong>HTML Structure</strong>: Use the
+<code>&lt;input-agent-list&gt;</code> tag and include a
+<code>&lt;textarea&gt;</code> element inside it. The textarea can have
+JSON expressing a list of agents (people and organizations).</p></li>
+</ol>
+<h3 id="example">Example</h3>
+<p>Here’s an example of how to use the <code>input-agent-list</code>
+component in an HTML file:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Input Agent List<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;input-agent-list.js&quot;</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input-agent-list</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">textarea</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;agentListJson&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    &quot;family_name&quot;: &quot;Doe&quot;,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    &quot;given_name&quot;: &quot;John&quot;,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    &quot;orcid&quot;: &quot;0000-0000-0000-0000&quot;</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                    &quot;name&quot;: &quot;Example Organization&quot;,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                    &quot;ror&quot;: &quot;https://ror.org/05dxps055&quot;</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">input-agent-list</span><span class="dt">&gt;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<ul>
+<li><strong>Component Tag</strong>: The
+<code>&lt;input-agent-list&gt;</code> tag is used to define the
+component.</li>
+<li><strong>textarea</strong>: The <code>&lt;textarea&gt;</code> inside
+the component contains JSON expressing a list. It provides the fallback
+if web components are not supported.</li>
+</ul>
+<h3 id="customization">Customization</h3>
+<ul>
+<li><strong>style</strong>: You can customize the style by providing
+color and font CSS.</li>
+<li><strong>css-href</strong>: This will allow you to fully customize
+the component by providing a replacement of the default styling.</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>The <code>InputAgentList</code> component simplifies the creation of
+metadata applications that contain lists of people and
+organizations.</p>
+</section>
+</body>
+</html>

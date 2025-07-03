@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent List Form</title>
+    <script src="input-agent-list.js" type="module"></script>
+</head>
+<body>
+    <h2>Form submitted with POST method</h2>
+    <form id="agentForm1" action="/submit-form" method="post">
+        <h2>Populated with a person and org</h2>
+        <input-agent-list>
+            <textarea name="agentListJson">
+                [
+                    {
+                        "family_name": "Doe",
+                        "given_name": "John",
+                        "orcid": "0000-0000-0000-0000"
+                    },
+                    {
+                        "name": "Example Organization",
+                        "ror": "https://ror.org/05dxps055"
+                    }
+                ]
+            </textarea>
+        </input-agent-list>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Form submitted with GET method</h2>
+    <form id="agentForm2" action="/submit-form" method="get">
+        <h2>Populated with a person and org</h2>
+        <input-agent-list>
+            <textarea name="agentListJson">
+                [
+                    {
+                        "family_name": "Doe",
+                        "given_name": "John",
+                        "orcid": "0000-0000-0000-0000"
+                    },
+                    {
+                        "name": "Example Organization",
+                        "ror": "https://ror.org/05dxps055"
+                    }
+                ]
+            </textarea>
+        </input-agent-list>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

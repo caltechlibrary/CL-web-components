@@ -1,0 +1,28 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: yellow;
+    background-color: blue;
+}
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    color: yellow;
+    background-color: blue;
+}
+button {
+    margin: 4px;
+    padding: 8px;
+    cursor: pointer;
+}

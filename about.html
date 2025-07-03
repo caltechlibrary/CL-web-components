@@ -19,27 +19,15 @@
 </nav>
 <section>
 <h1 id="about-this-software">About this software</h1>
-<h2 id="cl-web-components-0.0.7">CL-web-components 0.0.7</h2>
-<p>The files for the web components were normalized around the web
-componant name.</p>
-<ul>
-<li>csvtextaraa.js became csv-textarea.js for
-`&lt;csv-textarea&gt;&lt;/csv-textarea&gt;`</li>
-<li>a-to-z-ul.js became a-to-z-list.js for
-`&lt;a-to-z-list&gt;&lt;/a-to-z-list&gt;`</li>
-</ul>
-<p>Observer method setup was added to `&lt;a-to-z-list&gt;`.
-`&lt;csv-textarea&gt;` was updated with a form setup and observer method
-setup.</p>
+<h2 id="cl-web-components-0.0.8">CL-web-components 0.0.8</h2>
+<p>Added a new `&lt;input-agent-list&gt;&lt;/input-agent-list&gt;` web
+component. This allows you to use a textarea containing a list of agents
+(people and organizations) to be presented as a friendly editing element
+while preserving the textarea with JSON as a fallback.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>R. S. Doiel, <a href="https://orcid.org/0000-0003-0900-6903"
 class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
-</ul>
-<h3 id="contributors">Contributors</h3>
-<ul>
-<li>Mistral, <a href="https://mistral.ai"
-class="uri">https://mistral.ai</a></li>
 </ul>
 <h3 id="maintainers">Maintainers</h3>
 <ul>
@@ -50,21 +38,29 @@ class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 Caltech Library in various web sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
-<dt>`csv-textarea`</dt>
-<dd>
-This is a textarea like component who's innerHTML content is CSV data.
-The component will display this as an editable table.
-</dd>
 <dt>`a-to-z-ul`</dt>
 <dd>
 This component takes an innerHTML containing a UL list. The UL list is
 then turned into an A to Z navigatable UL List. If JavaScript is
 unavailable then the innerHTML UL remains as a fallback.
 </dd>
+<dt>`csv-textarea`</dt>
+<dd>
+This is a textarea like component who's innerHTML content is CSV data.
+The component will display this as an editable table.
+</dd>
+<dt>`input-agent-list`</dt>
+<dd>
+This element wraps a textarea containing a list of agents expressed as
+JSON.
+</dd>
+<dt>`sortable-table`</dt>
+<dd>
+This is a component that takes an innerHTML containing table. It makes
+the table sortable by the column headings and provides a filter input
+that lets you enter text to filter by and pick a column to filter on.
+</dd>
 </dl>
-<p>One additional helper module is currently provided, `parseCSV.js`,
-that provides stringify and parse functions for CSV rows and
-strings.</p>
 <ul>
 <li>License: <a
 href="https://caltechlibrary.github.io/CL-web-components/LICENSE"

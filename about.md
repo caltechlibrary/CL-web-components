@@ -4,21 +4,23 @@ abstract: "CL-web-components provides a collection of Web Components used by Cal
 
 The following are the components currently provided.
 
-&#x60;csv-textarea&#x60;
-: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
 &#x60;a-to-z-ul&#x60;
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-One additional helper module is currently provided, &#x60;parseCSV.js&#x60;, that provides stringify and parse functions for CSV rows and strings."
+&#x60;csv-textarea&#x60;
+: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
+
+&#x60;input-agent-list&#x60;
+: This element wraps a textarea containing a list of agents expressed as JSON. 
+
+&#x60;sortable-table&#x60;
+: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on."
 authors:
   - family_name: Doiel
     given_name: R. S.
     id: https://orcid.org/0000-0003-0900-6903
 
-contributor:
-  - name: Mistral
-    id: https://mistral.ai
 
 maintainer:
   - family_name: Doiel
@@ -26,7 +28,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.7
+version: 0.0.8
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -41,29 +43,22 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-06-20
+date_released: 2025-07-03
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.7
+## CL-web-components 0.0.8
 
-The files for the web components were normalized around the web componant name.
-
-- csvtextaraa.js became csv-textarea.js for &#x60;&lt;csv-textarea&gt;&lt;/csv-textarea&gt;&#x60;
-- a-to-z-ul.js became a-to-z-list.js for &#x60;&lt;a-to-z-list&gt;&lt;/a-to-z-list&gt;&#x60;
-
-Observer method setup was added to &#x60;&lt;a-to-z-list&gt;&#x60;. &#x60;&lt;csv-textarea&gt;&#x60; was updated with a form setup and observer method setup.
+Added a new &#x60;&lt;input-agent-list&gt;&lt;/input-agent-list&gt;&#x60; web component.  This allows you to use a textarea containing a list of agents (people and organizations)
+to be presented as a friendly editing element while preserving the textarea with JSON as a fallback.
 
 ### Authors
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
 
 
-### Contributors
-
-- Mistral, <https://mistral.ai>
 
 
 ### Maintainers
@@ -75,13 +70,18 @@ CL-web-components provides a collection of Web Components used by Caltech Librar
 
 The following are the components currently provided.
 
-&#x60;csv-textarea&#x60;
-: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
 &#x60;a-to-z-ul&#x60;
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-One additional helper module is currently provided, &#x60;parseCSV.js&#x60;, that provides stringify and parse functions for CSV rows and strings.
+&#x60;csv-textarea&#x60;
+: This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
+
+&#x60;input-agent-list&#x60;
+: This element wraps a textarea containing a list of agents expressed as JSON. 
+
+&#x60;sortable-table&#x60;
+: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>

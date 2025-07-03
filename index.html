@@ -18,21 +18,26 @@
 </ul>
 </nav>
 <section>
-<h1 id="cl-web-components-0.0.4">CL-web-components 0.0.4</h1>
+<h1 id="cl-web-components">CL-web-components</h1>
 <p>CL-web-components provides a collection of Web Components used by
 Caltech Library in various web sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
-<dt><code>csv-textarea</code></dt>
-<dd>
-This is a textarea like component who’s innerHTML content is CSV data.
-The component will display this as an editable table.
-</dd>
 <dt><code>a-to-z-ul</code></dt>
 <dd>
 This component takes an innerHTML containing a UL list. The UL list is
 then turned into an A to Z navigatable UL List. If JavaScript is
 unavailable then the innerHTML UL remains as a fallback.
+</dd>
+<dt><code>csv-textarea</code></dt>
+<dd>
+This is a textarea like component who’s innerHTML content is CSV data.
+The component will display this as an editable table.
+</dd>
+<dt><code>input-agent-list</code></dt>
+<dd>
+This element wraps a textarea containing a list of agents expressed as
+JSON.
 </dd>
 <dt><code>sortable-table</code></dt>
 <dd>
@@ -41,30 +46,24 @@ the table sortable by the column headings and provides a filter input
 that lets you enter text to filter by and pick a column to filter on.
 </dd>
 </dl>
-<p>One additional helper module is currently provided,
-<code>parseCSV.js</code>, that provides stringify and parse functions
-for CSV rows and strings.</p>
 <h2 id="release-notes">Release Notes</h2>
 <ul>
-<li>version: 0.0.4</li>
+<li>version: 0.0.8</li>
 <li>status: wip</li>
-<li>released: 2025-03-12</li>
+<li>released: 2025-07-03</li>
 </ul>
-<p>Bug fix correcting missing events of "focused" and "changed" in
-CSVTextarea.</p>
+<p>Added a new `&lt;input-agent-list&gt;&lt;/input-agent-list&gt;` web
+component. This allows you to use a textarea containing a list of agents
+(people and organizations) to be presented as a friendly editing element
+while preserving the textarea with JSON as a fallback.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>Doiel, R. S.</li>
-</ul>
-<h3 id="contributors">Contributors</h3>
-<ul>
-<li>Mistral</li>
 </ul>
 <h3 id="maintainers">Maintainers</h3>
 <ul>
 <li>Doiel, R. S.</li>
 </ul>
-<p>Uses: - HTML5-compatible web browser</p>
 <h2 id="related-resources">Related resources</h2>
 <ul>
 <li><a

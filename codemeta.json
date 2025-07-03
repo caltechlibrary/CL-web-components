@@ -11,13 +11,6 @@
       "email": "rsdoiel@caltech.edu"
     }
   ],
-  "contributor": [
-    {
-      "id": "https://mistral.ai",
-      "type": "Organization",
-      "name": "Mistral"
-    }
-  ],
   "maintainer": [
     {
       "id": "https://orcid.org/0000-0003-0900-6903",
@@ -28,9 +21,9 @@
     }
   ],
   "dateCreated": "2025-02-26",
-  "dateModified": "2025-06-20",
-  "datePublished": "2025-06-20",
-  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n`csv-textarea`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`a-to-z-ul`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\nOne additional helper module is currently provided, `parseCSV.js`, that provides stringify and parse functions for CSV rows and strings.",
+  "dateModified": "2025-07-03",
+  "datePublished": "2025-07-03",
+  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n\n`a-to-z-ul`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`csv-textarea`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`input-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`sortable-table`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
   "funder": [
     "Caltech Library"
   ],
@@ -53,11 +46,11 @@
     "https://github.com/caltechlibrary/a_to_z_ul"
   ],
   "runtimePlatform": "- HTML5-compatible web browser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "The files for the web components were normalized around the web componant name.\n\n- csvtextaraa.js became csv-textarea.js for `<csv-textarea></csv-textarea>`\n- a-to-z-ul.js became a-to-z-list.js for `<a-to-z-list></a-to-z-list>`\n\nObserver method setup was added to `<a-to-z-list>`. `<csv-textarea>` was updated with a form setup and observer method setup.",
+  "releaseNotes": "Added a new `<input-agent-list></input-agent-list>` web component.  This allows you to use a textarea containing a list of agents (people and organizations)\nto be presented as a friendly editing element while preserving the textarea with JSON as a fallback.",
   "copyrightYear": 2025,
   "copyrightHolder": "California Institute of Technology"
 }
