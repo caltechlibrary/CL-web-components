@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Agent List (people only)</title>
+    <script src="textarea-agent-list.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Example of an input element for lists of agents (people only)</h1>
+
+    <h2>An empty list, read to add people</h2>
+
+<textarea-agent-list people-only>
+    <textarea></textarea>
+</textarea-agent-list>
+
+
+<h2>A populated list of people example</h2>
+
+<textarea-agent-list people-only>
+    <textarea>
+    [
+        {
+            "family_name": "Doe",
+            "given_name": "John",
+            "orcid": "0000-0000-0000-0000"
+        },
+        {
+            "family_name": "Doe",
+            "given_name": "Jane",
+            "orcid": "0000-0000-0000-0001"
+        }
+    ]
+    </textarea>
+</textarea-agent-list>
+
+
+<script>
+</script>
+
+</body>
+</html>

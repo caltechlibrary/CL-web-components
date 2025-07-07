@@ -19,9 +19,9 @@
 </nav>
 <section>
 <h1 id="about-this-software">About this software</h1>
-<h2 id="cl-web-components-0.0.10">CL-web-components 0.0.10</h2>
-<p>Added support for "people-only" and "organization-only" attributes in
-`&lt;input-agent-list&gt;&lt;/input-agent-list&gt;`.</p>
+<h2 id="cl-web-components-0.0.11">CL-web-components 0.0.11</h2>
+<p>Renamed components to use a prefix of the standard element name they
+are extending.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>R. S. Doiel, <a href="https://orcid.org/0000-0003-0900-6903"
@@ -36,23 +36,23 @@ class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 Caltech Library in various web sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
-<dt>`a-to-z-ul`</dt>
+<dt>`ul-a-to-z`</dt>
 <dd>
 This component takes an innerHTML containing a UL list. The UL list is
 then turned into an A to Z navigatable UL List. If JavaScript is
 unavailable then the innerHTML UL remains as a fallback.
 </dd>
-<dt>`csv-textarea`</dt>
+<dt>`textarea-csv`</dt>
 <dd>
 This is a textarea like component who's innerHTML content is CSV data.
 The component will display this as an editable table.
 </dd>
-<dt>`input-agent-list`</dt>
+<dt>`textarea-agent-list`</dt>
 <dd>
 This element wraps a textarea containing a list of agents expressed as
 JSON.
 </dd>
-<dt>`sortable-table`</dt>
+<dt>`table-sortable`</dt>
 <dd>
 This is a component that takes an innerHTML containing table. It makes
 the table sortable by the column headings and provides a filter input
@@ -75,6 +75,12 @@ class="uri">https://github.com/caltechlibrary/CL-web-components/issues</a></li>
 <li>JavaScript</li>
 <li>HTML</li>
 <li>CSS</li>
+</ul>
+<h3 id="software-suggestions">Software Suggestions</h3>
+<ul>
+<li>Deno &gt;= 2.4</li>
+<li>CMTools &gt;= 0.0.33</li>
+<li>Pandoc &gt;= 3.1</li>
 </ul>
 </section>
 </body>

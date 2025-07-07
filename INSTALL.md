@@ -1,11 +1,24 @@
 
 # CL-web-components
 
-Current the CL-web-components can be downloaded from the GitHub, <https://github.com/caltechlibrary/CL-web-components>, or import as [ES6 Modules]() from <https://caltechlibrary.github.io/CL-web-components> followed by the module's JavaScript filename.
+The CL-web-components repository provide web components for Library, Archive and Museum related projects implemented at Caltech Library. They are available for import from <https://caltechlibrary.github.io/CL-web-components> using the following import statement, `import * as clwc from "https://caltechlibrary.github.io/CL-web-compents/mod.js".
 
-The `csv-textarea` web component is importable using `import { CSVTextarea } from 'https://caltechlibrary.github.io/CL-web-components/csvtextarea.js';`. You can import it into your HTML document using an ES6 script element in your web page, `<script type="module" src="https://caltechlibrary.github.io/CL-web-components/csvtextarea.js"></script>`.
+It recommended that you download the Zip file containing the individual components as well as the bundled components from <https://github.com/caltechlibrary/CL-web-components/releases>. Each component is bundled individually as well as all together in the file `cl-web-components.js`.
 
-The `a-to-z-ul` web component is importable using `import { AtoZUL } from 'https://caltechlibrary.github.io/CL-web-components/a_to_z_ul.js';`. You can import it into your HTML document using an ES6 script element in your web page, `<script type="module" src="https://caltechlibrary.github.io/CL-web-components/a_to_z_url.js"></script>`.
+The zip files are provided for each release. They include the release number in the filename. The combined bundle includes the version, releaseDate, releaseHash and licenseText in the bundle.
 
-A third module is available called `parseCSV.js`. This is used by `CSVTextarea`. It provides stringify and parse methods for CSV content.
- 
+Here's an example of getting the v0.0.11 `cl-web-compponents.js` combined bundled from the release on macOS or Linux.
+
+~~~
+curl -L -O https://github.com/caltechlibrary/CL-web-components/releases/download/v0.0.10/cl-web-components-0.0.11.zip
+unzip cl-web-components-0.0.11.zip cl-web-components.js
+~~~
+
+And on Windows using PowerShell.
+
+~~~
+irm -OutFile recipes.jsonl `
+  https://github.com/caltechlibrary/CL-web-components/releases/download/v0.0.10/cl-web-components-0.0.11.zip
+Expand-Archive -Path "cl-web-components-0.0.11.zip" -Item "cl-web-components.js"
+~~~
+

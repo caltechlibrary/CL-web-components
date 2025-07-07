@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Textarea Form Submission Demo</title>
-  <script type="module" src="csv-textarea.js"></script>
+  <title>Textarea CSV Form Submission Demo</title>
+  <script type="module" src="textarea-csv.js"></script>
   <style>
     pre {
       background-color: #f4f4f4;
@@ -15,14 +15,14 @@
   </style>
 </head>
 <body>
-  <h1>CSV Textarea Form Submission Demo</h1>
+  <h1>Textarea CSV Form Submission Demo</h1>
   <form id="the-form" method="post">
-    <csv-textarea name="csvData" column-headings="Name,Age,City" debug>
+    <textarea-csv name="csvData" column-headings="Name,Age,City" debug>
       <textarea name="csvData">
         "Doe, Jane",20,"Rancho Cucamonga"
         "Doe, John",25,"Cocomo"
       </textarea>
-    </csv-textarea>
+    </textarea-csv>
     <button type="submit">Submit</button>
   </form>
 
@@ -34,7 +34,7 @@
     document.getElementById('the-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent the default form submission
       // NOTE: We need to force the inner textarea to be update before fetching the form data.
-      const csv_textarea = document.querySelector('csv-textarea');
+      const csv_textarea = document.querySelector('textarea-csv');
       csv_textarea.toTextarea();
       const formData = new FormData(this);
       let output = [];

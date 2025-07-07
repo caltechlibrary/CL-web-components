@@ -21,9 +21,9 @@
     }
   ],
   "dateCreated": "2025-02-26",
-  "dateModified": "2025-07-03",
-  "datePublished": "2025-07-03",
-  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n\n`a-to-z-ul`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`csv-textarea`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`input-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`sortable-table`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
+  "dateModified": "2025-07-07",
+  "datePublished": "2025-07-07",
+  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n\n`ul-a-to-z`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`textarea-csv`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`textarea-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`table-sortable`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
   "funder": [
     "Caltech Library"
   ],
@@ -45,12 +45,17 @@
     "https://github.com/caltechlibrary/csvtextarea",
     "https://github.com/caltechlibrary/a_to_z_ul"
   ],
-  "runtimePlatform": "- HTML5-compatible web browser",
-  "version": "0.0.10",
+  "runtimePlatform": "HTML5-compatible web browser",
+  "softwareSuggestions": [
+    "Deno >= 2.4",
+    "CMTools >= 0.0.33",
+    "Pandoc >= 3.1"
+  ],
+  "version": "0.0.11",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "Added support for \"people-only\" and \"organization-only\" attributes in `<input-agent-list></input-agent-list>`.",
+  "releaseNotes": "Renamed components to use a prefix of the standard element name they are extending.",
   "copyrightYear": 2025,
   "copyrightHolder": "California Institute of Technology"
 }

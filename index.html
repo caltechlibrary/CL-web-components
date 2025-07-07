@@ -18,28 +18,28 @@
 </ul>
 </nav>
 <section>
-<h1 id="cl-web-components">CL-web-components</h1>
+<h1 id="cl-web-components-0.0.11">CL-web-components 0.0.11</h1>
 <p>CL-web-components provides a collection of Web Components used by
 Caltech Library in various web sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
-<dt><code>a-to-z-ul</code></dt>
+<dt><code>ul-a-to-z</code></dt>
 <dd>
 This component takes an innerHTML containing a UL list. The UL list is
 then turned into an A to Z navigatable UL List. If JavaScript is
 unavailable then the innerHTML UL remains as a fallback.
 </dd>
-<dt><code>csv-textarea</code></dt>
+<dt><code>textarea-csv</code></dt>
 <dd>
 This is a textarea like component who’s innerHTML content is CSV data.
 The component will display this as an editable table.
 </dd>
-<dt><code>input-agent-list</code></dt>
+<dt><code>textarea-agent-list</code></dt>
 <dd>
 This element wraps a textarea containing a list of agents expressed as
 JSON.
 </dd>
-<dt><code>sortable-table</code></dt>
+<dt><code>table-sortable</code></dt>
 <dd>
 This is a component that takes an innerHTML containing table. It makes
 the table sortable by the column headings and provides a filter input
@@ -48,14 +48,12 @@ that lets you enter text to filter by and pick a column to filter on.
 </dl>
 <h2 id="release-notes">Release Notes</h2>
 <ul>
-<li>version: 0.0.9</li>
+<li>version: 0.0.11</li>
 <li>status: wip</li>
-<li>released: 2025-07-03</li>
+<li>released: 2025-07-07</li>
 </ul>
-<p>Added a new `&lt;input-agent-list&gt;&lt;/input-agent-list&gt;` web
-component. This allows you to use a textarea containing a list of agents
-(people and organizations) to be presented as a friendly editing element
-while preserving the textarea with JSON as a fallback.</p>
+<p>Renamed components to use a prefix of the standard element name they
+are extending.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>Doiel, R. S.</li>
@@ -64,6 +62,12 @@ while preserving the textarea with JSON as a fallback.</p>
 <ul>
 <li>Doiel, R. S.</li>
 </ul>
+<h2 id="software-suggestions">Software Suggestions</h2>
+<ul>
+<li>CMTools &gt;= 0.0.33</li>
+<li>Pandoc &gt;= 3.1</li>
+</ul>
+<p><strong>Uses: HTML5-compatible web browser</strong></p>
 <h2 id="related-resources">Related resources</h2>
 <ul>
 <li><a

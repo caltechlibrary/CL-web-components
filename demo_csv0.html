@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Textarea</title>
-  <script type="module" src="csv-textarea.js"></script>
+  <title>Textarea CSV</title>
+  <script type="module" src="textarea-csv.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const csvTextarea = document.querySelector('csv-textarea');
+      const textareaCSV = document.querySelector('textarea-csv');
 
-      // Listen for change events on the csv-textarea
-      csvTextarea.addEventListener('change', () => {
-        console.log('CSV content changed:', csvTextarea.innerHTML);
+      // Listen for change events on the textarea-csv
+      textareaCSV.addEventListener('change', () => {
+        console.log('CSV content changed:', textareaCSV.innerHTML);
       });
     });
   </script>
 </head>
 <body>
-  <p>This is a minimal test of the csv-textarea component. The column headings should be taken from the first row of CSV content.</p>
+  <p>This is a minimal test of the textarea-csv component. The column headings should be taken from the first row of CSV content.</p>
   <form id="csvDataTest">
-    <csv-textarea id="csvData" name="csvData" column-headings="Name,Age,City" debug="true">
+    <textarea-csv id="csvData" name="csvData" column-headings="Name,Age,City" debug="true">
       <textarea name="csvData">
 John,30,New York
 Jane,25,Los Angeles
       </textarea>
-    </csv-textarea>
+    </textarea-csv>
     <p></p>
     <button type="submit">Submit</button>
   </form>
@@ -32,8 +32,8 @@ Jane,25,Los Angeles
   // Example usage
 document.getElementById('csvDataTest').addEventListener('submit', async function(event) {
   event.preventDefault();
-  const csvTextarea = document.getElementById('csvData');
-  const src = csvTextarea.toCSV();
+  const textareaCSV = document.getElementById('csvData');
+  const src = textareaCSV.toCSV();
   const data = new FormData(event.target);
   data.delete('csvData');
   data.set('csvData', src);
@@ -52,7 +52,7 @@ document.getElementById('csvDataTest').addEventListener('submit', async function
 });
 
 // Add an event listener for the custom 'cell-changed' event
-document.querySelector('csv-textarea').addEventListener('cell-changed', (event) => {
+document.querySelector('textarea-csv').addEventListener('cell-changed', (event) => {
   console.log('Cell changed:', event.detail);
 });
 </script>

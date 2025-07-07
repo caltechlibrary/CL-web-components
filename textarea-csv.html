@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="textareacsv">TextareaCSV</h1>
+<p>This is a web component intended to wrap a textarea where people
+would enter CSV encoded text. By wrapping the textarea element we
+provide a fallback should JavaScript be unavailable.</p>
+<h2 id="overview">Overview</h2>
+<p>The <code>TextareaCSV</code> web component is designed to create an
+interactive table from CSV data, allowing users to edit the data
+directly in the table. It supports features like appending rows,
+cleaning up empty rows, and converting table data to and from CSV
+format.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>CSV Parsing</strong>: Automatically parses CSV data into a
+table format.</li>
+<li><strong>Editable Table</strong>: Allows users to edit table cells
+directly.</li>
+<li><strong>Row Management</strong>: Provides functionality to append
+rows and clean up empty rows.</li>
+<li><strong>Autocomplete</strong>: Supports autocomplete for table cells
+using <code>&lt;datalist&gt;</code> elements.</li>
+<li><strong>Event Handling</strong>: Dispatches custom events for cell
+changes and focus.</li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<ul>
+<li><strong><code>column-headings</code></strong>: A comma-separated
+string of column headings for the table.</li>
+<li><strong><code>id</code></strong>: Sets the ID of the component.</li>
+<li><strong><code>class</code></strong>: Sets the class of the
+component.</li>
+<li><strong><code>caption</code></strong>: Sets a caption for the
+table.</li>
+<li><strong><code>text</code></strong>: Sets the initial text content of
+the table.</li>
+<li><strong><code>placeholder</code></strong>: Sets the placeholder text
+for input fields in the table.</li>
+<li><strong><code>css-href</code></strong>: Links to an external CSS
+file for styling.</li>
+<li><strong><code>debug</code></strong>: Enables debug mode, which logs
+additional information to the console.</li>
+<li><strong><code>title</code></strong>: Sets a title for the help
+icon.</li>
+<li><strong><code>help-description</code></strong>: Sets a description
+for the help icon.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<ol type="1">
+<li><p><strong>Include the Component</strong>: Ensure the component’s
+JavaScript file is included in your HTML.</p></li>
+<li><p><strong>HTML Structure</strong>: Use the
+<code>&lt;textarea-csv&gt;</code> tag and include a
+<code>&lt;textarea&gt;</code> with CSV data inside it.</p></li>
+</ol>
+<h2 id="example">Example</h2>
+<p>Here’s an example of how to use the <code>TextareaCSV</code>
+component in an HTML file:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>TextareaCSV Component Example<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;path/to/your/TextareaCSV.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">textarea-csv</span><span class="ot"> column-headings</span><span class="op">=</span><span class="st">&quot;Name,Age,City&quot;</span><span class="ot"> debug</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      John Doe,30,New York</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      Jane Smith,25,Los Angeles</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">textarea-csv</span><span class="dt">&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="explanation">Explanation</h2>
+<ul>
+<li><strong>Component Tag</strong>: The
+<code>&lt;textarea-csv&gt;</code> tag is used to define the
+component.</li>
+<li><strong>Column Headings</strong>: The <code>column-headings</code>
+attribute specifies the headings for the table columns.</li>
+<li><strong>Debug Mode</strong>: The <code>debug</code> attribute
+enables debug mode, which logs additional information to the
+console.</li>
+<li><strong>Textarea</strong>: The <code>&lt;textarea&gt;</code> inside
+the component contains the initial CSV data.</li>
+</ul>
+<h2 id="customization">Customization</h2>
+<ul>
+<li><strong>Styling</strong>: You can customize the styles by modifying
+the CSS in the <code>initializeComponent</code> method or by linking to
+an external CSS file using the <code>css-href</code> attribute.</li>
+<li><strong>Autocomplete</strong>: Use <code>&lt;datalist&gt;</code>
+elements to provide autocomplete options for table cells.</li>
+<li><strong>Event Listeners</strong>: Customize event listeners in the
+<code>setupEventListeners</code> method to handle specific
+interactions.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The <code>TextareaCSV</code> component simplifies the creation of
+editable tables from CSV data, making it easier to manage and interact
+with tabular data in web applications. By following the usage guidelines
+and customizing as needed, you can integrate this component into your
+web projects seamlessly.</p>
+</section>
+</body>
+</html>

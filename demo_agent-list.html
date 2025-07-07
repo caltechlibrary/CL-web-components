@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Agent List</title>
+    <script src="textarea-agent-list.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Example of an input element for lists of agents (people and organizations)</h1>
+
+    <h2>An empty list, read to add people or organizations</h2>
+
+<textarea-agent-list>
+    <textarea></textarea>
+</textarea-agent-list>
+
+
+<h2>A populated list example</h2>
+
+NOTE: style attribute is being passed so you should see different color text and background. 
+
+<textarea-agent-list style="color: yellow; background-color: blue; font-size: 16px;">
+    <textarea>
+    [
+        {
+            "family_name": "Doe",
+            "given_name": "John",
+            "orcid": "0000-0000-0000-0000"
+        },
+        {
+            "name": "Example Organization",
+            "ror": "0000001"
+        }
+    ]
+    </textarea>
+</textarea-agent-list>
+
+
+<script>
+</script>
+
+</body>
+</html>

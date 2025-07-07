@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Textarea</title>
-  <script type="module" src="csv-textarea.js" defer></script>
+  <title>Textarea CSV</title>
+  <script type="module" src="textarea-csv.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const csvTextarea = document.querySelector('csv-textarea');
+      const textareaCSV = document.querySelector('textarea-csv');
 
-      // Listen for change events on the csv-textarea
-      csvTextarea.addEventListener('change', (event) => {
+      // Listen for change events on the textarea-csv
+      textareaCSV.addEventListener('change', (event) => {
         console.log('Cell changed:', event.detail);
       });
 
@@ -18,7 +18,7 @@
       const jsonButton = document.createElement('button');
       jsonButton.textContent = 'Convert to JSON';
       jsonButton.addEventListener('click', () => {
-        console.log('JSON content:', csvTextarea.toJSON());
+        console.log('JSON content:', textareaCSV.toJSON());
       });
       document.body.appendChild(jsonButton);
 
@@ -26,7 +26,7 @@
       const updateByNameButton = document.createElement('button');
       updateByNameButton.textContent = 'Update Cell (1, "Age") to "New Value"';
       updateByNameButton.addEventListener('click', () => {
-        csvTextarea.setCellValue(1, 'Age', 'New Value');
+        textareaCSV.setCellValue(1, 'Age', 'New Value');
       });
       document.body.appendChild(updateByNameButton);
 
@@ -34,7 +34,7 @@
       const updateByNumberButton = document.createElement('button');
       updateByNumberButton.textContent = 'Update Cell (1, 2) to "Another Value"';
       updateByNumberButton.addEventListener('click', () => {
-        csvTextarea.setCellValue(1, 2, 'Another Value');
+        textareaCSV.setCellValue(1, 2, 'Another Value');
       });
       document.body.appendChild(updateByNumberButton);
 
@@ -42,7 +42,7 @@
       const getByNameButton = document.createElement('button');
       getByNameButton.textContent = 'Get Cell Value (1, "Age")';
       getByNameButton.addEventListener('click', () => {
-        const value = csvTextarea.getCellValue(1, 'Age');
+        const value = textareaCSV.getCellValue(1, 'Age');
         console.log('Cell value:', value);
       });
       document.body.appendChild(getByNameButton);
@@ -51,7 +51,7 @@
       const getByNumberButton = document.createElement('button');
       getByNumberButton.textContent = 'Get Cell Value (1, 2)';
       getByNumberButton.addEventListener('click', () => {
-        const value = csvTextarea.getCellValue(1, 2);
+        const value = textareaCSV.getCellValue(1, 2);
         console.log('Cell value:', value);
       });
       document.body.appendChild(getByNumberButton);
@@ -78,12 +78,12 @@
     This version includes the headings in the embedded CSV content as well as the title and placeholder attributes in the inner textarea.
   </p>
   <form id="example-form">
-    <csv-textarea id="csvData" rows="3" max-rows="5" debug="true" column-headings="Name,Age,City">
+    <textarea-csv id="csvData" rows="3" max-rows="5" debug="true" column-headings="Name,Age,City">
       <textarea name="csvData" title="Enter CSV data in the textarea" placeholder="one, two, three">
         John,30,New York
         Jane,25,Los Angeles  
       </textarea>
-    </csv-textarea>
+    </textarea-csv>
     <button type="submit">Submit</button>
   </form>
 </body>

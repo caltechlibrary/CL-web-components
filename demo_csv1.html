@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Textarea</title>
-  <script type="module" src="csv-textarea.js"></script>
+  <title>Textarea CSV</title>
+  <script type="module" src="textarea-csv.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const csvTextarea = document.querySelector('csv-textarea');
+      const textareaCSV = document.querySelector('textarea-csv');
 
-      // Listen for change events on the csv-textarea
-      csvTextarea.addEventListener('change', () => {
-        console.log('CSV content changed:', csvTextarea.innerHTML.innerText);
+      // Listen for change events on the textarea-csv
+      textareaCSV.addEventListener('change', () => {
+        console.log('CSV content changed:', textareaCSV.innerHTML.innerText);
       });
     });
   </script>
@@ -19,12 +19,12 @@
 <body>
   <p>This tests how quoted cells are handled. The first columns holds values that contain a quote in the CSV content.</p>
   <form id="csvDataTest">
-    <csv-textarea id="csvData" name="csvData" column-headings="Name,Age,City" debug="true">
+    <textarea-csv id="csvData" name="csvData" column-headings="Name,Age,City" debug="true">
       <textarea id="csvData" name="csvData">
 "John, of the devine",30,New York
 "Jane, of Mary of the fields",25,Los Angeles
       </textarea>
-    </csv-textarea>
+    </textarea-csv>
     <p></p>
     <button type="submit">Submit</button>
   </form>
