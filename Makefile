@@ -40,6 +40,9 @@ build: $(PROGRAMS) CITATION.cff README.md about.md version.js
 hash: .FORCE
 	git log --pretty=format:'%h' -n 1
 
+README.md: .FORCE
+	cmt codemeta.json README.md
+	
 version.js: .FORCE
 	cmt codemeta.json version.js
 	

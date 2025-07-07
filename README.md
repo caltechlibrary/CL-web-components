@@ -41,6 +41,7 @@ Renamed components to use a prefix of the standard element name they are extendi
 
 ## Software Suggestions
 
+- Deno &gt;&#x3D; 2.4
 - CMTools &gt;&#x3D; 0.0.33
 - Pandoc &gt;&#x3D; 3.1
 
