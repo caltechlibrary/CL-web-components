@@ -35,7 +35,7 @@ ifeq ($(OS), Windows)
 	EXT = .exe
 endif
 
-build: $(PROGRAMS) CITATION.cff about.md version.js
+build: $(PROGRAMS) CITATION.cff README.md about.md version.js
 
 hash: .FORCE
 	git log --pretty=format:'%h' -n 1
