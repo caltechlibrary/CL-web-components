@@ -8,7 +8,7 @@ The following are the components currently provided.
 
 
 `ul-a-to-z`
-: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
+: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
 `textarea-csv`
 : This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. 
@@ -31,7 +31,7 @@ are retained in the root of the repository. Distribution versions are generating
 Deno 2.4.1 or better is now a requirement to build the bundled versions.
 
 Additional documentation has been updated and improved in preparation for eventual integration into the Caltech Library design system.
-The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60; library which provides robust CSV support.
+The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60; library which provides robusts CSV support.
 
 
 ### Authors
