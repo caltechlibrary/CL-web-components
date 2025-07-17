@@ -1,9 +1,7 @@
 
 # Developer Notes
 
-This is a new endevour for Caltech Library. Our practices are evolving as we devlop this project and we periodically make course corrections. In I hope to highlight approaches or technique that proved useful.
+This is a new endeavor for Caltech Library. Our practices are evolving as we develop this project. You should expected periodically make course corrections. The following documentation will highlight our approaches and techiniquess to solving the challenges of developing a web component library for libraries, archives and museums.
 
-## Heuristics
-
-- this project is focused on web components useful to Libraries, Archives and Museums
-- when a component extends a standard HTML element the standard element name should be used as a prefix, e.g. `<textarea-agent-list>`, `<ul-a-to-z-list>`
+- [Web Component Naming](web_component_naming.md)
+- [Integrating CSS in Web Compnoents](integrating_css_in_web_components.md)

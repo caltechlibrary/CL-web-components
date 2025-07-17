@@ -28,4 +28,7 @@
 - [Table Sortable](table-sortable.md)
   - Source for [table-sortable](table-sortable.js)
   - [demo table sortable](demo_table-sortable.html)
-- [Developers](DEVELOPERS.md)
+- Developers
+  - [Appoach](DEVELOPERS.md)
+  - [Web Component Naming](web_component_naming.md)
+  - [Integration CSS into web components](integrating_CSS_in_web_components.md)

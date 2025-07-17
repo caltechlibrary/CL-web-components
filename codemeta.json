@@ -9,6 +9,12 @@
       "givenName": "R. S.",
       "familyName": "Doiel",
       "email": "rsdoiel@caltech.edu"
+    },
+    {
+      "type": "Person",
+      "givenName": "Twila",
+      "familyName": "Smith",
+      "email": "twila@caltech.edu"
     }
   ],
   "maintainer": [
@@ -21,7 +27,7 @@
     }
   ],
   "dateCreated": "2025-02-26",
-  "dateModified": "2025-07-07",
+  "dateModified": "2025-07-17",
   "datePublished": "2025-07-07",
   "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n\n`ul-a-to-z`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`textarea-csv`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`textarea-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`table-sortable`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
   "funder": [
@@ -46,16 +52,18 @@
     "https://github.com/caltechlibrary/a_to_z_ul"
   ],
   "runtimePlatform": "HTML5-compatible web browser",
+  "softwareRequirements": [
+    "Deno >= 2.4.1 (for bundling dependencies)"
+  ],
   "softwareSuggestions": [
-    "Deno >= 2.4",
-    "CMTools >= 0.0.33",
+    "CMTools >= 0.0.35",
     "Pandoc >= 3.1"
   ],
-  "version": "0.0.11",
+  "version": "0.0.12",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "Renamed components to use a prefix of the standard element name they are extending.",
+  "releaseNotes": "Updated documentation, preparation for integrating into Caltech Library design system. Improving CSV support in `textarea-csv` component.",
   "copyrightYear": 2025,
   "copyrightHolder": "California Institute of Technology"
 }
