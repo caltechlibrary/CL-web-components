@@ -1,17 +1,17 @@
 
 # Web Component CSS Implementation
 
-One challenge and feature of web components is that they ecapsulate the component as a single HTML element. This is a design feature of web components that insure safe default behaviors.  If the web component itself contains HTML elements the isolation maybe important for component rendering and behavior.  On the otherhand if the web component itself contains standard HTML elements and they should inherit form the page level style sheet you have a problem. The safety of an encampulated component because a barrier to how we traditionally expect CSS to apply.
+One challenge and feature of web components is that they encapsulate the component as a single HTML element. This is a design feature of web components that insure safe default behaviors.  If the web component itself contains HTML elements the isolation maybe important for component rendering and behavior.  On the other hand if the web component itself contains standard HTML elements and they should inherit form the page level style sheet you have a problem. The safety of an encapsulated component because a barrier to how we traditionally expect CSS to apply.
 
-Adding inheritance inside the web component should be weighed carefully. If it is desirable to inherit an external CSS ruleset you have several options.  First is to include the refererence as an import in the HTML template for the object. This is useful where the component will be used in a design system and the design system specifies the required CSS files and their locations.
+Adding inheritance inside the web component should be weighed carefully. If it is desirable to inherit an external CSS rule set you have several options.  First is to include the reference as an import in the HTML template for the object. This is useful where the component will be used in a design system and the design system specifies the required CSS files and their locations.
 
-Another approach is to passing in styling or stylesheet references via the web component's attributes. This can be done by defining the attributes `style` and `css-href` (or something similar). Having the `style` attributes the practice used generally with standard HTML elements. The style passed in can be vetted to make senses in the context of the whole component's rendering. A use case that fits this approach is here you might want the color scheme or front choice to pass through to the component. The `css-href` approach is slightly more complex. Before the HTML template text is instanciated you need to include the references to the CSS being included. It remains unclear if the web component can take advantage of the page's own CSS cache or if it will require an additional explicit download of the CSS. This area needs to exploration and testing to confirm behaviors.
+Another approach is to passing in styling or style sheet references via the web component's attributes. This can be done by defining the attributes `style` and `css-href` (or something similar). Having the `style` attributes the practice used generally with standard HTML elements. The style passed in can be vetted to make senses in the context of the whole component's rendering. A use case that fits this approach is here you might want the color scheme or front choice to pass through to the component. The `css-href` approach is slightly more complex. Before the HTML template text is instantiated you need to include the references to the CSS being included. It remains unclear if the web component can take advantage of the page's own CSS cache or if it will require an additional explicit download of the CSS. This area needs to exploration and testing to confirm behaviors.
 
 All the approaches are reasonable assuming the trade offs and limitations are understood.
 
-## Master stylesheet appoach
+## Master style sheet approach
 
-Here's are some use case examples of in corporating a master stylesheet approach (explitily include an `@import` rule in the component's style element).
+Here's are some use case examples of in using a master style sheet approach (explicitly include an `@import` rule in the component's style element).
 
 ### CSS Custom Properties (Variables)
 
@@ -38,7 +38,7 @@ In your web component, you can use these variables:
 
 ### External Stylesheets in Shadow DOM:
 
-You can include external stylesheets within your Shadow DOM by using JavaScript to clone the styles and append them to the Shadow DOM.
+You can include external Stylesheets within your Shadow DOM by using JavaScript to clone the styles and append them to the Shadow DOM.
 
 ~~~JavaScript
 const template = document.createElement('template');

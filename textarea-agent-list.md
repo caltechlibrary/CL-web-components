@@ -6,13 +6,13 @@ This is a web component targets a textarea that hold JSON of a list of agents. A
 
 ### Overview
 
-Library and Archives often of lists of people and organizations. In bibliographic material this would be the case for authors or contributors to a book or other published material. Lists are not natively supported in HTML web forms. The closest native element is a textarea which can contain an arbitrary number of lines. An early practice before JavaScript was envented was to teach people how to type in delimited text. After the introduction of JavaScript the JSON notation became a native browser structured data representation. For complex metadata objects describing a person or organization JSON provides a resonably effective representation. How typing JSON into a textarea is error prone, hence this web component. If web components are not supported by the browser then an inner textarea element functions as a fallback. Otherwise the wrapping web component provide a reasonable interface for managin the list of agents.
+Library and Archives often of lists of people and organizations. In bibliographic material this would be the case for authors or contributors to a book or other published material. Lists are not natively supported in HTML web forms. The closest native element is a textarea which can contain an arbitrary number of lines. An early practice before JavaScript was invented was to teach people how to type in delimited text. After the introduction of JavaScript the JSON notation became a native browser structured data representation. For complex metadata objects describing a person or organization JSON provides a reasonably effective representation. How typing JSON into a textarea is error prone, hence this web component. If web components are not supported by the browser then an inner textarea element functions as a fallback. Otherwise the wrapping web component provide a reasonable interface for managing the list of agents.
 
 ### Key Features
 
 - falls back to JSON inside a textarea
 - agents support both the concept of a person or an organization
-- the form can use POST method and the browser default urlencoding for form data
+- the form can use POST method and the browser default url encoding for form data
 
 ### Attributes
 

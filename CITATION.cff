@@ -3,7 +3,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: CL-web-components
-abstract: "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+abstract: "CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
 
 The following are the components currently provided.
 
@@ -24,6 +24,10 @@ authors:
     given-names: R. S.
     orcid: https://orcid.org/0000-0003-0900-6903
     email: rsdoiel@caltech.edu
+  - family-names: Smith
+    given-names: Twila
+    orcid: https://orcid.org/0009-0003-7975-1922
+    email: twila@caltech.edu
 
 contacts:
   - family-names: Doiel
@@ -32,8 +36,8 @@ contacts:
     email: rsdoiel@caltech.edu
 
 repository-code: "https://github.com/caltechlibrary/CL-web-components"
-version: 0.0.11
-date-released: 2025-07-07
+version: 0.0.12
+date-released: 2025-07-17
 
 license-url: "https://caltechlibrary.github.io/CL-web-components/LICENSE"
 keywords:

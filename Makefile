@@ -35,7 +35,8 @@ ifeq ($(OS), Windows)
 	EXT = .exe
 endif
 
-build: $(PROGRAMS) CITATION.cff README.md about.md version.js
+build: CITATION.cff README.md about.md version.js
+	deno task build
 
 hash: .FORCE
 	git log --pretty=format:'%h' -n 1
@@ -66,7 +67,7 @@ refresh:
 	git fetch origin
 	git pull origin $(BRANCH)
 
-publish: build website .FORCE
+publish: website .FORCE
 	./publish.bash
 
 clean:
@@ -74,11 +75,9 @@ clean:
 	@if [ -d dist ]; then rm -fR dist; fi
 	@if [ -d testout ]; then rm -fR testout; fi
 
-dist: .FORCE
-	@mkdir -p dist
+dist: build .FORCE
 	@rm -fR dist/* >/dev/null 
-	deno bundle --platform=browser --outdir=dist $(WEB_COMPONENTS)
-	deno bundle --platform=browser --output=dist/cl-web-components.js mod.js
+	deno task release
 	cp INSTALL.md dist/
 	cp LICENSE dist/
 	cp about.md dist/

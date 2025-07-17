@@ -1,14 +1,14 @@
 
 
-# CL-web-components 0.0.11
+# CL-web-components
 
-CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
 
 The following are the components currently provided.
 
 
 `ul-a-to-z`
-: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
+: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
 `textarea-csv`
 : This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. 
@@ -21,16 +21,23 @@ The following are the components currently provided.
 
 ## Release Notes
 
-- version: 0.0.11
+- version: 0.0.12
 - status: wip
-- released: 2025-07-07
+- released: 2025-07-17
 
-Renamed components to use a prefix of the standard element name they are extending.
+This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
+are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
+
+Deno 2.4.1 or better is now a requirement to build the bundled versions.
+
+Additional documentation has been updated and improved in preparation for eventual integration into the Caltech Library design system.
+The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60; library which provides robust CSV support.
 
 
 ### Authors
 
 - Doiel, R. S.
+- Smith, Twila
 
 
 
@@ -38,14 +45,18 @@ Renamed components to use a prefix of the standard element name they are extendi
 
 - Doiel, R. S.
 
+## Software Requirements
 
-## Software Suggestions
+- Deno &gt;&#x3D; 2.4.1 (for bundling dependencies)
 
-- Deno &gt;&#x3D; 2.4
-- CMTools &gt;&#x3D; 0.0.33
+### Software Suggestions
+
+- CMTools &gt;&#x3D; 0.0.35
 - Pandoc &gt;&#x3D; 3.1
 
-**Uses: HTML5-compatible web browser**
+#### Runtime platform
+
+HTML5-compatible web browser**
 
 ## Related resources
 

@@ -1,6 +1,6 @@
 ---
 title: CL-web-components
-abstract: "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+abstract: "CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
 
 The following are the components currently provided.
 
@@ -20,6 +20,9 @@ authors:
   - family_name: Doiel
     given_name: R. S.
     id: https://orcid.org/0000-0003-0900-6903
+  - family_name: Smith
+    given_name: Twila
+    id: https://orcid.org/0009-0003-7975-1922
 
 
 maintainer:
@@ -28,7 +31,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.11
+version: 0.0.12
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -43,19 +46,26 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-07-07
+date_released: 2025-07-17
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.11
+## CL-web-components 0.0.12
 
-Renamed components to use a prefix of the standard element name they are extending.
+This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
+are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
+
+Deno 2.4.1 or better is now a requirement to build the bundled versions.
+
+Additional documentation has been updated and improved in preparation for eventual integration into the Caltech Library design system.
+The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60; library which provides robusts CSV support.
 
 ### Authors
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
+- Twila Smith, <https://orcid.org/0009-0003-7975-1922>
 
 
 
@@ -65,7 +75,7 @@ Renamed components to use a prefix of the standard element name they are extendi
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
 
 
-CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.
+CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
 
 The following are the components currently provided.
 
@@ -95,12 +105,14 @@ The following are the components currently provided.
 
 
 
+### Software Requirements
+
+- Deno &gt;&#x3D; 2.4.1 (for bundling dependencies)
 
 
 ### Software Suggestions
 
-- Deno &gt;&#x3D; 2.4
-- CMTools &gt;&#x3D; 0.0.33
+- CMTools &gt;&#x3D; 0.0.35
 - Pandoc &gt;&#x3D; 3.1
 
 

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="building-web-components-with-deno">Building Web Components with
+Deno</h1>
+<p>Web components run in the browser as JavaScript. Generally speaking
+their built as independent modules. There is a growing library of
+standard modules at <a href="https://jsr.io"
+class="uri">https://jsr.io</a>. The standard modules work in Deno as
+well as the browser. This includes useful libraries like
+<code>@std/csv</code>, <code>@std/path</code> and
+<code>@std/yaml</code>. The referencing an import of these by full URLs
+is not ideal. It makes much more sense to take advantage Deno which
+provides additional functionality like check, lint, fmt and bundle. The
+last item is important for web components. With bundle we can generate a
+a web component including it’s dependent modules. This gives us much
+more reliability in deployments and flexibility of moving code between
+browser and server.</p>
+<h2 id="un-bundled-sources">Un-bundled sources</h2>
+<p>If you are working on a web component the un-bundled source should be
+placed in the <code>src/</code> directory. This allows you to include
+remote and local modules easily. The build process maintains the
+<code>version.js</code> module which includes the versioning of this
+repository as well as license text.</p>
+<p>Current the following component(s) <strong>require</strong> bundling
+due to external dependencies.</p>
+<ul>
+<li><a href="src/textarea-csv.js">src/textarea-csv.js</a>, uses
+<code>@std/csv</code></li>
+</ul>
+<p>You can build local bundles and test versions using the following
+Deno task command.</p>
+<pre class="shell"><code>deno task build</code></pre>
+<h2 id="building-cl-web-components">Building CL-web-components</h2>
+<p>The process to build a release is a little more complex than is
+convenient for a Deno task. If your are on macOS or Linux you can use
+GNU Make to run the Makefile.</p>
+<pre class="shell"><code>make build
+make website
+web release</code></pre>
+<p>On Windows you can use the related PowerShell scripts that replace
+make. Example,</p>
+<pre class="pwsh"><code>make.ps1 build
+make.ps1 website
+make.ps1 release</code></pre>
+<p>The “release” option makes the zip files needed for a GitHub release.
+If you are on macOS or Linux you can run the <code>./replace.bash</code>
+script to perform those chores if you have <code>gh</code>
+installed.</p>
+<p>NOTE: The bundled JavaScript files are in the root directory. The
+source are in the <code>src</code> directory. If you need to fix
+something, add something, etc. It should go in the <code>src/</code>
+directory. You may need to either add or edit the tasks in
+<code>deno.json</code>, <code>Makefile</code> or
+<code>make.ps1</code>.</p>
+</section>
+</body>
+</html>

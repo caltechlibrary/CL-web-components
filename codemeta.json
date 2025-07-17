@@ -11,6 +11,7 @@
       "email": "rsdoiel@caltech.edu"
     },
     {
+      "id": "https://orcid.org/0009-0003-7975-1922",
       "type": "Person",
       "givenName": "Twila",
       "familyName": "Smith",
@@ -28,8 +29,8 @@
   ],
   "dateCreated": "2025-02-26",
   "dateModified": "2025-07-17",
-  "datePublished": "2025-07-07",
-  "description": "CL-web-components provides a collection of Web Components used by Caltech Library in various web sites and projects.\n\nThe following are the components currently provided.\n\n\n`ul-a-to-z`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`textarea-csv`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`textarea-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`table-sortable`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
+  "datePublished": "2025-07-17",
+  "description": "CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.\n\nThe following are the components currently provided.\n\n\n`ul-a-to-z`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`textarea-csv`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`textarea-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`table-sortable`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
   "funder": [
     "Caltech Library"
   ],
@@ -63,7 +64,7 @@
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "Updated documentation, preparation for integrating into Caltech Library design system. Improving CSV support in `textarea-csv` component.",
+  "releaseNotes": "This release includes a re-organization of the project source code. Editable code is now maintained in `src/`.  The bundled versions\nare retained in the root of the repository. Distribution versions are generating in the `dist/` directory.\n\nDeno 2.4.1 or better is now a requirement to build the bundled versions.\n\nAdditional documentation has been updated and improved in preparation for eventual integration into the Caltech Library design system.\nThe web component, `textarea-csv` now uses the `jsr:@std/csv` library which provides robusts CSV support.",
   "copyrightYear": 2025,
   "copyrightHolder": "California Institute of Technology"
 }

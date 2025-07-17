@@ -1,22 +1,16 @@
-/**
- * TextareaAgentList let's you created a editable list of people and organizations out of a textarea containing a JSON expression
- * of the list. The wrapped textarea element provides a fallback should web components not be available in the web browser.
- */
-export class TextareaAgentList extends HTMLElement {
+// src/textarea-agent-list.js
+var TextareaAgentList = class extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
-
   connectedCallback() {
     this.loadStyles();
     this.renderContent();
     this.renderList();
     this.setupMutationObserver();
   }
-
   loadStyles() {
-    // Existing loadStyles method
     const cssHref = this.getAttribute("css-href");
     if (cssHref) {
       const link = document.createElement("link");
@@ -54,17 +48,14 @@ export class TextareaAgentList extends HTMLElement {
       this.shadowRoot.appendChild(style);
     }
   }
-
   renderContent() {
     const container = document.createElement("div");
     const styleAttribute = this.getAttribute("style");
     if (styleAttribute) {
       container.setAttribute("style", styleAttribute);
     }
-
     const personOnly = this.hasAttribute("people-only");
     const organizationOnly = this.hasAttribute("organization-only");
-
     let buttonsHTML = "";
     if (!personOnly) {
       buttonsHTML += `<button id="addOrganization" title="add organization to the list">Add Organization</button>`;
@@ -72,22 +63,18 @@ export class TextareaAgentList extends HTMLElement {
     if (!organizationOnly) {
       buttonsHTML += `<button id="addPerson" title="add person to this list">Add Person</button>`;
     }
-
     container.innerHTML = `
       <ul id="agentList"></ul>
       ${buttonsHTML}
     `;
-
     this.shadowRoot.appendChild(container);
     this.agentList = this.shadowRoot.querySelector("#agentList");
-
     if (!personOnly) {
       const addOrganizationButton = this.shadowRoot.getElementById("addOrganization");
       if (addOrganizationButton) {
         addOrganizationButton.addEventListener("click", () => this.addAgent("organization"));
       }
     }
-
     if (!organizationOnly) {
       const addPersonButton = this.shadowRoot.getElementById("addPerson");
       if (addPersonButton) {
@@ -95,7 +82,6 @@ export class TextareaAgentList extends HTMLElement {
       }
     }
   }
-
   renderList() {
     const textarea = this.querySelector("textarea");
     if (textarea) {
@@ -108,15 +94,13 @@ export class TextareaAgentList extends HTMLElement {
         this.agentList.innerHTML = "";
         const personOnly = this.hasAttribute("person-only");
         const organizationOnly = this.hasAttribute("organization-only");
-
         parsedContent.forEach((agent, index) => {
           const li = document.createElement("li");
           const styleAttribute = this.getAttribute("style");
           if (styleAttribute) {
             li.setAttribute("style", styleAttribute);
           }
-
-          if (!organizationOnly && (agent.family_name !== undefined || agent.given_name !== undefined || agent.orcid !== undefined)) {
+          if (!organizationOnly && (agent.family_name !== void 0 || agent.given_name !== void 0 || agent.orcid !== void 0)) {
             li.innerHTML = `
               <div>
                 <input type="text" placeholder="Family Name" title="Family Name" value="${agent.family_name || ""}" data-index="${index}" data-field="family_name" style="${styleAttribute}">
@@ -125,7 +109,7 @@ export class TextareaAgentList extends HTMLElement {
               </div>
               <button class="removeAgent" title="remove this person from list" data-index="${index}" style="${styleAttribute}">Remove</button>
             `;
-          } else if (!personOnly && (agent.name !== undefined || agent.ror !== undefined)) {
+          } else if (!personOnly && (agent.name !== void 0 || agent.ror !== void 0)) {
             li.innerHTML = `
               <div>
                 <input type="text" placeholder="Organization Name" title="Organization name" value="${agent.name || ""}" data-index="${index}" data-field="name" style="${styleAttribute}">
@@ -134,19 +118,15 @@ export class TextareaAgentList extends HTMLElement {
               <button class="removeAgent" title="remove this organization from list" data-index="${index}" style="${styleAttribute}">Remove</button>
             `;
           }
-
           this.agentList.appendChild(li);
         });
-
         this.setupEventListeners();
       } catch (e) {
         console.error("Error parsing JSON:", e);
       }
     }
   }
-
   setupMutationObserver() {
-    // Existing setupMutationObserver method
     const textarea = this.querySelector("textarea");
     if (textarea) {
       this.handleJsonChange({ target: textarea });
@@ -161,9 +141,7 @@ export class TextareaAgentList extends HTMLElement {
       observer.observe(textarea, config);
     }
   }
-
   handleJsonChange(event) {
-    // Existing handleJsonChange method
     if (event.target.value !== "") {
       try {
         const jsonContent = event.target.value;
@@ -174,9 +152,7 @@ export class TextareaAgentList extends HTMLElement {
       }
     }
   }
-
   setupEventListeners() {
-    // Existing setupEventListeners method
     this.shadowRoot.querySelectorAll("input").forEach((input) => {
       input.addEventListener("change", this.handleInputChange.bind(this));
       input.addEventListener("input", this.validateInput.bind(this));
@@ -185,22 +161,18 @@ export class TextareaAgentList extends HTMLElement {
       button.addEventListener("click", this.handleRemoveAgent.bind(this));
     });
   }
-
   validateInput(event) {
-    // Existing validateInput method
     const input = event.target;
     const isValid = input.checkValidity();
-    if (input.hasAttribute('pattern')) {
+    if (input.hasAttribute("pattern")) {
       if (isValid) {
-        input.style.borderColor = 'green';
+        input.style.borderColor = "green";
       } else {
-        input.style.borderColor = 'red';
+        input.style.borderColor = "red";
       }
     }
   }
-
   handleInputChange(event) {
-    // Existing handleInputChange method
     const textarea = this.querySelector("textarea");
     if (textarea) {
       if (textarea.value === "") {
@@ -218,9 +190,7 @@ export class TextareaAgentList extends HTMLElement {
       }
     }
   }
-
   handleRemoveAgent(event) {
-    // Existing handleRemoveAgent method
     const textarea = this.querySelector("textarea");
     if (textarea) {
       if (textarea.value === "") {
@@ -238,7 +208,6 @@ export class TextareaAgentList extends HTMLElement {
       }
     }
   }
-
   addAgent(type) {
     const textarea = this.querySelector("textarea");
     if (textarea) {
@@ -250,20 +219,18 @@ export class TextareaAgentList extends HTMLElement {
         const parsedContent = JSON.parse(jsonContent);
         const personOnly = this.hasAttribute("people-only");
         const organizationOnly = this.hasAttribute("organization-only");
-
-        if ((!organizationOnly && type === "person") || personOnly) {
+        if (!organizationOnly && type === "person" || personOnly) {
           parsedContent.push({
             family_name: "",
             given_name: "",
-            orcid: "",
+            orcid: ""
           });
-        } else if ((!personOnly && type === "organization") || organizationOnly) {
+        } else if (!personOnly && type === "organization" || organizationOnly) {
           parsedContent.push({
             name: "",
-            ror: "",
+            ror: ""
           });
         }
-
         textarea.value = JSON.stringify(parsedContent, null, 2);
         this.renderList();
       } catch (e) {
@@ -271,6 +238,8 @@ export class TextareaAgentList extends HTMLElement {
       }
     }
   }
-}
-
+};
 customElements.define("textarea-agent-list", TextareaAgentList);
+export {
+  TextareaAgentList
+};

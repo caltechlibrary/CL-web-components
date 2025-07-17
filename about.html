@@ -19,13 +19,24 @@
 </nav>
 <section>
 <h1 id="about-this-software">About this software</h1>
-<h2 id="cl-web-components-0.0.11">CL-web-components 0.0.11</h2>
-<p>Renamed components to use a prefix of the standard element name they
-are extending.</p>
+<h2 id="cl-web-components-0.0.12">CL-web-components 0.0.12</h2>
+<p>This release includes a re-organization of the project source code.
+Editable code is now maintained in `src/`. The bundled versions are
+retained in the root of the repository. Distribution versions are
+generating in the `dist/` directory.</p>
+<p>Deno 2.4.1 or better is now a requirement to build the bundled
+versions.</p>
+<p>Additional documentation has been updated and improved in preparation
+for eventual integration into the Caltech Library design system. The web
+component, `textarea-csv` now uses the `jsr:<span class="citation"
+data-cites="std/csv">@std/csv</span>` library which provides robusts CSV
+support.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>R. S. Doiel, <a href="https://orcid.org/0000-0003-0900-6903"
 class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
+<li>Twila Smith, <a href="https://orcid.org/0009-0003-7975-1922"
+class="uri">https://orcid.org/0009-0003-7975-1922</a></li>
 </ul>
 <h3 id="maintainers">Maintainers</h3>
 <ul>
@@ -33,7 +44,7 @@ class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 </ul>
 <p>CL-web-components provides a collection of Web Components used by
-Caltech Library in various web sites and projects.</p>
+Caltech Library across sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
 <dt>`ul-a-to-z`</dt>
@@ -76,10 +87,13 @@ class="uri">https://github.com/caltechlibrary/CL-web-components/issues</a></li>
 <li>HTML</li>
 <li>CSS</li>
 </ul>
+<h3 id="software-requirements">Software Requirements</h3>
+<ul>
+<li>Deno &gt;= 2.4.1 (for bundling dependencies)</li>
+</ul>
 <h3 id="software-suggestions">Software Suggestions</h3>
 <ul>
-<li>Deno &gt;= 2.4</li>
-<li>CMTools &gt;= 0.0.33</li>
+<li>CMTools &gt;= 0.0.35</li>
 <li>Pandoc &gt;= 3.1</li>
 </ul>
 </section>

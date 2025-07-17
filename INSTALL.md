@@ -7,7 +7,7 @@ It recommended that you download the Zip file containing the individual componen
 
 The zip files are provided for each release. They include the release number in the filename. The combined bundle includes the version, releaseDate, releaseHash and licenseText in the bundle.
 
-Here's an example of getting the v0.0.11 `cl-web-compponents.js` combined bundled from the release on macOS or Linux.
+Here's an example of getting the v0.0.11 `cl-web-components.js` combined bundled from the release on macOS or Linux.
 
 ~~~
 curl -L -O https://github.com/caltechlibrary/CL-web-components/releases/download/v0.0.10/cl-web-components-0.0.11.zip

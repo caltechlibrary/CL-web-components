@@ -23,12 +23,13 @@
   - [demo textarea-csv basic](demo_csv_basic.html)
   - [demo textarea-csv submit](demo_csv_submit.html)
   - [demo textarea-csv autocomplete](demo_csv_autocomplete0.html)
-  - [demo textarea-csv autocomplete populated programatically](demo_csv_autocomplete1.html)
+  - [demo textarea-csv autocomplete populated programmatically](demo_csv_autocomplete1.html)
   - [demo textarea-csv customCleanupFilter](demo_csv_customCleanupFilter.html)
 - [Table Sortable](table-sortable.md)
   - Source for [table-sortable](table-sortable.js)
   - [demo table sortable](demo_table-sortable.html)
-- Developers
-  - [Appoach](DEVELOPERS.md)
+- [Developers](DEVELOPERS.md)
   - [Web Component Naming](web_component_naming.md)
   - [Integration CSS into web components](integrating_CSS_in_web_components.md)
+  - [Building Web Components with Deno](building_web_components_with_deno.md)
+
