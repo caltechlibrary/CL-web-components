@@ -18,4 +18,19 @@ Sr. Mary   Mount Saint Mary\'s College   1919
 Georgina   Smith College                 1925
 Evelyn     Barnard College               1920
 
-See a [Table Sortable Demo](demo_table-sortable.html) for web component version.
+
+<div id="demo">
+The sortable of version is here.
+</div>
+
+<script type="module" src="table-sortable.js"></script>
+
+<script>
+    const demo = document.getElementById('demo');
+    const clonedTable = document.querySelector('table').cloneNode(true);
+    const sortableTable = document.createElement('table-sortable');
+    sortableTable.appendChild(clonedTable);
+    demo.appendChild(sortableTable);
+</script>
+
+See a the [Table Sortable Demo](demo_table-sortable.html)

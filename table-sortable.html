@@ -55,8 +55,19 @@ filter element that operates on the table by column.</p>
 </tr>
 </tbody>
 </table>
-<p>See a <a href="demo_table-sortable.html">Table Sortable Demo</a> for
-web component version.</p>
+<div id="demo">
+<p>The sortable of version is here.</p>
+</div>
+<script type="module" src="table-sortable.js"></script>
+<script>
+    const demo = document.getElementById('demo');
+    const clonedTable = document.querySelector('table').cloneNode(true);
+    const sortableTable = document.createElement('table-sortable');
+    sortableTable.appendChild(clonedTable);
+    demo.appendChild(sortableTable);
+</script>
+<p>See a the <a href="demo_table-sortable.html">Table Sortable
+Demo</a></p>
 </section>
 </body>
 </html>

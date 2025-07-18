@@ -48,8 +48,8 @@ Here's an example of how to use the `TextareaCSV` component in an HTML file:
   <script type="module" src="path/to/your/TextareaCSV.js"></script>
 </head>
 <body>
-  <textarea-csv column-headings="Name,Age,City" debug>
-    <textarea>
+  <textarea-csv name="people-table" column-headings="Name,Age,City" debug>
+    <textarea name="people-table">
       John Doe,30,New York
       Jane Smith,25,Los Angeles
     </textarea>
