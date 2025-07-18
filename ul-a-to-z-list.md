@@ -26,31 +26,43 @@ The `ULAToZList` web component is designed to create an alphabetical menu from a
 
 ### Example
 
+#### Implementation
+
 Here's an example of how to use the `ULAToZList` component in an HTML file:
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ULAToZList Component Example</title>
-  <script type="module" src="ul-a-to-z-list.js"></script>
-</head>
-<body>
-  <ul-a-to-z-list long>
+  <ul-a-to-z-list>
     <ul>
       <li>Apple</li>
       <li>Banana</li>
       <li>Cherry</li>
       <li>Date</li>
       <li>Elderberry</li>
-      <!-- Add more items as needed -->
     </ul>
   </ul-a-to-z-list>
-</body>
-</html>
 ```
+
+Here's that UL list without the web component wraping it
+
+- Apple
+- Banana
+- Cherry
+- Date
+- Elderberry
+
+<div id="demo">Here's the version with an A to Z list integrated.</div>
+
+<script type="module" src="ul-a-to-z-list.js" defer></script>
+
+<script>
+    const demo = document.getElementById('demo');
+    const clonedUL = document.querySelector('ul:nth-of-type(3)').cloneNode(true);
+    const aToZList = document.createElement('ul-a-to-z-list');
+    aToZList.setAttribute('long', true);
+    aToZList.appendChild(clonedUL);
+    demo.appendChild(aToZList);
+    console.log("DEBUG demo.innerHTML", demo.innerHTML);
+</script>
 
 ### Explanation
 
@@ -66,3 +78,4 @@ Here's an example of how to use the `ULAToZList` component in an HTML file:
 ### Conclusion
 
 The `ULAToZList` component simplifies the creation of alphabetical navigation menus, making it easier to organize and navigate large lists of items. By following the usage guidelines and customizing as needed, you can integrate this component into your web projects seamlessly.
+
