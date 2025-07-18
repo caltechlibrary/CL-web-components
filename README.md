@@ -7,16 +7,16 @@ CL-web-components provides a collection of Web Components used by Caltech Librar
 The following are the components currently provided.
 
 
-[`<ul-a-to-z-list>`](ul-a-to-z-list.md)
+`ul-a-to-z`
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-[`<textarea-csv>`](textarea-csv.md)
+`textarea-csv`
 : This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. 
 
-[`<textarea-agent-list>`](textarea-agent-list.md)
+`textarea-agent-list`
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
-[`<table-sortable>`](table-sortable.md)
+`table-sortable`
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
 ## Release Notes
