@@ -30,33 +30,53 @@ Library and Archives often of lists of people and organizations. In bibliographi
 Here's an example of how to use the `<textarea-agent-list>` component in an HTML file:
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Agent List</title>
-    <script src="textarea-agent-list.js" type="module"></script>
-</head>
-<body>
-    <textarea-agent-list>
-        <textarea name="agentListJson">
-            [
-                {
-                    "family_name": "Doe",
-                    "given_name": "John",
-                    "orcid": "0000-0000-0000-0000"
-                },
-                {
-                    "name": "Example Organization",
-                    "ror": "https://ror.org/05dxps055"
-                }
-            ]
-        </textarea>
-    </textarea-agent-list>
-</body>
-</html>
+<textarea-agent-list>
+    <textarea name="agentListJson" rows="11" cols="46">
+[
+    {
+        "family_name": "Doe",
+        "given_name": "John",
+        "orcid": "0000-0000-0000-0000"
+    },
+    {
+        "name": "Example Organization",
+        "ror": "https://ror.org/05dxps055"
+    }
+]
+    </textarea>
+</textarea-agent-list>
 ```
+
+This is how the standard textarea for that would look.
+
+<p><textarea name="agentListJson" rows="11" cols="46">
+[
+    {
+        "family_name": "Doe",
+        "given_name": "John",
+        "orcid": "0000-0000-0000-0000"
+    },
+    {
+        "name": "Example Organization",
+        "ror": "https://ror.org/05dxps055"
+    }
+]
+</textarea></p>
+
+<div id="demo">This is how the component version looks</div> 
+
+<script type="module" src="textarea-agent-list.js" defer></script>
+
+<script>
+    const demo = document.getElementById('demo');
+    const clonedElem = document.querySelector('textarea').cloneNode(true);
+    const component = document.createElement('textarea-agent-list');
+    component.appendChild(clonedElem);
+    demo.appendChild(component);
+    console.log("DEBUG demo.innerHTML", demo.innerHTML);
+</script>
+
+
 
 ### Explanation
 
