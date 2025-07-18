@@ -39,24 +39,34 @@ The `TextareaCSV` web component is designed to create an interactive table from 
 Here's an example of how to use the `TextareaCSV` component in an HTML file:
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TextareaCSV Component Example</title>
-  <script type="module" src="path/to/your/TextareaCSV.js"></script>
-</head>
-<body>
-  <textarea-csv name="people-table" column-headings="Name,Age,City" debug>
-    <textarea name="people-table">
+  <textarea-csv id="people-table" name="people-table" column-headings="Name,Age,City" debug>
+    <textarea id="people-table" name="people-table">
       John Doe,30,New York
       Jane Smith,25,Los Angeles
     </textarea>
   </textarea-csv>
-</body>
-</html>
 ```
+
+Here is what that standard textarea looks like.
+
+<textarea>
+  John Doe,30,New York
+  Jane Smith,25,Los Angeles
+</textarea>
+
+<div id="demo">Here's the tablized version.</div>
+
+<script type="module" src="textarea-csv.js" defer></script>
+
+<script>
+    const demo = document.getElementById('demo');
+    const clonedElem = document.querySelector('textarea').cloneNode(true);
+    const component = document.createElement('textarea-csv');
+
+    component.appendChild(clonedElem);
+    demo.appendChild(component);
+    console.log("DEBUG demo.innerHTML", demo.innerHTML);
+</script>
 
 ## Explanation
 
