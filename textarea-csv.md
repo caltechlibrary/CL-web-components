@@ -40,7 +40,7 @@ Here's an example of how to use the `TextareaCSV` component in an HTML file:
 
 ```html
   <textarea-csv id="people-table" name="people-table" column-headings="Name,Age,City" debug>
-    <textarea id="people-table" name="people-table">
+    <textarea id="people-table" name="people-table" rows="2" cols="36>
       John Doe,30,New York
       Jane Smith,25,Los Angeles
     </textarea>
@@ -49,12 +49,12 @@ Here's an example of how to use the `TextareaCSV` component in an HTML file:
 
 Here is what that standard textarea looks like.
 
-<textarea>
+<p><textarea id="people-table" name="people-table" rows="2" cols="36">
   John Doe,30,New York
   Jane Smith,25,Los Angeles
-</textarea>
+</textarea><p>
 
-<div id="demo">Here's the tablized version.</div>
+<div id="demo">Here's the tablized version.<p></div>
 
 <script type="module" src="textarea-csv.js" defer></script>
 
@@ -62,7 +62,8 @@ Here is what that standard textarea looks like.
     const demo = document.getElementById('demo');
     const clonedElem = document.querySelector('textarea').cloneNode(true);
     const component = document.createElement('textarea-csv');
-
+    component.setAttribute('column-headings', "Name,Age,City");
+    component.setAttribute('debug', true);
     component.appendChild(clonedElem);
     demo.appendChild(component);
     console.log("DEBUG demo.innerHTML", demo.innerHTML);
