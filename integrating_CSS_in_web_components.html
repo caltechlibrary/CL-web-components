@@ -23,32 +23,32 @@ Implementation</h1>
 <p>One challenge and feature of web components is that they encapsulate
 the component as a single HTML element. This is a design feature of web
 components that insure safe default behaviors. If the web component
-itself contains HTML elements the isolation maybe important for
-component rendering and behavior. On the other hand if the web component
-itself contains standard HTML elements and they should inherit form the
-page level style sheet you have a problem. The safety of an encapsulated
-component because a barrier to how we traditionally expect CSS to
-apply.</p>
+itself contains HTML elements, the isolation may be important for
+component rendering and behavior. On the other hand, if the web
+component itself contains standard HTML elements and they should inherit
+form the page level style sheet you have a problem. The safety of an
+encapsulated component becomes a barrier to how we traditionally expect
+CSS to apply.</p>
 <p>Adding inheritance inside the web component should be weighed
-carefully. If it is desirable to inherit an external CSS rule set you
+carefully. If it is desirable to inherit an external CSS rule set, you
 have several options. First is to include the reference as an import in
 the HTML template for the object. This is useful where the component
 will be used in a design system and the design system specifies the
 required CSS files and their locations.</p>
-<p>Another approach is to passing in styling or style sheet references
-via the web component’s attributes. This can be done by defining the
+<p>Another approach is to pass in styling or style sheet references via
+the web component’s attributes. This can be done by defining the
 attributes <code>style</code> and <code>css-href</code> (or something
-similar). Having the <code>style</code> attributes the practice used
+similar). Having the <code>style</code> attributes is the practice used
 generally with standard HTML elements. The style passed in can be vetted
 to make senses in the context of the whole component’s rendering. A use
 case that fits this approach is here you might want the color scheme or
-front choice to pass through to the component. The <code>css-href</code>
+font choice to pass through to the component. The <code>css-href</code>
 approach is slightly more complex. Before the HTML template text is
-instantiated you need to include the references to the CSS being
+instantiated, you need to include the references to the CSS being
 included. It remains unclear if the web component can take advantage of
 the page’s own CSS cache or if it will require an additional explicit
-download of the CSS. This area needs to exploration and testing to
-confirm behaviors.</p>
+download of the CSS. This area needs exploration and testing to confirm
+behaviors.</p>
 <p>All the approaches are reasonable assuming the trade offs and
 limitations are understood.</p>
 <h2 id="master-style-sheet-approach">Master style sheet approach</h2>
