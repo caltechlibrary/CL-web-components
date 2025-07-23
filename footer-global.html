@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="footer-global-global-lite">Footer Global &amp; Global Lite</h1>
+<p>This web component is designed to add a branded footer to
+applications maintained by the library.</p>
+<h3 id="overview">Overview</h3>
+<p>The <code>Global Footer</code> web component provides a branded
+footer for library-maintained applications. The global footer represents
+the library’s standard footer. The lite footer is for pages that are
+less public, such as documentation, where consistency is desired but the
+need for full footer features is not necessary.</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Branded Footer</strong>: Inserts a library branded
+footer.</li>
+<li><strong>Universal Library Links</strong>: Allows for the universal
+updating of links by updating them within the component.</li>
+<li><strong>Custom Links</strong>: Allows application developers to
+create a custom set of links when they call the component.</li>
+</ul>
+<h3 id="attributes">Attributes</h3>
+<ul>
+<li><strong><code>slot</code></strong>: When this attribute is present,
+a developer can create custom links per application.</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ol type="1">
+<li><p><strong>Include the Component</strong>: Ensure the component’s
+JavaScript file is included in your HTML.</p></li>
+<li><p><strong>HTML Structure</strong>: Use the
+<code>&lt;footer-global&gt;</code> or
+<code>&lt;footer-global-lite&gt;</code> tag and include a links inside
+to create custom links.</p></li>
+</ol>
+<h3 id="example">Example</h3>
+<h4 id="implementation">Implementation</h4>
+<p>Here’s an example of how to use the <code>FooterGlobal</code>
+component in an HTML file:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-footer-link&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-footer-link&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-footer-link&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<ul>
+<li><strong>Component Tag</strong>: The
+<code>&lt;footer-global&gt;</code> or
+<code>&lt;footer-global-lite&gt;</code> tag is used to define the
+component.</li>
+<li><strong>Custom Links</strong>: The <code>&lt;a&gt;</code> inside the
+component defines the custom links.</li>
+<li><strong><code>slot</code> Attribute</strong>: Adding the
+<code>slot</code> attribute will display the custom links instead of the
+default links.</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>The <code>FooterGlobal</code> component simplifies the creation of a
+library branded footer.</p>
+</section>
+</body>
+</html>
