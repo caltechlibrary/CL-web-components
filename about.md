@@ -15,7 +15,10 @@ The following are the components currently provided.
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
 &#x60;table-sortable&#x60;
-: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on."
+: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
+
+&#x60;footer-global&#x60;
+: This is a component that inserts a library branded footer into applications maintained by the library. There is a full and lite version of the footer available."
 authors:
   - family_name: Doiel
     given_name: R. S.
@@ -46,7 +49,7 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-07-17
+date_released: 2025-07-23
 ---
 
 About this software
@@ -66,8 +69,6 @@ The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
 - Twila Smith, <https://orcid.org/0009-0003-7975-1922>
-
-
 
 
 ### Maintainers
@@ -91,6 +92,10 @@ The following are the components currently provided.
 
 &#x60;table-sortable&#x60;
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
+
+&#x60;footer-global&#x60;
+: This is a component that inserts a library branded footer into applications maintained by the library. There is a full and lite version of the footer available.
+
 
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>
