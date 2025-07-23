@@ -19,6 +19,9 @@ The following are the components currently provided.
 `table-sortable`
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
+`footer-global`
+: This is a component that inserts a library branded footer into applications maintained by the library. There is a full and lite version of the footer available.
+
 ## Release Notes
 
 - version: 0.0.12
