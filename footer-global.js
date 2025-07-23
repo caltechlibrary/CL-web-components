@@ -33,6 +33,9 @@ class FooterGlobal extends HTMLElement {
 
             .footer-bottom a {
             color: inherit;
+            }
+
+            .footer-bottom a:hover {
             text-decoration: underline;
             }
 
@@ -111,15 +114,6 @@ class FooterGlobal extends HTMLElement {
 
             ul {
                 margin-top: 0;
-                margin-bottom: 12px;
-            }
-
-            ul {
-                display: block;
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                padding-inline-start: 40px;
-                unicode-bidi: isolate;
             }
 
             .list-inline {
@@ -127,11 +121,7 @@ class FooterGlobal extends HTMLElement {
                 list-style: none;
                 margin-left: -5px;
             }
-
-            .pull-right {
-                float: right !important;
-            }
-
+           
             .list-inline>li {
                 display: inline-block;
                 padding-right: 5px;
@@ -212,7 +202,7 @@ class FooterGlobal extends HTMLElement {
                 </section>
             </div>
             <div class="footer-bottom">
-            <ul class="list-inline pull-right">
+            <ul class="list-inline">
             <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
             <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
             <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
@@ -223,6 +213,19 @@ class FooterGlobal extends HTMLElement {
         `;
 
         this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+        /* Fix for styling custom links because slot does not allow targetting the hover state in the shadow dom */
+        this.addEventListener('mouseover', e => {
+        if (e.target.classList.contains('custom-footer-link')) {
+            e.target.style.textDecoration = 'underline';
+        }
+        });
+
+        this.addEventListener('mouseout', e => {
+        if (e.target.classList.contains('custom-footer-link')) {
+            e.target.style.textDecoration = 'none';
+        }
+        });
     }
 }
 
