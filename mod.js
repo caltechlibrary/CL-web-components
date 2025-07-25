@@ -6,3 +6,5 @@ export { ULAtoZList } from "./src/ul-a-to-z-list.js";
 export { TextareaAgentList } from "./src/textarea-agent-list.js";
 export { TextareaCSV } from "./src/textarea-csv.js";
 export { TableSortable } from "./src/table-sortable.js";
+export { FooterGlobal } from "./src/footer-global.js";
+export { FooterGlobalLite } from "./src/footer-global-lite.js";

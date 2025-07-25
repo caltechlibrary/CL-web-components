@@ -1,14 +1,15 @@
-// src/footer-global-lite.js
-var FooterGlobalLite = class extends HTMLElement {
-  constructor() {
-    super();
-    const shadow = this.attachShadow({ mode: "open" });
-    const fontLink = document.createElement("link");
-    fontLink.setAttribute("rel", "stylesheet");
-    fontLink.setAttribute("href", "https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap");
-    shadow.appendChild(fontLink);
-    const template = document.createElement("template");
-    template.innerHTML = `
+export class FooterGlobalLite extends HTMLElement {
+    constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: 'open' });
+
+        const fontLink = document.createElement('link');
+        fontLink.setAttribute('rel', 'stylesheet');
+        fontLink.setAttribute('href', 'https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap');
+        shadow.appendChild(fontLink);
+
+        const template = document.createElement('template');
+        template.innerHTML = `
         <style>
             :host {
             font-family: 'Hind', sans-serif;
@@ -192,20 +193,22 @@ var FooterGlobalLite = class extends HTMLElement {
             </div>
         </footer>
         `;
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.addEventListener("mouseover", (e) => {
-      if (e.target.classList.contains("custom-footer-link")) {
-        e.target.style.textDecoration = "underline";
-      }
-    });
-    this.addEventListener("mouseout", (e) => {
-      if (e.target.classList.contains("custom-footer-link")) {
-        e.target.style.textDecoration = "none";
-      }
-    });
-  }
-};
-customElements.define("footer-global-lite", FooterGlobalLite);
-export {
-  FooterGlobalLite
-};
+
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+        /* Fix for styling custom links because slot does not allow targetting the hover state in the shadow dom */
+        this.addEventListener('mouseover', e => {
+        if (e.target.classList.contains('custom-footer-link')) {
+            e.target.style.textDecoration = 'underline';
+        }
+        });
+
+        this.addEventListener('mouseout', e => {
+        if (e.target.classList.contains('custom-footer-link')) {
+            e.target.style.textDecoration = 'none';
+        }
+        });
+    }
+}
+
+customElements.define('footer-global-lite', FooterGlobalLite);
