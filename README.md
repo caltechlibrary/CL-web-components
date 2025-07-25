@@ -6,6 +6,11 @@ CL-web-components provides a collection of Web Components used by Caltech Librar
 
 The following are the components currently provided.
 
+`footer-global`
+: This component provides a standard footer with detailed information about the library
+
+`footer-global-lite`
+: This component provides a lighter weight version of the `footer-global` component
 
 `ul-a-to-z`
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
