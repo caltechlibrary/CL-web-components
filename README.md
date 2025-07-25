@@ -19,22 +19,18 @@ The following are the components currently provided.
 `table-sortable`
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
-`footer-global`
-: This is a component that inserts a library branded footer into applications maintained by the library. There is a full and lite version of the footer available.
-
 ## Release Notes
 
-- version: 0.0.12
+- version: 0.0.13
 - status: wip
-- released: 2025-07-17
+- released: 2025-07-25
 
 This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
 are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
 
-Deno 2.4.1 or better is now a requirement to build the bundled versions.
+Deno 2.4.2 or better is now a requirement to build the bundled versions.
 
-Additional documentation has been updated and improved in preparation for eventual integration into the Caltech Library design system.
-The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60; library which provides robusts CSV support.
+Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-global&gt;&#x60; and &#x60;&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;&#x60;.
 
 
 ### Authors
@@ -56,6 +52,7 @@ The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60
 
 - CMTools &gt;&#x3D; 0.0.35
 - Pandoc &gt;&#x3D; 3.1
+- PageFind &gt;&#x3D; 1.3
 
 #### Runtime platform
 

@@ -15,10 +15,7 @@ The following are the components currently provided.
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
 &#x60;table-sortable&#x60;
-: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
-
-&#x60;footer-global&#x60;
-: This is a component that inserts a library branded footer into applications maintained by the library. There is a full and lite version of the footer available."
+: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on."
 authors:
   - family_name: Doiel
     given_name: R. S.
@@ -34,7 +31,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.12
+version: 0.0.13
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -49,26 +46,27 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-07-23
+date_released: 2025-07-25
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.12
+## CL-web-components 0.0.13
 
 This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
 are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
 
-Deno 2.4.1 or better is now a requirement to build the bundled versions.
+Deno 2.4.2 or better is now a requirement to build the bundled versions.
 
-Additional documentation has been updated and improved in preparation for eventual integration into the Caltech Library design system.
-The web component, &#x60;textarea-csv&#x60; now uses the &#x60;jsr:@std/csv&#x60; library which provides robusts CSV support.
+Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-global&gt;&#x60; and &#x60;&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;&#x60;.
 
 ### Authors
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
 - Twila Smith, <https://orcid.org/0009-0003-7975-1922>
+
+
 
 
 ### Maintainers
@@ -93,10 +91,6 @@ The following are the components currently provided.
 &#x60;table-sortable&#x60;
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
-&#x60;footer-global&#x60;
-: This is a component that inserts a library branded footer into applications maintained by the library. There is a full and lite version of the footer available.
-
-
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>
 - Issues: <https://github.com/caltechlibrary/CL-web-components/issues>
@@ -119,5 +113,6 @@ The following are the components currently provided.
 
 - CMTools &gt;&#x3D; 0.0.35
 - Pandoc &gt;&#x3D; 3.1
+- PageFind &gt;&#x3D; 1.3
 
 
