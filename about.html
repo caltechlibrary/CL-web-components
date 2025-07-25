@@ -19,18 +19,16 @@
 </nav>
 <section>
 <h1 id="about-this-software">About this software</h1>
-<h2 id="cl-web-components-0.0.12">CL-web-components 0.0.12</h2>
+<h2 id="cl-web-components-0.0.13">CL-web-components 0.0.13</h2>
 <p>This release includes a re-organization of the project source code.
 Editable code is now maintained in `src/`. The bundled versions are
 retained in the root of the repository. Distribution versions are
 generating in the `dist/` directory.</p>
-<p>Deno 2.4.1 or better is now a requirement to build the bundled
+<p>Deno 2.4.2 or better is now a requirement to build the bundled
 versions.</p>
-<p>Additional documentation has been updated and improved in preparation
-for eventual integration into the Caltech Library design system. The web
-component, `textarea-csv` now uses the `jsr:<span class="citation"
-data-cites="std/csv">@std/csv</span>` library which provides robusts CSV
-support.</p>
+<p>Two new web components are now included,
+`&lt;footer-global&gt;&lt;/footer-global&gt;` and
+`&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;`.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>R. S. Doiel, <a href="https://orcid.org/0000-0003-0900-6903"
@@ -69,12 +67,6 @@ This is a component that takes an innerHTML containing table. It makes
 the table sortable by the column headings and provides a filter input
 that lets you enter text to filter by and pick a column to filter on.
 </dd>
-<dt>`footer-global`</dt>
-<dd>
-This is a component that inserts a library branded footer into
-applications maintained by the library. There is a full and lite version
-of the footer available.
-</dd>
 </dl>
 <ul>
 <li>License: <a
@@ -101,6 +93,7 @@ class="uri">https://github.com/caltechlibrary/CL-web-components/issues</a></li>
 <ul>
 <li>CMTools &gt;= 0.0.35</li>
 <li>Pandoc &gt;= 3.1</li>
+<li>PageFind &gt;= 1.3</li>
 </ul>
 </section>
 </body>
