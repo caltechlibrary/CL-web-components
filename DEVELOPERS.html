@@ -26,6 +26,19 @@ approaches and techniques to solving the challenges of developing a web
 component library for libraries, archives and museums.</p>
 <p>See the <a href="user_manual.html">user manual</a> for developer
 documentation.</p>
+<h2 id="adding-new-components">Adding new components</h2>
+<p>New web components should be placed in the <code>src</code>
+directory. This is so they can be bundled into the complete
+<code>cl-web-components.js</code>. It also allows us to leverage other
+JavaScript or type script packages hosted at <a
+href="https://jsr.io">jsr.io</a>. Bundled versions of the components are
+presented in the root repository along side the <code>mod.js</code>
+file.</p>
+<h2 id="updating-existing-web-components">Updating existing web
+components</h2>
+<p>If you need to update an existing web components you should do so in
+the <code>src</code> directory. If you “fix” the one in the root
+directory it’ll get overwritten the next time the bundler is run.</p>
 </section>
 </body>
 </html>
