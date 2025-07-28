@@ -22,8 +22,9 @@ export class FooterGlobal extends HTMLElement {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: auto auto;
-            gap: 20px;
+            gap: 60px;
             padding: 2rem;
+            margin: 0rem 18rem;
             }
 
             .footer-bottom {
@@ -145,6 +146,7 @@ export class FooterGlobal extends HTMLElement {
                 font-size: 0.85rem;
                 line-height: 1.4;
                 }
+
 
                 .library-hours strong {
                 font-size: 1.1rem;
