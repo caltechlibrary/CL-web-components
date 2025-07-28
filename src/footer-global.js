@@ -50,16 +50,15 @@ export class FooterGlobal extends HTMLElement {
             }
             }
 
-            h2 {
-                font-size:30px;
-                margin-block-end: .83em;
-                margin-block-end: 16px;
-                margin-top: 24px;
-                margin-bottom: 12px;
-                font-weight: 500;
-                line-height: 1.1;
-                color: inherit;
-                }
+            h2, ::slotted(h2[slot="custom-column-header"]) {
+            font-size:30px;
+            margin-block-end: 16px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            font-weight: 500;
+            line-height: 1.1;
+            color: inherit;
+            }
 
             a {
             color: inherit;
@@ -67,70 +66,70 @@ export class FooterGlobal extends HTMLElement {
             }
 
             a:hover {
-                text-decoration: underline;
+            text-decoration: underline;
             }
 
             address {
-                margin-bottom: 24px;
-                font-style: normal;
-                line-height: 1.5;
-                unicode-bidi: isolate;
+            margin-bottom: 24px;
+            font-style: normal;
+            line-height: 1.5;
+            unicode-bidi: isolate;
             }
             
             address a {
-                display: block;
+            display: block;
             }
             
             .u-email, .p-tell {
-                line-height: 2;
+            line-height: 2;
             }
 
             .p-name {
-                margin-block-start: 24px;
+            margin-block-start: 24px;
             }
             
             .social a svg {
-                height: 32px;
+            height: 32px;
             }
 
             .social a:not(:last-child) {
-                margin-inline-end: 30px;
+            margin-inline-end: 30px;
             }
 
             .logo {
-                fill: #fff;
-                margin-block: 24px;
-                height: 5em;
+            fill: #fff;
+            margin-block: 24px;
+            height: 5em;
             }
         
             .links {
-                line-height: 2;
+            line-height: 2;
             }
 
             .list-unstyled {
-                padding-left: 0;
-                list-style: none;
+            padding-left: 0;
+            list-style: none;
             }
 
             ul {
-                margin-top: 0;
+            margin-top: 0;
             }
 
             .list-inline {
-                padding-left: 0;
-                list-style: none;
-                margin-left: -5px;
+            padding-left: 0;
+            list-style: none;
+            margin-left: -5px;
             }
            
-            .list-inline>li {
+                .list-inline>li {
                 display: inline-block;
                 padding-right: 5px;
                 padding-left: 5px;
-            }
+                }
 
-            .list-inline a {
+                .list-inline a {
                 text-decoration: none;
-            }
+                }
             
             ::slotted(.custom-footer-link) {
                 color: white;
@@ -139,18 +138,82 @@ export class FooterGlobal extends HTMLElement {
                 display: block;
             }
 
+            .library-hours {
+                background-color: #013049;
+                padding: 0rem 1rem 1rem 0rem;
+                border-radius: 6px;
+                font-size: 0.85rem;
+                line-height: 1.4;
+                }
+
+                .library-hours strong {
+                font-size: 1.1rem;
+                display: block;
+                margin-bottom: 0.25em;
+                }
+
+                .library-hours .today {
+                font-size: 1rem;
+                margin: 1.25rem 0rem 1.25rem 0rem;
+                color: #eee;
+                display: block;
+                }
+
+                .hours-row {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px dotted #555;
+                padding: 4px 0;
+                }
+
+                .hours-row:last-of-type {
+                border-bottom: none;
+                }
+
+                .lib-link {
+                color: #fff;
+                text-decoration: none;
+                }
+
+                .lib-link:hover {
+                text-decoration: underline;
+                }
+
+                .lib-hours {
+                white-space: nowrap;
+                font-weight: 500;
+                }
+
+                .hours-footer {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1em;
+                font-size: 0.75rem;
+                }
+
+                .view-all {
+                color: #fff;
+                text-decoration: none;
+                }
+
+                .view-all:hover {
+                text-decoration: underline;
+                }
+
+                .footnote {
+                color: #ccc;
+                }
+
         </style>
 
         <footer class="footer-container">
-            <div class="footer-column">
-            <h2>Quick Links</h2>
+            <div class="footer-column column1">
                 <div class="custom-links-wrapper">
-                    <slot name="custom-links" part="custom-links">
-                        <ul>
-                            <li><a href="#">Default Link 1</a></li>
-                            <li><a href="#">Default Link 2</a></li>
-                        </ul>
-                    </slot>
+                    <slot name="custom-column-header"></slot>
+                    <slot name="custom-links" part="custom-links"></slot>
+                    <div id="default-column1" hidden>
+                        <p>Loading library hours...</p>
+                    </div>
                 </div>
             </div>
 
@@ -214,18 +277,106 @@ export class FooterGlobal extends HTMLElement {
 
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        /* Fix for styling custom links because slot does not allow targetting the hover state in the shadow dom */
-        this.addEventListener('mouseover', e => {
-        if (e.target.classList.contains('custom-footer-link')) {
-            e.target.style.textDecoration = 'underline';
-        }
-        });
+        // Fix for styling custom links because slot does not allow targetting the hover state from the shadow dom */
+            this.addEventListener('mouseover', e => {
+            if (e.target.classList.contains('custom-footer-link')) {
+                e.target.style.textDecoration = 'underline';
+            }
+            });
 
-        this.addEventListener('mouseout', e => {
-        if (e.target.classList.contains('custom-footer-link')) {
-            e.target.style.textDecoration = 'none';
+            this.addEventListener('mouseout', e => {
+            if (e.target.classList.contains('custom-footer-link')) {
+                e.target.style.textDecoration = 'none';
+            }
+            });
         }
+
+    // Listening for customized content in column1 or else default to library hours.
+    connectedCallback() {
+        // Set the library hours API URL
+        this.hoursUrl = "https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
+        // optional debug: console.log("👀 Looking for slot[name='custom-links']");
+        const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
+        // optional debug: console.log("🔎 Found slot1:", slot1);
+        // optional debug: console.log("🧪 Attaching slotchange event to custom-links slot");
+
+        if (!slot1) {
+            console.warn("⚠️ slot[name='custom-links'] not found");
+            return;
+        }
+
+        const assignedNodes = slot1.assignedNodes({ flatten: true });
+        // optional. debug: console.log("📎 assignedNodes at load:", assignedNodes);
+        if (assignedNodes.length === 0) {
+            // optional. debug: console.log("🪶 No slotted content detected at load — using fallback");
+            this.loadDefaultColumn1();
+        }
+
+        slot1.addEventListener('slotchange', () => {
+            // optional. debug: console.log("🎯 slotchange triggered for column1");
+            const hasContent = slot1.assignedNodes().length > 0;
+            const fallback = this.shadowRoot.querySelector('#default-column1');
+            fallback.style.display = hasContent ? 'none' : 'block';
+            if (!hasContent) {
+                this.loadDefaultColumn1();
+            }
         });
+    }
+
+    // If no Slot, load column1 default content - Library Hours
+    async loadDefaultColumn1() {
+        // optional. debug:console.log("📦 loadDefaultColumn1() was called");
+        // optional. debug:console.log("📡 Fetching library hours from", this.hoursUrl);
+        const container = this.shadowRoot.querySelector('#default-column1');
+        try {
+            const response = await fetch(this.hoursUrl);
+            const data = await response.json();
+            // optional. debug:console.log("📬 Received library hours data:", data);
+            const locations = data.locations;
+            // optional. debug: console.log("🔍 First location object:", data.locations[0]);
+            const column1Content = document.createElement('div');
+            column1Content.id = 'column1';
+            column1Content.classList.add('column1-default');
+            const rows = locations.map(loc => {
+                const name = loc.name;
+                const url = loc.url;
+                const hours = loc.rendered || '—';
+                return `
+                    <div class="hours-row">
+                        <a class="lib-link" href="${url}" target="_blank" rel="noopener">${name}</a>
+                        <span class="lib-hours">${hours}</span>
+                    </div>`;
+            }).join('');
+            const todayString = new Date().toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            column1Content.innerHTML = `
+                <div class="library-hours">
+                    <h2>Hours</h2>
+                    <div class="today">${todayString}</div>
+                    ${rows}
+                    <div class="hours-footer">
+                        <a class="view-all" href="https://library.caltech.edu/locations">View All Hours</a>
+                        <span class="footnote">* Caltech ID Required</span>
+                    </div>
+                </div>
+            `;
+            // optional. debug: console.log('🧾 Injected HTML:', column1Content.outerHTML);
+            // Insert before the slot
+            const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
+            if (slot1 && slot1.parentNode) {
+                slot1.parentNode.insertBefore(column1Content, slot1);
+            } else {
+                // fallback: append to container if slot not found
+                container.appendChild(column1Content);
+            }
+        } catch (error) {
+            console.error('Error loading library hours:', error);
+            container.innerHTML = `<p>Unable to load library hours at this time.</p>`;
+        }
     }
 }
 
