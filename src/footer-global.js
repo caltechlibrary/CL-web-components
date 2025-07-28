@@ -22,9 +22,9 @@ export class FooterGlobal extends HTMLElement {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: auto auto;
-            gap: 60px;
+            gap: 4rem;
             padding: 2rem;
-            margin: 0rem 18rem;
+            margin: 0rem 16rem;
             }
 
             .footer-bottom {
