@@ -1,244 +1,299 @@
 export class FooterGlobal extends HTMLElement {
-    constructor() {
-        super();
-        const shadow = this.attachShadow({ mode: 'open' });
+	constructor() {
+		super();
+		const shadow = this.attachShadow({ mode: "open" });
 
-        const fontLink = document.createElement('link');
-        fontLink.setAttribute('rel', 'stylesheet');
-        fontLink.setAttribute('href', 'https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap');
-        shadow.appendChild(fontLink);
+		const fontLink = document.createElement("link");
+		fontLink.setAttribute("rel", "stylesheet");
+		fontLink.setAttribute(
+			"href",
+			"https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap"
+		);
+		shadow.appendChild(fontLink);
 
-        const template = document.createElement('template');
-        template.innerHTML = `
+		const template = document.createElement("template");
+		template.innerHTML = `
+
         <style>
-            :host {
-            font-family: 'Hind', sans-serif;
-            display: block;
-            background-color: #062e47;
-            color: #fff;
-            }
 
-            .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1150px;
-            margin: auto;
-            }
+        /* ─────────────────────────
+           Base Styles
+        ────────────────────────── */
 
-           .footer-column {
-            padding: 1rem 0;
-            }
-            
-            .footer-column.column1 {
-            flex: 0 1 40%;
-            margin-right: 7.6rem;
-            /* border: red solid 1px; */
-            }
+        :host {
+          font-family: 'Hind', sans-serif;
+          display: block;
+          background-color: #062e47;
+          color: #fff;
+        }
 
-            .footer-column.column2 {
-            flex: 0 1 21%;
-            margin-right: 3.6rem;
-            /* border: red solid 1px; */
-            }
 
-            .footer-column.column3 {
-            flex: 0 1 21%;
-            /* border: red solid 1px; */
-            }
+        /* ─────────────────────────
+           Layout & Structure
+        ────────────────────────── */
 
-            .footer-bottom {
-            flex: 1 1 100%;
-            text-align: right;
-            margin: 2rem 5rem 0 0;
-            /* border: red solid 1px; */
-            }
+        .footer-container {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 1150px;
+          margin: auto;
+        }
 
-            .footer-bottom a {
-            color: inherit;
-            }
+        .footer-column {
+          padding: 1rem 0;
+        }
 
-            .footer-bottom a:hover {
-            text-decoration: underline;
-            }
+        .footer-column.column1 {
+          flex: 0 1 40%;
+          margin-right: 7.6rem;
+        }
 
-            @media (max-width: 1024px) {
-            
-            .footer-container {
+        .footer-column.column2 {
+          flex: 0 1 21%;
+          margin-right: 3.6rem;
+        }
+
+        .footer-column.column3 {
+          flex: 0 1 21%;
+        }
+
+        /* ─────────────────────────
+           Footer Bottom Area
+        ────────────────────────── */
+
+        .footer-bottom {
+          flex: 1 1 100%;
+          text-align: right;
+          margin: 2rem 5rem 0 0;
+        }
+
+
+        /* ─────────────────────────
+           Typography
+        ────────────────────────── */
+
+        h2 {
+          font-size: 30px;
+          margin-block-end: 16px;
+          margin-top: 24px;
+          margin-bottom: 12px;
+          font-weight: 500;
+          line-height: 1.1;
+          color: inherit;
+        }
+
+        ::slotted(h2[slot="custom-column-header"]) {
+          font-size: 30px;
+          margin-block-end: 16px;
+          margin-top: 24px;
+          margin-bottom: 12px;
+          font-weight: 500;
+          line-height: 1.1;
+          color: inherit;
+        }
+
+
+        /* ─────────────────────────
+           Lists
+        ────────────────────────── */
+
+        ul {
+          margin-top: 0;
+        }
+
+        .list-unstyled {
+          padding-left: 0;
+          list-style: none;
+        }
+
+        .list-inline {
+          padding-left: 0;
+          list-style: none;
+          margin-left: -5px;
+        }
+
+        .list-inline > li {
+          display: inline-block;
+          padding-right: 5px;
+          padding-left: 5px;
+        }
+
+        .list-inline a {
+          text-decoration: none;
+        }
+
+
+        /* ─────────────────────────
+           Links
+        ────────────────────────── */
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+
+        .footer-bottom a {
+          color: inherit;
+        }
+
+        .footer-bottom a:hover {
+          text-decoration: underline;
+        }
+
+        ::slotted(.custom-footer-link) {
+          color: white;
+          text-decoration: none;
+          padding: 5px;
+          display: block;
+        }
+
+
+        /* ─────────────────────────
+           Responsive Styles
+        ────────────────────────── */
+
+        @media (max-width: 1024px) {
+          .footer-container {
             flex-direction: column;
             align-items: stretch;
             margin: 0 4rem 0 1rem;
-            }
+          }
 
-            .footer-column {
-                flex: 0 0 100%;
-                width: 100%;
-            }
+          .footer-column {
+            flex: 0 0 100%;
+            width: 100%;
+          }
 
-            .footer-bottom {
-                flex: 0 0 100%;
-                text-align: left;
-                padding: 1rem 0;
-                border-top: grey dotted 1px;
-                /* border: red solid 1px; */
-            }
-
-            }
-
-            h2, ::slotted(h2[slot="custom-column-header"]) {
-            font-size:30px;
-            margin-block-end: 16px;
-            margin-top: 24px;
-            margin-bottom: 12px;
-            font-weight: 500;
-            line-height: 1.1;
-            color: inherit;
-            }
-
-            a {
-            color: inherit;
-            text-decoration: none;
-            }
-
-            a:hover {
-            text-decoration: underline;
-            }
-
-            address {
-            margin-bottom: 24px;
-            font-style: normal;
-            line-height: 1.5;
-            unicode-bidi: isolate;
-            }
-            
-            address a {
-            display: block;
-            }
-            
-            .u-email, .p-tell {
-            line-height: 2;
-            }
-
-            .p-name {
-            margin-block-start: 24px;
-            }
-            
-            .social a svg {
-            height: 32px;
-            }
-
-            .social a:not(:last-child) {
-            margin-inline-end: 30px;
-            }
-
-            .logo {
-            fill: #fff;
-            margin-block: 24px;
-            height: 5em;
-            }
-        
-            .links {
-            line-height: 2;
-            }
-
-            .list-unstyled {
-            padding-left: 0;
-            list-style: none;
-            }
-
-            ul {
-            margin-top: 0;
-            }
-
-            .list-inline {
-            padding-left: 0;
-            list-style: none;
-            margin-left: -5px;
-            }
-           
-                .list-inline>li {
-                display: inline-block;
-                padding-right: 5px;
-                padding-left: 5px;
-                }
-
-                .list-inline a {
-                text-decoration: none;
-                }
-            
-            ::slotted(.custom-footer-link) {
-                color: white;
-                text-decoration: none;
-                padding: 5px;
-                display: block;
-            }
-
-            .library-hours {
-                background-color: #013049;
-                padding: 0rem 1rem 1rem 0rem;
-                border-radius: 6px;
-                font-size: 0.85rem;
-                line-height: 1.4;
-                }
+          .footer-bottom {
+            flex: 0 0 100%;
+            text-align: left;
+            padding: 1rem 0;
+            border-top: grey dotted 1px;
+          }
+        }
 
 
-                .library-hours strong {
-                font-size: 1.1rem;
-                display: block;
-                margin-bottom: 0.25em;
-                }
+        /* ─────────────────────────
+           Library Hours
+        ────────────────────────── */
 
-                .library-hours .today {
-                font-size: 1rem;
-                margin: 1.25rem 0rem 1.25rem 0rem;
-                color: #eee;
-                display: block;
-                }
+        .library-hours {
+          background-color: #013049;
+          padding: 0 1rem 1rem 0;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          line-height: 1.4;
+        }
 
-                .hours-row {
-                display: flex;
-                justify-content: space-between;
-                border-bottom: 1px dotted #fff;
-                padding: 4px 0;
-                }
+        .library-hours strong {
+          font-size: 1.1rem;
+          display: block;
+          margin-bottom: 0.25em;
+        }
 
-                .hours-row:last-of-type {
-                border-bottom: none;
-                }
+        .library-hours .today {
+          font-size: 1rem;
+          margin: 1.25rem 0;
+          color: #eee;
+          display: block;
+        }
 
-                .lib-link {
-                color: #fff;
-                text-decoration: none;
-                }
+        .hours-row {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px dotted #fff;
+          padding: 4px 0;
+        }
 
-                .lib-link:hover {
-                text-decoration: underline;
-                }
+        .hours-row:last-of-type {
+          border-bottom: none;
+        }
 
-                .lib-hours {
-                white-space: nowrap;
-                font-weight: 500;
-                }
+        .lib-link {
+          color: #fff;
+          text-decoration: none;
+        }
 
-                .hours-footer {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 1em;
-                font-size: 0.75rem;
-                }
+        .lib-link:hover {
+          text-decoration: underline;
+        }
 
-                .view-all {
-                color: #fff;
-                text-decoration: none;
-                }
+        .lib-hours {
+          white-space: nowrap;
+          font-weight: 500;
+        }
 
-                .view-all:hover {
-                text-decoration: underline;
-                }
+        .hours-footer {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 1em;
+          font-size: 0.75rem;
+        }
 
-                .footnote {
-                color: #ccc;
-                }
+        .view-all {
+          color: #fff;
+          text-decoration: none;
+        }
 
+        .view-all:hover {
+          text-decoration: underline;
+        }
+
+        .footnote {
+          color: #ccc;
+        }
+
+
+        /* ─────────────────────────
+           Contact Us
+        ────────────────────────── */
+
+        address {
+          margin-bottom: 24px;
+          font-style: normal;
+          line-height: 1.5;
+          unicode-bidi: isolate;
+        }
+
+        address a {
+          display: block;
+        }
+
+        .u-email,
+        .p-tell {
+          line-height: 2;
+        }
+
+        .p-name {
+          margin-block-start: 24px;
+        }
+
+
+        /* ─────────────────────────
+           Social & Branding
+        ────────────────────────── */
+
+        .social a svg {
+          height: 32px;
+        }
+
+        .social a:not(:last-child) {
+          margin-inline-end: 30px;
+        }
+
+        .logo {
+          fill: #fff;
+          margin-block: 24px;
+          height: 5em;
+        }
+
+        .links {
+          line-height: 2;
+        }
         </style>
 
         <footer class="footer-container" role="contentinfo">
@@ -310,85 +365,88 @@ export class FooterGlobal extends HTMLElement {
         </footer>
         `;
 
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+		this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-        // Fix for styling custom links because slot does not allow targetting the hover state from the shadow dom */
-            this.addEventListener('mouseover', e => {
-            if (e.target.classList.contains('custom-footer-link')) {
-                e.target.style.textDecoration = 'underline';
-            }
-            });
+		// Fix for styling custom links because slot does not allow targetting the hover state from the shadow dom */
+		this.addEventListener("mouseover", (e) => {
+			if (e.target.classList.contains("custom-footer-link")) {
+				e.target.style.textDecoration = "underline";
+			}
+		});
 
-            this.addEventListener('mouseout', e => {
-            if (e.target.classList.contains('custom-footer-link')) {
-                e.target.style.textDecoration = 'none';
-            }
-            });
-        }
+		this.addEventListener("mouseout", (e) => {
+			if (e.target.classList.contains("custom-footer-link")) {
+				e.target.style.textDecoration = "none";
+			}
+		});
+	}
 
-    // Listening for customized content in column1 or else default to library hours.
-    connectedCallback() {
-        // Set the library hours API URL
-        this.hoursUrl = "https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
-        // optional debug: console.log("👀 Looking for slot[name='custom-links']");
-        const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
-        // optional debug: console.log("🔎 Found slot1:", slot1);
-        // optional debug: console.log("🧪 Attaching slotchange event to custom-links slot");
+	// Listening for customized content in column1 or else default to library hours.
+	connectedCallback() {
+		// Set the library hours API URL
+		this.hoursUrl =
+			"https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
+		// optional debug: console.log("👀 Looking for slot[name='custom-links']");
+		const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
+		// optional debug: console.log("🔎 Found slot1:", slot1);
+		// optional debug: console.log("🧪 Attaching slotchange event to custom-links slot");
 
-        if (!slot1) {
-            console.warn("⚠️ slot[name='custom-links'] not found");
-            return;
-        }
+		if (!slot1) {
+			console.warn("⚠️ slot[name='custom-links'] not found");
+			return;
+		}
 
-        const assignedNodes = slot1.assignedNodes({ flatten: true });
-        // optional. debug: console.log("📎 assignedNodes at load:", assignedNodes);
-        if (assignedNodes.length === 0) {
-            // optional. debug: console.log("🪶 No slotted content detected at load — using fallback");
-            this.loadDefaultColumn1();
-        }
+		const assignedNodes = slot1.assignedNodes({ flatten: true });
+		// optional. debug: console.log("📎 assignedNodes at load:", assignedNodes);
+		if (assignedNodes.length === 0) {
+			// optional. debug: console.log("🪶 No slotted content detected at load — using fallback");
+			this.loadDefaultColumn1();
+		}
 
-        slot1.addEventListener('slotchange', () => {
-            // optional. debug: console.log("🎯 slotchange triggered for column1");
-            const hasContent = slot1.assignedNodes().length > 0;
-            const fallback = this.shadowRoot.querySelector('#default-column1');
-            fallback.style.display = hasContent ? 'none' : 'block';
-            if (!hasContent) {
-                this.loadDefaultColumn1();
-            }
-        });
-    }
+		slot1.addEventListener("slotchange", () => {
+			// optional. debug: console.log("🎯 slotchange triggered for column1");
+			const hasContent = slot1.assignedNodes().length > 0;
+			const fallback = this.shadowRoot.querySelector("#default-column1");
+			fallback.style.display = hasContent ? "none" : "block";
+			if (!hasContent) {
+				this.loadDefaultColumn1();
+			}
+		});
+	}
 
-    // If no Slot, load column1 default content - Library Hours
-    async loadDefaultColumn1() {
-        // optional. debug:console.log("📦 loadDefaultColumn1() was called");
-        // optional. debug:console.log("📡 Fetching library hours from", this.hoursUrl);
-        const container = this.shadowRoot.querySelector('#default-column1');
-        try {
-            const response = await fetch(this.hoursUrl);
-            const data = await response.json();
-            // optional. debug:console.log("📬 Received library hours data:", data);
-            const locations = data.locations;
-            // optional. debug: console.log("🔍 First location object:", data.locations[0]);
-            const column1Content = document.createElement('div');
-            column1Content.id = 'column1';
-            column1Content.classList.add('column1-default');
-            const rows = locations.map(loc => {
-                const name = loc.name;
-                const url = loc.url;
-                const hours = loc.rendered || '—';
-                return `
+	// If no Slot, load column1 default content - Library Hours
+	async loadDefaultColumn1() {
+		// optional. debug:console.log("📦 loadDefaultColumn1() was called");
+		// optional. debug:console.log("📡 Fetching library hours from", this.hoursUrl);
+		const container = this.shadowRoot.querySelector("#default-column1");
+		try {
+			const response = await fetch(this.hoursUrl);
+			const data = await response.json();
+			// optional. debug:console.log("📬 Received library hours data:", data);
+			const locations = data.locations;
+			// optional. debug: console.log("🔍 First location object:", data.locations[0]);
+			const column1Content = document.createElement("div");
+			column1Content.id = "column1";
+			column1Content.classList.add("column1-default");
+			const rows = locations
+				.map((loc) => {
+					const name = loc.name;
+					const url = loc.url;
+					const hours = loc.rendered || "—";
+					return `
                     <div class="hours-row">
                         <a class="lib-link" href="${url}" target="_blank" rel="noopener">${name}</a>
                         <span class="lib-hours">${hours}</span>
                     </div>`;
-            }).join('');
-            const todayString = new Date().toLocaleDateString(undefined, {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            column1Content.innerHTML = `
+				})
+				.join("");
+			const todayString = new Date().toLocaleDateString(undefined, {
+				weekday: "long",
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			});
+			column1Content.innerHTML = `
                 <div class="library-hours">
                     <h2>Hours</h2>
                     <div class="today">${todayString}</div>
@@ -399,20 +457,20 @@ export class FooterGlobal extends HTMLElement {
                     </div>
                 </div>
             `;
-            // optional. debug: console.log('🧾 Injected HTML:', column1Content.outerHTML);
-            // Insert before the slot
-            const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
-            if (slot1 && slot1.parentNode) {
-                slot1.parentNode.insertBefore(column1Content, slot1);
-            } else {
-                // fallback: append to container if slot not found
-                container.appendChild(column1Content);
-            }
-        } catch (error) {
-            console.error('Error loading library hours:', error);
-            container.innerHTML = `<p>Unable to load library hours at this time.</p>`;
-        }
-    }
+			// optional. debug: console.log('🧾 Injected HTML:', column1Content.outerHTML);
+			// Insert before the slot
+			const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
+			if (slot1 && slot1.parentNode) {
+				slot1.parentNode.insertBefore(column1Content, slot1);
+			} else {
+				// fallback: append to container if slot not found
+				container.appendChild(column1Content);
+			}
+		} catch (error) {
+			console.error("Error loading library hours:", error);
+			container.innerHTML = `<p>Unable to load library hours at this time.</p>`;
+		}
+	}
 }
 
-customElements.define('footer-global', FooterGlobal);
+customElements.define("footer-global", FooterGlobal);
