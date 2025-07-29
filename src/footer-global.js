@@ -19,17 +19,38 @@ export class FooterGlobal extends HTMLElement {
             }
 
             .footer-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto auto;
-            gap: 4rem;
-            padding: 2rem;
-            margin: 0rem 16rem;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1150px;
+            margin: auto;
+            }
+
+           .footer-column {
+            padding: 1rem 0;
+            }
+            
+            .footer-column.column1 {
+            flex: 0 1 40%;
+            margin-right: 7.6rem;
+            /* border: red solid 1px; */
+            }
+
+            .footer-column.column2 {
+            flex: 0 1 21%;
+            margin-right: 3.6rem;
+            /* border: red solid 1px; */
+            }
+
+            .footer-column.column3 {
+            flex: 0 1 21%;
+            /* border: red solid 1px; */
             }
 
             .footer-bottom {
-            grid-column: 1 / -1;
+            flex: 1 1 100%;
             text-align: right;
+            margin: 2rem 5rem 0 0;
+            /* border: red solid 1px; */
             }
 
             .footer-bottom a {
@@ -40,15 +61,27 @@ export class FooterGlobal extends HTMLElement {
             text-decoration: underline;
             }
 
-            .footer-column {
-            flex: 1 1 30%;
-            margin: 0.5rem 0;
+            @media (max-width: 1024px) {
+            
+            .footer-container {
+            flex-direction: column;
+            align-items: stretch;
+            margin: 0 4rem 0 1rem;
             }
 
-            @media (max-width: 800px) {
             .footer-column {
-                flex: 1 1 100%;
+                flex: 0 0 100%;
+                width: 100%;
             }
+
+            .footer-bottom {
+                flex: 0 0 100%;
+                text-align: left;
+                padding: 1rem 0;
+                border-top: grey dotted 1px;
+                /* border: red solid 1px; */
+            }
+
             }
 
             h2, ::slotted(h2[slot="custom-column-header"]) {
@@ -164,7 +197,7 @@ export class FooterGlobal extends HTMLElement {
                 .hours-row {
                 display: flex;
                 justify-content: space-between;
-                border-bottom: 1px dotted #555;
+                border-bottom: 1px dotted #fff;
                 padding: 4px 0;
                 }
 
@@ -208,7 +241,7 @@ export class FooterGlobal extends HTMLElement {
 
         </style>
 
-        <footer class="footer-container">
+        <footer class="footer-container" role="contentinfo">
             <div class="footer-column column1">
                 <div class="custom-links-wrapper">
                     <slot name="custom-column-header"></slot>
@@ -219,8 +252,8 @@ export class FooterGlobal extends HTMLElement {
                 </div>
             </div>
 
-            <div class="footer-column">
-            <h2>Contact Us</h2>
+            <div class="footer-column column2">
+                <h2>Contact Us</h2>
                 <address class="h-card">
                     <a class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
                     <a class="p-tel" href="tel:+16263953405">626-395-3405</a>
@@ -246,7 +279,7 @@ export class FooterGlobal extends HTMLElement {
                         </svg></a>
                 </div>
             </div>
-            <div class="footer-column">
+            <div class="footer-column column3">
                 <section class="links">
                     <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 190">
                     <path d="M72.52,26.4C68.66,9.47,56.28,1,40,1,15.83,1,1.67,20.6,1.67,43.44S14.12,85.94,40,85.94c16.13,0,26.93-7.84,33.4-24.09L59.57,55.49c-3,9.43-9,16.36-19.54,16.36-16.14,0-22.84-14.32-22.84-28.41S23.89,15,40,15c9.2,0,16.59,6.13,17.84,15.11L72.52,26.4Zm54.25,17.5C126.77,27.54,114.38,25,102,25c-12.61,0-24.54,5.22-24.54,18.74l13.86.57c0-6.25,2.61-8.63,10.68-8.63,6,0,10.91,1.59,10.91,7.27v1.7c-3.52,1.25-10,2.39-15,3.41l-5.8,1.14c-8.52,1.7-17.49,6.7-17.49,17.95s8.63,18.07,19.54,18.07a29.07,29.07,0,0,0,18.75-6.59,10.85,10.85,0,0,0,1.36,5.22h14.66c-.8-1.25-2.16-3.75-2.16-9.66V43.9ZM112.91,63.33c0,7.38-8.3,10.56-14.77,10.56-5,0-9-2.84-9-7.15,0-5.46,4.32-6.94,9.54-8l7.62-1.59a24.8,24.8,0,0,0,6.59-2v8.19Zm23.78,20.56h13.86V.72H136.69V83.89Zm23.23-70V70.71c0,8.75,3.86,13.86,15.22,13.86a51.43,51.43,0,0,0,11-1.36V71.85a59.08,59.08,0,0,1-6.14.68c-5.34,0-6.25-2.5-6.25-7V36.4h12.39v-10H173.78V0L159.92,13.88Zm84,44.56c0-20.57-8.4-33.4-27.61-33.4-18.63,0-29.43,13-29.43,30.1s10.8,30.12,29.43,30.12c15.68,0,24-7.5,28.3-14.09L232.9,64.35c-1.36,1.93-5.68,8.18-16.59,8.18-7.5,0-14.65-5.57-14.88-14.09ZM201.43,47.76A14.79,14.79,0,0,1,216.31,36.4c9.32,0,13.07,8.29,13.07,11.36ZM302.29,41.4C298.77,32.76,292,25,278,25c-18.63,0-29.43,13-29.43,30.1S259.34,85.26,277,85.26c15.57,0,22.16-9.21,26-17.62l-11.82-6.25c-2.15,5.23-5.68,11.14-14,11.14-9.66,0-14.09-8.41-14.09-17.39s5-17.38,14.88-17.38A12.78,12.78,0,0,1,290.13,47l12.16-5.56Zm4.32,42.49h13.86V54.35c0-7,3.18-15.91,13.63-15.91,7,0,10.23,3.41,10.23,11.36V83.89h13.86V45.83c0-16.71-11.25-20.79-21-20.79-7.84,0-13.41,3.06-16.47,7h-.23V.72H306.61V83.89Z"></path>
