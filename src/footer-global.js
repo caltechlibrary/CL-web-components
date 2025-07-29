@@ -27,7 +27,6 @@ export class FooterGlobal extends HTMLElement {
           color: #fff;
         }
 
-
         /* ─────────────────────────
            Layout & Structure
         ────────────────────────── */
@@ -55,6 +54,20 @@ export class FooterGlobal extends HTMLElement {
 
         .footer-column.column3 {
           flex: 0 1 21%;
+        }
+
+        :host([custom]) .footer-column.column1 {
+          flex: 0 1 30%;
+          margin-right: 3rem;
+        }
+
+        :host([custom]) .footer-column.column2 {
+          flex: 0 1 30%;
+          margin-right: 3rem;
+        }
+
+        :host([custom]) .footer-column.column3 {
+          flex: 0 1 30%;
         }
 
         /* ─────────────────────────
