@@ -19,14 +19,26 @@ export class FooterGlobal extends HTMLElement {
         /* ─────────────────────────
            Base Styles
         ────────────────────────── */
-
         :host {
           font-family: 'Hind', sans-serif;
           display: block;
           background-color: #062e47;
           color: #fff;
+          border-radius: 0 30% 0 0 / 5%;
         }
 
+        @media (min-width: 768px) {
+          :host {
+            border-radius: 0 30% 0 0 / 10%;
+           }
+        }
+
+        @media (min-width: 992px) {
+          :host {
+            border-radius: 0 30% 0 0 / 20%;
+          }
+        }
+        
         /* ─────────────────────────
            Layout & Structure
         ────────────────────────── */
@@ -35,6 +47,7 @@ export class FooterGlobal extends HTMLElement {
           display: flex;
           flex-wrap: wrap;
           max-width: 1150px;
+          min-height:500px;
           margin: auto;
         }
 
