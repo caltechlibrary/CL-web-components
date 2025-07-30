@@ -3,21 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <title>Footer Global Demo</title>
+  
 </head>
 <body>
 
   <!-- Use your custom footer component -->
   
-  <footer role="contentinfo">
-  <footer-global custom>
-
-      <h2 slot="custom-column-header">My App Links</h2>
-      <a slot="custom-links" class="custom-footer-link" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-footer-link" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-footer-link" aria-label="footer navigation" href="#">Custom Link 3</a> 
+  <footer-global
+  custom
+  email="archives@caltech.edu"
+  phone="626-555-7890"
+  header="My App Name"
+  instagram="google.com"
+  twitter="google.com"
+  youtube="google.com">
+   
+    <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
+    <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
+    <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+   
 
   </footer-global>
-  </footer>
+  
 
   <!-- Load the component -->
   <script type="module" src="/src/footer-global.js"></script>
