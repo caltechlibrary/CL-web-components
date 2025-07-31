@@ -45,12 +45,16 @@ library.</li>
 <h2 id="installing">Installing</h2>
 <p>To install the footer, simply included the javascript file and the
 extended html element as such:</p>
-<p><code>&lt;footer-global&gt;&lt;/footer-global&gt;</code></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <p>And the javascript file.</p>
-<p><code>&lt;script type="module" src="/src/footer-global.js"&gt;&lt;/script&gt; (updated link coming soon)</code></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;/src/footer-global.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span> (updated link coming soon)</span></code></pre></div>
 <h2 id="customizing">Customizing</h2>
 <p>There are multiple ways to customize <code>Footer-Global</code>.</p>
-<p><code>Please keep in mind, `Footer-Global-Lite` allows only the customizing of links in the first column because it is intended as a streamlined component where full footer information is not needed.</code></p>
+<p>Please keep in mind, <code>Footer-Global-Lite</code> allows only the
+customizing of links in the first column because it is intended as a
+streamlined component where full footer information is not needed.</p>
 <h3 id="custom-header">Custom Header</h3>
 <p>You have the option to add a custom column header to the first column
 in both <code>Footer-Global</code> and <code>Footer-Global-Lite</code>.
@@ -61,7 +65,11 @@ name.</p>
 helps with column spacing and is needed.</li>
 <li>Define the text as an attribute.</li>
 </ol>
-<p><code>&lt;footer-global     custom     header="Your Application Name"&gt;</code></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="custom-links-first-column">Custom Links First Column</h3>
 <p>The first column is reserved for custom links specific to the
 application in both <code>Footer-Global</code> and
@@ -76,14 +84,16 @@ pull the content into the Shadow Dom.</li>
 <li>Add the class <code>custom-links</code> to the a tag. This will give
 it the link style it needs and account for hover states.</li>
 </ol>
-<p>``` <footer-global
-    custom
-    header="Your Application Name"></p>
-<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
-
-&lt;/footer-global&gt;```</code></pre>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span><span class="dt">&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="custom-phone-and-email">Custom Phone and Email</h3>
 <p>In the second column, you change the phone and email so that it is
 specific to your application in both <code>Footer-Global</code> and
@@ -94,16 +104,18 @@ attributes in the html element.</p>
 <li>Add Phone=“xxxxx” to change the phone.</li>
 <li>Add Email=“email@test.com” to change the email.</li>
 </ol>
-<p>```<footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"></p>
-<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
-
-&lt;/footer-global&gt;```</code></pre>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span><span class="dt">&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="custom-social-media-links">Custom Social Media Links</h3>
 <p>In the second column, you can also customize the social media links
 in the <code>Footer-Global</code> component. Currently, the component
@@ -114,13 +126,20 @@ difining an attribute in the html element.</p>
 <li>Add instagram=“your-custom-url”</li>
 <li>Add youtube=“your-custom-url”</li>
 </ol>
-<p>```&lt;footer-global custom header=“Your Application Name”
-phone=“xxxxxx” email=“email@test.com instagram=”” youtube=““&gt;</p>
-<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
-
-&lt;/footer-global&gt;```</code></pre>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="custom-logo">Custom Logo</h3>
 <p>In the last column, you can use attributes to switch between the
 library or the archives logo by defining an attribute in the html
@@ -130,14 +149,21 @@ logo.</p>
 <li>Add logo and define it as either “library” or “archives” depending
 on which one you need.</li>
 </ol>
-<p>```&lt;footer-global custom header=“Your Application Name”
-phone=“xxxxxx” email=“email@test.com instagram=”your-custom-url”
-youtube=“your-custom-url” logo=“archives”&gt;</p>
-<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
-  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
-
-&lt;/footer-global&gt;```</code></pre>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    logo</span><span class="op">=</span><span class="st">&quot;archives&quot;</span><span class="dt">&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="debugging">Debugging</h3>
 <p>There are some commented out lines for console logging if the custom
 content is not displaying. These are there to make sure the custom
