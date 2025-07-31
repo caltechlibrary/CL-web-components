@@ -1,4 +1,3 @@
-
 # Footer Global & Global Lite
 
 This web component is designed to add a branded footer to applications maintained by the library. 
@@ -23,18 +22,22 @@ The standard component also has several options for customization, including:
 
 To install the footer, simply included the javascript file and the extended html element as such:
 
-```<footer-global></footer-global>```
+```html
+<footer-global></footer-global>
+```
  
  And the javascript file.
 
- ```<script type="module" src="/src/footer-global.js"></script> (updated link coming soon)```
+```html
+<script type="module" src="/src/footer-global.js"></script> (updated link coming soon)
+```
 
 
 ## Customizing
 
 There are multiple ways to customize `Footer-Global`. 
 
-```Please keep in mind, `Footer-Global-Lite` allows only the customizing of links in the first column because it is intended as a streamlined component where full footer information is not needed.```
+Please keep in mind, `Footer-Global-Lite` allows only the customizing of links in the first column because it is intended as a streamlined component where full footer information is not needed.
 
 ### Custom Header
 
@@ -43,9 +46,12 @@ You have the option to add a custom column header to the first column in both `F
 1) Add "custom" as an attribute to the extended html element. This helps with column spacing and is needed.
 2) Define the text as an attribute.
 
-```<footer-global
+```html
+<footer-global
     custom
-    header="Your Application Name">```
+    header="Your Application Name">
+</footer-global>
+```
 
 ### Custom Links First Column
 
@@ -58,7 +64,8 @@ To overwrite the default content in the first column and create a list of custom
 3) Add the class `custom-links` to the a tag. This will give it the link style it needs and account for hover states.
 
 
-``` <footer-global
+```html
+<footer-global
     custom
     header="Your Application Name"> 
     
@@ -66,7 +73,8 @@ To overwrite the default content in the first column and create a list of custom
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
 
-    </footer-global>```
+</footer-global>
+```
 
 ### Custom Phone and Email 
 
@@ -77,7 +85,8 @@ To override the phone and email, you will define their related attributes in the
 1) Add Phone="xxxxx" to change the phone.
 2) Add Email="email@test.com" to change the email.
 
-```<footer-global
+```html
+<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
@@ -87,7 +96,8 @@ To override the phone and email, you will define their related attributes in the
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
 
-    </footer-global>```
+</footer-global>
+```
 
 ### Custom Social Media Links 
 
@@ -96,11 +106,12 @@ In the second column, you can also customize the social media links in the `Foot
 1) Add instagram="your-custom-url"
 2) Add youtube="your-custom-url"
 
-```<footer-global
+```html
+<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
-    email="email@test.com
+    email="email@test.com"
     instagram=""
     youtube=""> 
     
@@ -108,7 +119,8 @@ In the second column, you can also customize the social media links in the `Foot
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
 
-    </footer-global>```
+</footer-global>
+```
 
 ### Custom Logo
 
@@ -116,11 +128,12 @@ In the last column, you can use attributes to switch between the library or the 
 
 1) Add logo and define it as either "library" or "archives" depending on which one you need.
 
-```<footer-global
+```html
+<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
-    email="email@test.com
+    email="email@test.com"
     instagram="your-custom-url"
     youtube="your-custom-url"
     logo="archives"> 
@@ -129,7 +142,8 @@ In the last column, you can use attributes to switch between the library or the 
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
 
-    </footer-global>```
+</footer-global>
+```
 
 ### Debugging
 
