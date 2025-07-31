@@ -22,35 +22,34 @@
 <h1 id="footer-global-global-lite">Footer Global &amp; Global Lite</h1>
 <p>This web component is designed to add a branded footer to
 applications maintained by the library.</p>
-<h3 id="overview">Overview</h3>
-<p>The <code>Global Footer</code> web component provides a branded
-footer for library-maintained applications. The global footer represents
-the library’s standard footer. The lite footer is for pages that are
-less public, such as documentation, where consistency is desired but the
-need for full footer features is not necessary.</p>
-<h3 id="key-features">Key Features</h3>
+<p>There are two versions of the footer - the standard footer that
+matches the library website, and a lite version with a streamlined
+content structure.</p>
+<p>The standard footer has several options for customization using both
+attribures and slot to change the content that is displayed.</p>
+<h2 id="key-features">Key Features</h2>
+<p>Once installed, the application will get any updates to the footer
+automatically whenever a new version of the component is released. This
+allows a streamlined way to update the footer and have those changes
+immediately reflected on all applications calling it.</p>
+<p>The standard component also has several options for customization,
+including:</p>
 <ul>
-<li><strong>Branded Footer</strong>: Inserts a library branded
-footer.</li>
-<li><strong>Universal Library Links</strong>: Allows for the universal
-updating of links by updating them within the component.</li>
-<li><strong>Custom Links</strong>: Allows application developers to
-create a custom set of links when they call the component.</li>
+<li>Custom column header</li>
+<li>Application-specific links</li>
+<li>Configurable contact information</li>
+<li>Customizable social media links</li>
+<li>The ability to change the logo version between archives and the
+library.</li>
 </ul>
-<h3 id="attributes">Attributes</h3>
-<ul>
-<li><strong><code>slot</code></strong>: When this attribute is present,
-a developer can create custom links per application.</li>
-</ul>
-<h3 id="usage">Usage</h3>
-<ol type="1">
-<li><p><strong>Include the Component</strong>: Ensure the component’s
-JavaScript file is included in your HTML.</p></li>
-<li><p><strong>HTML Structure</strong>: Use the
-<code>&lt;footer-global&gt;</code> or
-<code>&lt;footer-global-lite&gt;</code> tag and include a links inside
-to create custom links.</p></li>
-</ol>
+<h2 id="installing">Installing</h2>
+<p>To install the footer, simply included the javascript file and the
+extended html element as such:</p>
+<p><footer-global></footer-global></p>
+<p>And the javascript file.</p>
+<script type="module" src="/src/footer-global.js"></script>
+<p>(updated link coming soon)</p>
+<h2 id="customizing">Customizing</h2>
 <h3 id="example">Example</h3>
 <h4 id="implementation">Implementation</h4>
 <p>Here’s an example of how to use the <code>FooterGlobal</code>
