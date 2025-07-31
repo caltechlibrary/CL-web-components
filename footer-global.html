@@ -50,28 +50,41 @@ extended html element as such:</p>
 <script type="module" src="/src/footer-global.js"></script>
 <p>(updated link coming soon)</p>
 <h2 id="customizing">Customizing</h2>
-<h3 id="example">Example</h3>
-<h4 id="implementation">Implementation</h4>
-<p>Here’s an example of how to use the <code>FooterGlobal</code>
-component in an HTML file:</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span><span class="dt">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-footer-link&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-footer-link&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-footer-link&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="explanation">Explanation</h3>
+<p>There are multiple ways to customize <code>Footer-Global</code>.</p>
+<p><code>Please keep in mind, `Footer-Global-Lite` allows only the customizing of links in the first column because it is intended as a streamlined component where full footer information is not needed.</code></p>
+<h3 id="custom-header">Custom Header</h3>
+<p>You have the option to add a custom column header to the first column
+in both <code>Footer-Global</code> and <code>Footer-Global-Lite</code>.
+This could be terms like Quick Links, About, or the applications
+name.</p>
 <ul>
-<li><strong>Component Tag</strong>: The
-<code>&lt;footer-global&gt;</code> or
-<code>&lt;footer-global-lite&gt;</code> tag is used to define the
-component.</li>
-<li><strong>Custom Links</strong>: The <code>&lt;a&gt;</code> inside the
-component defines the custom links.</li>
-<li><strong><code>slot</code> Attribute</strong>: Adding the
-<code>slot</code> attribute will display the custom links instead of the
-default links.</li>
+<li>Add “custom” as an attribute to the extended html element. This
+helps with column spacing and is needed.</li>
+<li>Define the text as an attribute.</li>
 </ul>
+<pre class="&lt;footer-global"><code>    custom
+    header=&quot;Your Application Name&quot;&gt;```
+
+### Custom Links Column 1
+
+The first column is reserved for custom links.
+
+### Examples
+
+Here&#39;s an example of how to use the `FooterGlobal` component in an HTML file:
+
+```html
+   &lt;footer-global&gt;
+    &lt;a slot=&quot;custom-links&quot; class=&quot;custom-footer-link&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
+    &lt;a slot=&quot;custom-links&quot; class=&quot;custom-footer-link&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
+    &lt;a slot=&quot;custom-links&quot; class=&quot;custom-footer-link&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt;
+  &lt;/footer-global&gt;</code></pre>
+<h3 id="debugging">Debugging</h3>
+<p>There are some commented out lines for console logging if the custom
+content is not displaying. These are there to make sure the custom
+content is being called properly, in the right order.</p>
+<p>These console logs can be turned on at the component level to help
+with troubleshooting any issues that arise.</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>The <code>FooterGlobal</code> component simplifies the creation of a
 library branded footer.</p>

@@ -32,9 +32,26 @@ To install the footer, simply included the javascript file and the extended html
 
 ## Customizing
 
-### Example
+There are multiple ways to customize `Footer-Global`. 
 
-#### Implementation
+```Please keep in mind, `Footer-Global-Lite` allows only the customizing of links in the first column because it is intended as a streamlined component where full footer information is not needed.```
+
+### Custom Header
+
+You have the option to add a custom column header to the first column in both `Footer-Global` and `Footer-Global-Lite`. This could be terms like Quick Links, About, or the applications name. 
+
+- Add "custom" as an attribute to the extended html element. This helps with column spacing and is needed.
+- Define the text as an attribute.
+
+```<footer-global
+    custom
+    header="Your Application Name">```
+
+### Custom Links Column 1
+
+The first column is reserved for custom links.
+
+### Examples
 
 Here's an example of how to use the `FooterGlobal` component in an HTML file:
 
@@ -46,11 +63,11 @@ Here's an example of how to use the `FooterGlobal` component in an HTML file:
   </footer-global>
 ```
 
-### Explanation
+### Debugging
 
-- **Component Tag**: The `<footer-global>` or `<footer-global-lite>` tag is used to define the component.
-- **Custom Links**: The `<a>` inside the component defines the custom links.
-- **`slot` Attribute**: Adding the `slot` attribute will display the custom links instead of the default links.
+There are some commented out lines for console logging if the custom content is not displaying. These are there to make sure the custom content is being called properly, in the right order. 
+
+These console logs can be turned on at the component level to help with troubleshooting any issues that arise. 
 
 
 ### Conclusion
