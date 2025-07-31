@@ -45,10 +45,9 @@ library.</li>
 <h2 id="installing">Installing</h2>
 <p>To install the footer, simply included the javascript file and the
 extended html element as such:</p>
-<p><footer-global></footer-global></p>
+<p><code>&lt;footer-global&gt;&lt;/footer-global&gt;</code></p>
 <p>And the javascript file.</p>
-<script type="module" src="/src/footer-global.js"></script>
-<p>(updated link coming soon)</p>
+<p><code>&lt;script type="module" src="/src/footer-global.js"&gt;&lt;/script&gt; (updated link coming soon)</code></p>
 <h2 id="customizing">Customizing</h2>
 <p>There are multiple ways to customize <code>Footer-Global</code>.</p>
 <p><code>Please keep in mind, `Footer-Global-Lite` allows only the customizing of links in the first column because it is intended as a streamlined component where full footer information is not needed.</code></p>
@@ -95,7 +94,7 @@ attributes in the html element.</p>
 <li>Add Phone=“xxxxx” to change the phone.</li>
 <li>Add Email=“email@test.com” to change the email.</li>
 </ol>
-<p>``` <footer-global
+<p>```<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
@@ -115,7 +114,7 @@ difining an attribute in the html element.</p>
 <li>Add instagram=“your-custom-url”</li>
 <li>Add youtube=“your-custom-url”</li>
 </ol>
-<p>``` &lt;footer-global custom header=“Your Application Name”
+<p>```&lt;footer-global custom header=“Your Application Name”
 phone=“xxxxxx” email=“email@test.com instagram=”” youtube=““&gt;</p>
 <pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
   &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
@@ -131,7 +130,7 @@ logo.</p>
 <li>Add logo and define it as either “library” or “archives” depending
 on which one you need.</li>
 </ol>
-<p>``` &lt;footer-global custom header=“Your Application Name”
+<p>```&lt;footer-global custom header=“Your Application Name”
 phone=“xxxxxx” email=“email@test.com instagram=”your-custom-url”
 youtube=“your-custom-url” logo=“archives”&gt;</p>
 <pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
