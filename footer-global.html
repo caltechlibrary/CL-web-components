@@ -57,37 +57,99 @@ extended html element as such:</p>
 in both <code>Footer-Global</code> and <code>Footer-Global-Lite</code>.
 This could be terms like Quick Links, About, or the applications
 name.</p>
-<ul>
+<ol type="1">
 <li>Add “custom” as an attribute to the extended html element. This
 helps with column spacing and is needed.</li>
 <li>Define the text as an attribute.</li>
-</ul>
-<pre class="&lt;footer-global"><code>    custom
-    header=&quot;Your Application Name&quot;&gt;```
+</ol>
+<p><code>&lt;footer-global     custom     header="Your Application Name"&gt;</code></p>
+<h3 id="custom-links-first-column">Custom Links First Column</h3>
+<p>The first column is reserved for custom links specific to the
+application in both <code>Footer-Global</code> and
+<code>Footer-Global-Lite</code>.</p>
+<p>To overwrite the default content in the first column and create a
+list of custom application links, you will</p>
+<ol type="1">
+<li>First, add the a tags between the open and close of the footer
+element.</li>
+<li>Add the named slot <code>custom-links</code> to the a tag. This will
+pull the content into the Shadow Dom.</li>
+<li>Add the class <code>custom-links</code> to the a tag. This will give
+it the link style it needs and account for hover states.</li>
+</ol>
+<p>``` <footer-global
+    custom
+    header="Your Application Name"></p>
+<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
 
-### Custom Links Column 1
+&lt;/footer-global&gt;```</code></pre>
+<h3 id="custom-phone-and-email">Custom Phone and Email</h3>
+<p>In the second column, you change the phone and email so that it is
+specific to your application in both <code>Footer-Global</code> and
+<code>Footer-Global-Lite</code>.</p>
+<p>To override the phone and email, you will define their related
+attributes in the html element.</p>
+<ol type="1">
+<li>Add Phone=“xxxxx” to change the phone.</li>
+<li>Add Email=“email@test.com” to change the email.</li>
+</ol>
+<p>``` <footer-global
+    custom
+    header="Your Application Name"
+    phone="xxxxxx"
+    email="email@test.com"></p>
+<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
 
-The first column is reserved for custom links.
+&lt;/footer-global&gt;```</code></pre>
+<h3 id="custom-social-media-links">Custom Social Media Links</h3>
+<p>In the second column, you can also customize the social media links
+in the <code>Footer-Global</code> component. Currently, the component
+only supports Instagram and YouTube. To add more social links, please
+contact the developers of this component. You will customize these by
+difining an attribute in the html element.</p>
+<ol type="1">
+<li>Add instagram=“your-custom-url”</li>
+<li>Add youtube=“your-custom-url”</li>
+</ol>
+<p>``` &lt;footer-global custom header=“Your Application Name”
+phone=“xxxxxx” email=“email@test.com instagram=”” youtube=““&gt;</p>
+<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
 
-### Examples
+&lt;/footer-global&gt;```</code></pre>
+<h3 id="custom-logo">Custom Logo</h3>
+<p>In the last column, you can use attributes to switch between the
+library or the archives logo by defining an attribute in the html
+element. If not logo is defined, it will default to the library
+logo.</p>
+<ol type="1">
+<li>Add logo and define it as either “library” or “archives” depending
+on which one you need.</li>
+</ol>
+<p>``` &lt;footer-global custom header=“Your Application Name”
+phone=“xxxxxx” email=“email@test.com instagram=”your-custom-url”
+youtube=“your-custom-url” logo=“archives”&gt;</p>
+<pre><code>  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
+  &lt;a slot=&quot;custom-links&quot; class=&quot;custom-links&quot; aria-label=&quot;footer navigation&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt; 
 
-Here&#39;s an example of how to use the `FooterGlobal` component in an HTML file:
-
-```html
-   &lt;footer-global&gt;
-    &lt;a slot=&quot;custom-links&quot; class=&quot;custom-footer-link&quot; href=&quot;#&quot;&gt;Custom Link 1&lt;/a&gt;
-    &lt;a slot=&quot;custom-links&quot; class=&quot;custom-footer-link&quot; href=&quot;#&quot;&gt;Custom Link 2&lt;/a&gt;
-    &lt;a slot=&quot;custom-links&quot; class=&quot;custom-footer-link&quot; href=&quot;#&quot;&gt;Custom Link 3&lt;/a&gt;
-  &lt;/footer-global&gt;</code></pre>
+&lt;/footer-global&gt;```</code></pre>
 <h3 id="debugging">Debugging</h3>
 <p>There are some commented out lines for console logging if the custom
 content is not displaying. These are there to make sure the custom
 content is being called properly, in the right order.</p>
 <p>These console logs can be turned on at the component level to help
 with troubleshooting any issues that arise.</p>
-<h3 id="conclusion">Conclusion</h3>
-<p>The <code>FooterGlobal</code> component simplifies the creation of a
-library branded footer.</p>
+<h3 id="potential-enhancements">Potential Enhancements</h3>
+<ol type="1">
+<li>Using a single attribute when calling the element that switched
+between a library and an archives set of information.</li>
+</ol>
 </section>
 <footer-global></footer-global>
 </body>
