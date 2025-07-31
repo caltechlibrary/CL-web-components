@@ -23,11 +23,11 @@ The standard component also has several options for customization, including:
 
 To install the footer, simply included the javascript file and the extended html element as such:
 
-<footer-global></footer-global>
+```<footer-global></footer-global>```
  
  And the javascript file.
 
- <script type="module" src="/src/footer-global.js"></script> (updated link coming soon)
+ ```<script type="module" src="/src/footer-global.js"></script> (updated link coming soon)```
 
 
 ## Customizing
@@ -43,9 +43,9 @@ You have the option to add a custom column header to the first column in both `F
 1) Add "custom" as an attribute to the extended html element. This helps with column spacing and is needed.
 2) Define the text as an attribute.
 
-``` <footer-global
+```<footer-global
     custom
-    header="Your Application Name"> ```
+    header="Your Application Name">```
 
 ### Custom Links First Column
 
@@ -77,7 +77,7 @@ To override the phone and email, you will define their related attributes in the
 1) Add Phone="xxxxx" to change the phone.
 2) Add Email="email@test.com" to change the email.
 
-``` <footer-global
+```<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
@@ -96,7 +96,7 @@ In the second column, you can also customize the social media links in the `Foot
 1) Add instagram="your-custom-url"
 2) Add youtube="your-custom-url"
 
-``` <footer-global
+```<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
@@ -116,7 +116,7 @@ In the last column, you can use attributes to switch between the library or the 
 
 1) Add logo and define it as either "library" or "archives" depending on which one you need.
 
-``` <footer-global
+```<footer-global
     custom
     header="Your Application Name"
     phone="xxxxxx"
