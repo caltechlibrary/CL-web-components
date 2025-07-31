@@ -324,7 +324,7 @@ export class FooterGlobal extends HTMLElement {
             <div class="footer-column column1">
                 <div class="custom-links-wrapper">
                     <h2 id="column1-header">Hours</h2>
-                    <slot name="custom-links" part="custom-links"></slot>
+                    <slot name="custom-links"></slot>
                     <div id="default-column1" hidden aria-live="polite">
                         <p>Loading library hours...</p>
                     </div>
@@ -454,7 +454,7 @@ export class FooterGlobal extends HTMLElement {
 
 		// Set email and phone links if attributes are present
 		const email = this.getAttribute("email") || "library@caltech.edu";
-		const phone = this.getAttribute("phone") || "6263953405";
+		const phone = this.getAttribute("phone") || "626-395-3405";
 
 		const emailLink = this.shadowRoot.getElementById("email-link");
 		const phoneLink = this.shadowRoot.getElementById("phone-link");
