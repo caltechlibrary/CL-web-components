@@ -1,4 +1,4 @@
-export class FooterGlobal extends HTMLElement {
+export class FooterGlobalLite extends HTMLElement {
 	constructor() {
 		super();
 		const shadow = this.attachShadow({ mode: "open" });
@@ -370,4 +370,4 @@ export class FooterGlobal extends HTMLElement {
 	
 }
 
-customElements.define("footer-global-lite", FooterGlobal);
+customElements.define("footer-global-lite", FooterGlobalLite);
