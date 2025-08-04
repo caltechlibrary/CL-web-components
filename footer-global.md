@@ -4,7 +4,7 @@ This web component is designed to add a branded footer to applications maintaine
 
 There are two versions of the footer - the standard footer that matches the library website, and a lite version with a streamlined content structure. 
 
-The footers have several options for customization using both attribures and slot to change the content that is displayed.
+The footers have several options for customization using both attributes and slot to change the content that is displayed.
 
 ## Key Features
 
