@@ -55,7 +55,7 @@ There are multiple ways to customize the footers.
 
 You have the option to add a custom column heading to the first column in both Footer-Global and Footer-Global-Lite. This could be terms like Quick Links, About, or the application's name. 
 
-1) Add "custom" as an attribute to the extended html element. This helps with column spacing and is required.
+1) Add "custom" as an attribute to the extended html element. This helps with column spacing and is required anytime you customize the component.
 2) Define the heading text as an attribute.
 
 ```html
@@ -84,7 +84,7 @@ The default content without customization:
 
 To overwrite this default content, you will
 
-1) First, add an ```<a>``` tags between the open and close of the footer element with your custom link.
+1) First, add an ```<a>``` tag between the open and close of the footer element with your custom link.
 2) Add the named slot **custom-links** to the ```<a>``` tag. This will pull the content into the Shadow Dom.
 3) Add the class **custom-links** to the ```<a>``` tag. This will give it the link style it needs and account for hover states.
 
@@ -103,7 +103,7 @@ To overwrite this default content, you will
 
 ### Custom Phone and Email 
 
-In the second column, you change the phone and email so that it is specific to your application in both Footer-Global and Footer-Global-Lite. 
+In the second column, you can change the phone and email so that it is specific to your application in both Footer-Global and Footer-Global-Lite. 
 
 To override the phone and email, you will define their attributes in the html element.
 
