@@ -91,6 +91,9 @@ The following are the components currently provided.
 &#x60;table-sortable&#x60;
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
+&#x60;global-footer&#x60;
+: This provides a library branded footer for library-maintained applications. Provides a full footer and a lite version, both with content customizations available per application.
+
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>
 - Issues: <https://github.com/caltechlibrary/CL-web-components/issues>

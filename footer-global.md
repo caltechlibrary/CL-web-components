@@ -31,7 +31,7 @@ To install the footer, simply included the javascript file and the extended html
  And the javascript file.
 
 ```html
-<script type="module" src="/src/footer-global.js"></script> (updated link coming soon)
+<script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script> 
 ```
 ### Global-Footer-Lite
 
