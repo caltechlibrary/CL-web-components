@@ -61,7 +61,7 @@ Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-
 
 #### Runtime platform
 
-HTML5-compatible web browser**
+**HTML5-compatible web browser**
 
 ## Related resources
 
