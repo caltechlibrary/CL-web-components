@@ -19,9 +19,9 @@ export class FooterGlobalLite extends HTMLElement {
 
         <style>
 
-        /* ─────────────────────────
+        /* ------------------------- 
            Base Styles
-        ────────────────────────── */
+        ------------------------- */
         :host {
           font-family: 'Hind', sans-serif;
           display: block;
@@ -42,9 +42,9 @@ export class FooterGlobalLite extends HTMLElement {
           }
         }
         
-        /* ─────────────────────────
+        /* -------------------------
            Layout & Structure
-        ────────────────────────── */
+        ------------------------- */
 
         .footer-container {
           display: flex;
@@ -94,9 +94,9 @@ export class FooterGlobalLite extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Typography
-        ────────────────────────── */
+        ------------------------- */
 
         h2 {
           font-size: 30px;
@@ -108,9 +108,9 @@ export class FooterGlobalLite extends HTMLElement {
           color: inherit;
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Lists
-        ────────────────────────── */
+        ------------------------- */
 
         ul {
           margin-top: 0;
@@ -138,9 +138,9 @@ export class FooterGlobalLite extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Links
-        ────────────────────────── */
+        ------------------------- */
 
         a {
           color: white;
@@ -161,9 +161,9 @@ export class FooterGlobalLite extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Responsive Styles
-        ────────────────────────── */
+        ------------------------- */
 
         @media (max-width: 1024px) {
           .footer-container {
@@ -185,9 +185,9 @@ export class FooterGlobalLite extends HTMLElement {
           }
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Contact Us
-        ────────────────────────── */
+        ------------------------- */
 
         address {
           margin-bottom: 24px;
@@ -197,9 +197,9 @@ export class FooterGlobalLite extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Social & Branding
-        ────────────────────────── */
+        ------------------------- */
 
         .logo-library {
           fill: #fff;

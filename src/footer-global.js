@@ -18,9 +18,9 @@ export class FooterGlobal extends HTMLElement {
 
         <style>
 
-        /* ─────────────────────────
+        /* -------------------------
            Base Styles
-        ────────────────────────── */
+        -------------------------- */
         :host {
           font-family: 'Hind', sans-serif;
           display: block;
@@ -41,9 +41,9 @@ export class FooterGlobal extends HTMLElement {
           }
         }
         
-        /* ─────────────────────────
+        /* -------------------------
            Layout & Structure
-        ────────────────────────── */
+        -------------------------- */
 
         .footer-container {
           display: flex;
@@ -86,9 +86,9 @@ export class FooterGlobal extends HTMLElement {
           flex: 0 1 30%;
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Footer Bottom Area
-        ────────────────────────── */
+        -------------------------- */
 
         .footer-bottom {
           flex: 1 1 100%;
@@ -97,9 +97,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Typography
-        ────────────────────────── */
+        -------------------------- */
 
         h2 {
           font-size: 30px;
@@ -111,9 +111,9 @@ export class FooterGlobal extends HTMLElement {
           color: inherit;
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Lists
-        ────────────────────────── */
+        -------------------------- */
 
         ul {
           margin-top: 0;
@@ -141,9 +141,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Links
-        ────────────────────────── */
+        -------------------------- */
 
         a {
           color: inherit;
@@ -170,9 +170,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Responsive Styles
-        ────────────────────────── */
+        -------------------------- */
 
         @media (max-width: 1024px) {
           .footer-container {
@@ -195,9 +195,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Library Hours
-        ────────────────────────── */
+        -------------------------- */
 
         .library-hours {
           background-color: #013049;
@@ -266,9 +266,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Contact Us
-        ────────────────────────── */
+        -------------------------- */
 
         address {
           margin-bottom: 24px;
@@ -290,9 +290,9 @@ export class FooterGlobal extends HTMLElement {
           margin-block-start: 24px;
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Social & Branding
-        ────────────────────────── */
+        -------------------------- */
 
         .social a svg {
           height: 32px;
