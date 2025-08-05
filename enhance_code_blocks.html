@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+	<link rel="stylesheet" href="./css/code-blocks.css">
+	<script type="module" src="/copyToClipboard.js"></script>
+	<script type="module" src="/footer-global.js"></script>
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="enhancing-code-blocks-with-css-and-javascript">Enhancing code
+blocks with CSS and JavaScript</h1>
+<p>This document describes how to use the <code>code-blocks.css</code>
+and <code>copyToClipboard.js</code> files to style code blocks and add a
+“Copy to Clipboard” button to them.</p>
+<h2 id="overview">Overview</h2>
+<p>The provided CSS and JavaScript files allow you to style
+<code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> elements and add
+a button to copy the code to the clipboard. This is useful for
+displaying code snippets on a webpage with a consistent style and
+enhanced functionality.</p>
+<h2 id="files">Files</h2>
+<dl>
+<dt><code>code-blocks.css</code></dt>
+<dd>
+A CSS file that styles the <code>&lt;pre&gt;</code> and
+<code>&lt;code&gt;</code> elements and the copy button.
+</dd>
+<dt><code>copyToClipboard.js</code></dt>
+<dd>
+A JavaScript module that adds a “Copy to Clipboard” button to each
+<code>&lt;pre&gt;</code> block containing a <code>&lt;code&gt;</code>
+element.
+</dd>
+</dl>
+<h2 id="css-variables">CSS Variables</h2>
+<p>The <code>code-blocks.css</code> file uses CSS variables to define
+the styling properties. These variables can be easily overridden to
+customize the appearance of the code blocks and the copy button.</p>
+<h3 id="code-block-variables">Code Block Variables</h3>
+<dl>
+<dt><code>--code-font-family</code></dt>
+<dd>
+Font family for the code block. Default is <code>monospace</code>.
+</dd>
+<dt><code>--code-border-color</code></dt>
+<dd>
+Border color for the code block. Default is <code>#ccc</code>.
+</dd>
+<dt><code>--code-background-color</code></dt>
+<dd>
+Background color for the code block. Default is <code>#f5f5f5</code>.
+</dd>
+</dl>
+<h3 id="copy-button-variables">Copy Button Variables</h3>
+<dl>
+<dt><code>--copy-button-bg-color</code></dt>
+<dd>
+Background color for the copy button. Default is <code>#fff</code>.
+</dd>
+<dt><code>--copy-button-border-color</code></dt>
+<dd>
+Border color for the copy button. Default is <code>#ccc</code>.
+</dd>
+<dt><code>--copy-button-text-color</code></dt>
+<dd>
+Text color for the copy button. Default is <code>#000</code>.
+</dd>
+<dt><code>--copy-button-hover-bg-color</code></dt>
+<dd>
+Background color for the copy button on hover. Default is
+<code>#f0f0f0</code>.
+</dd>
+</dl>
+<h2 id="usage">Usage</h2>
+<h3 id="step-1-include-the-css-file">Step 1: Include the CSS File</h3>
+<p>Link the <code>code-blocks.css</code> file in the
+<code>&lt;head&gt;</code> section of your HTML document:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;path/to/code-blocks.css&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="step-2-include-the-javascript-module">Step 2: Include the
+JavaScript Module</h3>
+<p>Include the <code>copyToClipboard.js</code> module in your HTML
+document. This script should be included at the end of the
+<code>&lt;body&gt;</code> section or use the
+<code>DOMContentLoaded</code> event to ensure the DOM is fully loaded
+before executing the script.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;path/to/copyToClipboard.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="step-3-add-code-blocks-to-your-html">Step 3: Add Code Blocks to
+Your HTML</h3>
+<p>Add <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> elements
+to your HTML document. The JavaScript module will automatically add a
+“Copy to Clipboard” button to each <code>&lt;pre&gt;</code> block
+containing a <code>&lt;code&gt;</code> element.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>public class HelloWorld {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    public static void main(String[] args) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        System.out.println(&quot;Hello, world!&quot;);</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>public class AnotherExample {</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    public static void main(String[] args) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        System.out.println(&quot;Another example!&quot;);</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="example-full-html-document">Example: Full HTML Document</h3>
+<p>Here is an example of a complete HTML document that includes the CSS
+and JavaScript files:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Code Blocks Example<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;path/to/code-blocks.css&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Code Examples<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>public class HelloWorld {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    public static void main(String[] args) {</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        System.out.println(&quot;Hello, world!&quot;);</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>public class AnotherExample {</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    public static void main(String[] args) {</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        System.out.println(&quot;Another example!&quot;);</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;path/to/copyToClipboard.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="step-4-customize-the-styling-optional">Step 4: Customize the
+Styling (Optional)</h3>
+<p>You can override the CSS variables to customize the appearance of the
+code blocks and the copy button. Add a <code>&lt;style&gt;</code> block
+to your HTML document and redefine the variables as needed.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="in">:root</span> {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">--code-font-family</span><span class="ch">:</span> <span class="st">&#39;Courier New&#39;</span><span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">--code-border-color</span><span class="ch">:</span> <span class="cn">#ff5733</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">--copy-button-bg-color</span><span class="ch">:</span> <span class="cn">#e7e7e7</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">--copy-button-border-color</span><span class="ch">:</span> <span class="cn">#ff5733</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="javascript-functionality">JavaScript Functionality</h2>
+<p>The <code>copyToClipboard.js</code> module performs the following
+actions:</p>
+<ol type="1">
+<li>Waits for the <code>DOMContentLoaded</code> event to ensure the DOM
+is fully loaded.</li>
+<li>Finds all <code>&lt;pre&gt;</code> elements in the document.</li>
+<li>For each <code>&lt;pre&gt;</code> element, checks if it contains a
+<code>&lt;code&gt;</code> element.</li>
+<li>Creates a button with the clipboard emoji (📋) and appends it to the
+<code>&lt;pre&gt;</code> element.</li>
+<li>Adds an event listener to the button to copy the text content of the
+<code>&lt;code&gt;</code> element to the clipboard when clicked.</li>
+<li>Provides feedback by changing the button text to “Copied!” for a
+short period after copying.</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>By following these steps, you can style code blocks and add a “Copy
+to Clipboard” button to them using the provided CSS and JavaScript
+files. This enhances the user experience by making it easy to copy code
+snippets from your webpage.</p>
+<h3 id="example-customized-html-document">Example: Customized HTML
+Document</h3>
+<p>Here is an example of a complete HTML document with customized
+styling:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Customized Code Blocks Example<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;path/to/code-blocks.css&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="in">:root</span> {</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="va">--code-font-family</span><span class="ch">:</span> <span class="st">&#39;Courier New&#39;</span><span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="va">--code-border-color</span><span class="ch">:</span> <span class="cn">#ff5733</span><span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="va">--copy-button-bg-color</span><span class="ch">:</span> <span class="cn">#e7e7e7</span><span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      <span class="va">--copy-button-border-color</span><span class="ch">:</span> <span class="cn">#ff5733</span><span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Customized Code Examples<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>public class CustomHelloWorld {</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    public static void main(String[] args) {</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        System.out.println(&quot;Custom Hello, world!&quot;);</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>public class CustomExample {</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    public static void main(String[] args) {</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        System.out.println(&quot;Another customized example!&quot;);</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;path/to/copyToClipboard.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>This setup allows you to maintain a clean and organized stylesheet
+with reusable variables and provides the flexibility to override these
+variables as needed.</p>
+</section>
+<footer-global></footer-global>
+</body>
+</html>
