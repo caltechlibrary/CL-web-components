@@ -43,7 +43,12 @@ const searchQuery = getQueryParam('q');
 window.addEventListener('DOMContentLoaded', (event) => {
     const searchUI = new PagefindUI({ 
             element: "#search",
+<<<<<<< HEAD
             baseUrl: basePath
+=======
+            basePath: "./",
+        });
+>>>>>>> 91b9b9d94a06653989ccf0dd07eec1bf5001f988
     });
     console.dir(searchUI);
     if (searchQuery) {

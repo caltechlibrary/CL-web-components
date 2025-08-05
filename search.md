@@ -21,7 +21,8 @@ const searchQuery = getQueryParam('q');
 window.addEventListener('DOMContentLoaded', (event) => {
     const searchUI = new PagefindUI({ 
             element: "#search",
-            baseUrl: basePath
+            basePath: "./",
+        });
     });
     console.dir(searchUI);
     if (searchQuery) {
