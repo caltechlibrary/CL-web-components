@@ -464,30 +464,39 @@ export class FooterGlobal extends HTMLElement {
 
     // grab tokenized login link and rebuild elsewhere
     if (this.getAttribute("type") === "libguides") {
-      const sourceLink = document.getElementById("s-lib-footer-login-link")?.querySelector("a");
-      if (!sourceLink) {
-        console.warn("⚠️ sourceLink (#s-lib-footer-login-link > a) not found");
+      console.log("🧪 Detected type=libguides");
+      // grab tokenized login link and rebuild elsewhere
+      const sourceWrapper = document.getElementById("s-lib-footer-login-link");
+      if (!sourceWrapper) {
+        console.warn("❌ s-lib-footer-login-link not found");
         return;
       }
 
-      const loginLink = document.createElement("a");
-      loginLink.href = sourceLink.href;
-      loginLink.setAttribute("aria-label", "Staff Login");
-      loginLink.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        width="16"
-        height="16"
-        fill="currentColor"
-        aria-hidden="true">
-        <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
-        </svg>`;
-      const shadowTarget = this.shadowRoot?.getElementById("footer-login");
-      console.log("🎯 Found shadow target:", shadowTarget);
-      if (shadowTarget) {
-        console.log("✅ Injecting login link:", loginLink);
-        shadowTarget.appendChild(loginLink);
+      const sourceLink = sourceWrapper.querySelector("a");
+      if (!sourceLink) {
+        console.warn("🚫 Login <a> not found inside s-lib-footer-login-link");
+        return;
       }
+
+      console.log("✅ Login link found:", sourceLink.href);
+
+      const login_link = document.createElement("a");
+      login_link.setAttribute("href", sourceLink.href);
+      login_link.setAttribute("aria-label", "Staff Login");
+      login_link.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false" class="svg-inline--fa fa-sign-in fa-w-16">
+          <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path>
+        </svg>
+      `;
+
+      const shadowTarget = this.shadowRoot?.getElementById("footer-login");
+      if (!shadowTarget) {
+        console.warn("⚠️ Could not find #footer-login inside shadow DOM");
+        return;
+      }
+
+      console.log("🚀 Injecting login link into shadow DOM");
+      shadowTarget.appendChild(login_link);
     }
 
     // Listen for slot content changes and show fallback if nexessary
