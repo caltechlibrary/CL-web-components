@@ -1657,12 +1657,13 @@ var FooterGlobal = class extends HTMLElement {
           line-height: 2;
         }
 
-        /* Force Font Awesome rendering inside the component */
-        i.fa {
-          font-family: 'FontAwesome';
-          font-style: normal;
-          font-weight: normal;
-          speak: none;
+        /* Style for SVG icon injected in #footer-login */
+        #footer-login a svg {
+          width: 1.25rem;
+          height: 1.25rem;
+          fill: #fff;
+          display: inline-block;
+          vertical-align: middle;
         }
         </style>
 
