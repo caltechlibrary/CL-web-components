@@ -57,7 +57,7 @@
     "Deno >= 2.4.3 (for bundling dependencies)"
   ],
   "softwareSuggestions": [
-    "CMTools >= 0.0.38",
+    "CMTools >= 0.0.39",
     "Pandoc >= 3.1",
     "PageFind >= 1.3"
   ],
