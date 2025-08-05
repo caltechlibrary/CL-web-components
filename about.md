@@ -4,17 +4,22 @@ abstract: "CL-web-components provides a collection of Web Components used by Cal
 
 The following are the components currently provided.
 
+&#x60;footer-global&#x60;
+: This component provides a standard footer with detailed information about the library
 
-`ul-a-to-z`
+&#x60;footer-global-lite&#x60;
+: This component provides a lighter weight version of the &#x60;footer-global&#x60; component
+
+&#x60;ul-a-to-z&#x60;
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-`textarea-csv`
+&#x60;textarea-csv&#x60;
 : This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
-`textarea-agent-list`
+&#x60;textarea-agent-list&#x60;
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
-`table-sortable`
+&#x60;table-sortable&#x60;
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on."
 authors:
   - family_name: Doiel
@@ -31,7 +36,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.13
+version: 0.0.14
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -46,20 +51,22 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-07-25
+date_released: 2025-08-25
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.13
+## CL-web-components 0.0.14
 
-This release includes a re-organization of the project source code. Editable code is now maintained in `src/`.  The bundled versions
-are retained in the root of the repository. Distribution versions are generating in the `dist/` directory.
+This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
+are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
 
-Deno 2.4.2 or better is now a requirement to build the bundled versions.
+Deno 2.4.3 or better is now a requirement to build the bundled versions.
 
-Two new web components are now included, `<footer-global></footer-global>` and `<footer-global-lite></footer-global-lite>`.
+Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-global&gt;&#x60; and &#x60;&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;&#x60;.
+
+A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules, &#x60;copyToClipboard.js&#x60; for enhancing codeblocks.
 
 ### Authors
 
@@ -78,21 +85,23 @@ CL-web-components provides a collection of Web Components used by Caltech Librar
 
 The following are the components currently provided.
 
+&#x60;footer-global&#x60;
+: This component provides a standard footer with detailed information about the library
 
-`ul-a-to-z`
+&#x60;footer-global-lite&#x60;
+: This component provides a lighter weight version of the &#x60;footer-global&#x60; component
+
+&#x60;ul-a-to-z&#x60;
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-`textarea-csv`
+&#x60;textarea-csv&#x60;
 : This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
-`textarea-agent-list`
+&#x60;textarea-agent-list&#x60;
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
-`table-sortable`
+&#x60;table-sortable&#x60;
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
-
-`global-footer`
-: This provides a library branded footer for library-maintained applications. Provides a full footer and a lite version, both with content customizations available per application.
 
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>
@@ -109,13 +118,13 @@ The following are the components currently provided.
 
 ### Software Requirements
 
-- Deno >= 2.4.1 (for bundling dependencies)
+- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
 
 
 ### Software Suggestions
 
-- CMTools >= 0.0.35
-- Pandoc >= 3.1
-- PageFind >= 1.3
+- CMTools &gt;&#x3D; 0.0.38
+- Pandoc &gt;&#x3D; 3.1
+- PageFind &gt;&#x3D; 1.3
 
 

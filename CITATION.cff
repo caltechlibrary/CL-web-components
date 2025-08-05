@@ -7,6 +7,11 @@ abstract: "CL-web-components provides a collection of Web Components used by Cal
 
 The following are the components currently provided.
 
+&#x60;footer-global&#x60;
+: This component provides a standard footer with detailed information about the library
+
+&#x60;footer-global-lite&#x60;
+: This component provides a lighter weight version of the &#x60;footer-global&#x60; component
 
 &#x60;ul-a-to-z&#x60;
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
@@ -36,8 +41,8 @@ contacts:
     email: rsdoiel@caltech.edu
 
 repository-code: "https://github.com/caltechlibrary/CL-web-components"
-version: 0.0.13
-date-released: 2025-07-25
+version: 0.0.14
+date-released: 2025-08-25
 
 license-url: "https://caltechlibrary.github.io/CL-web-components/LICENSE"
 keywords:

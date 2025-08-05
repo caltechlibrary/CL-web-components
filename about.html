@@ -22,16 +22,18 @@
 </nav>
 <section>
 <h1 id="about-this-software">About this software</h1>
-<h2 id="cl-web-components-0.0.13">CL-web-components 0.0.13</h2>
+<h2 id="cl-web-components-0.0.14">CL-web-components 0.0.14</h2>
 <p>This release includes a re-organization of the project source code.
-Editable code is now maintained in <code>src/</code>. The bundled
-versions are retained in the root of the repository. Distribution
-versions are generating in the <code>dist/</code> directory.</p>
-<p>Deno 2.4.2 or better is now a requirement to build the bundled
+Editable code is now maintained in `src/`. The bundled versions are
+retained in the root of the repository. Distribution versions are
+generating in the `dist/` directory.</p>
+<p>Deno 2.4.3 or better is now a requirement to build the bundled
 versions.</p>
 <p>Two new web components are now included,
-<code>&lt;footer-global&gt;&lt;/footer-global&gt;</code> and
-<code>&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;</code>.</p>
+`&lt;footer-global&gt;&lt;/footer-global&gt;` and
+`&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;`.</p>
+<p>A new CSS file was added, `css/code-blocks.css` and JavaScript
+modules, `copyToClipboard.js` for enhancing codeblocks.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>R. S. Doiel, <a href="https://orcid.org/0000-0003-0900-6903"
@@ -48,33 +50,37 @@ class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 Caltech Library across sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
-<dt><code>ul-a-to-z</code></dt>
+<dt>`footer-global`</dt>
+<dd>
+This component provides a standard footer with detailed information
+about the library
+</dd>
+<dt>`footer-global-lite`</dt>
+<dd>
+This component provides a lighter weight version of the `footer-global`
+component
+</dd>
+<dt>`ul-a-to-z`</dt>
 <dd>
 This component takes an innerHTML containing a UL list. The UL list is
 then turned into an A to Z navigatable UL List. If JavaScript is
 unavailable then the innerHTML UL remains as a fallback.
 </dd>
-<dt><code>textarea-csv</code></dt>
+<dt>`textarea-csv`</dt>
 <dd>
 This is a textarea like component who's innerHTML content is CSV data.
 The component will display this as an editable table.
 </dd>
-<dt><code>textarea-agent-list</code></dt>
+<dt>`textarea-agent-list`</dt>
 <dd>
 This element wraps a textarea containing a list of agents expressed as
 JSON.
 </dd>
-<dt><code>table-sortable</code></dt>
+<dt>`table-sortable`</dt>
 <dd>
 This is a component that takes an innerHTML containing table. It makes
 the table sortable by the column headings and provides a filter input
 that lets you enter text to filter by and pick a column to filter on.
-</dd>
-<dt><code>global-footer</code></dt>
-<dd>
-This provides a library branded footer for library-maintained
-applications. Provides a full footer and a lite version, both with
-content customizations available per application.
 </dd>
 </dl>
 <ul>
@@ -96,11 +102,11 @@ class="uri">https://github.com/caltechlibrary/CL-web-components/issues</a></li>
 </ul>
 <h3 id="software-requirements">Software Requirements</h3>
 <ul>
-<li>Deno &gt;= 2.4.1 (for bundling dependencies)</li>
+<li>Deno &gt;= 2.4.3 (for bundling dependencies)</li>
 </ul>
 <h3 id="software-suggestions">Software Suggestions</h3>
 <ul>
-<li>CMTools &gt;= 0.0.35</li>
+<li>CMTools &gt;= 0.0.38</li>
 <li>Pandoc &gt;= 3.1</li>
 <li>PageFind &gt;= 1.3</li>
 </ul>
