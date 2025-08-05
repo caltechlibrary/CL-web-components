@@ -1,5 +1,5 @@
 // src/footer-global-lite.js
-var FooterGlobal = class extends HTMLElement {
+var FooterGlobalLite = class extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
@@ -15,9 +15,9 @@ var FooterGlobal = class extends HTMLElement {
 
         <style>
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* ------------------------- 
            Base Styles
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
         :host {
           font-family: 'Hind', sans-serif;
           display: block;
@@ -38,9 +38,9 @@ var FooterGlobal = class extends HTMLElement {
           }
         }
         
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Layout & Structure
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         .footer-container {
           display: flex;
@@ -90,9 +90,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Typography
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         h2 {
           font-size: 30px;
@@ -104,9 +104,9 @@ var FooterGlobal = class extends HTMLElement {
           color: inherit;
         }
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Lists
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         ul {
           margin-top: 0;
@@ -134,9 +134,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Links
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         a {
           color: white;
@@ -157,9 +157,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Responsive Styles
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         @media (max-width: 1024px) {
           .footer-container {
@@ -181,9 +181,9 @@ var FooterGlobal = class extends HTMLElement {
           }
         }
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Contact Us
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         address {
           margin-bottom: 24px;
@@ -193,9 +193,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Social & Branding
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        ------------------------- */
 
         .logo-library {
           fill: #fff;
@@ -338,7 +338,7 @@ var FooterGlobal = class extends HTMLElement {
     }
   }
 };
-customElements.define("footer-global-lite", FooterGlobal);
+customElements.define("footer-global-lite", FooterGlobalLite);
 export {
-  FooterGlobal
+  FooterGlobalLite
 };

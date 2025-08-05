@@ -15,9 +15,9 @@ var FooterGlobal = class extends HTMLElement {
 
         <style>
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Base Styles
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
         :host {
           font-family: 'Hind', sans-serif;
           display: block;
@@ -38,9 +38,9 @@ var FooterGlobal = class extends HTMLElement {
           }
         }
         
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Layout & Structure
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         .footer-container {
           display: flex;
@@ -83,9 +83,9 @@ var FooterGlobal = class extends HTMLElement {
           flex: 0 1 30%;
         }
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Footer Bottom Area
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         .footer-bottom {
           flex: 1 1 100%;
@@ -94,9 +94,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Typography
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         h2 {
           font-size: 30px;
@@ -108,9 +108,9 @@ var FooterGlobal = class extends HTMLElement {
           color: inherit;
         }
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Lists
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         ul {
           margin-top: 0;
@@ -138,9 +138,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Links
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         a {
           color: inherit;
@@ -167,9 +167,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Responsive Styles
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         @media (max-width: 1024px) {
           .footer-container {
@@ -192,9 +192,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Library Hours
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         .library-hours {
           background-color: #013049;
@@ -263,9 +263,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Contact Us
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         address {
           margin-bottom: 24px;
@@ -287,9 +287,9 @@ var FooterGlobal = class extends HTMLElement {
           margin-block-start: 24px;
         }
 
-        /* \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+        /* -------------------------
            Social & Branding
-        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+        -------------------------- */
 
         .social a svg {
           height: 32px;
@@ -314,49 +314,64 @@ var FooterGlobal = class extends HTMLElement {
         .links {
           line-height: 2;
         }
-        
+
+        /* Force Font Awesome rendering inside the component */
+        i.fa {
+          font-family: 'FontAwesome';
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
         </style>
 
-        <footer class="footer-container" role="contentinfo">
-            <div class="footer-column column1">
-                <div class="custom-links-wrapper">
-                    <h2 id="column1-header">Hours</h2>
-                    <slot name="custom-links"></slot>
-                    <div id="default-column1" hidden aria-live="polite">
-                        <p>Loading library hours...</p>
-                    </div>
-                </div>
+      <footer class="footer-container" role="contentinfo">
+        <div class="footer-column column1">
+          <div class="custom-links-wrapper">
+            <h2 id="column1-header">Hours</h2>
+            <slot name="custom-links"></slot>
+            <div id="default-column1" hidden aria-live="polite">
+              <p>Loading library hours...</p>
             </div>
+          </div>
+        </div>
 
-            <div class="footer-column column2">
-                <h2>Contact Us</h2>
-                <address class="h-card">
-                    <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
-                    <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
-                    <a class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
-                    <div class="p-adr h-adr">
-                        <div class="p-post-office-box">Mail Code 1-43</div>
-                        <div class="p-street-address">1200 E California Blvd</div>
-                        <span class="p-locality">Pasadena</span> <abbr class="p-region" title="California">CA</abbr> <span class="p-postal-code">91125-4300</span>
-                    </div>
-                </address>
-                <div class="social">
-                    <a id="instagram-link"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" role="img" aria-labelledby="cl-ig-f">
-                        <title id="cl-ig-f">Instagram</title>
-                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
-                        </svg></a>
-                    <a id="youtube-link"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" role="img" aria-labelledby="cl-yt-f">                        <title id="cl-yt-f">YouTube</title>
-                        <path d="M8.051 1.999h-.002C3.833 2 2.518 2.138 1.857 2.31a2.01 2.01 0 0 0-1.42 1.419C.263 4.508.125 5.823.125 8c0 2.177.138 3.492.312 4.271a2.01 2.01 0 0 0 1.419 1.42c.68.17 1.995.309 6.195.309s5.514-.14 6.195-.31a2.01 2.01 0 0 0 1.419-1.419c.174-.78.313-2.095.313-4.272 0-2.177-.139-3.492-.313-4.272a2.01 2.01 0 0 0-1.419-1.418C13.566 2.137 12.251 2 8.051 1.999zM6.553 5.568l3.49 2.06-3.49 2.06V5.568z"/>
-                    </svg></a>
-                </div>
+        <div class="footer-column column2">
+          <h2>Contact Us</h2>
+          <address class="h-card">
+            <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
+            <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
+            <a class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
+            <div class="p-adr h-adr">
+              <div class="p-post-office-box">Mail Code 1-43</div>
+              <div class="p-street-address">1200 E California Blvd</div>
+              <span class="p-locality">Pasadena</span>
+              <abbr class="p-region" title="California">CA</abbr>
+              <span class="p-postal-code">91125-4300</span>
             </div>
-            <div class="footer-column column3">
-                <section class="links">
-                    <div class="footer-logo-container"></div>
-                    <!-- Library Logo SVG Template -->
-                    <template id="library-logo">
-                      <!-- Begin Caltech Library Logo SVG -->
-                      <svg class="logo-library" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 190">
+          </address>
+          <div class="social">
+            <a id="instagram-link">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" role="img" aria-labelledby="cl-ig-f">
+                <title id="cl-ig-f">Instagram</title>
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+              </svg>
+            </a>
+            <a id="youtube-link">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" role="img" aria-labelledby="cl-yt-f">
+                <title id="cl-yt-f">YouTube</title>
+                <path d="M8.051 1.999h-.002C3.833 2 2.518 2.138 1.857 2.31a2.01 2.01 0 0 0-1.42 1.419C.263 4.508.125 5.823.125 8c0 2.177.138 3.492.312 4.271a2.01 2.01 0 0 0 1.419 1.42c.68.17 1.995.309 6.195.309s5.514-.14 6.195-.31a2.01 2.01 0 0 0 1.419-1.419c.174-.78.313-2.095.313-4.272 0-2.177-.139-3.492-.313-4.272a2.01 2.01 0 0 0-1.419-1.418C13.566 2.137 12.251 2 8.051 1.999zM6.553 5.568l3.49 2.06-3.49 2.06V5.568z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column column3">
+          <section class="links">
+            <div class="footer-logo-container"></div>
+            <!-- Library Logo SVG Template -->
+            <template id="library-logo">
+              <!-- Begin Caltech Library Logo SVG -->
+              <svg class="logo-library" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 190">
                         <path d="M72.52,26.4C68.66,9.47,56.28,1,40,1,15.83,1,1.67,20.6,1.67,43.44S14.12,85.94,40,85.94c16.13,0,26.93-7.84,33.4-24.09L59.57,55.49c-3,9.43-9,16.36-19.54,16.36-16.14,0-22.84-14.32-22.84-28.41S23.89,15,40,15c9.2,0,16.59,6.13,17.84,15.11L72.52,26.4Zm54.25,17.5C126.77,27.54,114.38,25,102,25c-12.61,0-24.54,5.22-24.54,18.74l13.86.57c0-6.25,2.61-8.63,10.68-8.63,6,0,10.91,1.59,10.91,7.27v1.7c-3.52,1.25-10,2.39-15,3.41l-5.8,1.14c-8.52,1.7-17.49,6.7-17.49,17.95s8.63,18.07,19.54,18.07a29.07,29.07,0,0,0,18.75-6.59,10.85,10.85,0,0,0,1.36,5.22h14.66c-.8-1.25-2.16-3.75-2.16-9.66V43.9ZM112.91,63.33c0,7.38-8.3,10.56-14.77,10.56-5,0-9-2.84-9-7.15,0-5.46,4.32-6.94,9.54-8l7.62-1.59a24.8,24.8,0,0,0,6.59-2v8.19Zm23.78,20.56h13.86V.72H136.69V83.89Zm23.23-70V70.71c0,8.75,3.86,13.86,15.22,13.86a51.43,51.43,0,0,0,11-1.36V71.85a59.08,59.08,0,0,1-6.14.68c-5.34,0-6.25-2.5-6.25-7V36.4h12.39v-10H173.78V0L159.92,13.88Zm84,44.56c0-20.57-8.4-33.4-27.61-33.4-18.63,0-29.43,13-29.43,30.1s10.8,30.12,29.43,30.12c15.68,0,24-7.5,28.3-14.09L232.9,64.35c-1.36,1.93-5.68,8.18-16.59,8.18-7.5,0-14.65-5.57-14.88-14.09ZM201.43,47.76A14.79,14.79,0,0,1,216.31,36.4c9.32,0,13.07,8.29,13.07,11.36ZM302.29,41.4C298.77,32.76,292,25,278,25c-18.63,0-29.43,13-29.43,30.1S259.34,85.26,277,85.26c15.57,0,22.16-9.21,26-17.62l-11.82-6.25c-2.15,5.23-5.68,11.14-14,11.14-9.66,0-14.09-8.41-14.09-17.39s5-17.38,14.88-17.38A12.78,12.78,0,0,1,290.13,47l12.16-5.56Zm4.32,42.49h13.86V54.35c0-7,3.18-15.91,13.63-15.91,7,0,10.23,3.41,10.23,11.36V83.89h13.86V45.83c0-16.71-11.25-20.79-21-20.79-7.84,0-13.41,3.06-16.47,7h-.23V.72H306.61V83.89Z"></path>
                         <path d="M16.1,129.71c0-5.34-.17-14.19-.25-15.69-.17-2.17-.58-3-3.09-3H8.84c-.5,0-.58-.41-.58-.83v-1.84c0-.41.08-.58.58-.58.92,0,3.92.25,10.85.25,8.09,0,11.6-.25,12.35-.25s.75.25.75.67v1.92c0,.41-.17.66-.83.66H27c-2.59,0-2.92.84-2.92,3.26,0,1.08-.25,13.68-.25,19.53V141c0,1.42,0,19.45.25,22.87,1.84.16,18.36.33,20.94,0,4.93-.75,9.93-10.77,11.1-14,.17-.34.34-.5.67-.34l1.34.5c.25.17.25.26.16.76-.25.58-3.59,14.35-4.09,16.6-1.08-.08-7.59-.16-15-.16s-15.6-.09-20.11-.09c-3.25,0-5.67.09-7.42.09s-2.67.16-3.26.16-.67-.16-.67-.58v-2.09c0-.42.09-.58.59-.58h4c3.09,0,3.59-1.17,3.59-2.26,0-1.58.25-22.36.25-27.45Z"></path>
                         <path d="M68.18,142.81c0-2.84-.5-4.34-4.67-5-.59-.08-.75-.25-.75-.58v-.75c0-.25.16-.42.58-.59a67.1,67.1,0,0,0,9-4.09,3.51,3.51,0,0,1,1.59-.5c.42,0,.5.42.42,1-.17,1.42-.17,6.68-.17,13.61V155c0,3.26,0,6.26.08,7.18.17,1.58.42,2.17,1.34,2.17h3.84c.66,0,.83.25.83.75v1.42c0,.58-.17.83-.75.83s-4.51-.25-8-.25c-4.84,0-8.1.25-9,.25-.42,0-.67-.16-.67-.67V165c0-.5.25-.66.83-.66h4.09c.92,0,1.25-.34,1.34-1.67.08-2.5.08-5.09.08-7.6Zm-3.92-25.62a4.92,4.92,0,0,1,5.26-4.67,4.39,4.39,0,0,1,4.5,4.42,4.78,4.78,0,0,1-5,4.92C67.1,121.86,64.26,119.94,64.26,117.19Z"></path>
@@ -378,23 +393,25 @@ var FooterGlobal = class extends HTMLElement {
                       </svg>
                     </template>
                     
-                    <ul class="list-unstyled">
-                        <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
-                        <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
-                        <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
-                        <li><a href="https://caltech.imodules.com/supportcaltechlibraries">Donate</a></li>
-                    </ul>
-                </section>
-            </div>
-            <div class="footer-bottom">
-            <ul class="list-inline">
+            <ul class="list-unstyled">
+              <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
+              <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
+              <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
+              <li><a href="https://caltech.imodules.com/supportcaltechlibraries">Donate</a></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="footer-bottom">
+          <ul class="list-inline">
             <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
             <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
             <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
-            </ul>
-            </div>
-        </footer>
-        `;
+            <li id="footer-login"></li>
+          </ul>
+        </div>
+      </footer>
+    `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.addEventListener("mouseover", (e) => {
       if (e.target.classList.contains("custom-links")) {
@@ -407,11 +424,9 @@ var FooterGlobal = class extends HTMLElement {
       }
     });
   }
-  /**
-  * Called when the element is inserted into the DOM.
-  * Handles slot fallback, attribute wiring, and dynamic content.
-  */
+  // Handles slot fallback, attribute wiring, and dynamic content.
   connectedCallback() {
+    console.log("\u{1F4E6} FooterGlobal connected");
     this.hoursUrl = "https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
     const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
     if (!slot1) {
@@ -421,6 +436,36 @@ var FooterGlobal = class extends HTMLElement {
     const assignedNodes = slot1.assignedNodes({ flatten: true });
     if (assignedNodes.length === 0) {
       this.loadDefaultColumn1();
+    }
+    console.log("\u{1F9EA} type attribute is:", this.getAttribute("type"));
+    if (this.getAttribute("type") === "libguides") {
+      console.log("\u{1F9EA} Detected type=libguides");
+      const sourceWrapper = document.getElementById("s-lib-footer-login-link");
+      if (!sourceWrapper) {
+        console.warn("\u274C s-lib-footer-login-link not found");
+        return;
+      }
+      const sourceLink = sourceWrapper.querySelector("a");
+      if (!sourceLink) {
+        console.warn("\u{1F6AB} Login <a> not found inside s-lib-footer-login-link");
+        return;
+      }
+      console.log("\u2705 Login link found:", sourceLink.href);
+      const login_link = document.createElement("a");
+      login_link.setAttribute("href", sourceLink.href);
+      login_link.setAttribute("aria-label", "Staff Login");
+      login_link.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false" class="svg-inline--fa fa-sign-in fa-w-16">
+          <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path>
+        </svg>
+      `;
+      const shadowTarget = this.shadowRoot?.getElementById("footer-login");
+      if (!shadowTarget) {
+        console.warn("\u26A0\uFE0F Could not find #footer-login inside shadow DOM");
+        return;
+      }
+      console.log("\u{1F680} Injecting login link into shadow DOM");
+      shadowTarget.appendChild(login_link);
     }
     slot1.addEventListener("slotchange", () => {
       const hasContent = slot1.assignedNodes().length > 0;
@@ -483,10 +528,10 @@ var FooterGlobal = class extends HTMLElement {
         const url = loc.url;
         const hours = loc.rendered || "\u2014";
         return `
-                    <div class="hours-row">
-                        <a class="lib-link" href="${url}" target="_blank" rel="noopener">${name}</a>
-                        <span class="lib-hours">${hours}</span>
-                    </div>`;
+            <div class="hours-row">
+              <a class="lib-link" href="${url}" target="_blank" rel="noopener">${name}</a>
+              <span class="lib-hours">${hours}</span>
+            </div>`;
       }).join("");
       const todayString = (/* @__PURE__ */ new Date()).toLocaleDateString(void 0, {
         weekday: "long",
@@ -495,15 +540,15 @@ var FooterGlobal = class extends HTMLElement {
         day: "numeric"
       });
       column1Content.innerHTML = `
-                <div class="library-hours">
-                    <div class="today">${todayString}</div>
-                    ${rows}
-                    <div class="hours-footer">
-                        <a class="view-all" href="https://library.caltech.edu/locations">View All Hours</a>
-                        <span class="footnote">* Caltech ID Required</span>
-                    </div>
-                </div>
-            `;
+        <div class="library-hours">
+          <div class="today">${todayString}</div>
+          ${rows}
+          <div class="hours-footer">
+            <a class="view-all" href="https://library.caltech.edu/locations">View All Hours</a>
+            <span class="footnote">* Caltech ID Required</span>
+          </div>
+        </div>
+      `;
       const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
       if (slot1 && slot1.parentNode) {
         slot1.parentNode.insertBefore(column1Content, slot1);

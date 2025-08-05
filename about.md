@@ -5,16 +5,16 @@ abstract: "CL-web-components provides a collection of Web Components used by Cal
 The following are the components currently provided.
 
 
-&#x60;ul-a-to-z&#x60;
+`ul-a-to-z`
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-&#x60;textarea-csv&#x60;
+`textarea-csv`
 : This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
-&#x60;textarea-agent-list&#x60;
+`textarea-agent-list`
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
-&#x60;table-sortable&#x60;
+`table-sortable`
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on."
 authors:
   - family_name: Doiel
@@ -54,12 +54,12 @@ About this software
 
 ## CL-web-components 0.0.13
 
-This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
-are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
+This release includes a re-organization of the project source code. Editable code is now maintained in `src/`.  The bundled versions
+are retained in the root of the repository. Distribution versions are generating in the `dist/` directory.
 
 Deno 2.4.2 or better is now a requirement to build the bundled versions.
 
-Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-global&gt;&#x60; and &#x60;&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;&#x60;.
+Two new web components are now included, `<footer-global></footer-global>` and `<footer-global-lite></footer-global-lite>`.
 
 ### Authors
 
@@ -79,17 +79,20 @@ CL-web-components provides a collection of Web Components used by Caltech Librar
 The following are the components currently provided.
 
 
-&#x60;ul-a-to-z&#x60;
+`ul-a-to-z`
 : This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.
 
-&#x60;textarea-csv&#x60;
+`textarea-csv`
 : This is a textarea like component who&#x27;s innerHTML content is CSV data. The component will display this as an editable table. 
 
-&#x60;textarea-agent-list&#x60;
+`textarea-agent-list`
 : This element wraps a textarea containing a list of agents expressed as JSON. 
 
-&#x60;table-sortable&#x60;
+`table-sortable`
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
+
+`global-footer`
+: This provides a library branded footer for library-maintained applications. Provides a full footer and a lite version, both with content customizations available per application.
 
 - License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
 - GitHub: <https://github.com/caltechlibrary/CL-web-components>
@@ -106,13 +109,13 @@ The following are the components currently provided.
 
 ### Software Requirements
 
-- Deno &gt;&#x3D; 2.4.1 (for bundling dependencies)
+- Deno >= 2.4.1 (for bundling dependencies)
 
 
 ### Software Suggestions
 
-- CMTools &gt;&#x3D; 0.0.35
-- Pandoc &gt;&#x3D; 3.1
-- PageFind &gt;&#x3D; 1.3
+- CMTools >= 0.0.35
+- Pandoc >= 3.1
+- PageFind >= 1.3
 
 

@@ -3,7 +3,9 @@
 <head>
     <title>CL-web-components</title>
     <link rel="stylesheet" href="/css/site.css">
-	<script type="module" src="https://caltechlibrary.github.io/CL-web-components/src/footer-global.js"></script>
+	<link rel="stylesheet" href="./css/code-blocks.css">
+	<script type="module" src="/copyToClipboard.js"></script>
+	<script type="module" src="/footer-global.js"></script>
 </head>
 <body>
 <nav>
@@ -41,6 +43,8 @@ reflected on all applications calling it.</p>
 <li>Customizable social media links (full only)</li>
 <li>The ability to change the logo version between archives and the
 library (full &amp; lite)</li>
+<li>The ability to add a staff login link/icon if attribute type set to
+libguides (full only)</li>
 </ul>
 <h2 id="installing">Installing</h2>
 <p>To install the footer, simply included the javascript file and the
@@ -50,7 +54,7 @@ extended html element as such:</p>
 class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <p>And the javascript file.</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;/src/footer-global.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span> (updated link coming soon)</span></code></pre></div>
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://media.library.caltech.edu/cl-webcomponents/footer-global.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span> </span></code></pre></div>
 <h3 id="global-footer-lite">Global-Footer-Lite</h3>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global-lite</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global-lite</span><span class="dt">&gt;</span></span></code></pre></div>
@@ -121,8 +125,10 @@ Footer-Global-Lite.</p>
 <p>To override the phone and email, you will define their attributes in
 the html element.</p>
 <ol type="1">
-<li>Add <code>Phone="xxx-xxxx"</code> to change the phone.</li>
-<li>Add <code>Email="email@test.com"</code> to change the email.</li>
+<li>Add attribute <code>Phone="xxx-xxxx"</code> to change the
+phone.</li>
+<li>Add attribute <code>Email="email@test.com"</code> to change the
+email.</li>
 </ol>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
@@ -143,8 +149,8 @@ Instagram and YouTube. To add more social links, please contact the
 developers of this component. You will customize these by defining an
 attribute in the html element.</p>
 <ol type="1">
-<li>Add <code>instagram="your-profile-url"</code></li>
-<li>Add <code>youtube="your-profile-url"</code></li>
+<li>Add attribute <code>instagram="your-profile-url"</code></li>
+<li>Add attribute <code>youtube="your-profile-url"</code></li>
 </ol>
 <div class="sourceCode" id="cb9"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
@@ -165,8 +171,9 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="
 library or the archives logo by defining an attribute in the html
 element. If no logo is defined, it will default to the library logo.</p>
 <ul>
-<li>Add <code>logo="library"</code> (or leave off for same results)</li>
-<li>Add <code>logo="archives"</code></li>
+<li>Add attribute <code>logo="library"</code> (or leave off for same
+results)</li>
+<li>Add attribute <code>logo="archives"</code></li>
 </ul>
 <div class="sourceCode" id="cb10"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
@@ -183,6 +190,28 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href=
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="libguides-login-link">Libguides Login Link</h3>
+<p>This customization is specifically for libguides. It adds a staff
+login link to the bottom right of the footer.</p>
+<ul>
+<li>Add attribute <code>type=libguides</code></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    logo</span><span class="op">=</span><span class="st">&quot;archives&quot;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ot">    type</span><span class="op">=</span><span class="st">&quot;libguides&quot;</span><span class="dt">&gt;</span> </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="debugging">Debugging</h3>
 <p>There are some commented out lines for console logging if the custom
 content is not displaying. These are there to make sure the custom

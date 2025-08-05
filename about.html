@@ -3,7 +3,9 @@
 <head>
     <title>CL-web-components</title>
     <link rel="stylesheet" href="/css/site.css">
-	<script type="module" src="https://caltechlibrary.github.io/CL-web-components/src/footer-global.js"></script>
+	<link rel="stylesheet" href="./css/code-blocks.css">
+	<script type="module" src="/copyToClipboard.js"></script>
+	<script type="module" src="/footer-global.js"></script>
 </head>
 <body>
 <nav>
@@ -22,14 +24,14 @@
 <h1 id="about-this-software">About this software</h1>
 <h2 id="cl-web-components-0.0.13">CL-web-components 0.0.13</h2>
 <p>This release includes a re-organization of the project source code.
-Editable code is now maintained in `src/`. The bundled versions are
-retained in the root of the repository. Distribution versions are
-generating in the `dist/` directory.</p>
+Editable code is now maintained in <code>src/</code>. The bundled
+versions are retained in the root of the repository. Distribution
+versions are generating in the <code>dist/</code> directory.</p>
 <p>Deno 2.4.2 or better is now a requirement to build the bundled
 versions.</p>
 <p>Two new web components are now included,
-`&lt;footer-global&gt;&lt;/footer-global&gt;` and
-`&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;`.</p>
+<code>&lt;footer-global&gt;&lt;/footer-global&gt;</code> and
+<code>&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;</code>.</p>
 <h3 id="authors">Authors</h3>
 <ul>
 <li>R. S. Doiel, <a href="https://orcid.org/0000-0003-0900-6903"
@@ -46,27 +48,33 @@ class="uri">https://orcid.org/0000-0003-0900-6903</a></li>
 Caltech Library across sites and projects.</p>
 <p>The following are the components currently provided.</p>
 <dl>
-<dt>`ul-a-to-z`</dt>
+<dt><code>ul-a-to-z</code></dt>
 <dd>
 This component takes an innerHTML containing a UL list. The UL list is
 then turned into an A to Z navigatable UL List. If JavaScript is
 unavailable then the innerHTML UL remains as a fallback.
 </dd>
-<dt>`textarea-csv`</dt>
+<dt><code>textarea-csv</code></dt>
 <dd>
 This is a textarea like component who's innerHTML content is CSV data.
 The component will display this as an editable table.
 </dd>
-<dt>`textarea-agent-list`</dt>
+<dt><code>textarea-agent-list</code></dt>
 <dd>
 This element wraps a textarea containing a list of agents expressed as
 JSON.
 </dd>
-<dt>`table-sortable`</dt>
+<dt><code>table-sortable</code></dt>
 <dd>
 This is a component that takes an innerHTML containing table. It makes
 the table sortable by the column headings and provides a filter input
 that lets you enter text to filter by and pick a column to filter on.
+</dd>
+<dt><code>global-footer</code></dt>
+<dd>
+This provides a library branded footer for library-maintained
+applications. Provides a full footer and a lite version, both with
+content customizations available per application.
 </dd>
 </dl>
 <ul>

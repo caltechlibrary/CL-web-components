@@ -1,4 +1,4 @@
-export class FooterGlobal extends HTMLElement {
+export class FooterGlobalLite extends HTMLElement {
 	constructor() {
 		super();
 		const shadow = this.attachShadow({ mode: "open" });
@@ -19,9 +19,9 @@ export class FooterGlobal extends HTMLElement {
 
         <style>
 
-        /* ─────────────────────────
+        /* ------------------------- 
            Base Styles
-        ────────────────────────── */
+        ------------------------- */
         :host {
           font-family: 'Hind', sans-serif;
           display: block;
@@ -42,9 +42,9 @@ export class FooterGlobal extends HTMLElement {
           }
         }
         
-        /* ─────────────────────────
+        /* -------------------------
            Layout & Structure
-        ────────────────────────── */
+        ------------------------- */
 
         .footer-container {
           display: flex;
@@ -94,9 +94,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Typography
-        ────────────────────────── */
+        ------------------------- */
 
         h2 {
           font-size: 30px;
@@ -108,9 +108,9 @@ export class FooterGlobal extends HTMLElement {
           color: inherit;
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Lists
-        ────────────────────────── */
+        ------------------------- */
 
         ul {
           margin-top: 0;
@@ -138,9 +138,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Links
-        ────────────────────────── */
+        ------------------------- */
 
         a {
           color: white;
@@ -161,9 +161,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Responsive Styles
-        ────────────────────────── */
+        ------------------------- */
 
         @media (max-width: 1024px) {
           .footer-container {
@@ -185,9 +185,9 @@ export class FooterGlobal extends HTMLElement {
           }
         }
 
-        /* ─────────────────────────
+        /* -------------------------
            Contact Us
-        ────────────────────────── */
+        ------------------------- */
 
         address {
           margin-bottom: 24px;
@@ -197,9 +197,9 @@ export class FooterGlobal extends HTMLElement {
         }
 
 
-        /* ─────────────────────────
+        /* -------------------------
            Social & Branding
-        ────────────────────────── */
+        ------------------------- */
 
         .logo-library {
           fill: #fff;
@@ -370,4 +370,4 @@ export class FooterGlobal extends HTMLElement {
 	
 }
 
-customElements.define("footer-global-lite", FooterGlobal);
+customElements.define("footer-global-lite", FooterGlobalLite);

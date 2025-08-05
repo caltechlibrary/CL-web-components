@@ -17,6 +17,7 @@ The component has several options for customization, including:
 - Configurable contact information (full & lite)
 - Customizable social media links (full only)
 - The ability to change the logo version between archives and the library (full & lite)
+- The ability to add a staff login link/icon if attribute type set to libguides (full only)
 
 ## Installing
 
@@ -31,7 +32,7 @@ To install the footer, simply included the javascript file and the extended html
  And the javascript file.
 
 ```html
-<script type="module" src="/src/footer-global.js"></script> (updated link coming soon)
+<script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script> 
 ```
 ### Global-Footer-Lite
 
@@ -107,8 +108,8 @@ In the second column, you can change the phone and email so that it is specific 
 
 To override the phone and email, you will define their attributes in the html element.
 
-1) Add ```Phone="xxx-xxxx"``` to change the phone.
-2) Add ```Email="email@test.com"``` to change the email.
+1) Add attribute ```Phone="xxx-xxxx"``` to change the phone.
+2) Add attribute ```Email="email@test.com"``` to change the email.
 
 ```html
 <footer-global
@@ -128,8 +129,8 @@ To override the phone and email, you will define their attributes in the html el
 
 In the second column, you can also customize the social media links in the Footer-Global component. Currently, the component only supports Instagram and YouTube. To add more social links, please contact the developers of this component. You will customize these by defining an attribute in the html element. 
 
-1) Add ```instagram="your-profile-url"```
-2) Add ```youtube="your-profile-url"```
+1) Add attribute ```instagram="your-profile-url"```
+2) Add attribute ```youtube="your-profile-url"```
 
 ```html
 <footer-global
@@ -151,8 +152,8 @@ In the second column, you can also customize the social media links in the Foote
 
 In the last column, you can use attributes to switch between the library or the archives logo by defining an attribute in the html element. If no logo is defined, it will default to the library logo. 
 
-- Add ```logo="library"``` (or leave off for same results)
-- Add ```logo="archives"```
+- Add attribute ```logo="library"``` (or leave off for same results)
+- Add attribute ```logo="archives"```
 
 ```html
 <footer-global
@@ -163,6 +164,30 @@ In the last column, you can use attributes to switch between the library or the 
     instagram="your-custom-url"
     youtube="your-custom-url"
     logo="archives"> 
+    
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+
+</footer-global>
+```
+
+### Libguides Login Link
+
+This customization is specifically for libguides. It adds a staff login link to the bottom right of the footer. 
+
+- Add attribute ```type=libguides```
+
+```html
+<footer-global
+    custom
+    header="Your Application Name"
+    phone="xxxxxx"
+    email="email@test.com"
+    instagram="your-custom-url"
+    youtube="your-custom-url"
+    logo="archives"
+    type="libguides"> 
     
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
