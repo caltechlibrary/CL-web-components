@@ -3,8 +3,11 @@
 # CL-web-components
 
 <link href="./pagefind/pagefind-ui.css" rel="stylesheet">
+
 <script src="./pagefind/pagefind-ui.js" type="text/javascript"></script>
+
 <div id="search"></div>
+
 <script>
 const u = URL.parse(window.location.href);
 const basePath = u.pathname.replace(/search.html$/g, '');
@@ -22,6 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const searchUI = new PagefindUI({ 
             element: "#search",
 <<<<<<< HEAD
+<<<<<<< HEAD
             basePath: "./",
 =======
             baseUrl: basePath
@@ -30,6 +34,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
 =======
 >>>>>>> 2addc417e075fcc78118a6dc2b5ad7faf70fc673
+=======
+            baseUrl: basePath
+>>>>>>> 0b81a8fc9a3721be595572468709a56d00fbb220
     });
     console.dir(searchUI);
     if (searchQuery) {
