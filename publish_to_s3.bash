@@ -1,19 +1,57 @@
 #!/bin/bash
 
-#
-# Publish takes the content in the htdocs directory and copies it to the S3 bucket indicated by the environment
-# variable BUCKET_NAME.
-#
-BUCKET_NAME=""
-if [ -f "media.env" ]; then
-	echo "Loading environment from media.env"
-	# shellcheck disable=SC1091
-	. media.env
-fi
-if [ "$BUCKET_NAME" = "" ]; then
-	echo "No bucket to publish, set BUCKET_NAME"
-	exit 1
-fi
+function usage() {
+	APP_NAME="$(basename "$0")"
+	cat <<TXT
+%${APP_NAME}(1) user manual
+% R. S. Doiel
+% 2025-08-06
+
+# NAME
+
+${APP_NAME}
+
+# SYNOPSIS
+
+${APP_NAME} [OPTION]
+
+# DESCRIPTION
+
+${APP_NAME} copies the web components and related CSS to the s3 bucket based
+on the ENVIRONMENT defined "media.env".
+
+# ENVIRONMENT
+
+The environment required includes the following
+
+BUCKET_NAME
+: S3 bucket name, e.g. "s3://media.example.edu"
+
+BASE_URL
+: The base URL of the website, e.g. "https://media.example.edu"
+
+DISTRIBUTION_ID
+: The AWS assigned identifier for the bucket. Looks like a long string
+of uppercase letters with numbers.
+
+# OPTIONS
+
+help, -h, --help
+: Display this help page
+
+dry-run, -dry-run, --dry-run
+: Do a dry run of the copying process without actually copying the content.
+
+# EXAMPLES
+
+~~~shell
+${APP_NAME} help
+${APP_NAME} dry-run
+${APP_NAME}
+~~~
+
+TXT
+}
 
 function get_mimetype() {
 	FNAME="$(basename "$1")"
@@ -88,12 +126,14 @@ function copy_file() {
 	FNAME="$1"
 	T_PATH="/cl-webcomponents/${FNAME}"
 	TARGET="${BUCKET_NAME}${T_PATH}"
-	MIME_TYPE="$(get_mimetype "${SRC}")"
-	echo "$(date) Copy from $FNAME to $TARGET started"
-	aws s3 cp --acl 'public-read' \
+	MIME_TYPE="$(get_mimetype "${FNAME}")"
+	echo "$(date) Coping from $FNAME with '${MIME_TYPE}' to ${TARGET}"
+	if ! aws s3 cp ${DRY_RUN} --acl 'public-read' \
 		--content-type "${MIME_TYPE}" \
-		"${FNAME}" "${TARGET}"
-	echo "$(date) Copy from $FNAME to ${TARGET} finished"
+		"${FNAME}" "${TARGET}"; then
+		echo "error encountered, aborting."
+		exit 1
+	fi
 }
 
 # Invalidate cloud front
@@ -109,6 +149,10 @@ function invalidate_cdn() {
 	fi
 }
 
+# function push_cors_setup() {
+# 	aws s3api put-bucket-cors --bucket "${BUCKET_NAME}" --cors-configuration file://cors.json
+# }
+
 function copy_javascript_files() {
 	# shellcheck disable=SC2012
 	ls -1 *.js | while read -r FNAME; do
@@ -123,10 +167,37 @@ function copy_css_files() {
 	done;
 }
 
+#
+# Publish takes the content in the htdocs directory and copies it to the S3 bucket indicated by the environment
+# variable BUCKET_NAME.
+#
+BUCKET_NAME=""
+if [ -f "media.env" ]; then
+	echo "Loading environment from media.env"
+	# shellcheck disable=SC1091
+	. media.env
+fi
+if [ "$BUCKET_NAME" = "" ]; then
+	echo "No bucket to publish, set BUCKET_NAME"
+	exit 1
+fi
+
+DRY_RUN=""
+case "$1" in
+	help|-h|--help)
+	usage
+	exit 0
+	;;
+  dry|dry-run|-dry-run|--dry-run)
+  DRY_RUN="--dryrun"
+  ;;
+esac
+
+
 echo "Copying file htdocs to $BUCKET_NAME"
 
-if [ "$1" = "" ]; then
-	copy_javascript_files 
-	copy_css_files
+copy_javascript_files 
+copy_css_files
+if [ "${DRY_RUN}" = "" ]; then
 	invalidate_cdn "/*"
 fi
