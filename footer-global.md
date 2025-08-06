@@ -127,10 +127,13 @@ To override the phone and email, you will define their attributes in the html el
 
 ### Custom Social Media Links 
 
-In the second column, you can also customize the social media links in the Footer-Global component. Currently, the component only supports Instagram and YouTube. To add more social links, please contact the developers of this component. You will customize these by defining an attribute in the html element. 
+In the second column, you can also customize the social media links in the Footer-Global component. Currently, the component supports Instagram, YouTube, and RSS. To add more social links, please contact the developers of this component. You will customize these by defining an attribute in the html element. 
+
+The defaults for Instagram and Youtube are the library's profiles. There is no default for the RSS feed. If one is not defined, no icon will display.
 
 1) Add attribute ```instagram="your-profile-url"```
 2) Add attribute ```youtube="your-profile-url"```
+3) Add attribute ```rss="your-rss-url"```
 
 ```html
 <footer-global
@@ -139,7 +142,8 @@ In the second column, you can also customize the social media links in the Foote
     phone="xxxxxx"
     email="email@test.com"
     instagram="your-profile-url"
-    youtube="your-profile-url"> 
+    youtube="your-profile-url"
+    rss="your-rss-url"> 
     
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
