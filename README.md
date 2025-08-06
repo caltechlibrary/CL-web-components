@@ -28,7 +28,7 @@ The following are the components currently provided.
 
 - version: 0.0.14
 - status: wip
-- released: 2025-08-25
+- released: 2025-08-05
 
 This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
 are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
@@ -53,13 +53,13 @@ A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules
 
 ## Software Requirements
 
-- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
+- Deno >= 2.4.3 (for bundling dependencies)
 
 ### Software Suggestions
 
-- CMTools &gt;&#x3D; 0.0.38
-- Pandoc &gt;&#x3D; 3.1
-- PageFind &gt;&#x3D; 1.3
+- CMTools >= 0.0.39
+- Pandoc >= 3.1
+- PageFind >= 1.3
 
 #### Runtime platform
 
