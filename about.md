@@ -51,7 +51,7 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-08-25
+date_released: 2025-08-05
 ---
 
 About this software
@@ -59,14 +59,14 @@ About this software
 
 ## CL-web-components 0.0.14
 
-This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
-are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
+This release includes a re-organization of the project source code. Editable code is now maintained in `src/`.  The bundled versions
+are retained in the root of the repository. Distribution versions are generating in the `dist/` directory.
 
 Deno 2.4.3 or better is now a requirement to build the bundled versions.
 
-Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-global&gt;&#x60; and &#x60;&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;&#x60;.
+Two new web components are now included, `<footer-global></footer-global>` and `<footer-global-lite></footer-global-lite>`.
 
-A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules, &#x60;copyToClipboard.js&#x60; for enhancing codeblocks.
+A new CSS file was added, `css/code-blocks.css` and JavaScript modules, `copyToClipboard.js` for enhancing codeblocks.
 
 ### Authors
 
@@ -118,12 +118,12 @@ The following are the components currently provided.
 
 ### Software Requirements
 
-- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
+- Deno >= 2.4.3 (for bundling dependencies)
 
 
 ### Software Suggestions
 
-- CMTools &gt;&#x3D; 0.0.38
+- CMTools &gt;&#x3D; 0.0.39
 - Pandoc &gt;&#x3D; 3.1
 - PageFind &gt;&#x3D; 1.3
 
