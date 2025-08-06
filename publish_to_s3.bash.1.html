@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="https://media.library.caltech.edu/cl-webcomponents/css/code-blocks.css">
+    <script type="module" src="https://media.library.caltech.edu/cl-webcomponents/copyToClipboard.js"></script>
+    <script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script>
+</head>
+<body>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<p>Loading environment from media.env %publish_to_s3.bash(1) user manual
+% R. S. Doiel % 2025-08-06</p>
+<h1 id="name">NAME</h1>
+<p>publish_to_s3.bash</p>
+<h1 id="synopsis">SYNOPSIS</h1>
+<p>publish_to_s3.bash [OPTION]</p>
+<h1 id="description">DESCRIPTION</h1>
+<p>publish_to_s3.bash copies the web components and related CSS to the
+s3 bucket based on the ENVIRONMENT defined “media.env”.</p>
+<h1 id="environment">ENVIRONMENT</h1>
+<p>The environment required includes the following</p>
+<dl>
+<dt>BUCKET_NAME</dt>
+<dd>
+S3 bucket name, e.g. “s3://media.example.edu”
+</dd>
+<dt>BASE_URL</dt>
+<dd>
+The base URL of the website, e.g. “https://media.example.edu”
+</dd>
+<dt>DISTRIBUTION_ID</dt>
+<dd>
+The AWS assigned identifier for the bucket. Looks like a long string of
+uppercase letters with numbers.
+</dd>
+</dl>
+<h1 id="options">OPTIONS</h1>
+<dl>
+<dt>help, -h, –help</dt>
+<dd>
+Display this help page
+</dd>
+<dt>dry-run, -dry-run, –dry-run</dt>
+<dd>
+Do a dry run of the copying process without actually copying the
+content.
+</dd>
+</dl>
+<h1 id="examples">EXAMPLES</h1>
+<pre class="shell"><code>publish_to_s3.bash help
+publish_to_s3.bash dry-run
+publish_to_s3.bash</code></pre>
+</section>
+<footer-global></footer-global>
+</body>
+</html>
