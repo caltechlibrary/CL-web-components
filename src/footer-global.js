@@ -3,20 +3,33 @@ export class FooterGlobal extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    // Add Hind font stylesheet to shadow DOM
-    const fontLink = document.createElement("link");
-    fontLink.setAttribute("rel", "stylesheet");
-    fontLink.setAttribute(
-      "href",
-      "https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap"
-    );
-    shadow.appendChild(fontLink);
-
     // Define HTML and CSS for the shadow DOM
     const template = document.createElement("template");
     template.innerHTML = `
 
         <style>
+
+        /* -------------------------
+           Fonts
+        -------------------------- */
+        @font-face {
+          font-family: 'Hind';
+          font-style: normal;
+          font-weight: 400;
+          src: url('http://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
+        }
+        @font-face {
+          font-family: 'Hind';
+          font-style: normal;
+          font-weight: 500;
+          src: url('http://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
+        }
+        @font-face {
+          font-family: 'Hind';
+          font-style: normal;
+          font-weight: 600;
+          src: url('http://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
+        }
 
         /* -------------------------
            Base Styles
@@ -295,7 +308,8 @@ export class FooterGlobal extends HTMLElement {
         -------------------------- */
 
         .social a svg {
-          height: 32px;
+          height: 32px; 
+          fill: #ffffff;
         }
 
         .social a:not(:last-child) {
@@ -308,7 +322,7 @@ export class FooterGlobal extends HTMLElement {
           height: 5em;
         }
 
-         .logo-archives {
+        .logo-archives {
           fill: #fff;
           margin-block: 24px;
           height: 5em;
@@ -319,6 +333,7 @@ export class FooterGlobal extends HTMLElement {
         }
 
         /* Style for SVG icon injected in #footer-login */
+          
         #footer-login a svg {
           width: 1.25rem;
           height: 1.25rem;
@@ -541,10 +556,30 @@ export class FooterGlobal extends HTMLElement {
     const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
 
     const instagramHref = this.getAttribute("instagram") || "https://www.instagram.com/caltechlibrary/";
-    const youtubeHref = this.getAttribute("twitter") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
+    const youtubeHref = this.getAttribute("youtube") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
+    const rssHref = this.getAttribute("rss");
 
     if (instagramAnchor) instagramAnchor.setAttribute("href", instagramHref);
     if (youtubeAnchor) youtubeAnchor.setAttribute("href", youtubeHref);
+
+    // Add RSS icon if rss attribute is present
+    if (rssHref) {
+      const rssAnchor = document.createElement("a");
+      rssAnchor.setAttribute("id", "rss-link");
+      rssAnchor.setAttribute("href", rssHref);
+      rssAnchor.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="img" aria-labelledby="cl-rss-f" width="32" height="32">
+          <title id="cl-rss-f">RSS Feed</title>
+          <path d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM0 416a64 64 0 1 1 128 0A64 64 0 1 1 0 416zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+        </svg>
+      `;
+      if (this.shadowRoot) {
+        const socialDiv = this.shadowRoot.querySelector(".social");
+        if (socialDiv) {
+          socialDiv.appendChild(rssAnchor);
+        }
+      }
+    }
 
     // Logo selection logic
     const logoType = (this.getAttribute("logo") || "library").toLowerCase();
