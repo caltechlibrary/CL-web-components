@@ -90,9 +90,9 @@ function copy_file() {
 	TARGET="${BUCKET_NAME}${T_PATH}"
 	MIME_TYPE="$(get_mimetype "${SRC}")"
 	echo "$(date) Copy from $FNAME to $TARGET started"
-	s5cmd --numworkers 50 --stat cp --acl 'public-read' \
+	aws s3 cp --acl 'public-read' \
 		--content-type "${MIME_TYPE}" \
-		"$SRC" "$TARGET"
+		"${FNAME}" "${TARGET}"
 	echo "$(date) Copy from $FNAME to ${TARGET} finished"
 }
 
