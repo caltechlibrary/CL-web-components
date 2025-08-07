@@ -26,18 +26,15 @@ The following are the components currently provided.
 
 ## Release Notes
 
-- version: 0.0.14
+- version: 0.0.15
 - status: wip
-- released: 2025-08-05
+- released: 2025-08-07
 
-This release includes a re-organization of the project source code. Editable code is now maintained in &#x60;src/&#x60;.  The bundled versions
-are retained in the root of the repository. Distribution versions are generating in the &#x60;dist/&#x60; directory.
-
-Deno 2.4.3 or better is now a requirement to build the bundled versions.
-
-Two new web components are now included, &#x60;&lt;footer-global&gt;&lt;/footer-global&gt;&#x60; and &#x60;&lt;footer-global-lite&gt;&lt;/footer-global-lite&gt;&#x60;.
+This release includes an improved &lt;footer-global&gt; component. This include better support for social media representation.
 
 A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules, &#x60;copyToClipboard.js&#x60; for enhancing codeblocks.
+
+A publish_to_s3.bash script was added to make management more convient for where we retrieve our production assets.
 
 
 ### Authors
@@ -57,7 +54,7 @@ A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules
 
 ### Software Suggestions
 
-- CMTools >= 0.0.39
+- CMTools >= 0.0.40
 - Pandoc >= 3.1
 - PageFind >= 1.3
 

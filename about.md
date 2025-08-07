@@ -36,7 +36,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.14
+version: 0.0.15
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -51,22 +51,19 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-08-05
+date_released: 2025-08-07
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.14
+## CL-web-components 0.0.15
 
-This release includes a re-organization of the project source code. Editable code is now maintained in `src/`.  The bundled versions
-are retained in the root of the repository. Distribution versions are generating in the `dist/` directory.
-
-Deno 2.4.3 or better is now a requirement to build the bundled versions.
-
-Two new web components are now included, `<footer-global></footer-global>` and `<footer-global-lite></footer-global-lite>`.
+This release includes an improved <footer-global> component. This include better support for social media representation.
 
 A new CSS file was added, `css/code-blocks.css` and JavaScript modules, `copyToClipboard.js` for enhancing codeblocks.
+
+A publish_to_s3.bash script was added to make management more convient for where we retrieve our production assets.
 
 ### Authors
 
@@ -123,7 +120,7 @@ The following are the components currently provided.
 
 ### Software Suggestions
 
-- CMTools &gt;&#x3D; 0.0.39
+- CMTools &gt;&#x3D; 0.0.40
 - Pandoc &gt;&#x3D; 3.1
 - PageFind &gt;&#x3D; 1.3
 
