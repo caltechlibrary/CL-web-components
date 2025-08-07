@@ -59,7 +59,7 @@ About this software
 
 ## CL-web-components 0.0.15
 
-This release includes an improved <footer-global> component. This include better support for social media representation.
+This release includes an improved `<footer-global>` component. This include better support for social media representation.
 
 A new CSS file was added, `css/code-blocks.css` and JavaScript modules, `copyToClipboard.js` for enhancing codeblocks.
 
