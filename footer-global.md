@@ -10,14 +10,17 @@ The footers have several options for customization using both attributes and slo
 
 Once added to an application, the component will get updates automatically whenever a new version is released. This allows a streamlined way to update the footer and have those changes immediately reflected on all applications calling it.
 
-The component has several options for customization, including:
+The component has several options for customization:
 
 - Custom column heading (full & lite)
 - Application-specific links (full & lite)
 - Configurable contact information (full & lite)
-- Customizable social media links (full only)
+- Customizable social media links (full)
 - The ability to change the logo version between archives and the library (full & lite)
-- The ability to add a staff login link/icon if attribute type set to libguides (full only)
+
+The footer also has customizations that apply only to the library website:
+- The ability to turn on the login icon for libguides (full)
+- The ability to turn on breadcrumbs for libguides (full)
 
 ## Installing
 
@@ -175,12 +178,13 @@ In the last column, you can use attributes to switch between the library or the 
 
 </footer-global>
 ```
+## Library Website-Specific Customization
 
 ### Libguides Login Link
 
-This customization is specifically for libguides. It adds a staff login link to the bottom right of the footer. 
+This customization is specifically for the library websites. It adds a staff login link to the bottom right of the footer. 
 
-- Add attribute ```type=libguides```
+- Add attribute ```libguides-login=true```
 
 ```html
 <footer-global
@@ -191,7 +195,32 @@ This customization is specifically for libguides. It adds a staff login link to 
     instagram="your-custom-url"
     youtube="your-custom-url"
     logo="archives"
-    type="libguides"> 
+    libguides-login="true"> 
+    
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+
+</footer-global>
+```
+
+### Breadcrumbs
+
+This customization is specifically for the library websites. It adds the libguide breadcrumbs to the footer. 
+
+- Add attribute ```breadcrumbs=true```
+
+```html
+<footer-global
+    custom
+    header="Your Application Name"
+    phone="xxxxxx"
+    email="email@test.com"
+    instagram="your-custom-url"
+    youtube="your-custom-url"
+    logo="archives"
+    libguides-login="true"
+    breadcrumbs="true"> 
     
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>

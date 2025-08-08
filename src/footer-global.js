@@ -65,6 +65,12 @@ export class FooterGlobal extends HTMLElement {
           margin: auto;
         }
 
+        .footer-top {
+          flex: 1 1 100%;
+          text-align: left;
+          margin: 0 0 1rem 0rem;
+        }
+
         .footer-column {
           padding: 1rem 0;
         }
@@ -83,13 +89,13 @@ export class FooterGlobal extends HTMLElement {
           flex: 0 1 21%;
         }
 
+        /* Adjust column layout if 'custom' attribute is present */
+
         :host([custom]) .footer-column.column1 {
           flex: 0 1 30%;
           margin-right: 3rem;
         }
-
-        /* Adjust column layout if 'custom' attribute is present */
-
+        
         :host([custom]) .footer-column.column2 {
           flex: 0 1 30%;
           margin-right: 3rem;
@@ -98,10 +104,6 @@ export class FooterGlobal extends HTMLElement {
         :host([custom]) .footer-column.column3 {
           flex: 0 1 30%;
         }
-
-        /* -------------------------
-           Footer Bottom Area
-        -------------------------- */
 
         .footer-bottom {
           flex: 1 1 100%;
@@ -182,6 +184,53 @@ export class FooterGlobal extends HTMLElement {
           display: block;
         }
 
+        /*--------------------------
+            Breadcrumbs
+        ------------------------- */
+
+        #footer-breadcrumbs {
+          margin-block: 1rem;
+        }
+
+        #footer-breadcrumbs nav {
+          font-size: 1rem;
+          color: white;
+        }
+
+        #footer-breadcrumbs ol {
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          gap: 0.5rem;
+        }
+
+        #footer-breadcrumbs li {
+          display: flex;
+          align-items: center;
+          color: white;
+        }
+
+        #footer-breadcrumbs li:not(:last-child)::after {
+          content: "/";
+          margin-left: 10px;
+          color: #9ca1a7;
+        }
+
+        #footer-breadcrumbs li.active {
+          color: #1e988a;
+        }
+
+        #footer-breadcrumbs a {
+          color: white;
+          text-decoration: none;
+        }
+
+        #footer-breadcrumbs a:hover {
+          text-decoration: underline;
+        }
+
 
         /* -------------------------
            Responsive Styles
@@ -205,6 +254,12 @@ export class FooterGlobal extends HTMLElement {
             padding: 1rem 0;
             border-top: grey dotted 1px;
           }
+          
+          .footer-top {
+            flex: 0 0 100%;
+            text-align: left;
+            padding: 1rem 0;
+          }
         }
 
 
@@ -216,7 +271,7 @@ export class FooterGlobal extends HTMLElement {
           background-color: #013049;
           padding: 0 1rem 1rem 0;
           border-radius: 6px;
-          font-size: 0.85rem;
+          font-size: 1rem;
           line-height: 1.4;
         }
 
@@ -288,6 +343,7 @@ export class FooterGlobal extends HTMLElement {
           font-style: normal;
           line-height: 1.5;
           unicode-bidi: isolate;
+          font-size: 1rem;
         }
 
         address a {
@@ -330,6 +386,7 @@ export class FooterGlobal extends HTMLElement {
 
         .links {
           line-height: 2;
+          font-size: 1rem;
         }
 
         /* Style for SVG icon injected in #footer-login */
@@ -344,6 +401,11 @@ export class FooterGlobal extends HTMLElement {
         </style>
 
       <footer class="footer-container" role="contentinfo">
+
+        <div class="footer-top">
+          <div id="footer-breadcrumbs"></div>
+        </div>
+
         <div class="footer-column column1">
           <div class="custom-links-wrapper">
             <h2 id="column1-header">Hours</h2>
@@ -449,7 +511,6 @@ export class FooterGlobal extends HTMLElement {
     });
   }
 
-  
   // Handles slot fallback, attribute wiring, and dynamic content.
   connectedCallback() {
     // Debug: FooterGlobal is connecting
@@ -459,29 +520,37 @@ export class FooterGlobal extends HTMLElement {
     this.hoursUrl =
       "https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
 
-    // optional debug: console.log("👀 Looking for slot[name='custom-links']");
+    // Lookign for slot with some optional debug commented out
+    // console.log("👀 Looking for slot[name='custom-links']");
     const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
-    // optional debug: console.log("🔎 Found slot1:", slot1);
-    // optional debug: console.log("🧪 Attaching slotchange event to custom-links slot");
+    // console.log("🔎 Found slot1:", slot1);
+    // console.log("🧪 Attaching slotchange event to custom-links slot");
     if (!slot1) {
       console.warn("⚠️ slot[name='custom-links'] not found");
       return;
     }
 
     const assignedNodes = slot1.assignedNodes({ flatten: true });
-    // optional. debug: console.log("📎 assignedNodes at load:", assignedNodes);
     if (assignedNodes.length === 0) {
-      // optional. debug: console.log("🪶 No slotted content detected at load — using fallback");
+      console.log("🪶 No slotted content detected at load — using default");
       this.loadDefaultColumn1();
     }
 
-    // Debug: Check the type attribute
-    console.log("🧪 type attribute is:", this.getAttribute("type"));
+     // Move breadcrumb if attribute is set and element exists
+    if (this.getAttribute("breadcrumbs") === "true") {
+      const breadcrumbEl = document.getElementById("s-lib-bc");
+      const breadcrumbTarget = this.shadowRoot.getElementById("footer-breadcrumbs");
+      if (breadcrumbEl && breadcrumbTarget) {
+        breadcrumbTarget.appendChild(breadcrumbEl);
+        console.log("🔗 Breadcrumb moved into footer component");
+      } else {
+        console.log("ℹ️ Breadcrumb not found or target missing");
+      }
+    }
 
-    // grab tokenized login link and rebuild elsewhere
-    if (this.getAttribute("type") === "libguides") {
-      console.log("🧪 Detected type=libguides");
-      // grab tokenized login link and rebuild elsewhere
+    // Grab tokenized login link and rebuild elsewhere
+    if (this.getAttribute("libguides-login") === "true") {
+      console.log("🧪 Detected Libguides-login=true");
       const sourceWrapper = document.getElementById("s-lib-footer-login-link");
       if (!sourceWrapper) {
         console.warn("❌ s-lib-footer-login-link not found");
@@ -515,7 +584,7 @@ export class FooterGlobal extends HTMLElement {
       shadowTarget.appendChild(login_link);
     }
 
-    // Listen for slot content changes and show fallback if nexessary
+    // Listen for slot content changes and show default if nexessary
     slot1.addEventListener("slotchange", () => {
       // optional. debug: console.log("🎯 slotchange triggered for column1");
       const hasContent = slot1.assignedNodes().length > 0;
@@ -532,7 +601,7 @@ export class FooterGlobal extends HTMLElement {
     const phone = this.getAttribute("phone") || "626-395-3405";
 
     const emailLink = this.shadowRoot.getElementById("email-link");
-    const phoneLink = this.shadowRoot.getElementById("phone-link");
+    const phoneLink = this.shadowRoot.getElementById("phone-link")
 
     if (emailLink) {
       emailLink.href = `mailto:${email}`;
@@ -655,5 +724,6 @@ export class FooterGlobal extends HTMLElement {
     }
   }
 }
+
 
 customElements.define("footer-global", FooterGlobal);
