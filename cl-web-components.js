@@ -1412,7 +1412,6 @@ var FooterGlobal = class extends HTMLElement {
         .footer-top {
           flex: 1 1 100%;
           text-align: left;
-          margin: 0 0 1rem 0rem;
         }
 
         .footer-column {
@@ -1463,7 +1462,6 @@ var FooterGlobal = class extends HTMLElement {
         h2 {
           font-size: 30px;
           margin-block-end: 16px;
-          margin-top: 24px;
           margin-bottom: 12px;
           font-weight: 500;
           line-height: 1.1;
@@ -1533,7 +1531,7 @@ var FooterGlobal = class extends HTMLElement {
         ------------------------- */
 
         #footer-breadcrumbs {
-          margin-block: 1rem;
+          margin-top: 1rem;
         }
 
         #footer-breadcrumbs nav {
