@@ -534,13 +534,15 @@ export class FooterGlobal extends HTMLElement {
       this.loadDefaultColumn1();
     }
 
-     // Move breadcrumb if attribute is set and element exists
+    // Mirror breadcrumb into footer if attribute is set and element exists
     if (this.getAttribute("breadcrumbs") === "true") {
       const breadcrumbEl = document.getElementById("s-lib-bc");
       const breadcrumbTarget = this.shadowRoot.getElementById("footer-breadcrumbs");
       if (breadcrumbEl && breadcrumbTarget) {
-        breadcrumbTarget.appendChild(breadcrumbEl);
-        console.log("🔗 Breadcrumb moved into footer component");
+        const clone = breadcrumbEl.cloneNode(true);
+        clone.id = "s-lib-bc-footer";
+        breadcrumbTarget.appendChild(clone);
+        console.log("🔗 Breadcrumb mirrored into footer component");
       } else {
         console.log("ℹ️ Breadcrumb not found or target missing");
       }
