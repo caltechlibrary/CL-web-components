@@ -1867,8 +1867,10 @@ var FooterGlobal = class extends HTMLElement {
       const breadcrumbEl = document.getElementById("s-lib-bc");
       const breadcrumbTarget = this.shadowRoot.getElementById("footer-breadcrumbs");
       if (breadcrumbEl && breadcrumbTarget) {
-        breadcrumbTarget.appendChild(breadcrumbEl);
-        console.log("\u{1F517} Breadcrumb moved into footer component");
+        const clone = breadcrumbEl.cloneNode(true);
+        clone.id = "s-lib-bc-footer";
+        breadcrumbTarget.appendChild(clone);
+        console.log("\u{1F517} Breadcrumb mirrored into footer component");
       } else {
         console.log("\u2139\uFE0F Breadcrumb not found or target missing");
       }
