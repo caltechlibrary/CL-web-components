@@ -8,37 +8,43 @@ var FooterGlobal = class extends HTMLElement {
 
         <style>
 
-        /* -------------------------
-           Fonts
-        -------------------------- */
+        /* FONTS */
+
         @font-face {
           font-family: 'Hind';
           font-style: normal;
           font-weight: 400;
-          src: url('http://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
+          font-display: swap;
+          src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
         }
         @font-face {
           font-family: 'Hind';
           font-style: normal;
           font-weight: 500;
-          src: url('http://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
+          font-display: swap;
+          src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
         }
         @font-face {
           font-family: 'Hind';
           font-style: normal;
           font-weight: 600;
-          src: url('http://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
+          font-display: swap;
+          src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
         }
 
-        /* -------------------------
-           Base Styles
-        -------------------------- */
+        /* BASE STYLES */
+
         :host {
+          --cl-dark-blue: #062e47;
+          --cl-white: #ffffff;
+          --cl-teal: #008080;
+          --cl-breadcrumb-spacer: #ccc;
           font-family: 'Hind', sans-serif;
           display: block;
-          background-color: #062e47;
-          color: #fff;
+          background-color: var(--cl-dark-blue);
+          color: var(--cl-white);
           border-radius: 0 30% 0 0 / 5%;
+          font-size: 16px;
         }
 
         @media (min-width: 768px) {
@@ -53,9 +59,7 @@ var FooterGlobal = class extends HTMLElement {
           }
         }
         
-        /* -------------------------
-           Layout & Structure
-        -------------------------- */
+        /* LAYOUT & STRUCTURE */
 
         .footer-container {
           display: flex;
@@ -70,17 +74,17 @@ var FooterGlobal = class extends HTMLElement {
         }
 
         .footer-column {
-          padding: 1rem 0;
+          padding: 1em 0;
         }
 
         .footer-column.column1 {
           flex: 0 1 40%;
-          margin-right: 7.6rem;
+          margin-right: 7.6em;
         }
 
         .footer-column.column2 {
           flex: 0 1 21%;
-          margin-right: 3.6rem;
+          margin-right: 3.6em;
         }
 
         .footer-column.column3 {
@@ -91,12 +95,12 @@ var FooterGlobal = class extends HTMLElement {
 
         :host([custom]) .footer-column.column1 {
           flex: 0 1 30%;
-          margin-right: 3rem;
+          margin-right: 3em;
         }
         
         :host([custom]) .footer-column.column2 {
           flex: 0 1 30%;
-          margin-right: 3rem;
+          margin-right: 3em;
         }
 
         :host([custom]) .footer-column.column3 {
@@ -106,26 +110,21 @@ var FooterGlobal = class extends HTMLElement {
         .footer-bottom {
           flex: 1 1 100%;
           text-align: right;
-          margin: 2rem 5rem 0 0;
+          margin: 2em 5em 0 0;
         }
 
 
-        /* -------------------------
-           Typography
-        -------------------------- */
+        /* TYPOGRAPHY */
 
         h2 {
-          font-size: 30px;
-          margin-block-end: 16px;
-          margin-bottom: 12px;
+          font-size: 1.875em;
+          margin-block-end: 0.4em;
           font-weight: 500;
           line-height: 1.1;
           color: inherit;
         }
 
-        /* -------------------------
-           Lists
-        -------------------------- */
+        /* LISTS */
 
         ul {
           margin-top: 0;
@@ -139,13 +138,13 @@ var FooterGlobal = class extends HTMLElement {
         .list-inline {
           padding-left: 0;
           list-style: none;
-          margin-left: -5px;
+          margin-left: -0.3125em;
         }
 
         .list-inline > li {
           display: inline-block;
-          padding-right: 5px;
-          padding-left: 5px;
+          padding-right: 0.3125em; 
+          padding-left: 0.3125em;
         }
 
         .list-inline a {
@@ -153,9 +152,7 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* -------------------------
-           Links
-        -------------------------- */
+        /* LINKS */
 
         a {
           color: inherit;
@@ -175,23 +172,22 @@ var FooterGlobal = class extends HTMLElement {
         }
 
         ::slotted(.custom-links) {
-          color: white;
+          color: var(--cl-white);
           text-decoration: none;
-          padding: 5px;
+          padding: 0.3125em;
           display: block;
         }
 
-        /*--------------------------
-            Breadcrumbs
-        ------------------------- */
+
+        /* BREADCRUMBS */
 
         #footer-breadcrumbs {
-          margin-top: 1rem;
+          margin-top: 1em;
         }
 
         #footer-breadcrumbs nav {
-          font-size: 1rem;
-          color: white;
+          font-size: 1em;
+          color: var(--cl-white);
         }
 
         #footer-breadcrumbs ol {
@@ -200,27 +196,27 @@ var FooterGlobal = class extends HTMLElement {
           list-style: none;
           padding: 0;
           margin: 0;
-          gap: 0.5rem;
+          gap: 0.5em;
         }
 
         #footer-breadcrumbs li {
           display: flex;
           align-items: center;
-          color: white;
+          color: var(--cl-white);
         }
 
         #footer-breadcrumbs li:not(:last-child)::after {
           content: "/";
-          margin-left: 10px;
-          color: #9ca1a7;
+          margin-left: 0.625em;
+          color: var(--cl-breadcrumb-spacer);
         }
 
         #footer-breadcrumbs li.active {
-          color: #1e988a;
+          color: var(--cl-teal);
         }
 
         #footer-breadcrumbs a {
-          color: white;
+          color: var(--cl-white);
           text-decoration: none;
         }
 
@@ -229,15 +225,13 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* -------------------------
-           Responsive Styles
-        -------------------------- */
+        /* RESPONSIVE STYLES */
 
         @media (max-width: 1024px) {
           .footer-container {
             flex-direction: column;
             align-items: stretch;
-            margin: 0 4rem 0 1rem;
+            margin: 0 4em 0 1em;
           }
 
           .footer-column {
@@ -248,48 +242,42 @@ var FooterGlobal = class extends HTMLElement {
           .footer-bottom {
             flex: 0 0 100%;
             text-align: left;
-            padding: 1rem 0;
-            border-top: grey dotted 1px;
+            padding: 1em 0;
+            border-top: var(--cl-white) dotted 1px;
           }
           
           .footer-top {
             flex: 0 0 100%;
             text-align: left;
-            padding: 1rem 0;
+            padding: 1em 0;
           }
         }
 
-
-        /* -------------------------
-           Library Hours
-        -------------------------- */
+        /* LIBRARY HOURS */
 
         .library-hours {
-          background-color: #013049;
-          padding: 0 1rem 1rem 0;
-          border-radius: 6px;
-          font-size: 1rem;
+          padding: 0 1em 1em 0;
+          font-size: 1em;
           line-height: 1.4;
         }
 
         .library-hours strong {
-          font-size: 1.1rem;
+          font-size: 1.1em;
           display: block;
           margin-bottom: 0.25em;
         }
 
         .library-hours .today {
-          font-size: 1rem;
-          margin: 1.25rem 0;
-          color: #eee;
+          font-size: 1em;
+          margin: 1.25em 0;
           display: block;
         }
 
         .hours-row {
           display: flex;
           justify-content: space-between;
-          border-bottom: 1px dotted #fff;
-          padding: 4px 0;
+          border-bottom: 1px dotted var(--cl-white);
+          padding: 0.25em 0;
         }
 
         .hours-row:last-of-type {
@@ -297,7 +285,7 @@ var FooterGlobal = class extends HTMLElement {
         }
 
         .lib-link {
-          color: #fff;
+          color: var(--cl-white);
           text-decoration: none;
         }
 
@@ -314,11 +302,10 @@ var FooterGlobal = class extends HTMLElement {
           display: flex;
           justify-content: space-between;
           margin-top: 1em;
-          font-size: 0.75rem;
         }
 
         .view-all {
-          color: #fff;
+          color: var(--cl-white);
           text-decoration: none;
         }
 
@@ -326,21 +313,15 @@ var FooterGlobal = class extends HTMLElement {
           text-decoration: underline;
         }
 
-        .footnote {
-          color: #ccc;
-        }
 
-
-        /* -------------------------
-           Contact Us
-        -------------------------- */
+        /* CONTACT US */
 
         address {
-          margin-bottom: 24px;
+          margin-bottom: 1.5em;
           font-style: normal;
           line-height: 1.5;
           unicode-bidi: isolate;
-          font-size: 1rem;
+          font-size: 1em;
         }
 
         address a {
@@ -353,45 +334,44 @@ var FooterGlobal = class extends HTMLElement {
         }
 
         .p-name {
-          margin-block-start: 24px;
+          margin-block-start: 1.5em;
         }
 
-        /* -------------------------
-           Social & Branding
-        -------------------------- */
+        /* SOCIAL & BRANDING */
 
         .social a svg {
-          height: 32px; 
-          fill: #ffffff;
+          width: 2em; 
+          height: 2em; 
+          fill: var(--cl-white);
         }
 
         .social a:not(:last-child) {
-          margin-inline-end: 30px;
+          margin-inline-end: 1.875em;
         }
 
         .logo-library {
-          fill: #fff;
-          margin-block: 24px;
+          fill: var(--cl-white);
+          margin-block: 1.5em;
           height: 5em;
         }
 
         .logo-archives {
-          fill: #fff;
-          margin-block: 24px;
+          fill: var(--cl-white);
+          margin-block: 1.5em;
           height: 5em;
         }
 
         .links {
           line-height: 2;
-          font-size: 1rem;
+          font-size: 1em;
         }
 
         /* Style for SVG icon injected in #footer-login */
           
         #footer-login a svg {
-          width: 1.25rem;
-          height: 1.25rem;
-          fill: #fff;
+          width: 1.25em;
+          height: 1.25em;
+          fill: var(--cl-white);
           display: inline-block;
           vertical-align: middle;
         }
