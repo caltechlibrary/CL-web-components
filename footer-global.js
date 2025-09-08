@@ -83,8 +83,8 @@ var FooterGlobal = class extends HTMLElement {
         }
 
         .footer-column.column2 {
-          flex: 0 1 21%;
-          margin-right: 3.6em;
+          flex: 0 1 24%;
+          margin-right: 3em;
         }
 
         .footer-column.column3 {
@@ -329,7 +329,7 @@ var FooterGlobal = class extends HTMLElement {
         }
 
         .u-email,
-        .p-tell {
+        .p-tel {
           line-height: 2;
         }
 
@@ -391,16 +391,16 @@ var FooterGlobal = class extends HTMLElement {
               <p>Loading library hours...</p>
             </div>
           </div>
-        </div>
+        </div> 
 
         <div class="footer-column column2">
           <h2>Contact Us</h2>
           <address class="h-card">
             <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
             <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
-            <a class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
+            <a id="library-name" class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
             <div class="p-adr h-adr">
-              <div class="p-post-office-box">Mail Code 1-43</div>
+              <div id="mail-code" class="p-mail-code">Mail Code 1-43</div>
               <div class="p-street-address">1200 E California Blvd</div>
               <span class="p-locality">Pasadena</span>
               <abbr class="p-region" title="California">CA</abbr>
@@ -547,16 +547,28 @@ var FooterGlobal = class extends HTMLElement {
       }
     });
     const email = this.getAttribute("email") || "library@caltech.edu";
-    const phone = this.getAttribute("phone") || "626-395-3405";
     const emailLink = this.shadowRoot.getElementById("email-link");
-    const phoneLink = this.shadowRoot.getElementById("phone-link");
     if (emailLink) {
       emailLink.href = `mailto:${email}`;
       emailLink.textContent = email;
     }
+    const phone = this.getAttribute("phone") || "626-395-3405";
+    const phoneLink = this.shadowRoot.getElementById("phone-link");
     if (phoneLink) {
       phoneLink.href = `tel:${phone.replace(/\D/g, "")}`;
       phoneLink.textContent = phone;
+    }
+    const libraryName = this.getAttribute("library-name") || "Caltech Library";
+    const libraryLink = this.getAttribute("library-link") || "https://library.caltech.edu/";
+    const libraryNameLink = this.shadowRoot.getElementById("library-name");
+    if (libraryNameLink) {
+      libraryNameLink.textContent = libraryName;
+      libraryNameLink.href = libraryLink;
+    }
+    const mailcode = this.getAttribute("mail-code") || "Mail Code 1-43";
+    const mailCode = this.shadowRoot.getElementById("mail-code");
+    if (mailCode) {
+      mailCode.textContent = mailcode;
     }
     const headerText = this.getAttribute("header") || "Hours";
     const headerEl = this.shadowRoot.getElementById("column1-header");
@@ -564,9 +576,9 @@ var FooterGlobal = class extends HTMLElement {
       headerEl.textContent = headerText;
     }
     const instagramAnchor = this.shadowRoot.getElementById("instagram-link");
-    const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
     const instagramHref = this.getAttribute("instagram") || "https://www.instagram.com/caltechlibrary/";
     const youtubeHref = this.getAttribute("youtube") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
+    const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
     const rssHref = this.getAttribute("rss");
     if (instagramAnchor) instagramAnchor.setAttribute("href", instagramHref);
     if (youtubeAnchor) youtubeAnchor.setAttribute("href", youtubeHref);
