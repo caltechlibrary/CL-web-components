@@ -12,11 +12,14 @@ Once added to an application, the component will get updates automatically whene
 
 The component has several options for customization:
 
-- Custom column heading (full & lite)
-- Application-specific links (full & lite)
+- Custom heading in first column (full & lite)
+- Application-specific links in first column (full & lite)
 - Configurable contact information (full & lite)
 - Customizable social media links (full)
+- Customizable library name with custom link (full)
+- Customizable Library mail code (full)
 - The ability to change the logo version between archives and the library (full & lite)
+
 
 The footer also has customizations that apply only to the library website:
 - The ability to turn on the login icon for libguides (full)
@@ -147,6 +150,60 @@ The defaults for Instagram and Youtube are the library's profiles. There is no d
     instagram="your-profile-url"
     youtube="your-profile-url"
     rss="your-rss-url"> 
+    
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+
+</footer-global>
+```
+### Custom Library Name + Link
+
+In the second column, you can also customize the library name in the full Footer-Global component. You can also make the library name a url that points to a different website.
+
+The default is set to "Caltech Library" and the link goes to the libraries home page.
+
+1) Add attribute ```library-name="The Name of the Library"```
+2) Add attribute ```library-link="the url of the library"```
+
+```html
+<footer-global
+    custom
+    header="Your Application Name"
+    phone="xxxxxx"
+    email="email@test.com"
+    instagram="your-profile-url"
+    youtube="your-profile-url"
+    rss="your-rss-url"
+    library-name="The Name of the Library" 
+    library-link="the url of the library"
+
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
+      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+
+</footer-global>
+```
+### Custom Mail Code
+
+In the second column, you can also customize the mail code in the full Footer-Global component. The main address will always stay the same: 1200 E California Blvd Pasadena, CA 91125-4300. However, you can override the default mail code with a custom code.
+
+The default is set to the library's mail code.
+
+1) Add attribute ```mail-code="your unique mail code"```
+
+```html
+<footer-global
+    custom
+    header="Your Application Name"
+    phone="xxxxxx"
+    email="email@test.com"
+    instagram="your-profile-url"
+    youtube="your-profile-url"
+    rss="your-rss-url"
+    library-name="The Name of the Library" 
+    library-link="the url of the library"
+    mail-code="your unique mail code"
     
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
       <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
