@@ -1,9 +1,8 @@
-export class FooterGlobal extends HTMLElement {
+// src/footer-global.js
+var FooterGlobal = class extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-
-    // Define HTML and CSS for the shadow DOM
     const template = document.createElement("template");
     template.innerHTML = `
 
@@ -84,8 +83,8 @@ export class FooterGlobal extends HTMLElement {
         }
 
         .footer-column.column2 {
-          flex: 0 1 21%;
-          margin-right: 3.6em;
+          flex: 0 1 24%;
+          margin-right: 3em;
         }
 
         .footer-column.column3 {
@@ -330,7 +329,7 @@ export class FooterGlobal extends HTMLElement {
         }
 
         .u-email,
-        .p-tell {
+        .p-tel {
           line-height: 2;
         }
 
@@ -392,16 +391,16 @@ export class FooterGlobal extends HTMLElement {
               <p>Loading library hours...</p>
             </div>
           </div>
-        </div>
+        </div> 
 
         <div class="footer-column column2">
           <h2>Contact Us</h2>
           <address class="h-card">
             <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
             <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
-            <a class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
+            <a id="library-name" class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
             <div class="p-adr h-adr">
-              <div class="p-post-office-box">Mail Code 1-43</div>
+              <div id="mail-code" class="p-mail-code">Mail Code 1-43</div>
               <div class="p-street-address">1200 E California Blvd</div>
               <span class="p-locality">Pasadena</span>
               <abbr class="p-region" title="California">CA</abbr>
@@ -471,50 +470,33 @@ export class FooterGlobal extends HTMLElement {
         </div>
       </footer>
     `;
-
-    // Inject the HTML and CSS into the shadow DOM
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    // Fix for styling custom links because slot does not allow targetting the hover state from the shadow dom
     this.addEventListener("mouseover", (e) => {
       if (e.target.classList.contains("custom-links")) {
         e.target.style.textDecoration = "underline";
       }
     });
-
     this.addEventListener("mouseout", (e) => {
       if (e.target.classList.contains("custom-links")) {
         e.target.style.textDecoration = "none";
       }
     });
   }
-
   // Handles slot fallback, attribute wiring, and dynamic content.
   connectedCallback() {
-    // Debug: FooterGlobal is connecting
-    console.log("📦 FooterGlobal connected");
-
-    // Set the library hours API URL
-    this.hoursUrl =
-      "https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
-
-    // Lookign for slot with some optional debug commented out
-    // console.log("👀 Looking for slot[name='custom-links']");
+    console.log("\u{1F4E6} FooterGlobal connected");
+    this.hoursUrl = "https://libcal.caltech.edu/api_hours_today.php?lid=0&format=json&systemTime=0";
     const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
-    // console.log("🔎 Found slot1:", slot1);
-    // console.log("🧪 Attaching slotchange event to custom-links slot");
     if (!slot1) {
-      console.warn("⚠️ slot[name='custom-links'] not found");
+      console.warn("\u26A0\uFE0F slot[name='custom-links'] not found");
       return;
     }
-
     const assignedNodes = slot1.assignedNodes({ flatten: true });
     if (assignedNodes.length === 0) {
-      console.log("🪶 No slotted content detected at load — using default");
+      console.log("\u{1FAB6} No slotted content detected at load \u2014 using default");
       this.loadDefaultColumn1();
     }
-
-    // Mirror breadcrumb into footer if attribute is set and element exists
+    // breadcrumb mirroring if attribute is set to true with console logging. no default value.
     if (this.getAttribute("breadcrumbs") === "true") {
       const breadcrumbEl = document.getElementById("s-lib-bc");
       const breadcrumbTarget = this.shadowRoot.getElementById("footer-breadcrumbs");
@@ -522,29 +504,25 @@ export class FooterGlobal extends HTMLElement {
         const clone = breadcrumbEl.cloneNode(true);
         clone.id = "s-lib-bc-footer";
         breadcrumbTarget.appendChild(clone);
-        console.log("🔗 Breadcrumb mirrored into footer component");
+        console.log("\u{1F517} Breadcrumb mirrored into footer component");
       } else {
-        console.log("ℹ️ Breadcrumb not found or target missing");
+        console.log("\u2139\uFE0F Breadcrumb not found or target missing");
       }
     }
-
-    // Grab tokenized login link and rebuild elsewhere
+    // login link visible if attribute set to true with colsole logging. no default value.
     if (this.getAttribute("libguides-login") === "true") {
-      console.log("🧪 Detected Libguides-login=true");
+      console.log("\u{1F9EA} Detected Libguides-login=true");
       const sourceWrapper = document.getElementById("s-lib-footer-login-link");
       if (!sourceWrapper) {
-        console.warn("❌ s-lib-footer-login-link not found");
+        console.warn("\u274C s-lib-footer-login-link not found");
         return;
       }
-
       const sourceLink = sourceWrapper.querySelector("a");
       if (!sourceLink) {
-        console.warn("🚫 Login <a> not found inside s-lib-footer-login-link");
+        console.warn("\u{1F6AB} Login <a> not found inside s-lib-footer-login-link");
         return;
       }
-
-      console.log("✅ Login link found:", sourceLink.href);
-
+      console.log("\u2705 Login link found:", sourceLink.href);
       const login_link = document.createElement("a");
       login_link.setAttribute("href", sourceLink.href);
       login_link.setAttribute("aria-label", "Staff Login");
@@ -553,20 +531,16 @@ export class FooterGlobal extends HTMLElement {
           <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path>
         </svg>
       `;
-
       const shadowTarget = this.shadowRoot?.getElementById("footer-login");
       if (!shadowTarget) {
-        console.warn("⚠️ Could not find #footer-login inside shadow DOM");
+        console.warn("\u26A0\uFE0F Could not find #footer-login inside shadow DOM");
         return;
       }
-
-      console.log("🚀 Injecting login link into shadow DOM");
+      console.log("\u{1F680} Injecting login link into shadow DOM");
       shadowTarget.appendChild(login_link);
     }
-
-    // Listen for slot content changes and show default if nexessary
+    // Listening for slot in light dom and replacing default content in column 1 with slot content.
     slot1.addEventListener("slotchange", () => {
-      // optional. debug: console.log("🎯 slotchange triggered for column1");
       const hasContent = slot1.assignedNodes().length > 0;
       const fallback = this.shadowRoot.querySelector("#default-column1");
       fallback.style.display = hasContent ? "none" : "block";
@@ -575,43 +549,49 @@ export class FooterGlobal extends HTMLElement {
         this.loadDefaultColumn1();
       }
     });
-
-    // Set email and phone links if attributes are present
+    // Email customization using attribute
     const email = this.getAttribute("email") || "library@caltech.edu";
-    const phone = this.getAttribute("phone") || "626-395-3405";
-
     const emailLink = this.shadowRoot.getElementById("email-link");
-    const phoneLink = this.shadowRoot.getElementById("phone-link")
-
     if (emailLink) {
-      emailLink.href = `mailto:${email}`;
-      emailLink.textContent = email;
+          emailLink.href = `mailto:${email}`;
+          emailLink.textContent = email;
     }
-
+    // Phone customization using attribute
+    const phone = this.getAttribute("phone") || "626-395-3405";
+    const phoneLink = this.shadowRoot.getElementById("phone-link");
     if (phoneLink) {
       phoneLink.href = `tel:${phone.replace(/\D/g, "")}`;
       phoneLink.textContent = phone;
     }
-
-    // Set header text for column 1
+    // Library name customization using attribute
+    const libraryName = this.getAttribute("library-name") || "Caltech Library";
+    const libraryLink = this.getAttribute("library-link") || "https://library.caltech.edu/";
+    const libraryNameLink = this.shadowRoot.getElementById("library-name");
+    if (libraryNameLink) {
+      libraryNameLink.textContent = libraryName;
+      libraryNameLink.href = libraryLink;
+    }
+    
+    // Mail code customization using attribute
+    const mailcode = this.getAttribute("mail-code") || "Mail Code 1-43";
+    const mailCode = this.shadowRoot.getElementById("mail-code");
+    if (mailCode) {
+      mailCode.textContent = mailcode;
+    }
+    // Header column 1 customization using attribute
     const headerText = this.getAttribute("header") || "Hours";
     const headerEl = this.shadowRoot.getElementById("column1-header");
     if (headerEl) {
       headerEl.textContent = headerText;
     }
-
-    // Set Social Media links if attributes are present
+    // Social Media customization using attribute
     const instagramAnchor = this.shadowRoot.getElementById("instagram-link");
-    const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
-
     const instagramHref = this.getAttribute("instagram") || "https://www.instagram.com/caltechlibrary/";
     const youtubeHref = this.getAttribute("youtube") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
+    const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
     const rssHref = this.getAttribute("rss");
-
     if (instagramAnchor) instagramAnchor.setAttribute("href", instagramHref);
     if (youtubeAnchor) youtubeAnchor.setAttribute("href", youtubeHref);
-
-    // Add RSS icon if rss attribute is present
     if (rssHref) {
       const rssAnchor = document.createElement("a");
       rssAnchor.setAttribute("id", "rss-link");
@@ -629,11 +609,9 @@ export class FooterGlobal extends HTMLElement {
         }
       }
     }
-
-    // Logo selection logic
+    // Logo customization using attribute
     const logoType = (this.getAttribute("logo") || "library").toLowerCase();
     const logoContainer = this.shadowRoot.querySelector(".footer-logo-container");
-
     if (logoContainer) {
       const templateId = logoType === "archives" ? "archives-logo" : "library-logo";
       const logoTemplate = this.shadowRoot.getElementById(templateId);
@@ -646,38 +624,31 @@ export class FooterGlobal extends HTMLElement {
       }
     }
   }
-
   // If no Slot, load column1 default content - Library Hours
   async loadDefaultColumn1() {
-    // optional. debug:console.log("📦 loadDefaultColumn1() was called");
-    // optional. debug:console.log("📡 Fetching library hours from", this.hoursUrl);
     const container = this.shadowRoot.querySelector("#default-column1");
     try {
       const response = await fetch(this.hoursUrl);
       const data = await response.json();
-      // optional. debug:console.log("📬 Received library hours data:", data);
       const locations = data.locations;
-      // optional. debug: console.log("🔍 First location object:", data.locations[0]);
       const column1Content = document.createElement("div");
       column1Content.id = "column1";
       column1Content.classList.add("column1-default");
-      const rows = locations
-        .map((loc) => {
-          const name = loc.name;
-          const url = loc.url;
-          const hours = loc.rendered || "—";
-          return `
+      const rows = locations.map((loc) => {
+        const name = loc.name;
+        const url = loc.url;
+        const hours = loc.rendered || "\u2014";
+        return `
             <div class="hours-row">
               <a class="lib-link" href="${url}" target="_blank" rel="noopener">${name}</a>
               <span class="lib-hours">${hours}</span>
             </div>`;
-        })
-        .join("");
-      const todayString = new Date().toLocaleDateString(undefined, {
+      }).join("");
+      const todayString = (/* @__PURE__ */ new Date()).toLocaleDateString(void 0, {
         weekday: "long",
         year: "numeric",
         month: "long",
-        day: "numeric",
+        day: "numeric"
       });
       column1Content.innerHTML = `
         <div class="library-hours">
@@ -689,13 +660,10 @@ export class FooterGlobal extends HTMLElement {
           </div>
         </div>
       `;
-      // optional. debug: console.log('🧾 Injected HTML:', column1Content.outerHTML);
-      // Insert before the slot
       const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
       if (slot1 && slot1.parentNode) {
         slot1.parentNode.insertBefore(column1Content, slot1);
       } else {
-        // fallback: append to container if slot not found
         container.appendChild(column1Content);
       }
     } catch (error) {
@@ -703,7 +671,8 @@ export class FooterGlobal extends HTMLElement {
       container.innerHTML = `<p>Unable to load library hours at this time.</p>`;
     }
   }
-}
-
-
+};
 customElements.define("footer-global", FooterGlobal);
+export {
+  FooterGlobal
+};
