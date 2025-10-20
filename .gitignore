@@ -12,3 +12,6 @@ pagefind/
 
 # macOS system files
 .DS_Store
+
+# Bash Scripts
+server.sh
