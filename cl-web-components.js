@@ -1353,31 +1353,47 @@ var FooterGlobal = class extends HTMLElement {
 
         <style>
 
-        /* FONTS */
+        /* - - -  
+        FONTS 
+        - - - */
 
         @font-face {
           font-family: 'Hind';
           font-style: normal;
           font-weight: 400;
           font-display: swap;
-          src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
+          src:
+            local('Hind Regular'),
+            local('Hind-Regular'),
+            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff2') format('woff2'),
+            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
         }
         @font-face {
           font-family: 'Hind';
           font-style: normal;
           font-weight: 500;
           font-display: swap;
-          src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
+          src:
+            local('Hind Medium'),
+            local('Hind-Medium'),
+            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff2') format('woff2'),
+            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
         }
         @font-face {
           font-family: 'Hind';
           font-style: normal;
           font-weight: 600;
           font-display: swap;
-          src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
+          src:
+            local('Hind SemiBold'),
+            local('Hind-SemiBold'),
+            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff2') format('woff2'),
+            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
         }
 
-        /* BASE STYLES */
+        /* - - -  
+        BASE STYLES 
+        - - - - */
 
         :host {
           --cl-dark-blue: #062e47;
@@ -1392,6 +1408,10 @@ var FooterGlobal = class extends HTMLElement {
           font-size: 16px;
         }
 
+        :host, *, *::before, *::after {
+          box-sizing: border-box;
+        }
+
         @media (min-width: 768px) {
           :host {
             border-radius: 0 30% 0 0 / 10%;
@@ -1404,7 +1424,9 @@ var FooterGlobal = class extends HTMLElement {
           }
         }
         
-        /* LAYOUT & STRUCTURE */
+        /* - - - - 
+        LAYOUT & STRUCTURE 
+        - - - - - */
 
         .footer-container {
           display: flex;
@@ -1457,9 +1479,30 @@ var FooterGlobal = class extends HTMLElement {
           text-align: right;
           margin: 2em 5em 0 0;
         }
+        
+        /* IDEA statement */
 
+        .idea-container {
+          max-width: 60rem;
+          margin-inline: auto;
+          padding-inline: 1.5rem;
+          text-align: center;
+          border-top: 1px solid #4b595b;
+          border-bottom: 1px solid #4b595b;
+        }
+        
+        .idea-statement {
+          margin-top: 1em;
+          margin-right: .75rem;
+          font-style: italic;
+          font-size: .8rem;
+          line-height: 1.5rem;
+          padding: .5rem 0rem .5rem 0rem;
+        }
 
-        /* TYPOGRAPHY */
+        /* - - - - 
+        TYPOGRAPHY 
+        - - - - - */
 
         h2 {
           font-size: 1.875em;
@@ -1469,7 +1512,9 @@ var FooterGlobal = class extends HTMLElement {
           color: inherit;
         }
 
-        /* LISTS */
+        /* - - - - 
+        LISTS 
+        - - - - - */
 
         ul {
           margin-top: 0;
@@ -1497,7 +1542,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* LINKS */
+        /* - - - - 
+        LINKS 
+        - - - - - */
 
         a {
           color: inherit;
@@ -1506,6 +1553,25 @@ var FooterGlobal = class extends HTMLElement {
 
         a:hover {
           text-decoration: underline;
+        }
+
+        /* - - - -  
+        ACCESSIBILITY FOCUS STATES  
+        - - - - */
+
+        :host, :host * {
+          outline: none;
+        }
+
+        a:focus-visible {
+          outline: 2px solid var(--cl-teal);
+          outline-offset: 2px;
+          text-decoration: none;
+        }
+
+        button:focus-visible, input:focus-visible {
+          outline: 2px solid var(--cl-teal);
+          outline-offset: 2px;
         }
 
         .footer-bottom a {
@@ -1524,7 +1590,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* BREADCRUMBS */
+        /* - - - - 
+        BREADCRUMBS 
+        - - - - - */
 
         #footer-breadcrumbs {
           margin-top: 1em;
@@ -1570,35 +1638,66 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* RESPONSIVE STYLES */
+        /* - - - - - 
+        RESPONSIVE STYLES 
+        - - - - - - */
 
-        @media (max-width: 1024px) {
+         @media (max-width: 1200px) {
+           .footer-container {
+            margin-left: 6%;
+          }
+
+          .footer-column.column1 {
+            margin-right: 4em;
+          }
+
+          .footer-column.column2 {
+            margin-right: 1em;
+          }
+         
+        }
+        
+        @media (max-width: 1000px) {
+        
+          .footer-column.column1 {
+            margin-right: 4em;
+          }
+
+          .footer-column.column2 {
+          margin-right: 1em;
+          }
+         
+        }
+
+        @media (max-width: 990px) {
           .footer-container {
-            flex-direction: column;
-            align-items: stretch;
-            margin: 0 4em 0 1em;
+            flex-direction: column;  
+            align-items: stretch;     
           }
 
           .footer-column {
-            flex: 0 0 100%;
-            width: 100%;
+            flex: 1 1 100%;
+            max-width: 100%;
+            margin: 0;                
+            padding: 1em 0;           
+          }
+
+          
+          .idea-container {
+            padding: 0;
+            margin: 0;
+            text-align: left;
           }
 
           .footer-bottom {
-            flex: 0 0 100%;
-            text-align: left;
-            padding: 1em 0;
-            border-top: var(--cl-white) dotted 1px;
+            text-align: center;
+            margin: 1.5em 0 0;
           }
-          
-          .footer-top {
-            flex: 0 0 100%;
-            text-align: left;
-            padding: 1em 0;
-          }
-        }
+        }      
 
-        /* LIBRARY HOURS */
+        /* - - - - 
+        LIBRARY HOURS 
+        - - - - - */
 
         .library-hours {
           padding: 0 1em 1em 0;
@@ -1659,7 +1758,9 @@ var FooterGlobal = class extends HTMLElement {
         }
 
 
-        /* CONTACT US */
+        /* - - - - 
+        CONTACT US 
+        - - - - - */
 
         address {
           margin-bottom: 1.5em;
@@ -1698,6 +1799,7 @@ var FooterGlobal = class extends HTMLElement {
           fill: var(--cl-white);
           margin-block: 1.5em;
           height: 5em;
+          margin-top: 1.9em;
         }
 
         .logo-archives {
@@ -1721,6 +1823,8 @@ var FooterGlobal = class extends HTMLElement {
           vertical-align: middle;
         }
         </style>
+
+
 
       <footer class="footer-container" role="contentinfo">
 
@@ -1804,8 +1908,13 @@ var FooterGlobal = class extends HTMLElement {
             </ul>
           </section>
         </div>
-
+        <div class="idea-container">
+          <p class="idea-statement">
+            Library facilities, collections, programs, and resources are open to anyone in the campus community, regardless of race, national origin, sex, gender identity, sexual identity, and/or any other protected characteristic.
+          </p>
+        </div>
         <div class="footer-bottom">
+        
           <ul class="list-inline">
             <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
             <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
