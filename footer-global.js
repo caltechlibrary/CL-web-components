@@ -6,7 +6,7 @@ var FooterGlobal = class extends HTMLElement {
     const template = document.createElement("template");
     template.innerHTML = `
 
-        <style>
+        <style> 
 
         /* - - -  
         FONTS 
@@ -502,6 +502,7 @@ var FooterGlobal = class extends HTMLElement {
         <div class="footer-top">
           <div id="footer-breadcrumbs"></div>
         </div>
+        
         <div class="footer-columns-wrapper">
           <div class="footer-column column1">
             <div class="custom-links-wrapper">

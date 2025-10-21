@@ -1,12 +1,12 @@
 // src/footer-global.js
-var FooterGlobal = class extends HTMLElement {
+export class FooterGlobal extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
     const template = document.createElement("template");
     template.innerHTML = `
 
-        <style>
+        <style> 
 
         /* - - -  
         FONTS 
@@ -502,6 +502,7 @@ var FooterGlobal = class extends HTMLElement {
         <div class="footer-top">
           <div id="footer-breadcrumbs"></div>
         </div>
+        
         <div class="footer-columns-wrapper">
           <div class="footer-column column1">
             <div class="custom-links-wrapper">
@@ -800,6 +801,4 @@ var FooterGlobal = class extends HTMLElement {
   }
 };
 customElements.define("footer-global", FooterGlobal);
-export {
-  FooterGlobal
-};
+
