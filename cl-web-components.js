@@ -1490,19 +1490,17 @@ var FooterGlobal = class extends HTMLElement {
         /* IDEA statement */
 
         .idea-container {
-          margin-inline: auto;
-          padding-inline: 1.5rem;
+          margin: 0rem 2rem;
+          padding: .5em 5rem;          
           text-align: center;
-          border-top: 1px solid #4b595b;
-          border-bottom: 1px solid #4b595b;
+          border-top: 1px solid #135071;
+          border-bottom: 1px solid #135071;
         }
         
         .idea-statement {
-          margin: 1em .75rem 0 0;
           font-style: italic;
-          font-size: .8rem;
-          line-height: 1.5rem;
-          padding: .5rem 0rem .5rem 0rem;
+          font-size: .9rem;
+          line-height: 1.8rem;
         }
 
         /* - - - - 
@@ -1684,6 +1682,7 @@ var FooterGlobal = class extends HTMLElement {
             flex-direction: column;
             display: flex;
             flex-wrap: nowrap;
+            gap: 0em !important;
           }
 
           .footer-column {
@@ -1699,10 +1698,12 @@ var FooterGlobal = class extends HTMLElement {
 
           
           .idea-container {
-            padding: 0;
+            padding: 1rem 3rem 1rem 0rem;
             margin: 0 1rem 0 0;
             text-align: left;
           }
+          
+          
 
           .footer-bottom {
             text-align: left;
