@@ -1490,7 +1490,7 @@ var FooterGlobal = class extends HTMLElement {
         /* IDEA statement */
 
         .idea-container {
-          margin: 0rem 2rem;
+          margin: 2rem;
           padding: .5em 5rem;          
           text-align: center;
           border-top: 1px solid #135071;
@@ -1499,7 +1499,7 @@ var FooterGlobal = class extends HTMLElement {
         
         .idea-statement {
           font-style: italic;
-          font-size: .9rem;
+          font-size: .9em;
           line-height: 1.8rem;
         }
 
