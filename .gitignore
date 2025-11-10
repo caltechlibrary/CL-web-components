@@ -8,7 +8,6 @@
 bin/
 dist/
 scratch/
-pagefind/
 
 # macOS system files
 .DS_Store
