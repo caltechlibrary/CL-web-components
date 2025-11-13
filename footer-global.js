@@ -201,7 +201,7 @@ var FooterGlobal = class extends HTMLElement {
 
 
         /* - - - - 
-        LINKS 
+          LINKS 
         - - - - - */
 
         a {
@@ -212,13 +212,13 @@ var FooterGlobal = class extends HTMLElement {
         a:hover {
           text-decoration: underline;
         }
-        
-        ::slotted(a) {
+
+        ::slotted([slot="custom-links"]) {
           color: white;
           text-decoration: none;
         }
-        
-        ::slotted(a:hover) {
+
+        ::slotted([slot="custom-links"]:hover) {
           text-decoration: underline;
         }
 
@@ -248,18 +248,6 @@ var FooterGlobal = class extends HTMLElement {
         .footer-bottom a:hover {
           text-decoration: underline;
         }
-
-        /* Custom links slot styling */
-        ::slotted([slot="custom-links"]) {
-          color: white;
-          text-decoration: none;
-          font: inherit;
-        }
-
-        ::slotted([slot="custom-links"]:hover) {
-          text-decoration: underline;
-        }
-
 
         /* - - - - 
         BREADCRUMBS 
