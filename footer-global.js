@@ -249,11 +249,16 @@ var FooterGlobal = class extends HTMLElement {
           text-decoration: underline;
         }
 
-        ::slotted(.custom-links) {
-          color: var(--cl-white);
+        ::slotted(a[slot="custom-links"]) {
+          color: white;
           text-decoration: none;
-          padding: 0.3125em;
           display: block;
+          padding: 0.3125em 0;
+          font-weight: 500;
+        }
+
+        ::slotted(a[slot="custom-links"]:hover) {
+          text-decoration: underline;
         }
 
 
