@@ -214,12 +214,14 @@ export class FooterGlobal extends HTMLElement {
         }
 
         ::slotted([slot="custom-links"]) {
-          color: white;
-          text-decoration: none;
+          color: white !important;
+          text-decoration: none !important;
+          display: block;
+          line-height: 2 !important;
         }
 
         ::slotted([slot="custom-links"]:hover) {
-          text-decoration: underline;
+          text-decoration: underline !important;
         }
 
         /* - - - -  
