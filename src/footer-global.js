@@ -212,6 +212,15 @@ export class FooterGlobal extends HTMLElement {
         a:hover {
           text-decoration: underline;
         }
+        
+        ::slotted(a) {
+          color: white;
+          text-decoration: none;
+        }
+        
+        ::slotted(a:hover) {
+          text-decoration: underline;
+        }
 
         /* - - - -  
         ACCESSIBILITY FOCUS STATES  
