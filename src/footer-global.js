@@ -127,7 +127,7 @@ export class FooterGlobal extends HTMLElement {
           flex-wrap: wrap;
           justify-content: center;
           width: 100%;
-          gap:3em
+          gap: 5em;
         }
         
         :host([custom]) .footer-column {
