@@ -201,7 +201,7 @@ export class FooterGlobal extends HTMLElement {
 
 
         /* - - - - 
-        LINKS 
+          LINKS 
         - - - - - */
 
         a {
@@ -212,13 +212,13 @@ export class FooterGlobal extends HTMLElement {
         a:hover {
           text-decoration: underline;
         }
-        
-        ::slotted(a) {
+
+        ::slotted([slot="custom-links"]) {
           color: white;
           text-decoration: none;
         }
-        
-        ::slotted(a:hover) {
+
+        ::slotted([slot="custom-links"]:hover) {
           text-decoration: underline;
         }
 
@@ -248,19 +248,6 @@ export class FooterGlobal extends HTMLElement {
         .footer-bottom a:hover {
           text-decoration: underline;
         }
-
-        ::slotted(a[slot="custom-links"]) {
-          color: white;
-          text-decoration: none;
-          display: block;
-          padding: 0.3125em 0;
-          font-weight: 500;
-        }
-
-        ::slotted(a[slot="custom-links"]:hover) {
-          text-decoration: underline;
-        }
-
 
         /* - - - - 
         BREADCRUMBS 
