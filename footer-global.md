@@ -1,300 +1,331 @@
 # Footer Global & Footer Global Lite
 
-This web component is designed to add a branded footer to applications maintained by the library. 
+This web component adds a branded footer to applications maintained by the library.
 
-There are two versions of the footer - the standard footer that matches the library website, and a lite version with a streamlined content structure. 
+## Versions
 
-The footers have several options for customization using both attributes and slot to change the content that is displayed.
+There are two versions of the footer:
+
+- **Footer Global**: Standard footer matching the library website with full customization options
+- **Footer Global Lite**: Streamlined footer with simplified content structure
 
 ## Key Features
 
-Once added to an application, the component will get updates automatically whenever a new version is released. This allows a streamlined way to update the footer and have those changes immediately reflected on all applications calling it.
-
-The component has several options for customization:
-
-- Custom heading in first column (full & lite)
-- Application-specific links in first column (full & lite)
-- Configurable contact information (full & lite)
-- Customizable social media links (full)
-- Customizable library name with custom link (full)
-- Customizable Library mail code (full)
-- The ability to change the logo version between archives and the library (full & lite)
-
-
-The footer also has customizations that apply only to the library website:
-- The ability to turn on the login icon for libguides (full)
-- The ability to turn on breadcrumbs for libguides (full)
+- **Automatic Updates**: Once installed, the component automatically receives updates when new versions are released
+- **Preset Configurations**: Use `library` or `archives` presets for instant setup with common defaults
+- **Full Customization**: Override any preset value or create completely custom configurations
+- **Flexible Content**: Custom headings, links, contact info, social media, and branding options
+- **Library-Specific Features**: Optional breadcrumbs and login links for LibGuides integration
 
 ## Installing
 
-To install the footer, simply included the javascript file and the extended html element as such:
-
-### Global-Footer
+### Footer Global
 
 ```html
+<!-- Add the component -->
 <footer-global></footer-global>
+
+<!-- Include the JavaScript -->
+<script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script>
 ```
- 
- And the javascript file.
+
+### Footer Global Lite
 
 ```html
-<script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script> 
-```
-### Global-Footer-Lite
-
-```html
+<!-- Add the component -->
 <footer-global-lite></footer-global-lite>
+
+<!-- Include the JavaScript -->
+<script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global-lite.js"></script>
 ```
- 
- And the javascript file.
+
+## Quick Start with Presets
+
+The easiest way to use the footer is with preset configurations. Simply add the `library` or `archives` attribute to automatically configure all contact information, branding, and social media links.
+
+### Library Preset
 
 ```html
-<script type="module" src="/src/footer-global-lite.js"></script> (updated link coming soon)
+<footer-global library></footer-global>
 ```
 
-## Customizing
+**Default Values:**
+- Email: library@caltech.edu
+- Phone: 626-395-3405
+- Library Name: Caltech Library
+- Mail Code: Mail Code 1-43
+- Logo: Library logo
+- Instagram: @caltechlibrary
+- YouTube: Caltech Library channel
 
-There are multiple ways to customize the footers. 
+### Archives Preset
 
-> **Please Note**: There are no differences between Footer-Global and Footer-Global-Lite when customizing content, other than the name of the extended html element. The first example shows how to customize both footer versions but all following examples will only reference Footer-Global for brevity.
+```html
+<footer-global archives></footer-global>
+```
+
+**Default Values:**
+- Email: archives@caltech.edu
+- Phone: (626) 395-2704
+- Library Name: Caltech Library<br>Archives & Special Collections
+- Mail Code: Mail Code B215A-74
+- Logo: Archives logo
+- Instagram: @caltecharchives
+- YouTube: Caltech Library channel
+
+### Overriding Preset Values
+
+You can use a preset and override specific values:
+
+```html
+<footer-global archives phone="626-555-1234">
+  <a slot="custom-links" class="custom-links" href="/about">About</a>
+  <a slot="custom-links" class="custom-links" href="/contact">Contact</a>
+</footer-global>
+```
+
+## Full Customization
+
+For department-specific footers or unique configurations, use the `custom` attribute to take full control over the first column.
+
+> **Note**: The customization examples below use `footer-global`, but the same attributes work for `footer-global-lite`. The only difference is the component name.
+
+### Understanding the `custom` Attribute
+
+The `custom` attribute is a special flag that:
+- **Hides the default library hours content** in column 1
+- **Hides the "Hours" heading** (unless you provide a custom `header` attribute)
+- **Adjusts column widths** for better layout with custom content
+
+**Behavior:**
+- `<footer-global>` → Shows "Hours" heading + library hours
+- `<footer-global custom>` → Column 1 is completely empty (no heading, no hours)
+- `<footer-global custom header="Links">` → Shows "Links" heading, no hours
+
+This gives you a clean slate to add your own content without the default library hours appearing.
 
 ### Custom Heading
 
-You have the option to add a custom column heading to the first column in both Footer-Global and Footer-Global-Lite. This could be terms like Quick Links, About, or the application's name. 
-
-1) Add "custom" as an attribute to the extended html element. This helps with column spacing and is required anytime you customize the component.
-2) Define the heading text as an attribute.
+Add a custom heading to the first column:
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name">
+  custom
+  header="Digital Collections">
 </footer-global>
 ```
 
-or
+> **Tip**: If you don't provide a `header` attribute, the heading will be hidden entirely, giving you maximum flexibility for your custom content.
 
-```html
-<footer-global-lite
-    custom
-    header="Your Application Name">
-</footer-global-lite>
-```
+### Custom Links in First Column
 
-### Custom Links First Column
+The first column displays custom links specific to your application.
 
-The first column is reserved for custom links specific to the application in both Footer-Global and Footer-Global-Lite. 
+**Default Content (without customization):**
+- Footer Global: Library Hours
+- Footer Global Lite: Default links for Home and Return to Top
 
-The default content without customization:
-- Footer-Global: Library Hours
-- Footer-Global-Lite: Default links for Home and Return to Top.
-
-To overwrite this default content, you will
-
-1) First, add an ```<a>``` tag between the open and close of the footer element with your custom link.
-2) Add the named slot **custom-links** to the ```<a>``` tag. This will pull the content into the Shadow Dom.
-3) Add the class **custom-links** to the ```<a>``` tag. This will give it the link style it needs and account for hover states.
-
+**To add custom links:**
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"> 
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+  custom
+  header="Quick Links">
+
+  <a slot="custom-links" class="custom-links" href="/about">About</a>
+  <a slot="custom-links" class="custom-links" href="/help">Help</a>
+  <a slot="custom-links" class="custom-links" href="/contact">Contact</a>
 
 </footer-global>
 ```
 
-### Custom Phone and Email 
+**Required attributes on each link:**
+- `slot="custom-links"` - Pulls content into Shadow DOM
+- `class="custom-links"` - Applies proper styling and hover states
 
-In the second column, you can change the phone and email so that it is specific to your application in both Footer-Global and Footer-Global-Lite. 
+### Custom Phone and Email
 
-To override the phone and email, you will define their attributes in the html element.
-
-1) Add attribute ```Phone="xxx-xxxx"``` to change the phone.
-2) Add attribute ```Email="email@test.com"``` to change the email.
+Override the default contact information:
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"
-    phone="xxx-xxxx"
-    email="email@test.com"> 
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+  custom
+  header="Digital Collections"
+  phone="626-555-0100"
+  email="digcoll@caltech.edu">
+
+  <a slot="custom-links" class="custom-links" href="/about">About</a>
 
 </footer-global>
 ```
 
-### Custom Social Media Links 
+### Custom Social Media Links
 
-In the second column, you can also customize the social media links in the Footer-Global component. Currently, the component supports Instagram, YouTube, and RSS. To add more social links, please contact the developers of this component. You will customize these by defining an attribute in the html element. 
+Customize Instagram, YouTube, and RSS links (Footer Global only):
 
-The defaults for Instagram and Youtube are the library's profiles. There is no default for the RSS feed. If one is not defined, no icon will display.
-
-1) Add attribute ```instagram="your-profile-url"```
-2) Add attribute ```youtube="your-profile-url"```
-3) Add attribute ```rss="your-rss-url"```
+**Default behavior:**
+- Instagram and YouTube default to library profiles
+- RSS has no default; icon only appears if URL is provided
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"
-    instagram="your-profile-url"
-    youtube="your-profile-url"
-    rss="your-rss-url"> 
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+  custom
+  header="Your Application"
+  instagram="https://instagram.com/yourprofile"
+  youtube="https://youtube.com/yourchannel"
+  rss="https://yoursite.edu/feed">
+
+  <a slot="custom-links" class="custom-links" href="#">Link 1</a>
 
 </footer-global>
 ```
-### Custom Library Name + Link
 
-In the second column, you can also customize the library name in the full Footer-Global component. You can also make the library name a url that points to a different website.
+### Custom Library Name and Link
 
-The default is set to "Caltech Library" and the link goes to the libraries home page.
+Change the library name and where it links to (Footer Global only):
 
-1) Add attribute ```library-name="The Name of the Library"```
-2) Add attribute ```library-link="the url of the library"```
+**Default:** "Caltech Library" linking to https://library.caltech.edu/
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"
-    instagram="your-profile-url"
-    youtube="your-profile-url"
-    rss="your-rss-url"
-    library-name="The Name of the Library" 
-    library-link="the url of the library"
-
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
-
+  custom
+  library-name="Special Collections"
+  library-link="https://library.caltech.edu/special-collections">
 </footer-global>
 ```
+
+**For multi-line library names**, use `<br>` in the value:
+
+```html
+<footer-global
+  custom
+  library-name="Caltech Library<br>Special Collections">
+</footer-global>
+```
+
 ### Custom Mail Code
 
-In the second column, you can also customize the mail code in the full Footer-Global component. The main address will always stay the same: 1200 E California Blvd Pasadena, CA 91125-4300. However, you can override the default mail code with a custom code.
+Override the mail code while keeping the standard Caltech address (Footer Global only):
 
-The default is set to the library's mail code.
+**Default:** Library mail code (Mail Code 1-43)
 
-1) Add attribute ```mail-code="your unique mail code"```
+**Address (always the same):** 1200 E California Blvd, Pasadena, CA 91125-4300
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"
-    instagram="your-profile-url"
-    youtube="your-profile-url"
-    rss="your-rss-url"
-    library-name="The Name of the Library" 
-    library-link="the url of the library"
-    mail-code="your unique mail code"
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
-
+  custom
+  mail-code="Mail Code 555-01">
 </footer-global>
 ```
 
 ### Custom Logo
 
-In the last column, you can use attributes to switch between the library or the archives logo by defining an attribute in the html element. If no logo is defined, it will default to the library logo. 
+Switch between library and archives branding:
 
-- Add attribute ```logo="library"``` (or leave off for same results)
-- Add attribute ```logo="archives"```
+```html
+<!-- Library logo (default) -->
+<footer-global logo="library"></footer-global>
+
+<!-- Archives logo -->
+<footer-global logo="archives"></footer-global>
+```
+
+## Library Website-Specific Features
+
+These features are designed specifically for LibGuides and library website integration.
+
+### LibGuides Login Link
+
+Adds a staff login link to the bottom right of the footer:
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"
-    instagram="your-custom-url"
-    youtube="your-custom-url"
-    logo="archives"> 
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
-
+  library
+  libguides-login="true">
 </footer-global>
 ```
-## Library Website-Specific Customization
 
-### Libguides Login Link
-
-This customization is specifically for the library websites. It adds a staff login link to the bottom right of the footer. 
-
-- Add attribute ```libguides-login=true```
-
-```html
-<footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"
-    instagram="your-custom-url"
-    youtube="your-custom-url"
-    logo="archives"
-    libguides-login="true"> 
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
-
-</footer-global>
-```
+**Requirements:**
+- Page must have element with `id="s-lib-footer-login-link"` containing the login link
+- The footer will mirror this link into the component
 
 ### Breadcrumbs
 
-This customization is specifically for the library websites. It adds the libguide breadcrumbs to the footer. 
-
-- Add attribute ```breadcrumbs=true```
+Displays LibGuides breadcrumb navigation in the footer:
 
 ```html
 <footer-global
-    custom
-    header="Your Application Name"
-    phone="xxxxxx"
-    email="email@test.com"
-    instagram="your-custom-url"
-    youtube="your-custom-url"
-    logo="archives"
-    libguides-login="true"
-    breadcrumbs="true"> 
-    
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 1</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 2</a>
-      <a slot="custom-links" class="custom-links" aria-label="footer navigation" href="#">Custom Link 3</a> 
+  library
+  breadcrumbs="true">
+</footer-global>
+```
+
+**Requirements:**
+- Page must have breadcrumb navigation with `id="s-lib-bc"`
+- The footer will clone this breadcrumb trail into the component
+- Breadcrumbs automatically align with the first column
+
+## Complete Example
+
+Here's a fully customized footer using all available options:
+
+```html
+<footer-global
+  custom
+  header="Digital Collections"
+  phone="626-555-0100"
+  email="digcoll@caltech.edu"
+  instagram="https://instagram.com/yourprofile"
+  youtube="https://youtube.com/yourchannel"
+  rss="https://yoursite.edu/feed"
+  library-name="Caltech Library<br>Digital Collections"
+  library-link="https://library.caltech.edu/digital"
+  mail-code="Mail Code DC-123"
+  logo="library"
+  libguides-login="true"
+  breadcrumbs="true">
+
+  <a slot="custom-links" class="custom-links" href="/about">About</a>
+  <a slot="custom-links" class="custom-links" href="/browse">Browse</a>
+  <a slot="custom-links" class="custom-links" href="/search">Search</a>
+  <a slot="custom-links" class="custom-links" href="/help">Help</a>
 
 </footer-global>
 ```
 
-### Debugging
+## Debugging
 
-There are some commented out lines for console logging if the custom content is not displaying. These are there to make sure the custom content is being called properly, in the right order. 
+The component includes console logging for troubleshooting. Messages include:
 
-These console logs can be turned on at the component level to help with troubleshooting any issues that arise. Please feel free to make a comit to the repo to turn these off and on as needed. 
+- 🪶 Custom content detection
+- 🔗 Breadcrumb mirroring status
+- ℹ️ Element not found warnings
+- 🧪 LibGuides feature activation
 
-### Potential Enhancements
+Check your browser's developer console for these messages if content isn't displaying as expected.
 
-1) Using a single attribute when calling the component that switches between a library and an archives version of the footer. 
+## Attribute Reference
 
+| Attribute | Values | Applies To | Description |
+|-----------|--------|------------|-------------|
+| `library` | boolean | Both | Use library preset configuration |
+| `archives` | boolean | Both | Use archives preset configuration |
+| `custom` | boolean | Both | Hide default hours and heading; enable full column 1 customization |
+| `header` | string | Both | Custom heading for first column (use with `custom`) |
+| `phone` | string | Both | Contact phone number |
+| `email` | string | Both | Contact email address |
+| `library-name` | string (HTML allowed) | Global | Library/department name |
+| `library-link` | URL | Global | Library/department website |
+| `mail-code` | string | Global | Caltech mail code |
+| `instagram` | URL | Global | Instagram profile URL |
+| `youtube` | URL | Global | YouTube channel URL |
+| `rss` | URL | Global | RSS feed URL |
+| `logo` | `library` or `archives` | Both | Logo variant |
+| `libguides-login` | `"true"` | Global | Show staff login link |
+| `breadcrumbs` | `"true"` | Global | Show breadcrumb navigation |
 
+## Slots
 
+| Slot Name | Description |
+|-----------|-------------|
+| `custom-links` | Links for the first column (remember to add `class="custom-links"`) |

@@ -1,4 +1,29 @@
 // src/footer-global.js
+
+// Preset configurations for common use cases
+const PRESETS = {
+  library: {
+    email: "library@caltech.edu",
+    phone: "626-395-3405",
+    libraryName: "Caltech Library",
+    libraryLink: "https://library.caltech.edu/",
+    mailCode: "Mail Code 1-43",
+    instagram: "https://www.instagram.com/caltechlibrary/",
+    youtube: "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA",
+    logo: "library"
+  },
+  archives: {
+    email: "archives@caltech.edu",
+    phone: "626-395-2704",
+    libraryName: "Caltech Library<br>Archives & Special Collections",
+    libraryLink: "https://library.caltech.edu/archives",
+    mailCode: "Mail Code B215A-74",
+    instagram: "https://www.instagram.com/caltecharchives/",
+    youtube: "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA",
+    logo: "archives"
+  }
+};
+
 export class FooterGlobal extends HTMLElement {
   constructor() {
     super();
@@ -91,14 +116,13 @@ export class FooterGlobal extends HTMLElement {
         }
 
         .footer-top {
-          flex: 0 1 80%;
-          text-align: left;
+          flex: 0 1 100%;
+          width: 100%;
         }
 
         .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
           width: 100%;
           gap:4em
         }
@@ -113,7 +137,7 @@ export class FooterGlobal extends HTMLElement {
         }
 
         .footer-column.column2 {
-          flex: 0 1 20%;
+          flex: 0 1 23%;
         }
 
         .footer-column.column3 {
@@ -125,7 +149,6 @@ export class FooterGlobal extends HTMLElement {
         :host([custom]) .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
           width: 100%;
           gap: 5em;
         }
@@ -257,9 +280,12 @@ export class FooterGlobal extends HTMLElement {
 
         #footer-breadcrumbs {
           margin: 1em 0 0 0;
+          box-sizing: border-box;
         }
 
         #footer-breadcrumbs nav {
+          max-width: 1200px;
+          margin: 0 auto;
           font-size: 1em;
           color: var(--cl-white);
         }
@@ -613,6 +639,27 @@ export class FooterGlobal extends HTMLElement {
       }
     });
   }
+
+  // Gets the active preset configuration based on attributes
+  getPreset() {
+    if (this.hasAttribute('archives')) return PRESETS.archives;
+    if (this.hasAttribute('library')) return PRESETS.library;
+    return PRESETS.library; // default to library preset
+  }
+
+  // Gets attribute value with preset fallback
+  // Priority: 1) explicit attribute, 2) preset value
+  getAttr(attrName, presetKey) {
+    // Check for explicit attribute first (allows override of preset)
+    if (this.hasAttribute(attrName)) {
+      return this.getAttribute(attrName);
+    }
+
+    // Use preset value
+    const preset = this.getPreset();
+    return preset[presetKey];
+  }
+
   // Handles slot fallback, attribute wiring, and dynamic content.
   connectedCallback() {
     console.log("\u{1F4E6} FooterGlobal connected");
@@ -623,7 +670,7 @@ export class FooterGlobal extends HTMLElement {
       return;
     }
     const assignedNodes = slot1.assignedNodes({ flatten: true });
-    if (assignedNodes.length === 0) {
+    if (assignedNodes.length === 0 && !this.hasAttribute('custom')) {
       console.log("\u{1FAB6} No slotted content detected at load \u2014 using default");
       this.loadDefaultColumn1();
     }
@@ -673,52 +720,63 @@ export class FooterGlobal extends HTMLElement {
     // Listening for slot in light dom and replacing default content in column 1 with slot content.
     slot1.addEventListener("slotchange", () => {
       const hasContent = slot1.assignedNodes().length > 0;
+      const hasCustomAttr = this.hasAttribute('custom');
       const fallback = this.shadowRoot.querySelector("#default-column1");
-      fallback.style.display = hasContent ? "none" : "block";
-      fallback.setAttribute("aria-hidden", hasContent ? "true" : "false");
-      if (!hasContent) {
+      const shouldHideHours = hasContent || hasCustomAttr;
+      fallback.style.display = shouldHideHours ? "none" : "block";
+      fallback.setAttribute("aria-hidden", shouldHideHours ? "true" : "false");
+      if (!shouldHideHours) {
         this.loadDefaultColumn1();
       }
     });
-    // Email customization using attribute
-    const email = this.getAttribute("email") || "library@caltech.edu";
+    // Email customization using attribute or preset
+    const email = this.getAttr("email", "email");
     const emailLink = this.shadowRoot.getElementById("email-link");
     if (emailLink) {
           emailLink.href = `mailto:${email}`;
           emailLink.textContent = email;
     }
-    // Phone customization using attribute
-    const phone = this.getAttribute("phone") || "626-395-3405";
+    // Phone customization using attribute or preset
+    const phone = this.getAttr("phone", "phone");
     const phoneLink = this.shadowRoot.getElementById("phone-link");
     if (phoneLink) {
       phoneLink.href = `tel:${phone.replace(/\D/g, "")}`;
       phoneLink.textContent = phone;
     }
-    // Library name customization using attribute
-    const libraryName = this.getAttribute("library-name") || "Caltech Library";
-    const libraryLink = this.getAttribute("library-link") || "https://library.caltech.edu/";
+    // Library name customization using attribute or preset
+    const libraryName = this.getAttr("library-name", "libraryName");
+    const libraryLink = this.getAttr("library-link", "libraryLink");
     const libraryNameLink = this.shadowRoot.getElementById("library-name");
     if (libraryNameLink) {
-      libraryNameLink.textContent = libraryName;
+      libraryNameLink.innerHTML = libraryName;
       libraryNameLink.href = libraryLink;
     }
-    
-    // Mail code customization using attribute
-    const mailcode = this.getAttribute("mail-code") || "Mail Code 1-43";
+
+    // Mail code customization using attribute or preset
+    const mailcode = this.getAttr("mail-code", "mailCode");
     const mailCode = this.shadowRoot.getElementById("mail-code");
     if (mailCode) {
       mailCode.textContent = mailcode;
     }
     // Header column 1 customization using attribute
-    const headerText = this.getAttribute("header") || "Hours";
     const headerEl = this.shadowRoot.getElementById("column1-header");
     if (headerEl) {
-      headerEl.textContent = headerText;
+      const hasCustomAttr = this.hasAttribute('custom');
+      const hasHeaderAttr = this.hasAttribute('header');
+
+      if (hasCustomAttr && !hasHeaderAttr) {
+        // Hide header if custom is set but no custom header text provided
+        headerEl.style.display = "none";
+      } else {
+        const headerText = this.getAttribute("header") || "Hours";
+        headerEl.textContent = headerText;
+        headerEl.style.display = "block";
+      }
     }
-    // Social Media customization using attribute
+    // Social Media customization using attribute or preset
     const instagramAnchor = this.shadowRoot.getElementById("instagram-link");
-    const instagramHref = this.getAttribute("instagram") || "https://www.instagram.com/caltechlibrary/";
-    const youtubeHref = this.getAttribute("youtube") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
+    const instagramHref = this.getAttr("instagram", "instagram");
+    const youtubeHref = this.getAttr("youtube", "youtube");
     const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
     const rssHref = this.getAttribute("rss");
     if (instagramAnchor) instagramAnchor.setAttribute("href", instagramHref);
@@ -740,8 +798,8 @@ export class FooterGlobal extends HTMLElement {
         }
       }
     }
-    // Logo customization using attribute
-    const logoType = (this.getAttribute("logo") || "library").toLowerCase();
+    // Logo customization using attribute or preset
+    const logoType = this.getAttr("logo", "logo").toLowerCase();
     const logoContainer = this.shadowRoot.querySelector(".footer-logo-container");
     if (logoContainer) {
       const templateId = logoType === "archives" ? "archives-logo" : "library-logo";
