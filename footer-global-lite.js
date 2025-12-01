@@ -1,4 +1,20 @@
 // src/footer-global-lite.js
+var PRESETS = {
+  library: {
+    email: "library@caltech.edu",
+    phone: "626-395-3405",
+    libraryName: "Caltech Library",
+    libraryLink: "https://library.caltech.edu/",
+    logo: "library"
+  },
+  archives: {
+    email: "archives@caltech.edu",
+    phone: "626-395-2704",
+    libraryName: "Caltech Library<br>Archives & Special Collections",
+    libraryLink: "https://library.caltech.edu/archives",
+    logo: "archives"
+  }
+};
 var FooterGlobalLite = class extends HTMLElement {
   constructor() {
     super();
@@ -212,22 +228,15 @@ var FooterGlobalLite = class extends HTMLElement {
           line-height: 1.8;
         }
 
-        ::slotted([slot="custom-links"] li) {
-          display: list-item;
-          margin-bottom: 0.6em;
-          line-height: 1.8;
-          list-style: none;
+        ::slotted([slot="custom-links"]) {
+          color: white !important;
+          text-decoration: none !important;
+          display: block;
+          line-height: 2 !important;
         }
 
-        ::slotted([slot="custom-links"] li a) {
-          display: inline-block;
-          text-decoration: none;
-          color: var(--cl-white);
-          line-height: inherit;
-        }
-
-        ::slotted([slot="custom-links"] li a:hover) {
-          text-decoration: underline;
+        ::slotted([slot="custom-links"]:hover) {
+          text-decoration: underline !important;
         }
 
         /* - - - -  
@@ -257,15 +266,8 @@ var FooterGlobalLite = class extends HTMLElement {
           text-decoration: underline;
         }
 
-        ::slotted(.custom-links) {
-          color: var(--cl-white);
-          text-decoration: none;
-          padding: 0.3125em;
-          display: block;
-        }
-
-        /* - - - - - 
-        RESPONSIVE STYLES 
+        /* - - - - -
+        RESPONSIVE STYLES
         - - - - - - */
 
         @media (max-width: 1200px) {
@@ -481,7 +483,7 @@ var FooterGlobalLite = class extends HTMLElement {
             <div class="footer-column column2">
               <h2>Contact Us</h2>
               <address>
-                <a class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
+                <a id="library-name" class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
                 <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
                 <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
               </address>
@@ -550,8 +552,24 @@ var FooterGlobalLite = class extends HTMLElement {
       }
     });
   }
+  // Gets the active preset configuration based on attributes
+  getPreset() {
+    if (this.hasAttribute("archives")) return PRESETS.archives;
+    if (this.hasAttribute("library")) return PRESETS.library;
+    return PRESETS.library;
+  }
+  // Gets attribute value with preset fallback
+  // Priority: 1) explicit attribute, 2) preset value
+  getAttr(attrName, presetKey) {
+    if (this.hasAttribute(attrName)) {
+      return this.getAttribute(attrName);
+    }
+    const preset = this.getPreset();
+    return preset[presetKey];
+  }
   // Handles slot fallback, attribute wiring, and dynamic content.
   connectedCallback() {
+    console.log("\u{1F4E6} FooterGlobalLite connected");
     this.shadowRoot.querySelector("#back-to-top")?.addEventListener("click", (e) => {
       e.preventDefault();
       window.scrollTo({
@@ -564,9 +582,8 @@ var FooterGlobalLite = class extends HTMLElement {
       console.warn("\u26A0\uFE0F slot[name='custom-links'] not found");
       return;
     }
-    ;
-    const email = this.getAttribute("email") || "library@caltech.edu";
-    const phone = this.getAttribute("phone") || "626-395-3405";
+    const email = this.getAttr("email", "email");
+    const phone = this.getAttr("phone", "phone");
     const emailLink = this.shadowRoot.getElementById("email-link");
     const phoneLink = this.shadowRoot.getElementById("phone-link");
     if (emailLink) {
@@ -577,18 +594,26 @@ var FooterGlobalLite = class extends HTMLElement {
       phoneLink.href = `tel:${phone.replace(/\D/g, "")}`;
       phoneLink.textContent = phone;
     }
-    const headerText = this.getAttribute("header") || "Quick Links";
+    const libraryName = this.getAttr("library-name", "libraryName");
+    const libraryLink = this.getAttr("library-link", "libraryLink");
+    const libraryNameLink = this.shadowRoot.getElementById("library-name");
+    if (libraryNameLink) {
+      libraryNameLink.innerHTML = libraryName;
+      libraryNameLink.href = libraryLink;
+    }
     const headerEl = this.shadowRoot.getElementById("column1-header");
     if (headerEl) {
-      headerEl.textContent = headerText;
+      const hasCustomAttr = this.hasAttribute("custom");
+      const hasHeaderAttr = this.hasAttribute("header");
+      if (hasCustomAttr && !hasHeaderAttr) {
+        headerEl.style.display = "none";
+      } else {
+        const headerText = this.getAttribute("header") || "Quick Links";
+        headerEl.textContent = headerText;
+        headerEl.style.display = "block";
+      }
     }
-    const instagramAnchor = this.shadowRoot.getElementById("instagram-link");
-    const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
-    const instagramHref = this.getAttribute("instagram") || "https://www.instagram.com/caltechlibrary/";
-    const youtubeHref = this.getAttribute("youtube") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
-    if (instagramAnchor) instagramAnchor.setAttribute("href", instagramHref);
-    if (youtubeAnchor) youtubeAnchor.setAttribute("href", youtubeHref);
-    const logoType = (this.getAttribute("logo") || "library").toLowerCase();
+    const logoType = this.getAttr("logo", "logo").toLowerCase();
     const logoContainer = this.shadowRoot.querySelector(".footer-logo-container");
     if (logoContainer) {
       const templateId = logoType === "archives" ? "archives-logo" : "library-logo";
