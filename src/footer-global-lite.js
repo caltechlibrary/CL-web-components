@@ -1,5 +1,35 @@
 // src/footer-global-lite.js
 
+// Load Hind fonts outside Shadow DOM
+if (!document.getElementById('hind-fonts-global')) {
+  const fontStyles = document.createElement('style');
+  fontStyles.id = 'hind-fonts-global';
+  fontStyles.textContent = `
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
+    }
+  `;
+  document.head.appendChild(fontStyles);
+}
+
 // Preset configurations for common use cases
 const PRESETS = {
   library: {
@@ -27,46 +57,9 @@ export class FooterGlobalLite extends HTMLElement {
 
         <style> 
 
-        /* - - -  
-        FONTS 
-        - - - */
-
-        @font-face {
-          font-family: 'Hind';
-          font-style: normal;
-          font-weight: 400;
-          font-display: swap;
-          src:
-            local('Hind Regular'),
-            local('Hind-Regular'),
-            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff2') format('woff2'),
-            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
-        }
-        @font-face {
-          font-family: 'Hind';
-          font-style: normal;
-          font-weight: 500;
-          font-display: swap;
-          src:
-            local('Hind Medium'),
-            local('Hind-Medium'),
-            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff2') format('woff2'),
-            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
-        }
-        @font-face {
-          font-family: 'Hind';
-          font-style: normal;
-          font-weight: 600;
-          font-display: swap;
-          src:
-            local('Hind SemiBold'),
-            local('Hind-SemiBold'),
-            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff2') format('woff2'),
-            url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
-        }
-
-        /* - - -  
-        BASE STYLES 
+        /* - - -
+        BASE STYLES
+        (Hind font loaded globally at top of file)
         - - - - */
 
         :host {
