@@ -1384,7 +1384,7 @@ var PRESETS = {
   archives: {
     email: "archives@caltech.edu",
     phone: "626-395-2704",
-    libraryName: "Caltech Library<br>Archives & Special Collections",
+    libraryName: "Caltech Archives & Special Collections",
     libraryLink: "https://library.caltech.edu/archives",
     mailCode: "Mail Code B215A-74",
     instagram: "https://www.instagram.com/caltecharchives/",
@@ -2218,7 +2218,7 @@ var PRESETS2 = {
   archives: {
     email: "archives@caltech.edu",
     phone: "626-395-2704",
-    libraryName: "Caltech Library<br>Archives & Special Collections",
+    libraryName: "Caltech Archives & Special Collections",
     libraryLink: "https://library.caltech.edu/archives",
     logo: "archives"
   }
