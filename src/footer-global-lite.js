@@ -1,33 +1,82 @@
+// src/footer-global-lite.js
+
+// Load Hind fonts outside Shadow DOM
+if (!document.getElementById('hind-fonts-global')) {
+  const fontStyles = document.createElement('style');
+  fontStyles.id = 'hind-fonts-global';
+  fontStyles.textContent = `
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-400.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-500.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('https://media.library.caltech.edu/cl-webcomponents/fonts/hind-600.woff') format('woff');
+    }
+  `;
+  document.head.appendChild(fontStyles);
+}
+
+// Preset configurations for common use cases
+const PRESETS = {
+  library: {
+    email: "library@caltech.edu",
+    phone: "626-395-3405",
+    libraryName: "Caltech Library",
+    libraryLink: "https://library.caltech.edu/",
+    logo: "library"
+  },
+  archives: {
+    email: "archives@caltech.edu",
+    phone: "626-395-2704",
+    libraryName: "Caltech Library<br>Archives & Special Collections",
+    libraryLink: "https://library.caltech.edu/archives",
+    logo: "archives"
+  }
+};
+
 export class FooterGlobalLite extends HTMLElement {
 	constructor() {
 		super();
 		const shadow = this.attachShadow({ mode: "open" });
-
-	
-    // Add Hind font stylesheet to shadow DOM
-    const fontLink = document.createElement("link");
-    fontLink.setAttribute("rel", "stylesheet");
-    fontLink.setAttribute(
-      "href",
-      "https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap"
-    );
-    shadow.appendChild(fontLink);
-
-    // Define HTML and CSS for the shadow DOM
     const template = document.createElement("template");
     template.innerHTML = `
 
-        <style>
+        <style> 
 
-        /* ------------------------- 
-           Base Styles
-        ------------------------- */
+        /* - - -
+        BASE STYLES
+        (Hind font loaded globally at top of file)
+        - - - - */
+
         :host {
+          --cl-dark-blue: #062e47;
+          --cl-white: #ffffff;
+          --cl-teal: #008080;
+          --cl-breadcrumb-spacer: #ccc;
           font-family: 'Hind', sans-serif;
           display: block;
-          background-color: #062e47;
-          color: #fff;
+          background-color: var(--cl-dark-blue);
+          color: var(--cl-white);
           border-radius: 0 30% 0 0 / 5%;
+          font-size: 16px;
+        }
+
+        :host, *, *::before, *::after {
+          box-sizing: border-box;
         }
 
         @media (min-width: 768px) {
@@ -42,78 +91,98 @@ export class FooterGlobalLite extends HTMLElement {
           }
         }
         
-        /* -------------------------
-           Layout & Structure
-        ------------------------- */
+        /* - - - - 
+        LAYOUT & STRUCTURE 
+        - - - - - */
 
         .footer-container {
           display: flex;
           flex-wrap: wrap;
-          max-width: 1150px;
+          max-width: 1200px;
           margin: auto;
         }
 
+        .footer-columns-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+          gap:3em
+        }
+
         .footer-column {
-          padding: 1rem 0;
+          padding: 1em 0;
         }
 
         .footer-column.column1 {
           flex: 0 1 40%;
-          margin-right: 7.6rem;
+          max-width: 250px;
         }
 
         .footer-column.column2 {
-          flex: 0 1 21%;
-          margin-right: 3.6rem;
+          flex: 0 1 20%;
         }
 
         .footer-column.column3 {
-          flex: 0 1 21%;
-        }
-
-        :host([custom]) .footer-column.column1 {
-          flex: 0 1 30%;
-          margin-right: 3rem;
+          flex: 0 1 18%;
         }
 
         /* Adjust column layout if 'custom' attribute is present */
 
-        :host([custom]) .footer-column.column2 {
-          flex: 0 1 30%;
-          margin-right: 3rem;
+        :host([custom]) .footer-columns-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+          gap:3em
         }
-
-        :host([custom]) .footer-column.column3 {
-          flex: 0 1 30%;
+        
+        :host([custom]) .footer-column {
+          flex: 0 1 auto;
+          min-width: 250px;
         }
+       
 
         .footer-bottom {
           flex: 1 1 100%;
           text-align: right;
-          margin: 2rem 5rem 0 0;
+          margin: 2em 0 1em 0;
         }
 
+        /* IDEA statement */
 
-        /* -------------------------
-           Typography
-        ------------------------- */
+        .idea-container {
+          margin: 2rem;
+          padding: .5em 5rem;          
+          text-align: center;
+          border-top: 1px solid #135071;
+          border-bottom: 1px solid #135071;
+        }
+        
+        .idea-statement {
+          font-style: italic;
+          font-size: .9em;
+          line-height: 1.8rem;
+        }
+
+        /* - - - - 
+        TYPOGRAPHY 
+        - - - - - */
 
         h2 {
-          font-size: 30px;
-          margin-block-end: 16px;
-          margin-top: 24px;
-          margin-bottom: 16px;
+          font-size: 1.875em;
+          margin-block-end: 0.4em;
           font-weight: 500;
           line-height: 1.1;
           color: inherit;
         }
 
-        /* -------------------------
-           Lists
-        ------------------------- */
+        /* - - - - 
+        LISTS 
+        - - - - - */
 
         ul {
-          margin-top: 0;
+          margin: 0;
         }
 
         .list-unstyled {
@@ -124,13 +193,13 @@ export class FooterGlobalLite extends HTMLElement {
         .list-inline {
           padding-left: 0;
           list-style: none;
-          margin-left: -5px;
+          margin: 0 0 0 -0.3125em;
         }
 
         .list-inline > li {
           display: inline-block;
-          padding-right: 5px;
-          padding-left: 5px;
+          padding-right: 0.3125em; 
+          padding-left: 0.3125em;
         }
 
         .list-inline a {
@@ -138,100 +207,282 @@ export class FooterGlobalLite extends HTMLElement {
         }
 
 
-        /* -------------------------
-           Links
-        ------------------------- */
+        /* - - - - 
+        LINKS 
+        - - - - - */
 
         a {
-          color: white;
+          color: inherit;
           text-decoration: none;
-          display: block;
-          line-height: 2;
         }
 
         a:hover {
           text-decoration: underline;
         }
 
-        ::slotted(.custom-links) {
-          color: white;
-          text-decoration: none;
-          display: block;
-          line-height: 2;
+        .custom-links-wrapper {
+          line-height: 1.8;
         }
 
+        ::slotted([slot="custom-links"]) {
+          color: white !important;
+          text-decoration: none !important;
+          display: block;
+          line-height: 2 !important;
+        }
 
-        /* -------------------------
-           Responsive Styles
-        ------------------------- */
+        ::slotted([slot="custom-links"]:hover) {
+          text-decoration: underline !important;
+        }
 
-        @media (max-width: 1024px) {
+        /* - - - -  
+        ACCESSIBILITY FOCUS STATES  
+        - - - - */
+
+        :host, :host * {
+          outline: none;
+        }
+
+        a:focus-visible {
+          outline: 2px solid var(--cl-teal);
+          outline-offset: 2px;
+          text-decoration: none;
+        }
+
+        button:focus-visible, input:focus-visible {
+          outline: 2px solid var(--cl-teal);
+          outline-offset: 2px;
+        }
+
+        .footer-bottom a {
+          color: inherit;
+        }
+
+        .footer-bottom a:hover {
+          text-decoration: underline;
+        }
+
+        /* - - - - -
+        RESPONSIVE STYLES
+        - - - - - - */
+
+        @media (max-width: 1200px) {
+          
           .footer-container {
+            margin-left: 5%;
+          }
+          
+          .footer-columns-wrapper {
+            gap:2em
+          }
+
+
+          .footer-column.column1 {
+            flex: 1 1 40%;
+          }
+        }
+        
+        @media (max-width: 1000px) {
+        
+           .footer-container {
+            margin-left: 4%;
+          }
+          
+          .footer-columns-wrapper {
+            gap:2em
+          }
+
+
+          .footer-column.column1 {
+            flex: 1 1 35%;
+          }
+        }
+
+        @media (max-width: 990px) {
+          .footer-columns-wrapper {
             flex-direction: column;
-            align-items: stretch;
-            margin: 0 4rem 0 1rem;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0em !important;
           }
 
           .footer-column {
-            flex: 0 0 100%;
-            width: 100%;
+            flex: 1 1 100%;
+            max-width: 100%;
+            margin: 0;                
+            padding: 1em 0;           
           }
+
+          .footer-column.column1 {
+            flex: 1 1 55%;
+          }
+
+          
+          .idea-container {
+            padding: 1rem 3rem 1rem 0rem;
+            margin: 0 1rem 0 0;
+            text-align: left;
+          }
+          
+          
 
           .footer-bottom {
-            flex: 0 0 100%;
             text-align: left;
-            padding: 1rem 0;
-            border-top: grey dotted 1px;
+            margin: 1.5em 0;
           }
+        }      
+
+        /* - - - - 
+        LIBRARY HOURS 
+        - - - - - */
+
+        .library-hours {
+          padding: 0 1em 1em 0;
+          font-size: 1em;
+          line-height: 1.4;
         }
 
-        /* -------------------------
-           Contact Us
-        ------------------------- */
+        .library-hours strong {
+          font-size: 1.1em;
+          display: block;
+          margin: 0 0 0.25em 0;
+        }
+
+        .library-hours .today {
+          font-size: 1em;
+          margin: 1.25em 0;
+          display: block;
+        }
+
+        .hours-row {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px dotted var(--cl-white);
+          padding: 0.25em 0;
+        }
+
+        .hours-row:last-of-type {
+          border-bottom: none;
+        }
+
+        .lib-link {
+          color: var(--cl-white);
+          text-decoration: none;
+        }
+
+        .lib-link:hover {
+          text-decoration: underline;
+        }
+
+        .lib-hours {
+          white-space: nowrap;
+          font-weight: 500;
+        }
+
+        .hours-footer {
+          display: flex;
+          justify-content: space-between;
+          margin: 1em 0 0 0;
+        }
+
+        .view-all {
+          color: var(--cl-white);
+          text-decoration: none;
+        }
+
+        .view-all:hover {
+          text-decoration: underline;
+        }
+
+
+        /* - - - - 
+        CONTACT US 
+        - - - - - */
 
         address {
-          margin-bottom: 24px;
+          margin: 0 0 1.5em 0;
           font-style: normal;
           line-height: 1.5;
           unicode-bidi: isolate;
+          font-size: 1em;
         }
 
+        address a {
+          display: block;
+        }
 
-        /* -------------------------
-           Social & Branding
-        ------------------------- */
+        .u-email,
+        .p-tel {
+          line-height: 2;
+        }
+
+        .p-name {
+          margin-block-start: 1.5em;
+        }
+
+        /* SOCIAL & BRANDING */
+
+        .social a svg {
+          width: 2em; 
+          height: 2em; 
+          fill: var(--cl-white);
+        }
+
+        .social a:not(:last-child) {
+          margin-inline-end: 1.875em;
+        }
 
         .logo-library {
-          fill: #fff;
-          margin: 24px 0px 16px 0px;
+          fill: var(--cl-white);
+          margin-block: 1.5em;
+          height: 5em;
+          margin: 1.9em 0 0 0;
+        }
+
+        .logo-archives {
+          fill: var(--cl-white);
+          margin-block: 1.5em;
           height: 5em;
         }
 
-         .logo-archives {
-          fill: #fff;
-          margin: 24px 0px 16px 0px;
-          height: 5em;
+        .links {
+          line-height: 2;
+          font-size: 1em;
+        }
+
+        /* Style for SVG icon injected in #footer-login */
+          
+        #footer-login a svg {
+          width: 1.25em;
+          height: 1.25em;
+          fill: var(--cl-white);
+          display: inline-block;
+          vertical-align: middle;
         }
         </style>
 
         <footer class="footer-container" role="contentinfo">
+
+          <div class="footer-columns-wrapper">
             <div class="footer-column column1">
                 <div class="custom-links-wrapper">
                     <h2 id="column1-header">Quick Links</h2>
-                    <slot name="custom-links">
-                        <a href="/" aria-label="Home">Home</a>
-                        <a href="#" id="back-to-top" aria-label="Back to top of page">Back to Top</a>
-                    </slot>
+                    <ul class="list-unstyled">
+                      <slot name="custom-links">
+                        <li><a href="/" aria-label="Home">Home</a></li>
+                        <li><a href="#" id="back-to-top" aria-label="Back to top of page">Back to Top</a></li>
+                      </slot>
+                    </ul>
                 </div>
             </div>
 
             <div class="footer-column column2">
-                <h2>Contact Us</h2>
-                <address>
-                    <a class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
-                    <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
-                    <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
-                </address>
+              <h2>Contact Us</h2>
+              <address>
+                <a id="library-name" class="p-name" href="https://library.caltech.edu/">Caltech Library</a>
+                <a id="email-link" class="u-email" href="mailto:library@caltech.edu">library@caltech.edu</a>
+                <a id="phone-link" class="p-tel" href="tel:6263953405">626-395-3405</a>
+              </address>
             </div>
 
             <div class="footer-column column3">
@@ -249,7 +500,7 @@ export class FooterGlobalLite extends HTMLElement {
                         <path d="M183.43,163.42a3.85,3.85,0,0,0,2.92-1.25c.34-.42.5-.59.83-.34l.84.67c.25.25.42.67-.08,1.5a6.89,6.89,0,0,1-6.51,4.09c-3,0-5.18-2.17-5.93-5.59h-.16a18,18,0,0,1-8.27,5.09,15.65,15.65,0,0,1-4.92.5c-2,0-5-1.67-5-6.92,0-3.84,1.76-7.18,8.35-10.1,3.75-1.67,8.09-3.67,9.43-4.84v-5.34c-.17-1.42-.25-3.59-1.17-4.67s-2.59-1.84-5-1.84a9.37,9.37,0,0,0-5.42,1.75c-1.17,1.09-.42,2.34-.42,3.84,0,2.92-1,4.76-4.42,4.76-1.34,0-2-.75-2-2.67,0-2.67,2.33-5.84,5.75-7.85a18.49,18.49,0,0,1,10.19-2.92c3.92,0,5.5,1.17,6.67,2.26,1.75,1.75,1.84,3.67,1.84,5.92v17.69C180.93,161.92,181.93,163.42,183.43,163.42Zm-8.59-14.69c-3,2.26-11.19,3.92-11.19,10.85,0,3.09,1.84,4.59,4.34,4.59s6.85-2.92,6.85-5.17Z"></path>
                         <path d="M196.62,144.89c0-4.25-.67-5.09-3-6.34l-1.58-.83c-.5-.17-.67-.25-.67-.59v-.5c0-.33.17-.5.67-.75l8.26-4.25a2.52,2.52,0,0,1,1.17-.34c.5,0,.58.5.58,1l.42,5.93h.33c2.51-3.84,6.43-7.26,10-7.26,2.84,0,4.25,1.75,4.25,3.67a4,4,0,0,1-3.5,4.09,5.39,5.39,0,0,1-2.42-.67,5.36,5.36,0,0,0-2.76-.67c-1.33,0-3.5.84-4.92,3.51a9,9,0,0,0-.83,2.67v17.36c0,2.58.58,3.42,2.33,3.42h3.93c.5,0,.58.25.58.75v1.5c0,.5-.08.75-.42.75-.5,0-4.34-.25-8.84-.25-5.18,0-8.68.25-9.18.25-.34,0-.5-.16-.5-.83v-1.42c0-.59.16-.75.92-.75h3.25c1.25,0,1.84-.5,1.84-1.59.08-2.75.08-5.67.08-10Z"></path>
                         <path d="M219.82,185.53c0-1.75,1.84-3.25,3.84-3.25a14.25,14.25,0,0,1,3.84.92,2,2,0,0,0,1.75-.5c1.25-1.51,5.51-11,6.68-14.27-.42-2.09-9.27-28.21-9.93-30-1-2.09-1.76-3.51-3.93-3.51H219.9c-.58,0-.67-.25-.67-.75v-1.67c0-.33.09-.58.67-.58.75,0,2.76.25,7.68.25,4.26,0,6.84-.25,7.76-.25.67,0,.75.25.75.58v1.76c0,.41-.08.66-.5.66H234c-.92,0-1.26.59-1.09,1.84.25,1.84,5.93,20.28,6.84,22.11h.34c.83-1.33,8.09-18.69,8.59-20.78s-.16-3.17-1.41-3.17h-1.34c-.5,0-.59-.25-.59-.66v-1.67c0-.42.09-.67.51-.67,1.08,0,2.83.25,6.84.25,2.25,0,4.17-.25,5.09-.25.5,0,.5.33.5.67v1.58c0,.5,0,.75-.42.75h-1.33a3.73,3.73,0,0,0-2.92,1.51c-1.84,2.25-7.35,15-13.11,28.12-4.08,9.26-7.34,17-8.84,19.77-1.17,2.18-2.67,5.43-7.09,5.43C221.41,189.79,219.82,188,219.82,185.53Z"></path>
-                    </svg>
+                      </svg>
                       <!-- End Caltech Library Logo SVG -->
                     </template>
                     <!-- Archives Logo SVG Template -->
@@ -267,14 +518,22 @@ export class FooterGlobalLite extends HTMLElement {
                         <li><a href="https://caltech.imodules.com/supportcaltechlibraries">Donate</a></li>
                     </ul>
                 </section>
-            </div>
-            <div class="footer-bottom">
+              </div>
+          </div>
+
+          <div class="idea-container">
+            <p class="idea-statement">
+              Library facilities, collections, programs, and resources are open to anyone in the campus community, regardless of race, national origin, sex, gender identity, sexual identity, and/or any other protected characteristic.
+            </p>
+          </div>
+
+          <div class="footer-bottom">
             <ul class="list-inline">
             <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
             <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
             <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
             </ul>
-            </div>
+          </div>
         </footer>
         `;
 
@@ -295,9 +554,30 @@ export class FooterGlobalLite extends HTMLElement {
     });
 	}
 
+  // Gets the active preset configuration based on attributes
+  getPreset() {
+    if (this.hasAttribute('archives')) return PRESETS.archives;
+    if (this.hasAttribute('library')) return PRESETS.library;
+    return PRESETS.library; // default to library preset
+  }
+
+  // Gets attribute value with preset fallback
+  // Priority: 1) explicit attribute, 2) preset value
+  getAttr(attrName, presetKey) {
+    // Check for explicit attribute first (allows override of preset)
+    if (this.hasAttribute(attrName)) {
+      return this.getAttribute(attrName);
+    }
+
+    // Use preset value
+    const preset = this.getPreset();
+    return preset[presetKey];
+  }
+
     // Handles slot fallback, attribute wiring, and dynamic content.
     connectedCallback() {
-    
+    console.log("📦 FooterGlobalLite connected");
+
     // Creates Back to Top functionality in Lite Dom
     this.shadowRoot.querySelector('#back-to-top')?.addEventListener('click', (e) => {
     e.preventDefault();
@@ -309,16 +589,14 @@ export class FooterGlobalLite extends HTMLElement {
 
     // Listens for Slot
     const slot1 = this.shadowRoot.querySelector('slot[name="custom-links"]');
-    // optional debug: console.log("🔎 Found slot1:", slot1);
-    // optional debug: console.log("🧪 Attaching slotchange event to custom-links slot");
     if (!slot1) {
         console.warn("⚠️ slot[name='custom-links'] not found");
         return;
-    };
+    }
 
-    // Set email and phone links if attributes are present
-    const email = this.getAttribute("email") || "library@caltech.edu";
-    const phone = this.getAttribute("phone") || "626-395-3405";
+    // Email customization using attribute or preset
+    const email = this.getAttr("email", "email");
+    const phone = this.getAttr("phone", "phone");
 
     const emailLink = this.shadowRoot.getElementById("email-link");
     const phoneLink = this.shadowRoot.getElementById("phone-link");
@@ -333,37 +611,44 @@ export class FooterGlobalLite extends HTMLElement {
         phoneLink.textContent = phone;
     }
 
-    // Set header text for column 1
-    const headerText = this.getAttribute("header") || "Quick Links";
-    const headerEl = this.shadowRoot.getElementById("column1-header");
-    if (headerEl) {
-        headerEl.textContent = headerText;
+    // Library name customization using attribute or preset
+    const libraryName = this.getAttr("library-name", "libraryName");
+    const libraryLink = this.getAttr("library-link", "libraryLink");
+    const libraryNameLink = this.shadowRoot.getElementById("library-name");
+    if (libraryNameLink) {
+      libraryNameLink.innerHTML = libraryName;
+      libraryNameLink.href = libraryLink;
     }
 
-    // Set Social Media links if attributes are present
-    const instagramAnchor = this.shadowRoot.getElementById("instagram-link");
-    const youtubeAnchor = this.shadowRoot.getElementById("youtube-link");
+    // Header column 1 customization using attribute
+    const headerEl = this.shadowRoot.getElementById("column1-header");
+    if (headerEl) {
+      const hasCustomAttr = this.hasAttribute('custom');
+      const hasHeaderAttr = this.hasAttribute('header');
 
-	const instagramHref = this.getAttribute("instagram") || "https://www.instagram.com/caltechlibrary/";
-    const youtubeHref = this.getAttribute("youtube") || "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA";
+      if (hasCustomAttr && !hasHeaderAttr) {
+        // Hide header if custom is set but no custom header text provided
+        headerEl.style.display = "none";
+      } else {
+        const headerText = this.getAttribute("header") || "Quick Links";
+        headerEl.textContent = headerText;
+        headerEl.style.display = "block";
+      }
+    }
 
-	if (instagramAnchor) instagramAnchor.setAttribute("href", instagramHref);
-    if (youtubeAnchor) youtubeAnchor.setAttribute("href", youtubeHref);
-
-    // Logo selection logic
-    const logoType = (this.getAttribute("logo") || "library").toLowerCase();
+    // Logo customization using attribute or preset
+    const logoType = this.getAttr("logo", "logo").toLowerCase();
     const logoContainer = this.shadowRoot.querySelector(".footer-logo-container");
-
     if (logoContainer) {
-        const templateId = logoType === "archives" ? "archives-logo" : "library-logo";
-        const logoTemplate = this.shadowRoot.getElementById(templateId);
-        console.log("Logo type:", logoType);
-        console.log("Template ID:", templateId);
-        console.log("Logo template found:", !!logoTemplate);
-        if (logoTemplate) {
-            logoContainer.innerHTML = "";
-            logoContainer.appendChild(logoTemplate.content.cloneNode(true));
-        }
+      const templateId = logoType === "archives" ? "archives-logo" : "library-logo";
+      const logoTemplate = this.shadowRoot.getElementById(templateId);
+      console.log("Logo type:", logoType);
+      console.log("Template ID:", templateId);
+      console.log("Logo template found:", !!logoTemplate);
+      if (logoTemplate) {
+        logoContainer.innerHTML = "";
+        logoContainer.appendChild(logoTemplate.content.cloneNode(true));
+      }
     }
 	}
 
