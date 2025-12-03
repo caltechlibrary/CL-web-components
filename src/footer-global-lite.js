@@ -42,7 +42,7 @@ const PRESETS = {
   archives: {
     email: "archives@caltech.edu",
     phone: "626-395-2704",
-    libraryName: "Caltech Library<br>Archives & Special Collections",
+    libraryName: "Caltech Archives & Special Collections",
     libraryLink: "https://library.caltech.edu/archives",
     logo: "archives"
   }
