@@ -30,7 +30,7 @@ The following are the components currently provided.
 - status: wip
 - released: 2025-08-07
 
-This release includes an improved &lt;footer-global&gt; component. This include better support for social media representation.
+This release includes an improved &#x60;&lt;footer-global&gt;&#x60; component. This include better support for social media representation.
 
 A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules, &#x60;copyToClipboard.js&#x60; for enhancing codeblocks.
 
@@ -50,17 +50,17 @@ A publish_to_s3.bash script was added to make management more convient for where
 
 ## Software Requirements
 
-- Deno >= 2.4.3 (for bundling dependencies)
+- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
 
 ### Software Suggestions
 
-- CMTools >= 0.0.40
-- Pandoc >= 3.1
-- PageFind >= 1.3
+- CMTools &gt;&#x3D; 0.0.40
+- Pandoc &gt;&#x3D; 3.1
+- PageFind &gt;&#x3D; 1.3
 
 #### Runtime platform
 
-**HTML5-compatible web browser**
+HTML5-compatible web browser**
 
 ## Related resources
 
