@@ -33,14 +33,18 @@ var PRESETS = {
     phone: "626-395-3405",
     libraryName: "Caltech Library",
     libraryLink: "https://library.caltech.edu/",
-    logo: "library"
+    logo: "library",
+    donateLink: "https://library.caltech.edu/about/support",
+    donateText: "Donate"
   },
   archives: {
     email: "archives@caltech.edu",
     phone: "626-395-2704",
     libraryName: "Caltech Archives & Special Collections",
     libraryLink: "https://library.caltech.edu/archives",
-    logo: "archives"
+    logo: "archives",
+    donateLink: "https://library.caltech.edu/archives/about/donate",
+    donateText: "Donate & Transfer"
   }
 };
 var FooterGlobalLite = class extends HTMLElement {
@@ -115,7 +119,7 @@ var FooterGlobalLite = class extends HTMLElement {
         }
 
         .footer-column.column2 {
-          flex: 0 1 20%;
+          flex: 0 1 30%;
         }
 
         .footer-column.column3 {
@@ -147,8 +151,8 @@ var FooterGlobalLite = class extends HTMLElement {
         /* IDEA statement */
 
         .idea-container {
-          margin: 2rem;
-          padding: .5em 5rem;          
+          margin: 2rem 0;
+          padding: .5em 5rem;
           text-align: center;
           border-top: 1px solid #135071;
           border-bottom: 1px solid #135071;
@@ -509,8 +513,8 @@ var FooterGlobalLite = class extends HTMLElement {
                     </template>
                     
                     <ul class="list-unstyled">
-                        <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
-                        <li><a href="https://caltech.imodules.com/supportcaltechlibraries">Donate</a></li>
+                        <li id="mission-statement-item"><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
+                        <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
                     </ul>
                 </section>
               </div>
@@ -544,9 +548,9 @@ var FooterGlobalLite = class extends HTMLElement {
     });
   }
   // Gets the active preset configuration based on attributes
+  // Library is the default; archives overrides when attribute is present
   getPreset() {
     if (this.hasAttribute("archives")) return PRESETS.archives;
-    if (this.hasAttribute("library")) return PRESETS.library;
     return PRESETS.library;
   }
   // Gets attribute value with preset fallback
@@ -615,6 +619,19 @@ var FooterGlobalLite = class extends HTMLElement {
       if (logoTemplate) {
         logoContainer.innerHTML = "";
         logoContainer.appendChild(logoTemplate.content.cloneNode(true));
+      }
+    }
+    const donateLink = this.getAttr("donate-link", "donateLink");
+    const donateText = this.getAttr("donate-text", "donateText");
+    const donateLinkEl = this.shadowRoot.getElementById("donate-link");
+    if (donateLinkEl) {
+      donateLinkEl.href = donateLink;
+      donateLinkEl.textContent = donateText;
+    }
+    if (this.hasAttribute("archives")) {
+      const missionStatementItem = this.shadowRoot.getElementById("mission-statement-item");
+      if (missionStatementItem) {
+        missionStatementItem.style.display = "none";
       }
     }
   }
