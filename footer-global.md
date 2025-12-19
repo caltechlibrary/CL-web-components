@@ -12,7 +12,7 @@ There are two versions of the footer:
 ## Key Features
 
 - **Automatic Updates**: Once installed, the component automatically receives updates when new versions are released
-- **Preset Configurations**: Use `library` or `archives` presets for instant setup with common defaults
+- **Preset Configurations**: Use `archives` presets for instant setup with common defaults
 - **Full Customization**: Override any preset value or create completely custom configurations
 - **Flexible Content**: Custom headings, links, contact info, social media, and branding options
 - **Library-Specific Features**: Optional breadcrumbs and login links for LibGuides integration
@@ -41,15 +41,9 @@ There are two versions of the footer:
 
 ## Quick Start with Presets
 
-The easiest way to use the footer is with preset configurations. The footer defaults to library settings, or you can use the `archives` attribute to automatically configure all contact information, branding, and social media links for archives.
+The footer defaults to library settings, or you can use the `archives` attribute to automatically configure all contact information, branding, and social media links for archives.
 
-### Library Preset (Default)
-
-```html
-<!-- These are equivalent - library is the default -->
-<footer-global></footer-global>
-<footer-global library></footer-global>
-```
+### Library Default Values
 
 **Default Values:**
 - Email: library@caltech.edu
@@ -92,7 +86,7 @@ You can use a preset and override specific values:
 
 ## Full Customization
 
-For department-specific footers or unique configurations, use the `custom` attribute to take full control over the first column.
+For application-specific footers or unique configurations, use the `custom` attribute to take full control over the first column.
 
 > **Note**: The customization examples below use `footer-global`, but the same attributes work for `footer-global-lite`. The only difference is the component name.
 
