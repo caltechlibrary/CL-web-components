@@ -8,3 +8,4 @@ export { TextareaCSV } from "./src/textarea-csv.js";
 export { TableSortable } from "./src/table-sortable.js";
 export { FooterGlobal } from "./src/footer-global.js";
 export { FooterGlobalLite } from "./src/footer-global-lite.js";
+export { CardLayout } from "./src/card-layout.js";

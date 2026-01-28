@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="https://caltechlibrary.github.io/css/site.css">
+    <link rel="stylesheet" href="https://media.library.caltech.edu/cl-webcomponents/css/code-blocks.css">
+    <script type="module" src="https://media.library.caltech.edu/cl-webcomponents/copyToClipboard.js"></script>
+    <script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script>
+</head>
+<body>
+<header>
+<a href="https://library.caltech.edu"><img src="https://media.library.caltech.edu/assets/caltechlibrary-logo.png" alt="Caltech Library logo"></a>
+</header>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="card-layout">Card Layout</h1>
+<p>A three-card layout component for displaying featured content with
+images, titles, descriptions, and links.</p>
+<p><a href="demo_card-layout.html">View Demo</a></p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Fixed Three-Card Layout</strong>: Displays exactly three
+cards in a responsive flexbox row</li>
+<li><strong>Attribute-Based Content</strong>: Configure each card via
+simple HTML attributes</li>
+<li><strong>Responsive Design</strong>: Cards stack automatically on
+smaller screens</li>
+<li><strong>Encapsulated Styles</strong>: Shadow DOM prevents style
+conflicts with your page</li>
+<li><strong>Automatic Updates</strong>: Once installed, the component
+receives updates when new versions are released</li>
+</ul>
+<h2 id="installing">Installing</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Add the component --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">card-layout</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-title</span><span class="op">=</span><span class="st">&quot;Card One&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-description</span><span class="op">=</span><span class="st">&quot;Your description here.&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link</span><span class="op">=</span><span class="st">&quot;/page1&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-title</span><span class="op">=</span><span class="st">&quot;Card Two&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-description</span><span class="op">=</span><span class="st">&quot;Another description.&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link</span><span class="op">=</span><span class="st">&quot;/page2&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-title</span><span class="op">=</span><span class="st">&quot;Card Three&quot;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-description</span><span class="op">=</span><span class="st">&quot;Third description.&quot;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link</span><span class="op">=</span><span class="st">&quot;/page3&quot;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">card-layout</span><span class="dt">&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Include the JavaScript --&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://media.library.caltech.edu/cl-webcomponents/card-layout.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>At minimum, provide a title and description for each card:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">card-layout</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-title</span><span class="op">=</span><span class="st">&quot;Sherman Fairchild Library&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-description</span><span class="op">=</span><span class="st">&quot;Study spaces, course reserves, and technology lending.&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/locations/sfl&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-title</span><span class="op">=</span><span class="st">&quot;Caltech Archives&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-description</span><span class="op">=</span><span class="st">&quot;Explore Caltech&#39;s rich history and scientific legacy.&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/archives&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-title</span><span class="op">=</span><span class="st">&quot;Research Support&quot;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-description</span><span class="op">=</span><span class="st">&quot;Get help with data management, publishing, and more.&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/publish&quot;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">card-layout</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>When no image is provided, a placeholder is displayed.</p>
+<h2 id="adding-images">Adding Images</h2>
+<p>Add images to each card using the <code>card[1-3]-image</code>
+attributes:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">card-layout</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-image</span><span class="op">=</span><span class="st">&quot;https://example.com/image1.jpg&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-title</span><span class="op">=</span><span class="st">&quot;Digital Collections&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-description</span><span class="op">=</span><span class="st">&quot;Browse digitized rare books, photographs, and manuscripts.&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/archives/collections&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-image</span><span class="op">=</span><span class="st">&quot;https://example.com/image2.jpg&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-title</span><span class="op">=</span><span class="st">&quot;Workshops </span><span class="er">&amp;</span><span class="st"> Events&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-description</span><span class="op">=</span><span class="st">&quot;Join us for research skills workshops and special events.&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/events&quot;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-image</span><span class="op">=</span><span class="st">&quot;https://example.com/image3.jpg&quot;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-title</span><span class="op">=</span><span class="st">&quot;Course Reserves&quot;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-description</span><span class="op">=</span><span class="st">&quot;Access textbooks and materials for your courses.&quot;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/borrow/reserves&quot;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">card-layout</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="custom-link-text">Custom Link Text</h2>
+<p>By default, links display “Read more”. Customize with
+<code>card[1-3]-link-text</code>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">card-layout</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-title</span><span class="op">=</span><span class="st">&quot;Digital Collections&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-description</span><span class="op">=</span><span class="st">&quot;Browse our digitized materials.&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/archives/collections&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link-text</span><span class="op">=</span><span class="st">&quot;Explore collections&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-title</span><span class="op">=</span><span class="st">&quot;Workshops </span><span class="er">&amp;</span><span class="st"> Events&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-description</span><span class="op">=</span><span class="st">&quot;Join us for upcoming events.&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/events&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link-text</span><span class="op">=</span><span class="st">&quot;View calendar&quot;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-title</span><span class="op">=</span><span class="st">&quot;Course Reserves&quot;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-description</span><span class="op">=</span><span class="st">&quot;Access course materials.&quot;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/borrow/reserves&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link-text</span><span class="op">=</span><span class="st">&quot;Find reserves&quot;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">card-layout</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="hiding-links">Hiding Links</h2>
+<p>If you don’t provide a <code>card[1-3]-link</code> attribute, the
+link will be hidden for that card:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">card-layout</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-title</span><span class="op">=</span><span class="st">&quot;Information Only&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-description</span><span class="op">=</span><span class="st">&quot;This card has no link.&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-title</span><span class="op">=</span><span class="st">&quot;With Link&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-description</span><span class="op">=</span><span class="st">&quot;This card has a link.&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link</span><span class="op">=</span><span class="st">&quot;/some-page&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-title</span><span class="op">=</span><span class="st">&quot;Also No Link&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-description</span><span class="op">=</span><span class="st">&quot;Another card without a link.&quot;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">card-layout</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="complete-example">Complete Example</h2>
+<p>Here’s a fully configured card layout using all available
+options:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">card-layout</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-image</span><span class="op">=</span><span class="st">&quot;https://example.com/collections.jpg&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-title</span><span class="op">=</span><span class="st">&quot;Digital Collections&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-description</span><span class="op">=</span><span class="st">&quot;Browse digitized rare books, photographs, and manuscripts from Caltech&#39;s history.&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/archives/collections&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  card1-link-text</span><span class="op">=</span><span class="st">&quot;Explore collections&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-image</span><span class="op">=</span><span class="st">&quot;https://example.com/events.jpg&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-title</span><span class="op">=</span><span class="st">&quot;Workshops </span><span class="er">&amp;</span><span class="st"> Events&quot;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-description</span><span class="op">=</span><span class="st">&quot;Join us for research skills workshops, author talks, and special events.&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/events&quot;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  card2-link-text</span><span class="op">=</span><span class="st">&quot;View calendar&quot;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-image</span><span class="op">=</span><span class="st">&quot;https://example.com/reserves.jpg&quot;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-title</span><span class="op">=</span><span class="st">&quot;Course Reserves&quot;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-description</span><span class="op">=</span><span class="st">&quot;Access textbooks, readings, and other materials for your courses.&quot;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/borrow/reserves&quot;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ot">  card3-link-text</span><span class="op">=</span><span class="st">&quot;Find reserves&quot;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">card-layout</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="attribute-reference">Attribute Reference</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 39%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>card[1-3]-image</code></td>
+<td>URL for the card image</td>
+<td>Placeholder shown</td>
+</tr>
+<tr>
+<td><code>card[1-3]-title</code></td>
+<td>Card heading text</td>
+<td>“Card One/Two/Three”</td>
+</tr>
+<tr>
+<td><code>card[1-3]-description</code></td>
+<td>Brief description text</td>
+<td>“Add your content here.”</td>
+</tr>
+<tr>
+<td><code>card[1-3]-link</code></td>
+<td>URL for the link</td>
+<td>Link hidden if not set</td>
+</tr>
+<tr>
+<td><code>card[1-3]-link-text</code></td>
+<td>Custom text for the link</td>
+<td>“Read more”</td>
+</tr>
+</tbody>
+</table>
+<p>Replace <code>[1-3]</code> with the card number (1, 2, or 3).</p>
+<h2 id="responsive-behavior">Responsive Behavior</h2>
+<ul>
+<li><strong>Desktop</strong>: Cards display in a horizontal row with
+equal widths</li>
+<li><strong>Mobile</strong> (&lt; 600px): Cards stack vertically, each
+taking full width</li>
+</ul>
+<p>The component handles this automatically with no additional
+configuration needed.</p>
+</section>
+<footer-global></footer-global>
+</body>
+</html>
