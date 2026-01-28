@@ -5,6 +5,9 @@
 CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
 
 The following are the components currently provided.
+`card-layout`
+: This component provides a customizable three card layout for content presentation.
+
 
 `footer-global`
 : This component provides a standard footer with detailed information about the library
@@ -26,15 +29,11 @@ The following are the components currently provided.
 
 ## Release Notes
 
-- version: 0.0.15
+- version: 0.0.16
 - status: wip
-- released: 2025-08-07
+- released: 2026-01-28
 
-This release includes an improved &lt;footer-global&gt; component. This include better support for social media representation.
-
-A new CSS file was added, &#x60;css/code-blocks.css&#x60; and JavaScript modules, &#x60;copyToClipboard.js&#x60; for enhancing codeblocks.
-
-A publish_to_s3.bash script was added to make management more convient for where we retrieve our production assets.
+This release adds a new &#x60;&lt;card-layout&gt;&#x60; component for displaying three-card layouts with images, titles, descriptions, and links. The component is responsive and uses attributes to set the content values.
 
 
 ### Authors
@@ -47,20 +46,21 @@ A publish_to_s3.bash script was added to make management more convient for where
 ### Maintainers
 
 - Doiel, R. S.
+- Smith, Twila
 
 ## Software Requirements
 
-- Deno >= 2.4.3 (for bundling dependencies)
+- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
 
 ### Software Suggestions
 
-- CMTools >= 0.0.40
-- Pandoc >= 3.1
-- PageFind >= 1.3
+- CMTools &gt;&#x3D; 0.0.40
+- Pandoc &gt;&#x3D; 3.1
+- PageFind &gt;&#x3D; 1.3
 
 #### Runtime platform
 
-**HTML5-compatible web browser**
+HTML5-compatible web browser**
 
 ## Related resources
 

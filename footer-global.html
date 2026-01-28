@@ -26,296 +26,403 @@
 <section>
 <h1 id="footer-global-footer-global-lite">Footer Global &amp; Footer
 Global Lite</h1>
-<p>This web component is designed to add a branded footer to
-applications maintained by the library.</p>
-<p>There are two versions of the footer - the standard footer that
-matches the library website, and a lite version with a streamlined
-content structure.</p>
-<p>The footers have several options for customization using both
-attributes and slot to change the content that is displayed.</p>
-<h2 id="key-features">Key Features</h2>
-<p>Once added to an application, the component will get updates
-automatically whenever a new version is released. This allows a
-streamlined way to update the footer and have those changes immediately
-reflected on all applications calling it.</p>
-<p>The component has several options for customization:</p>
+<p>This web component adds a branded footer to applications maintained
+by the library.</p>
+<h2 id="versions">Versions</h2>
+<p>There are two versions of the footer:</p>
 <ul>
-<li>Custom heading in first column (full &amp; lite)</li>
-<li>Application-specific links in first column (full &amp; lite)</li>
-<li>Configurable contact information (full &amp; lite)</li>
-<li>Customizable social media links (full)</li>
-<li>Customizable library name with custom link (full)</li>
-<li>Customizable Library mail code (full)</li>
-<li>The ability to change the logo version between archives and the
-library (full &amp; lite)</li>
+<li><strong>Footer Global</strong>: Standard footer matching the library
+website with full customization options</li>
+<li><strong>Footer Global Lite</strong>: Streamlined footer with
+simplified content structure</li>
 </ul>
-<p>The footer also has customizations that apply only to the library
-website: - The ability to turn on the login icon for libguides (full) -
-The ability to turn on breadcrumbs for libguides (full)</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Automatic Updates</strong>: Once installed, the component
+automatically receives updates when new versions are released</li>
+<li><strong>Preset Configurations</strong>: Use <code>archives</code>
+presets for instant setup with common defaults</li>
+<li><strong>Full Customization</strong>: Override any preset value or
+create completely custom configurations</li>
+<li><strong>Flexible Content</strong>: Custom headings, links, contact
+info, social media, and branding options</li>
+<li><strong>Library-Specific Features</strong>: Optional breadcrumbs and
+login links for LibGuides integration</li>
+</ul>
 <h2 id="installing">Installing</h2>
-<p>To install the footer, simply included the javascript file and the
-extended html element as such:</p>
-<h3 id="global-footer">Global-Footer</h3>
+<h3 id="footer-global">Footer Global</h3>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<p>And the javascript file.</p>
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Add the component --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Include the JavaScript --&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://media.library.caltech.edu/cl-webcomponents/footer-global.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="footer-global-lite">Footer Global Lite</h3>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://media.library.caltech.edu/cl-webcomponents/footer-global.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span> </span></code></pre></div>
-<h3 id="global-footer-lite">Global-Footer-Lite</h3>
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Add the component --&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global-lite</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global-lite</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Include the JavaScript --&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://media.library.caltech.edu/cl-webcomponents/footer-global-lite.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="quick-start-with-presets">Quick Start with Presets</h2>
+<p>The footer defaults to library settings, or you can use the
+<code>archives</code> attribute to automatically configure all contact
+information, branding, and social media links for archives.</p>
+<h3 id="library-default-values">Library Default Values</h3>
+<p><strong>Default Values:</strong> - Email: library@caltech.edu -
+Phone: 626-395-3405 - Library Name: Caltech Library - Mail Code: Mail
+Code 1-43 - Logo: Library logo - Instagram: <span class="citation"
+data-cites="caltechlibrary">@caltechlibrary</span> - YouTube: Caltech
+Library channel - Donate Link:
+https://library.caltech.edu/about/support</p>
+<h3 id="archives-preset">Archives Preset</h3>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global-lite</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global-lite</span><span class="dt">&gt;</span></span></code></pre></div>
-<p>And the javascript file.</p>
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global archives</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>Default Values:</strong> - Email: archives@caltech.edu -
+Phone: (626) 395-2704 - Library Name: Caltech Library<br>Archives &amp;
+Special Collections - Mail Code: Mail Code B215A-74 - Logo: Archives
+logo - Instagram: <span class="citation"
+data-cites="caltecharchives">@caltecharchives</span> - YouTube: Caltech
+Library channel - Donate Link:
+https://library.caltech.edu/archives/about/donate</p>
+<h3 id="overriding-preset-values">Overriding Preset Values</h3>
+<p>You can use a preset and override specific values:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;/src/footer-global-lite.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span> (updated link coming soon)</span></code></pre></div>
-<h2 id="customizing">Customizing</h2>
-<p>There are multiple ways to customize the footers.</p>
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global archives</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  phone</span><span class="op">=</span><span class="st">&quot;626-555-1234&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  donate-link</span><span class="op">=</span><span class="st">&quot;https://example.com/donate&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/about&quot;</span><span class="dt">&gt;</span>About<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/contact&quot;</span><span class="dt">&gt;</span>Contact<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="full-customization">Full Customization</h2>
+<p>For application-specific footers or unique configurations, use the
+<code>custom</code> attribute to take full control over the first
+column.</p>
 <blockquote>
-<p><strong>Please Note</strong>: There are no differences between
-Footer-Global and Footer-Global-Lite when customizing content, other
-than the name of the extended html element. The first example shows how
-to customize both footer versions but all following examples will only
-reference Footer-Global for brevity.</p>
+<p><strong>Note</strong>: The customization examples below use
+<code>footer-global</code>, but the same attributes work for
+<code>footer-global-lite</code>. The only difference is the component
+name.</p>
 </blockquote>
+<h3 id="understanding-the-custom-attribute">Understanding the
+<code>custom</code> Attribute</h3>
+<p>The <code>custom</code> attribute is a special flag that: -
+<strong>Hides the default library hours content</strong> in column 1 -
+<strong>Hides the “Hours” heading</strong> (unless you provide a custom
+<code>header</code> attribute) - <strong>Adjusts column widths</strong>
+for better layout with custom content</p>
+<p><strong>Behavior:</strong> - <code>&lt;footer-global&gt;</code> →
+Shows “Hours” heading + library hours -
+<code>&lt;footer-global custom&gt;</code> → Column 1 is completely empty
+(no heading, no hours) -
+<code>&lt;footer-global custom header="Links"&gt;</code> → Shows “Links”
+heading, no hours</p>
+<p>This gives you a clean slate to add your own content without the
+default library hours appearing.</p>
 <h3 id="custom-heading">Custom Heading</h3>
-<p>You have the option to add a custom column heading to the first
-column in both Footer-Global and Footer-Global-Lite. This could be terms
-like Quick Links, About, or the application’s name.</p>
-<ol type="1">
-<li>Add “custom” as an attribute to the extended html element. This
-helps with column spacing and is required anytime you customize the
-component.</li>
-<li>Define the heading text as an attribute.</li>
-</ol>
+<p>Add a custom heading to the first column:</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  header</span><span class="op">=</span><span class="st">&quot;Digital Collections&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<p>or</p>
+<blockquote>
+<p><strong>Tip</strong>: If you don’t provide a <code>header</code>
+attribute, the heading will be hidden entirely, giving you maximum
+flexibility for your custom content.</p>
+</blockquote>
+<h3 id="custom-links-in-first-column">Custom Links in First Column</h3>
+<p>The first column displays custom links specific to your
+application.</p>
+<p><strong>Default Content (without customization):</strong> - Footer
+Global: Library Hours - Footer Global Lite: Default links for Home and
+Return to Top</p>
+<p><strong>To add custom links:</strong></p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global-lite</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global-lite</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="custom-links-first-column">Custom Links First Column</h3>
-<p>The first column is reserved for custom links specific to the
-application in both Footer-Global and Footer-Global-Lite.</p>
-<p>The default content without customization: - Footer-Global: Library
-Hours - Footer-Global-Lite: Default links for Home and Return to
-Top.</p>
-<p>To overwrite this default content, you will</p>
-<ol type="1">
-<li>First, add an <code>&lt;a&gt;</code> tag between the open and close
-of the footer element with your custom link.</li>
-<li>Add the named slot <strong>custom-links</strong> to the
-<code>&lt;a&gt;</code> tag. This will pull the content into the Shadow
-Dom.</li>
-<li>Add the class <strong>custom-links</strong> to the
-<code>&lt;a&gt;</code> tag. This will give it the link style it needs
-and account for hover states.</li>
-</ol>
+class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  header</span><span class="op">=</span><span class="st">&quot;Quick Links&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/about&quot;</span><span class="dt">&gt;</span>About<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/help&quot;</span><span class="dt">&gt;</span>Help<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/contact&quot;</span><span class="dt">&gt;</span>Contact<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>Required attributes on each link:</strong> -
+<code>slot="custom-links"</code> - Pulls content into Shadow DOM -
+<code>class="custom-links"</code> - Applies proper styling and hover
+states</p>
+<h3 id="custom-phone-and-email">Custom Phone and Email</h3>
+<p>Override the default contact information:</p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span><span class="dt">&gt;</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  header</span><span class="op">=</span><span class="st">&quot;Digital Collections&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  phone</span><span class="op">=</span><span class="st">&quot;626-555-0100&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  email</span><span class="op">=</span><span class="st">&quot;digcoll@caltech.edu&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/about&quot;</span><span class="dt">&gt;</span>About<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="custom-phone-and-email">Custom Phone and Email</h3>
-<p>In the second column, you can change the phone and email so that it
-is specific to your application in both Footer-Global and
-Footer-Global-Lite.</p>
-<p>To override the phone and email, you will define their attributes in
-the html element.</p>
-<ol type="1">
-<li>Add attribute <code>Phone="xxx-xxxx"</code> to change the
-phone.</li>
-<li>Add attribute <code>Email="email@test.com"</code> to change the
-email.</li>
-</ol>
+<h3 id="custom-social-media-links">Custom Social Media Links</h3>
+<p>Customize Instagram, YouTube, and RSS links (Footer Global only):</p>
+<p><strong>Default behavior:</strong> - Instagram and YouTube default to
+library profiles - RSS has no default; icon only appears if URL is
+provided</p>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxx-xxxx&quot;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span><span class="dt">&gt;</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="custom-social-media-links">Custom Social Media Links</h3>
-<p>In the second column, you can also customize the social media links
-in the Footer-Global component. Currently, the component supports
-Instagram, YouTube, and RSS. To add more social links, please contact
-the developers of this component. You will customize these by defining
-an attribute in the html element.</p>
-<p>The defaults for Instagram and Youtube are the library’s profiles.
-There is no default for the RSS feed. If one is not defined, no icon
-will display.</p>
-<ol type="1">
-<li>Add attribute <code>instagram="your-profile-url"</code></li>
-<li>Add attribute <code>youtube="your-profile-url"</code></li>
-<li>Add attribute <code>rss="your-rss-url"</code></li>
-</ol>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  header</span><span class="op">=</span><span class="st">&quot;Your Application&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  instagram</span><span class="op">=</span><span class="st">&quot;https://instagram.com/yourprofile&quot;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  youtube</span><span class="op">=</span><span class="st">&quot;https://youtube.com/yourchannel&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  rss</span><span class="op">=</span><span class="st">&quot;https://yoursite.edu/feed&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="custom-library-name-and-link">Custom Library Name and Link</h3>
+<p>Change the library name and where it links to (Footer Global
+only):</p>
+<p><strong>Default:</strong> “Caltech Library” linking to
+https://library.caltech.edu/</p>
 <div class="sourceCode" id="cb9"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-profile-url&quot;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-profile-url&quot;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    rss</span><span class="op">=</span><span class="st">&quot;your-rss-url&quot;</span><span class="dt">&gt;</span> </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="custom-library-name-link">Custom Library Name + Link</h3>
-<p>In the second column, you can also customize the library name in the
-full Footer-Global component. You can also make the library name a url
-that points to a different website.</p>
-<p>The default is set to “Caltech Library” and the link goes to the
-libraries home page.</p>
-<ol type="1">
-<li>Add attribute
-<code>library-name="The Name of the Library"</code></li>
-<li>Add attribute
-<code>library-link="the url of the library"</code></li>
-</ol>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  library-name</span><span class="op">=</span><span class="st">&quot;Special Collections&quot;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  library-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/special-collections&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>For multi-line library names</strong>, use
+<code>&lt;br&gt;</code> in the value:</p>
 <div class="sourceCode" id="cb10"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-profile-url&quot;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-profile-url&quot;</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    rss</span><span class="op">=</span><span class="st">&quot;your-rss-url&quot;</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ot">    library-name</span><span class="op">=</span><span class="st">&quot;The Name of the Library&quot;</span><span class="ot"> </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ot">    library-link</span><span class="op">=</span><span class="st">&quot;the url of the library&quot;</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ot">      </span><span class="er">&lt;</span><span class="ot">a slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  library-name</span><span class="op">=</span><span class="st">&quot;Caltech Library</span><span class="er">&lt;</span><span class="st">br&gt;Special Collections&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="custom-mail-code">Custom Mail Code</h3>
-<p>In the second column, you can also customize the mail code in the
-full Footer-Global component. The main address will always stay the
-same: 1200 E California Blvd Pasadena, CA 91125-4300. However, you can
-override the default mail code with a custom code.</p>
-<p>The default is set to the library’s mail code.</p>
-<ol type="1">
-<li>Add attribute <code>mail-code="your unique mail code"</code></li>
-</ol>
+<p>Override the mail code while keeping the standard Caltech address
+(Footer Global only):</p>
+<p><strong>Default:</strong> Library mail code (Mail Code 1-43)</p>
+<p><strong>Address (always the same):</strong> 1200 E California Blvd,
+Pasadena, CA 91125-4300</p>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-profile-url&quot;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-profile-url&quot;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    rss</span><span class="op">=</span><span class="st">&quot;your-rss-url&quot;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ot">    library-name</span><span class="op">=</span><span class="st">&quot;The Name of the Library&quot;</span><span class="ot"> </span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ot">    library-link</span><span class="op">=</span><span class="st">&quot;the url of the library&quot;</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ot">    mail-code</span><span class="op">=</span><span class="st">&quot;your unique mail code&quot;</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ot">    </span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ot">      </span><span class="er">&lt;</span><span class="ot">a slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  mail-code</span><span class="op">=</span><span class="st">&quot;Mail Code 555-01&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
 <h3 id="custom-logo">Custom Logo</h3>
-<p>In the last column, you can use attributes to switch between the
-library or the archives logo by defining an attribute in the html
-element. If no logo is defined, it will default to the library logo.</p>
-<ul>
-<li>Add attribute <code>logo="library"</code> (or leave off for same
-results)</li>
-<li>Add attribute <code>logo="archives"</code></li>
-</ul>
+<p>Switch between library and archives branding:</p>
 <div class="sourceCode" id="cb12"><pre
-class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    logo</span><span class="op">=</span><span class="st">&quot;archives&quot;</span><span class="dt">&gt;</span> </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h2 id="library-website-specific-customization">Library Website-Specific
-Customization</h2>
-<h3 id="libguides-login-link">Libguides Login Link</h3>
-<p>This customization is specifically for the library websites. It adds
-a staff login link to the bottom right of the footer.</p>
-<ul>
-<li>Add attribute <code>libguides-login=true</code></li>
-</ul>
+class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Library logo (default) --&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global logo</span><span class="op">=</span><span class="st">&quot;library&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Archives logo --&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global logo</span><span class="op">=</span><span class="st">&quot;archives&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="custom-donate-link">Custom Donate Link</h3>
+<p>Override the donate link URL:</p>
+<p><strong>Default:</strong> - Library:
+https://library.caltech.edu/about/support - Archives:
+https://library.caltech.edu/archives/about/donate</p>
 <div class="sourceCode" id="cb13"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    logo</span><span class="op">=</span><span class="st">&quot;archives&quot;</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ot">    libguides-login</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;</span> </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="breadcrumbs">Breadcrumbs</h3>
-<p>This customization is specifically for the library websites. It adds
-the libguide breadcrumbs to the footer.</p>
-<ul>
-<li>Add attribute <code>breadcrumbs=true</code></li>
-</ul>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  donate-link</span><span class="op">=</span><span class="st">&quot;https://example.com/custom-donate&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="library-website-specific-features">Library Website-Specific
+Features</h2>
+<p>These features are designed specifically for LibGuides and library
+website integration.</p>
+<h3 id="libguides-login-link">LibGuides Login Link</h3>
+<p>Adds a staff login link to the bottom right of the footer:</p>
 <div class="sourceCode" id="cb14"><pre
 class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ot">    custom</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ot">    header</span><span class="op">=</span><span class="st">&quot;Your Application Name&quot;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ot">    phone</span><span class="op">=</span><span class="st">&quot;xxxxxx&quot;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ot">    email</span><span class="op">=</span><span class="st">&quot;email@test.com&quot;</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    instagram</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    youtube</span><span class="op">=</span><span class="st">&quot;your-custom-url&quot;</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    logo</span><span class="op">=</span><span class="st">&quot;archives&quot;</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ot">    libguides-login</span><span class="op">=</span><span class="st">&quot;true&quot;</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="ot">    breadcrumbs</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;</span> </span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 1<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 2<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> aria-label</span><span class="op">=</span><span class="st">&quot;footer navigation&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="dt">&gt;</span>Custom Link 3<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
-<h3 id="debugging">Debugging</h3>
-<p>There are some commented out lines for console logging if the custom
-content is not displaying. These are there to make sure the custom
-content is being called properly, in the right order.</p>
-<p>These console logs can be turned on at the component level to help
-with troubleshooting any issues that arise. Please feel free to make a
-comit to the repo to turn these off and on as needed.</p>
-<h3 id="potential-enhancements">Potential Enhancements</h3>
-<ol type="1">
-<li>Using a single attribute when calling the component that switches
-between a library and an archives version of the footer.</li>
-</ol>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  library</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  libguides-login</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>Requirements:</strong> - Page must have element with
+<code>id="s-lib-footer-login-link"</code> containing the login link -
+The footer will mirror this link into the component</p>
+<h3 id="breadcrumbs">Breadcrumbs</h3>
+<p>Displays LibGuides breadcrumb navigation in the footer:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  library</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  breadcrumbs</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>Requirements:</strong> - Page must have breadcrumb navigation
+with <code>id="s-lib-bc"</code> - The footer will clone this breadcrumb
+trail into the component - Breadcrumbs automatically align with the
+first column</p>
+<h2 id="complete-example">Complete Example</h2>
+<p>Here’s a fully customized footer using all available options:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="er">-</span><span class="ot">global</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  custom</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  header</span><span class="op">=</span><span class="st">&quot;Digital Collections&quot;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  phone</span><span class="op">=</span><span class="st">&quot;626-555-0100&quot;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  email</span><span class="op">=</span><span class="st">&quot;digcoll@caltech.edu&quot;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  instagram</span><span class="op">=</span><span class="st">&quot;https://instagram.com/yourprofile&quot;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  youtube</span><span class="op">=</span><span class="st">&quot;https://youtube.com/yourchannel&quot;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  rss</span><span class="op">=</span><span class="st">&quot;https://yoursite.edu/feed&quot;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  library-name</span><span class="op">=</span><span class="st">&quot;Caltech Library</span><span class="er">&lt;</span><span class="st">br&gt;Digital Collections&quot;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="ot">  library-link</span><span class="op">=</span><span class="st">&quot;https://library.caltech.edu/digital&quot;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="ot">  mail-code</span><span class="op">=</span><span class="st">&quot;Mail Code DC-123&quot;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="ot">  logo</span><span class="op">=</span><span class="st">&quot;library&quot;</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="ot">  libguides-login</span><span class="op">=</span><span class="st">&quot;true&quot;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="ot">  breadcrumbs</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/about&quot;</span><span class="dt">&gt;</span>About<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/browse&quot;</span><span class="dt">&gt;</span>Browse<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/search&quot;</span><span class="dt">&gt;</span>Search<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> slot</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;custom-links&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/help&quot;</span><span class="dt">&gt;</span>Help<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="er">-global</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="debugging">Debugging</h2>
+<p>The component includes console logging for troubleshooting. Messages
+include:</p>
+<ul>
+<li>🪶 Custom content detection</li>
+<li>🔗 Breadcrumb mirroring status</li>
+<li>ℹ️ Element not found warnings</li>
+<li>🧪 LibGuides feature activation</li>
+</ul>
+<p>Check your browser’s developer console for these messages if content
+isn’t displaying as expected.</p>
+<h2 id="attribute-reference">Attribute Reference</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Values</th>
+<th>Applies To</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>library</code></td>
+<td>boolean</td>
+<td>Both</td>
+<td>Use library preset configuration (default)</td>
+</tr>
+<tr>
+<td><code>archives</code></td>
+<td>boolean</td>
+<td>Both</td>
+<td>Use archives preset configuration</td>
+</tr>
+<tr>
+<td><code>custom</code></td>
+<td>boolean</td>
+<td>Both</td>
+<td>Hide default hours and heading; enable full column 1
+customization</td>
+</tr>
+<tr>
+<td><code>header</code></td>
+<td>string</td>
+<td>Both</td>
+<td>Custom heading for first column (use with <code>custom</code>)</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>string</td>
+<td>Both</td>
+<td>Contact phone number</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Both</td>
+<td>Contact email address</td>
+</tr>
+<tr>
+<td><code>library-name</code></td>
+<td>string (HTML allowed)</td>
+<td>Global</td>
+<td>Library/department name</td>
+</tr>
+<tr>
+<td><code>library-link</code></td>
+<td>URL</td>
+<td>Global</td>
+<td>Library/department website</td>
+</tr>
+<tr>
+<td><code>mail-code</code></td>
+<td>string</td>
+<td>Global</td>
+<td>Caltech mail code</td>
+</tr>
+<tr>
+<td><code>donate-link</code></td>
+<td>URL</td>
+<td>Both</td>
+<td>Donate page URL</td>
+</tr>
+<tr>
+<td><code>instagram</code></td>
+<td>URL</td>
+<td>Global</td>
+<td>Instagram profile URL</td>
+</tr>
+<tr>
+<td><code>youtube</code></td>
+<td>URL</td>
+<td>Global</td>
+<td>YouTube channel URL</td>
+</tr>
+<tr>
+<td><code>rss</code></td>
+<td>URL</td>
+<td>Global</td>
+<td>RSS feed URL</td>
+</tr>
+<tr>
+<td><code>logo</code></td>
+<td><code>library</code> or <code>archives</code></td>
+<td>Both</td>
+<td>Logo variant</td>
+</tr>
+<tr>
+<td><code>libguides-login</code></td>
+<td><code>"true"</code></td>
+<td>Global</td>
+<td>Show staff login link</td>
+</tr>
+<tr>
+<td><code>breadcrumbs</code></td>
+<td><code>"true"</code></td>
+<td>Global</td>
+<td>Show breadcrumb navigation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr>
+<th>Slot Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>custom-links</code></td>
+<td>Links for the first column (remember to add
+<code>class="custom-links"</code>)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <footer-global></footer-global>
 </body>

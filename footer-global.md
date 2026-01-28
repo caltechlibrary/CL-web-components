@@ -12,7 +12,7 @@ There are two versions of the footer:
 ## Key Features
 
 - **Automatic Updates**: Once installed, the component automatically receives updates when new versions are released
-- **Preset Configurations**: Use `library` or `archives` presets for instant setup with common defaults
+- **Preset Configurations**: Use `archives` presets for instant setup with common defaults
 - **Full Customization**: Override any preset value or create completely custom configurations
 - **Flexible Content**: Custom headings, links, contact info, social media, and branding options
 - **Library-Specific Features**: Optional breadcrumbs and login links for LibGuides integration
@@ -41,13 +41,9 @@ There are two versions of the footer:
 
 ## Quick Start with Presets
 
-The easiest way to use the footer is with preset configurations. Simply add the `library` or `archives` attribute to automatically configure all contact information, branding, and social media links.
+The footer defaults to library settings, or you can use the `archives` attribute to automatically configure all contact information, branding, and social media links for archives.
 
-### Library Preset
-
-```html
-<footer-global library></footer-global>
-```
+### Library Default Values
 
 **Default Values:**
 - Email: library@caltech.edu
@@ -57,6 +53,7 @@ The easiest way to use the footer is with preset configurations. Simply add the 
 - Logo: Library logo
 - Instagram: @caltechlibrary
 - YouTube: Caltech Library channel
+- Donate Link: https://library.caltech.edu/about/support
 
 ### Archives Preset
 
@@ -72,13 +69,16 @@ The easiest way to use the footer is with preset configurations. Simply add the 
 - Logo: Archives logo
 - Instagram: @caltecharchives
 - YouTube: Caltech Library channel
+- Donate Link: https://library.caltech.edu/archives/about/donate
 
 ### Overriding Preset Values
 
 You can use a preset and override specific values:
 
 ```html
-<footer-global archives phone="626-555-1234">
+<footer-global archives
+  phone="626-555-1234"
+  donate-link="https://example.com/donate">
   <a slot="custom-links" class="custom-links" href="/about">About</a>
   <a slot="custom-links" class="custom-links" href="/contact">Contact</a>
 </footer-global>
@@ -86,7 +86,7 @@ You can use a preset and override specific values:
 
 ## Full Customization
 
-For department-specific footers or unique configurations, use the `custom` attribute to take full control over the first column.
+For application-specific footers or unique configurations, use the `custom` attribute to take full control over the first column.
 
 > **Note**: The customization examples below use `footer-global`, but the same attributes work for `footer-global-lite`. The only difference is the component name.
 
@@ -230,6 +230,21 @@ Switch between library and archives branding:
 <footer-global logo="archives"></footer-global>
 ```
 
+### Custom Donate Link
+
+Override the donate link URL:
+
+**Default:**
+- Library: https://library.caltech.edu/about/support
+- Archives: https://library.caltech.edu/archives/about/donate
+
+```html
+<footer-global
+  custom
+  donate-link="https://example.com/custom-donate">
+</footer-global>
+```
+
 ## Library Website-Specific Features
 
 These features are designed specifically for LibGuides and library website integration.
@@ -308,7 +323,7 @@ Check your browser's developer console for these messages if content isn't displ
 
 | Attribute | Values | Applies To | Description |
 |-----------|--------|------------|-------------|
-| `library` | boolean | Both | Use library preset configuration |
+| `library` | boolean | Both | Use library preset configuration (default) |
 | `archives` | boolean | Both | Use archives preset configuration |
 | `custom` | boolean | Both | Hide default hours and heading; enable full column 1 customization |
 | `header` | string | Both | Custom heading for first column (use with `custom`) |
@@ -317,6 +332,7 @@ Check your browser's developer console for these messages if content isn't displ
 | `library-name` | string (HTML allowed) | Global | Library/department name |
 | `library-link` | URL | Global | Library/department website |
 | `mail-code` | string | Global | Caltech mail code |
+| `donate-link` | URL | Both | Donate page URL |
 | `instagram` | URL | Global | Instagram profile URL |
 | `youtube` | URL | Global | YouTube channel URL |
 | `rss` | URL | Global | RSS feed URL |

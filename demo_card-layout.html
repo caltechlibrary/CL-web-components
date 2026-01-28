@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Layout Component Demo</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .demo-section {
+      margin-bottom: 3rem;
+    }
+    pre {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Card Layout Component</h1>
+  <p>A three-card layout component for displaying featured content.</p>
+
+  <div class="demo-section">
+    <h2>Basic Usage (with placeholder images)</h2>
+    <card-layout
+      card1-title="Sherman Fairchild Library"
+      card1-description="Study spaces, course reserves, and technology lending."
+      card1-link="https://library.caltech.edu/locations/sfl"
+
+      card2-title="Caltech Archives"
+      card2-description="Explore Caltech's rich history and scientific legacy."
+      card2-link="https://library.caltech.edu/archives"
+
+      card3-title="Research Support"
+      card3-description="Get help with data management, publishing, and more."
+      card3-link="https://library.caltech.edu/publish"
+    ></card-layout>
+
+    <pre><code>&lt;card-layout
+  card1-title="Sherman Fairchild Library"
+  card1-description="Study spaces, course reserves, and technology lending."
+  card1-link="https://library.caltech.edu/locations/sfl"
+
+  card2-title="Caltech Archives"
+  card2-description="Explore Caltech's rich history and scientific legacy."
+  card2-link="https://library.caltech.edu/archives"
+
+  card3-title="Research Support"
+  card3-description="Get help with data management, publishing, and more."
+  card3-link="https://library.caltech.edu/publish"
+&gt;&lt;/card-layout&gt;</code></pre>
+  </div>
+
+  <div class="demo-section">
+    <h2>With Images</h2>
+    <card-layout
+      card1-image="https://picsum.photos/seed/lib1/400/200"
+      card1-title="Digital Collections"
+      card1-description="Browse digitized rare books, photographs, and manuscripts."
+      card1-link="https://library.caltech.edu/archives/collections"
+      card1-link-text="Explore collections"
+
+      card2-image="https://picsum.photos/seed/lib2/400/200"
+      card2-title="Workshops & Events"
+      card2-description="Join us for research skills workshops and special events."
+      card2-link="https://library.caltech.edu/events"
+      card2-link-text="View calendar"
+
+      card3-image="https://picsum.photos/seed/lib3/400/200"
+      card3-title="Course Reserves"
+      card3-description="Access textbooks and materials for your courses."
+      card3-link="https://library.caltech.edu/borrow/reserves"
+      card3-link-text="Find reserves"
+    ></card-layout>
+
+    <pre><code>&lt;card-layout
+  card1-image="https://example.com/image1.jpg"
+  card1-title="Digital Collections"
+  card1-description="Browse digitized rare books, photographs, and manuscripts."
+  card1-link="https://library.caltech.edu/archives/collections"
+  card1-link-text="Explore collections"
+
+  card2-image="https://example.com/image2.jpg"
+  card2-title="Workshops &amp; Events"
+  card2-description="Join us for research skills workshops and special events."
+  card2-link="https://library.caltech.edu/events"
+  card2-link-text="View calendar"
+
+  card3-image="https://example.com/image3.jpg"
+  card3-title="Course Reserves"
+  card3-description="Access textbooks and materials for your courses."
+  card3-link="https://library.caltech.edu/borrow/reserves"
+  card3-link-text="Find reserves"
+&gt;&lt;/card-layout&gt;</code></pre>
+  </div>
+
+  <div class="demo-section">
+    <h2>Attributes Reference</h2>
+    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden;">
+      <thead>
+        <tr style="background: #062e47; color: white;">
+          <th style="padding: 12px; text-align: left;">Attribute</th>
+          <th style="padding: 12px; text-align: left;">Description</th>
+          <th style="padding: 12px; text-align: left;">Default</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-image</code></td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">URL for the card image</td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Placeholder shown</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-title</code></td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Card heading text</td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">"Card One/Two/Three"</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-description</code></td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Brief description text</td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">"Add your content here."</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-link</code></td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">URL for the "Read more" link</td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Link hidden if not set</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px;"><code>card[1-3]-link-text</code></td>
+          <td style="padding: 12px;">Custom text for the link</td>
+          <td style="padding: 12px;">"Read more"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script type="module" src="./src/card-layout.js"></script>
+</body>
+</html>

@@ -25,11 +25,18 @@
       "givenName": "R. S.",
       "familyName": "Doiel",
       "email": "rsdoiel@caltech.edu"
+    },
+    {
+      "id": "https://orcid.org/0009-0003-7975-1922",
+      "type": "Person",
+      "givenName": "Twila",
+      "familyName": "Smith",
+      "email": "twila@caltech.edu"
     }
   ],
   "dateCreated": "2025-02-26",
-  "dateModified": "2025-08-07",
-  "datePublished": "2025-08-07",
+  "dateModified": "2026-01-28",
+  "datePublished": "2026-01-28",
   "description": "CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.\n\nThe following are the components currently provided.\n\n`footer-global`\n: This component provides a standard footer with detailed information about the library\n\n`footer-global-lite`\n: This component provides a lighter weight version of the `footer-global` component\n\n`ul-a-to-z`\n: This component takes an innerHTML containing a UL list. The UL list is then turned into an A to Z navigatable UL List. If JavaScript is unavailable then the innerHTML UL remains as a fallback.\n\n`textarea-csv`\n: This is a textarea like component who's innerHTML content is CSV data. The component will display this as an editable table. \n\n`textarea-agent-list`\n: This element wraps a textarea containing a list of agents expressed as JSON. \n\n`table-sortable`\n: This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.",
   "funder": [
     "Caltech Library"
@@ -61,11 +68,11 @@
     "Pandoc >= 3.1",
     "PageFind >= 1.3"
   ],
-  "version": "0.0.15",
+  "version": "0.0.16",
   "developmentStatus": "wip",
   "issueTracker": "https://github.com/caltechlibrary/CL-web-components/issues",
   "downloadUrl": "https://github.com/caltechlibrary/CL-web-components/releases",
-  "releaseNotes": "This release includes an improved `<footer-global>` component. This include better support for social media representation.\n\nA new CSS file was added, `css/code-blocks.css` and JavaScript modules, `copyToClipboard.js` for enhancing codeblocks.\n\nA publish_to_s3.bash script was added to make management more convient for where we retrieve our production assets.",
-  "copyrightYear": 2025,
+  "releaseNotes": "This release adds a new `<card-layout>` component for displaying three-card layouts with images, titles, descriptions, and links. The component is responsive and uses attributes to set the content values.",
+  "copyrightYear": 2026,
   "copyrightHolder": "California Institute of Technology"
 }

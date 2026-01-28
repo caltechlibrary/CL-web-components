@@ -36,7 +36,9 @@ var PRESETS = {
     mailCode: "Mail Code 1-43",
     instagram: "https://www.instagram.com/caltechlibrary/",
     youtube: "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA",
-    logo: "library"
+    logo: "library",
+    donateLink: "https://library.caltech.edu/about/support",
+    donateText: "Donate"
   },
   archives: {
     email: "archives@caltech.edu",
@@ -46,7 +48,9 @@ var PRESETS = {
     mailCode: "Mail Code B215A-74",
     instagram: "https://www.instagram.com/caltecharchives/",
     youtube: "https://www.youtube.com/channel/UCQbC4mcNNqypGMRtjgcN0SA",
-    logo: "archives"
+    logo: "archives",
+    donateLink: "https://library.caltech.edu/archives/about/donate",
+    donateText: "Donate & Transfer"
   }
 };
 var FooterGlobal = class extends HTMLElement {
@@ -110,6 +114,7 @@ var FooterGlobal = class extends HTMLElement {
         .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
           width: 100%;
           gap:4em
         }
@@ -136,6 +141,7 @@ var FooterGlobal = class extends HTMLElement {
         :host([custom]) .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
           width: 100%;
           gap: 5em;
         }
@@ -155,8 +161,8 @@ var FooterGlobal = class extends HTMLElement {
         /* IDEA statement */
 
         .idea-container {
-          margin: 2rem;
-          padding: .5em 5rem;          
+          margin: 2rem 0;
+          padding: .5em 5rem;
           text-align: center;
           border-top: 1px solid #135071;
           border-bottom: 1px solid #135071;
@@ -472,10 +478,20 @@ var FooterGlobal = class extends HTMLElement {
 
         /* SOCIAL & BRANDING */
 
+        .social a {
+          display: inline-block;
+          text-decoration: none;
+        }
+
+        .social a:hover {
+          text-decoration: none;
+        }
+
         .social a svg {
-          width: 2em; 
-          height: 2em; 
+          width: 2em;
+          height: 2em;
           fill: var(--cl-white);
+          display: block;
         }
 
         .social a:not(:last-child) {
@@ -484,15 +500,14 @@ var FooterGlobal = class extends HTMLElement {
 
         .logo-library {
           fill: var(--cl-white);
-          margin-block: 1.5em;
           height: 5em;
-          margin: 1.9em 0 0 0;
+          margin: 1.9em 0 2em 0;
         }
 
         .logo-archives {
           fill: var(--cl-white);
-          margin-block: 1.5em;
           height: 5em;
+          margin: 1.5em 0 2em 0;
         }
 
         .links {
@@ -593,7 +608,7 @@ var FooterGlobal = class extends HTMLElement {
                 <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
                 <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
                 <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
-                <li><a href="https://caltech.imodules.com/supportcaltechlibraries">Donate</a></li>
+                <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
               </ul>
             </section>
           </div>
@@ -627,9 +642,9 @@ var FooterGlobal = class extends HTMLElement {
     });
   }
   // Gets the active preset configuration based on attributes
+  // Library is the default; archives overrides when attribute is present
   getPreset() {
     if (this.hasAttribute("archives")) return PRESETS.archives;
-    if (this.hasAttribute("library")) return PRESETS.library;
     return PRESETS.library;
   }
   // Gets attribute value with preset fallback
@@ -779,6 +794,13 @@ var FooterGlobal = class extends HTMLElement {
         logoContainer.innerHTML = "";
         logoContainer.appendChild(logoTemplate.content.cloneNode(true));
       }
+    }
+    const donateLink = this.getAttr("donate-link", "donateLink");
+    const donateText = this.getAttr("donate-text", "donateText");
+    const donateLinkEl = this.shadowRoot.getElementById("donate-link");
+    if (donateLinkEl) {
+      donateLinkEl.href = donateLink;
+      donateLinkEl.textContent = donateText;
     }
   }
   // If no Slot, load column1 default content - Library Hours
