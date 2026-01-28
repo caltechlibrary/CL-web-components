@@ -4,6 +4,9 @@
 - [README](./)
 - [LICENSE](LICENSE)
 - Web Components
+  - [Card Layout](card-layout.md)
+    - Source for [card-layout](card-layout.js)
+    - [demo card layout](demo_card-layout.html)
   - [Footer Global](footer-global.md)
     - Source for [footer-global](footer-global.js)
     - [demo footer global](demo_footer_global.html)
