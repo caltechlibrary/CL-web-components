@@ -34,9 +34,12 @@ maintainer:
   - family_name: Doiel
     given_name: R. S.
     id: https://orcid.org/0000-0003-0900-6903
+  - family_name: Smith
+    given_name: Twila
+    id: https://orcid.org/0009-0003-7975-1922
 
 repository_code: https://github.com/caltechlibrary/CL-web-components
-version: 0.0.15
+version: 0.0.16
 license_url: https://caltechlibrary.github.io/CL-web-components/LICENSE
 
 programming_language:
@@ -51,19 +54,15 @@ keywords:
   - ES6
   - Web Components
 
-date_released: 2025-08-07
+date_released: 2026-01-28
 ---
 
 About this software
 ===================
 
-## CL-web-components 0.0.15
+## CL-web-components 0.0.16
 
-This release includes an improved `<footer-global>` component. This include better support for social media representation.
-
-A new CSS file was added, `css/code-blocks.css` and JavaScript modules, `copyToClipboard.js` for enhancing codeblocks.
-
-A publish_to_s3.bash script was added to make management more convient for where we retrieve our production assets.
+This release adds a new &#x60;&lt;card-layout&gt;&#x60; component for displaying three-card layouts with images, titles, descriptions, and links. The component is responsive and uses attributes to set the content values.
 
 ### Authors
 
@@ -76,6 +75,7 @@ A publish_to_s3.bash script was added to make management more convient for where
 ### Maintainers
 
 - R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
+- Twila Smith, <https://orcid.org/0009-0003-7975-1922>
 
 
 CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
@@ -115,7 +115,7 @@ The following are the components currently provided.
 
 ### Software Requirements
 
-- Deno >= 2.4.3 (for bundling dependencies)
+- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
 
 
 ### Software Suggestions
