@@ -28,6 +28,9 @@ if (!document.getElementById("hind-fonts-card")) {
   document.head.appendChild(fontStyles);
 }
 var CardLayout = class extends HTMLElement {
+  static get observedAttributes() {
+    return ["layout"];
+  }
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
@@ -50,6 +53,32 @@ var CardLayout = class extends HTMLElement {
           display: flex;
           gap: 16px;
           flex-wrap: wrap;
+        }
+
+        /* VERTICAL LAYOUT */
+        .cards-container.vertical {
+          flex-direction: column;
+        }
+
+        .cards-container.vertical .card {
+          min-width: 100%;
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        .cards-container.vertical .card-image,
+        .cards-container.vertical .card-image-placeholder {
+          width: 120px;
+          min-width: 120px;
+          height: 100px;
+          margin-bottom: 0;
+          margin-right: 16px;
+        }
+
+        .cards-container.vertical .card-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
         }
 
         /* CARD STYLES */
@@ -95,6 +124,13 @@ var CardLayout = class extends HTMLElement {
           color: #333;
         }
 
+        /* CARD CONTENT */
+        .card-content {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+        }
+
         /* CARD DESCRIPTION */
         .card-description {
           margin: 0 0 12px 0;
@@ -135,31 +171,53 @@ var CardLayout = class extends HTMLElement {
       <div class="cards-container">
         <div class="card" id="card1">
           <div class="card-image-placeholder">Image</div>
-          <h3 class="card-title">Card One</h3>
-          <p class="card-description">Add your content here.</p>
-          <a class="card-link" href="#">Read more</a>
+          <div class="card-content">
+            <h3 class="card-title">Card One</h3>
+            <p class="card-description">Add your content here.</p>
+            <a class="card-link" href="#">Read more</a>
+          </div>
         </div>
 
         <div class="card" id="card2">
           <div class="card-image-placeholder">Image</div>
-          <h3 class="card-title">Card Two</h3>
-          <p class="card-description">Add your content here.</p>
-          <a class="card-link" href="#">Read more</a>
+          <div class="card-content">
+            <h3 class="card-title">Card Two</h3>
+            <p class="card-description">Add your content here.</p>
+            <a class="card-link" href="#">Read more</a>
+          </div>
         </div>
 
         <div class="card" id="card3">
           <div class="card-image-placeholder">Image</div>
-          <h3 class="card-title">Card Three</h3>
-          <p class="card-description">Add your content here.</p>
-          <a class="card-link" href="#">Read more</a>
+          <div class="card-content">
+            <h3 class="card-title">Card Three</h3>
+            <p class="card-description">Add your content here.</p>
+            <a class="card-link" href="#">Read more</a>
+          </div>
         </div>
       </div>
     `;
     shadow.appendChild(template.content.cloneNode(true));
   }
   connectedCallback() {
+    this.applyLayout();
     for (let i = 1; i <= 3; i++) {
       this.setupCard(i);
+    }
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "layout" && oldValue !== newValue) {
+      this.applyLayout();
+    }
+  }
+  applyLayout() {
+    const container = this.shadowRoot.querySelector(".cards-container");
+    if (!container) return;
+    const layout = this.getAttribute("layout") || "horizontal";
+    if (layout === "vertical") {
+      container.classList.add("vertical");
+    } else {
+      container.classList.remove("vertical");
     }
   }
   setupCard(cardNum) {
@@ -171,7 +229,7 @@ var CardLayout = class extends HTMLElement {
     if (imageUrl && imageContainer) {
       const img = document.createElement("img");
       img.src = imageUrl;
-      img.alt = this.getAttribute(`${prefix}-title`) || `Card ${cardNum}`;
+      img.alt = this.getAttribute(`${prefix}-alt`) || this.getAttribute(`${prefix}-title`) || `Card ${cardNum}`;
       img.className = "card-image";
       imageContainer.replaceWith(img);
     }

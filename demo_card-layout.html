@@ -38,7 +38,8 @@
   <p>A three-card layout component for displaying featured content.</p>
 
   <div class="demo-section">
-    <h2>Basic Usage (with placeholder images)</h2>
+    <h2>Horizontal Layout (Default)</h2>
+    <p>Cards display side-by-side in a row. This is the default behavior.</p>
     <card-layout
       card1-title="Sherman Fairchild Library"
       card1-description="Study spaces, course reserves, and technology lending."
@@ -69,21 +70,67 @@
   </div>
 
   <div class="demo-section">
-    <h2>With Images</h2>
+    <h2>Vertical Layout</h2>
+    <p>Cards stack vertically with image on the left and content on the right. Great for listing items or priority content.</p>
+    <card-layout
+      layout="vertical"
+      card1-image="https://picsum.photos/seed/vert1/200/150"
+      card1-alt="Library study space"
+      card1-title="Study Spaces"
+      card1-description="Reserve individual study rooms, group collaboration spaces, or find a quiet corner in our reading rooms. All spaces include power outlets and WiFi."
+      card1-link="/spaces"
+      card1-link-text="Reserve a space"
+
+      card2-image="https://picsum.photos/seed/vert2/200/150"
+      card2-alt="Research consultation"
+      card2-title="Research Consultations"
+      card2-description="Schedule a one-on-one session with a subject librarian to get help with your research project, literature review, or citation management."
+      card2-link="/consult"
+      card2-link-text="Book appointment"
+
+      card3-image="https://picsum.photos/seed/vert3/200/150"
+      card3-alt="Interlibrary loan"
+      card3-title="Interlibrary Loan"
+      card3-description="Request books, articles, and other materials from libraries worldwide. Most requests are fulfilled within 3-5 business days."
+      card3-link="/ill"
+      card3-link-text="Make a request"
+    ></card-layout>
+
+    <pre><code>&lt;card-layout
+  layout="vertical"
+  card1-image="https://example.com/image1.jpg"
+  card1-alt="Library study space"
+  card1-title="Study Spaces"
+  card1-description="Reserve individual study rooms, group collaboration spaces..."
+  card1-link="/spaces"
+  card1-link-text="Reserve a space"
+
+  card2-image="https://example.com/image2.jpg"
+  card2-title="Research Consultations"
+  ...
+&gt;&lt;/card-layout&gt;</code></pre>
+  </div>
+
+  <div class="demo-section">
+    <h2>With Images and Alt Text</h2>
+    <p>Add images with custom alt text for accessibility.</p>
     <card-layout
       card1-image="https://picsum.photos/seed/lib1/400/200"
+      card1-alt="Interior view of a modern library with students studying"
       card1-title="Digital Collections"
       card1-description="Browse digitized rare books, photographs, and manuscripts."
       card1-link="https://library.caltech.edu/archives/collections"
       card1-link-text="Explore collections"
 
       card2-image="https://picsum.photos/seed/lib2/400/200"
+      card2-alt="Librarian presenting to a group of researchers"
       card2-title="Workshops & Events"
       card2-description="Join us for research skills workshops and special events."
       card2-link="https://library.caltech.edu/events"
       card2-link-text="View calendar"
 
       card3-image="https://picsum.photos/seed/lib3/400/200"
+      card3-alt="Stack of textbooks and course materials"
       card3-title="Course Reserves"
       card3-description="Access textbooks and materials for your courses."
       card3-link="https://library.caltech.edu/borrow/reserves"
@@ -92,18 +139,21 @@
 
     <pre><code>&lt;card-layout
   card1-image="https://example.com/image1.jpg"
+  card1-alt="Interior view of a modern library with students studying"
   card1-title="Digital Collections"
   card1-description="Browse digitized rare books, photographs, and manuscripts."
   card1-link="https://library.caltech.edu/archives/collections"
   card1-link-text="Explore collections"
 
   card2-image="https://example.com/image2.jpg"
+  card2-alt="Librarian presenting to a group of researchers"
   card2-title="Workshops &amp; Events"
   card2-description="Join us for research skills workshops and special events."
   card2-link="https://library.caltech.edu/events"
   card2-link-text="View calendar"
 
   card3-image="https://example.com/image3.jpg"
+  card3-alt="Stack of textbooks and course materials"
   card3-title="Course Reserves"
   card3-description="Access textbooks and materials for your courses."
   card3-link="https://library.caltech.edu/borrow/reserves"
@@ -123,9 +173,19 @@
       </thead>
       <tbody>
         <tr>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>layout</code></td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Card arrangement: "horizontal" or "vertical"</td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">"horizontal"</td>
+        </tr>
+        <tr>
           <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-image</code></td>
           <td style="padding: 12px; border-bottom: 1px solid #eee;">URL for the card image</td>
           <td style="padding: 12px; border-bottom: 1px solid #eee;">Placeholder shown</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-alt</code></td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Alt text for the card image (accessibility)</td>
+          <td style="padding: 12px; border-bottom: 1px solid #eee;">Uses card title</td>
         </tr>
         <tr>
           <td style="padding: 12px; border-bottom: 1px solid #eee;"><code>card[1-3]-title</code></td>

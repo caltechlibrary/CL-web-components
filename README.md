@@ -6,9 +6,6 @@ CL-web-components provides a collection of Web Components used by Caltech Librar
 
 The following are the components currently provided.
 
-`card-layout`
-: This component provides a customizable three card layout for content presentation.
-
 `footer-global`
 : This component provides a standard footer with detailed information about the library
 
@@ -40,6 +37,7 @@ This release adds a new &#x60;&lt;card-layout&gt;&#x60; component for displaying
 
 - Doiel, R. S.
 - Smith, Twila
+
 
 
 ### Maintainers
