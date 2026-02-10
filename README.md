@@ -42,7 +42,6 @@ This release adds a new &#x60;&lt;card-layout&gt;&#x60; component for displaying
 - Smith, Twila
 
 
-
 ### Maintainers
 
 - Doiel, R. S.
