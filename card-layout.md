@@ -7,6 +7,7 @@ A three-card layout component for displaying featured content with images, title
 ## Key Features
 
 - **Fixed Three-Card Layout**: Displays exactly three cards in a responsive flexbox row
+- **Horizontal or Vertical Layout**: Choose between side-by-side or stacked card arrangement
 - **Attribute-Based Content**: Configure each card via simple HTML attributes
 - **Responsive Design**: Cards stack automatically on smaller screens
 - **Encapsulated Styles**: Shadow DOM prevents style conflicts with your page
@@ -56,9 +57,50 @@ At minimum, provide a title and description for each card:
 
 When no image is provided, a placeholder is displayed.
 
+## Layout Options
+
+By default, cards display horizontally in a row. Use the `layout` attribute to switch to a vertical stacked layout:
+
+```html
+<!-- Horizontal layout (default) -->
+<card-layout
+  card1-title="Card One"
+  card1-description="First card."
+  card2-title="Card Two"
+  card2-description="Second card."
+  card3-title="Card Three"
+  card3-description="Third card."
+></card-layout>
+
+<!-- Vertical layout (image left, content right) -->
+<card-layout
+  layout="vertical"
+  card1-image="https://example.com/image1.jpg"
+  card1-title="Card One"
+  card1-description="First card description here."
+  card1-link="/page1"
+  card2-image="https://example.com/image2.jpg"
+  card2-title="Card Two"
+  card2-description="Second card description here."
+  card2-link="/page2"
+  card3-image="https://example.com/image3.jpg"
+  card3-title="Card Three"
+  card3-description="Third card description here."
+  card3-link="/page3"
+></card-layout>
+```
+
+The vertical layout displays cards stacked on top of each other, with each card showing the image on the left and the title, description, and link on the right. This is useful for listing items or displaying priority content.
+
 ## Adding Images
 
-Add images to each card using the `card[1-3]-image` attributes:
+Add images to each card using the `card[1-3]-image` attributes. Images are automatically scaled and cropped to fit the card layout, so you don't need exact dimensions.
+
+**Image sizing notes:**
+- Images are scaled using `object-fit: cover`, which crops to fit while maintaining aspect ratio
+- For horizontal layout, use images at least 400px wide
+- For vertical layout, images display at 120px × 100px, so 200px+ wide works well
+- Landscape orientation recommended; keep important content centered as edges may be cropped
 
 ```html
 <card-layout
@@ -76,6 +118,32 @@ Add images to each card using the `card[1-3]-image` attributes:
   card3-title="Course Reserves"
   card3-description="Access textbooks and materials for your courses."
   card3-link="https://library.caltech.edu/borrow/reserves"
+></card-layout>
+```
+
+### Image Alt Text
+
+For accessibility, you can provide custom alt text for each image using `card[1-3]-alt`. If not specified, the card title is used as the alt text.
+
+```html
+<card-layout
+  card1-image="https://example.com/library-interior.jpg"
+  card1-alt="Students studying at tables in the Sherman Fairchild Library reading room"
+  card1-title="Study Spaces"
+  card1-description="Find quiet study areas and group collaboration rooms."
+  card1-link="/spaces"
+
+  card2-image="https://example.com/archives-photo.jpg"
+  card2-alt="Historical photograph of Caltech's Throop Hall circa 1920"
+  card2-title="Caltech Archives"
+  card2-description="Explore Caltech's rich history."
+  card2-link="/archives"
+
+  card3-image="https://example.com/workshop.jpg"
+  card3-alt="Librarian presenting research tools to a group of graduate students"
+  card3-title="Workshops"
+  card3-description="Learn new research skills."
+  card3-link="/workshops"
 ></card-layout>
 ```
 
@@ -150,7 +218,9 @@ Here's a fully configured card layout using all available options:
 
 | Attribute | Description | Default |
 |-----------|-------------|---------|
+| `layout` | Card arrangement: `horizontal` or `vertical` | `horizontal` |
 | `card[1-3]-image` | URL for the card image | Placeholder shown |
+| `card[1-3]-alt` | Alt text for the card image (for accessibility) | Uses card title |
 | `card[1-3]-title` | Card heading text | "Card One/Two/Three" |
 | `card[1-3]-description` | Brief description text | "Add your content here." |
 | `card[1-3]-link` | URL for the link | Link hidden if not set |
@@ -160,7 +230,7 @@ Replace `[1-3]` with the card number (1, 2, or 3).
 
 ## Responsive Behavior
 
-- **Desktop**: Cards display in a horizontal row with equal widths
-- **Mobile** (< 600px): Cards stack vertically, each taking full width
+- **Horizontal layout (default)**: Cards display side-by-side in a row on desktop, stacking vertically on mobile (< 600px). Each card shows the image above the content.
+- **Vertical layout**: Cards stack vertically with image on the left and content on the right. Each card spans the full width of the container.
 
-The component handles this automatically with no additional configuration needed.
+The component handles responsive behavior automatically with no additional configuration needed.
