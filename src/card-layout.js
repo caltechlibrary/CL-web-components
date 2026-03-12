@@ -32,7 +32,7 @@ if (!document.getElementById('hind-fonts-card')) {
 
 export class CardLayout extends HTMLElement {
   static get observedAttributes() {
-    return ['layout'];
+    return ['layout', 'count'];
   }
 
   constructor() {
@@ -172,51 +172,43 @@ export class CardLayout extends HTMLElement {
         }
       </style>
 
-      <div class="cards-container">
-        <div class="card" id="card1">
-          <div class="card-image-placeholder">Image</div>
-          <div class="card-content">
-            <h3 class="card-title">Card One</h3>
-            <p class="card-description">Add your content here.</p>
-            <a class="card-link" href="#">Read more</a>
-          </div>
-        </div>
-
-        <div class="card" id="card2">
-          <div class="card-image-placeholder">Image</div>
-          <div class="card-content">
-            <h3 class="card-title">Card Two</h3>
-            <p class="card-description">Add your content here.</p>
-            <a class="card-link" href="#">Read more</a>
-          </div>
-        </div>
-
-        <div class="card" id="card3">
-          <div class="card-image-placeholder">Image</div>
-          <div class="card-content">
-            <h3 class="card-title">Card Three</h3>
-            <p class="card-description">Add your content here.</p>
-            <a class="card-link" href="#">Read more</a>
-          </div>
-        </div>
-      </div>
+      <div class="cards-container"></div>
     `;
     shadow.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
-    // Apply layout
     this.applyLayout();
-
-    // Process each of the 3 cards
-    for (let i = 1; i <= 3; i++) {
-      this.setupCard(i);
-    }
+    this.renderCards();
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'layout' && oldValue !== newValue) {
-      this.applyLayout();
+    if (oldValue === newValue) return;
+    if (name === 'layout') this.applyLayout();
+    if (name === 'count') this.renderCards();
+  }
+
+  renderCards() {
+    const container = this.shadowRoot.querySelector('.cards-container');
+    if (!container) return;
+
+    const count = parseInt(this.getAttribute('count'), 10) || 3;
+    container.innerHTML = '';
+
+    for (let i = 1; i <= count; i++) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.id = `card${i}`;
+      card.innerHTML = `
+        <div class="card-image-placeholder">Image</div>
+        <div class="card-content">
+          <h3 class="card-title">Card ${i}</h3>
+          <p class="card-description">Add your content here.</p>
+          <a class="card-link" href="#">Read more</a>
+        </div>
+      `;
+      container.appendChild(card);
+      this.setupCard(i);
     }
   }
 
