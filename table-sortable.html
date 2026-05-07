@@ -11,19 +11,20 @@
 <header>
 <a href="https://library.caltech.edu"><img src="https://media.library.caltech.edu/assets/caltechlibrary-logo.png" alt="Caltech Library logo"></a>
 </header>
+<a href="#main-content" class="visually-hidden">skip to main content</a>
 <nav>
 <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="index.html">README</a></li>
+    <li><a href="/">All Library Apps</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="LICENSE">LICENSE</a></li>
     <li><a href="INSTALL.html">INSTALL</a></li>
     <li><a href="user_manual.html">User Manual</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="search.html">Search</a></li>
-    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+    <!-- <li><a href="search.html">Search</a></li> -->
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">Code Repository</a></li>
 </ul>
 </nav>
-<section>
+<section id="main-content">
 <h1 id="table-sortable-web-component">Table Sortable Web Component</h1>
 <p>This web component wraps a standard HTML table. It displays the table
 and makes it sortable by the column headings and provides a search
@@ -33,9 +34,9 @@ filter element that operates on the table by column.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">University</th>
-<th style="text-align: left;">Graduation Year</th>
+<th style="text-align: left;" scope="col">Name</th>
+<th style="text-align: left;" scope="col">University</th>
+<th style="text-align: left;" scope="col">Graduation Year</th>
 </tr>
 </thead>
 <tbody>
