@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>CL-web-components</title>
+    <link rel="stylesheet" href="https://caltechlibrary.github.io/css/site.css">
+    <link rel="stylesheet" href="https://media.library.caltech.edu/cl-webcomponents/css/code-blocks.css">
+    <script type="module" src="https://media.library.caltech.edu/cl-webcomponents/copyToClipboard.js"></script>
+    <script type="module" src="https://media.library.caltech.edu/cl-webcomponents/footer-global.js"></script>
+</head>
+<body>
+<header>
+<a href="https://library.caltech.edu"><img src="https://media.library.caltech.edu/assets/caltechlibrary-logo.png" alt="Caltech Library logo"></a>
+</header>
+<nav>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="index.html">README</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="DEPLOYMENT.html">DEPLOYMENT</a></li>
+    <li><a href="user_manual.html">User Manual</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="https://github.com/caltechlibrary/CL-web-components">GitHub</a></li>
+</ul>
+</nav>
+<section>
+<h1 id="deployment-workflows">Deployment Workflows</h1>
+<p>This guide explains how to deploy <strong>CL-web-components</strong>
+depending on what changed.</p>
+<hr />
+<h1 id="prerequisites">Prerequisites</h1>
+<p>A <code>media.env</code> file must exist in the project root before
+deploying to S3.</p>
+<p>It must contain:</p>
+<pre><code>BUCKET_NAME
+BASE_URL
+DISTRIBUTION_ID</code></pre>
+<p>This file is included in gitignore and is <strong>not committed to
+git</strong>.</p>
+<hr />
+<h1 id="deploy-documentation-changes">Deploy Documentation Changes</h1>
+<p>Use this workflow when <strong>only documentation (<code>.md</code>)
+files have changed</strong>.</p>
+<h2 id="step-1.-convert-mardown-files-to-html-files">Step 1. Convert
+mardown files to html files</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> website</span></code></pre></div>
+<p>This command:</p>
+<ul>
+<li>Converts all <code>*.md</code> files to <code>*.html</code> using
+<strong>Pandoc</strong></li>
+<li>Rebuilds the <strong>Pagefind search index</strong></li>
+</ul>
+<h2 id="step-2.-save-and-push-your-working-branch">Step 2. Save and push
+your working branch</h2>
+<p>If you added <strong>new files</strong>, stage them first:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code></pre></div>
+<p>Then commit and push:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> save msg=<span class="st">&quot;your commit message&quot;</span></span></code></pre></div>
+<p><code>make save</code> uses <code>git commit -am</code> which only
+commits already-tracked files. New files must be staged with
+<code>git add</code> first.</p>
+<h2 id="step-3.-publish-html-files-to-github-pages">Step 3. Publish html
+files to GitHub Pages</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./publish.bash</span></span></code></pre></div>
+<p>This script will prompt you:</p>
+<pre><code>You&#39;re in main branch
+You need to pull in changes to the gh-pages branch to publish
+process Y/n</code></pre>
+<p>Enter <code>y</code> to proceed.</p>
+<p>It will:</p>
+<ul>
+<li>Merge your current branch into <code>gh-pages</code></li>
+<li>Push the update to GitHub Pages</li>
+<li>Switch you back to your working branch</li>
+</ul>
+<hr />
+<h1 id="deploy-updated-web-component-code">Deploy Updated Web Component
+Code</h1>
+<p>Use this workflow when <strong>component code in <code>src/</code>
+has changed</strong> and needs to be deployed to the CDN.</p>
+<h2 id="step-1.-build-compiled-javascript">Step 1. Build compiled
+JavaScript</h2>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> build</span></code></pre></div>
+<p>This command runs <code>deno task build</code> and bundles:</p>
+<ul>
+<li><code>src/*.js</code> &gt; matching root-level <code>.js</code>
+files</li>
+<li><code>mod.js</code> &gt; <code>cl-web-components.js</code> (combined
+build)</li>
+</ul>
+<h2 id="step-2.-preview-the-s3-upload-optional">Step 2. Preview the S3
+upload (optional)</h2>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./publish_to_s3.bash</span> dry-run</span></code></pre></div>
+<p>This shows which files will be uploaded without making changes.</p>
+<h2 id="step-3.-build-the-documentation-website">Step 3. Build the
+documentation website</h2>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> website</span></code></pre></div>
+<h2 id="step-4.-save-and-push-your-working-branch">Step 4. Save and push
+your working branch</h2>
+<p>If you added <strong>new files</strong>, stage them first:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code></pre></div>
+<p>Then commit and push:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> save msg=<span class="st">&quot;your commit message&quot;</span></span></code></pre></div>
+<blockquote>
+<p><code>make save</code> uses <code>git commit -am</code> which only
+commits already-tracked files. New files must be staged with
+<code>git add</code> first.</p>
+</blockquote>
+<h2 id="step-5.-deploy-to-s3-and-refresh-the-cdn">Step 5. Deploy to S3
+and refresh the CDN</h2>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./publish_to_s3.bash</span></span></code></pre></div>
+<p>This script:</p>
+<ul>
+<li>Uploads root <code>*.js</code> and <code>css/*.css</code> files</li>
+<li>Places them under <code>/cl-webcomponents/</code> in the S3
+bucket</li>
+<li>Creates a <strong>CloudFront cache invalidation</strong> so the CDN
+serves the new files</li>
+</ul>
+<h2 id="step-6.-publish-html-files-to-github-pages">Step 6. Publish html
+files to GitHub Pages</h2>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./publish.bash</span></span></code></pre></div>
+<p>This script will prompt you:</p>
+<pre><code>You&#39;re in main branch
+You need to pull in changes to the gh-pages branch to publish
+process Y/n</code></pre>
+<p>Enter <code>y</code> to proceed.</p>
+<hr />
+<h1 id="deploy-a-new-release">Deploy a New Release</h1>
+<p>Use this workflow when creating a <strong>versioned GitHub
+release</strong>.</p>
+<h2 id="step-1.-update-release-metadata">Step 1. Update release
+metadata</h2>
+<p>Edit <code>codemeta.json</code> and update:</p>
+<ul>
+<li>Version number</li>
+<li>Release notes</li>
+</ul>
+<h2 id="step-2.-build-compiled-output">Step 2. Build compiled
+output</h2>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> build</span></code></pre></div>
+<p>This command also regenerates several files from
+<code>codemeta.json</code>:</p>
+<ul>
+<li><code>README.md</code></li>
+<li><code>version.js</code></li>
+<li><code>CITATION.cff</code></li>
+<li><code>about.md</code></li>
+</ul>
+<h2 id="step-3.-build-the-distribution-bundle">Step 3. Build the
+distribution bundle</h2>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dist</span></code></pre></div>
+<p>This command:</p>
+<ul>
+<li>Bundles files into <code>dist/</code></li>
+<li>Copies documentation files:
+<ul>
+<li><code>INSTALL.md</code></li>
+<li><code>README.md</code></li>
+<li><code>about.md</code></li>
+<li><code>codemeta.json</code></li>
+<li><code>CITATION.cff</code></li>
+<li><code>LICENSE</code></li>
+</ul></li>
+<li>Creates a release archive:</li>
+</ul>
+<pre><code>cl-web-components-&lt;version&gt;.zip</code></pre>
+<h2 id="step-4.-save-and-push-your-working-branch-1">Step 4. Save and
+push your working branch</h2>
+<p>If you added <strong>new files</strong>, stage them first:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code></pre></div>
+<p>Then commit and push:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> save msg=<span class="st">&quot;your commit message&quot;</span></span></code></pre></div>
+<blockquote>
+<p><code>make save</code> uses <code>git commit -am</code> which only
+commits already-tracked files. New files must be staged with
+<code>git add</code> first.</p>
+</blockquote>
+<h2 id="step-5.-create-a-draft-github-release">Step 5. Create a draft
+GitHub release</h2>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./release.bash</span></span></code></pre></div>
+<p>This script:</p>
+<ul>
+<li>Reads the version and release notes from
+<code>codemeta.json</code></li>
+<li>Commits changes</li>
+<li>Creates a <strong>draft GitHub release</strong> using the
+<code>gh</code> CLI</li>
+<li>Uploads the <code>.zip</code> archive</li>
+</ul>
+<h2 id="step-6.-publish-the-release">Step 6. Publish the release</h2>
+<p>Open the GitHub releases page and publish the draft:</p>
+<p>https://github.com/caltechlibrary/CL-web-components/releases</p>
+<hr />
+<h1 id="command-reference">Command Reference</h1>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compile source code</td>
+<td><code>make build</code></td>
+</tr>
+<tr>
+<td>Build documentation website</td>
+<td><code>make website</code></td>
+</tr>
+<tr>
+<td>Save and push working branch</td>
+<td><code>make save msg="your message"</code></td>
+</tr>
+<tr>
+<td>Publish docs to GitHub Pages</td>
+<td><code>./publish.bash</code></td>
+</tr>
+<tr>
+<td>Preview S3 deployment</td>
+<td><code>./publish_to_s3.bash dry-run</code></td>
+</tr>
+<tr>
+<td>Deploy JS to S3 and invalidate CDN cache</td>
+<td><code>./publish_to_s3.bash</code></td>
+</tr>
+<tr>
+<td>Invalidate CDN cache only</td>
+<td><code>./invalidate_cdn.bash</code></td>
+</tr>
+<tr>
+<td>Build distribution bundle</td>
+<td><code>make dist</code></td>
+</tr>
+<tr>
+<td>Create GitHub release</td>
+<td><code>./release.bash</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section>
+<footer-global></footer-global>
+</body>
+</html>

@@ -1,7 +1,20 @@
+# Temporary and backup files
 *.tmp
 *.bak
 *.swp
 *.env
-bin
-dist
-scratch
+
+# Build and output directories
+bin/
+dist/
+scratch/
+
+# macOS system files
+.DS_Store
+
+# Bash Scripts
+server.sh
+
+# specific files
+
+demo_footer_presets.html
