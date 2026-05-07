@@ -62,20 +62,20 @@ About this software
 
 ## CL-web-components 0.0.16
 
-This release adds a new &#x60;&lt;card-layout&gt;&#x60; component for displaying three-card layouts with images, titles, descriptions, and links. The component is responsive and uses attributes to set the content values.
+This release adds a new `<card-layout>` component for displaying three-card layouts with images, titles, descriptions, and links. The component is responsive and uses attributes to set the content values.
 
-### Authors
+## Authors
 
-- R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
-- Twila Smith, <https://orcid.org/0009-0003-7975-1922>
-
-
+- [R. S. Doiel](https://orcid.org/0000-0003-0900-6903)
+- [Twila Smith](https://orcid.org/0009-0003-7975-1922)
 
 
-### Maintainers
 
-- R. S. Doiel, <https://orcid.org/0000-0003-0900-6903>
-- Twila Smith, <https://orcid.org/0009-0003-7975-1922>
+
+## Maintainers
+
+- [R. S. Doiel](https://orcid.org/0000-0003-0900-6903)
+- [Twila Smith](https://orcid.org/0009-0003-7975-1922)
 
 
 CL-web-components provides a collection of Web Components used by Caltech Library across sites and projects.
@@ -100,11 +100,11 @@ The following are the components currently provided.
 &#x60;table-sortable&#x60;
 : This is a component that takes an innerHTML containing table. It makes the table sortable by the column headings and provides a filter input that lets you enter text to filter by and pick a column to filter on.
 
-- License: <https://caltechlibrary.github.io/CL-web-components/LICENSE>
-- GitHub: <https://github.com/caltechlibrary/CL-web-components>
-- Issues: <https://github.com/caltechlibrary/CL-web-components/issues>
+- [License](https://caltechlibrary.github.io/CL-web-components/LICENSE)
+- [Code Repository](https://github.com/caltechlibrary/CL-web-components)
+  - [Issue Tracker](https://github.com/caltechlibrary/CL-web-components/issues)
 
-### Programming languages
+## Programming languages
 
 - JavaScript
 - HTML
@@ -113,15 +113,14 @@ The following are the components currently provided.
 
 
 
-### Software Requirements
+## Software Requirements
 
-- Deno &gt;&#x3D; 2.4.3 (for bundling dependencies)
+- Deno >= 2.7 (for bundling dependencies)
 
 
-### Software Suggestions
+## Software Suggestions
 
-- CMTools &gt;&#x3D; 0.0.40
-- Pandoc &gt;&#x3D; 3.1
-- PageFind &gt;&#x3D; 1.3
+- CMTools >= 0.0.43
+- Pandoc >= 3.9
 
 
