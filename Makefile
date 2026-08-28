@@ -35,7 +35,7 @@ ifeq ($(OS), Windows)
 	EXT = .exe
 endif
 
-build: CITATION.cff README.md about.md version.js
+build: CITATION.cff README.md version.js
 	deno task build
 
 hash: .FORCE
@@ -49,9 +49,6 @@ version.js: .FORCE
 	
 CITATION.cff: codemeta.json
 	cmt codemeta.json CITATION.cff
-
-about.md: codemeta.json $(PROGRAMS)
-	cmt codemeta.json about.md
 
 website: .FORCE
 	make -f website.mak
@@ -78,7 +75,6 @@ dist: build .FORCE
 	deno task release
 	cp INSTALL.md dist/
 	cp LICENSE dist/
-	cp about.md dist/
 	cp README.md dist/
 	cp codemeta.json dist/
 	cp CITATION.cff dist/
