@@ -67,8 +67,6 @@ refresh:
 	git fetch origin
 	git pull origin $(BRANCH)
 
-publish: website .FORCE
-	./publish.bash
 
 clean:
 	-rm *.bak >/dev/null
