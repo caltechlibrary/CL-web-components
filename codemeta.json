@@ -49,7 +49,7 @@
     "Web Components"
   ],
   "name": "CL-web-components",
-  "license": "https://caltechlibrary.github.io/CL-web-components/LICENSE",
+  "license": "https://software.library.caltech.edu/CL-web-components/LICENSE",
   "programmingLanguage": [
     "JavaScript",
     "HTML",

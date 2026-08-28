@@ -64,7 +64,7 @@ HTML5-compatible web browser**
 
 - [Download](https://github.com/caltechlibrary/CL-web-components/releases)
 - [Getting Help, Reporting bugs](https://github.com/caltechlibrary/CL-web-components/issues)
-- [LICENSE](https://caltechlibrary.github.io/CL-web-components/LICENSE)
+- [LICENSE](https://software.library.caltech.edu/CL-web-components/LICENSE)
 - [Installation](INSTALL.md)
 - [About](about.md)
 

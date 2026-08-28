@@ -1,7 +1,7 @@
 
 # CL-web-components
 
-The CL-web-components repository provide web components for Library, Archive and Museum related projects implemented at Caltech Library. They are available for import from <https://caltechlibrary.github.io/CL-web-components> using the following import statement, `import * as clwc from "https://caltechlibrary.github.io/CL-web-compents/mod.js".
+The CL-web-components repository provide web components for Library, Archive and Museum related projects implemented at Caltech Library. They are available for import from <https://software.library.caltech.edu/CL-web-components> using the following import statement, `import * as clwc from "https://software.library.caltech.edu/CL-web-compents/mod.js".
 
 It recommended that you download the Zip file containing the individual components as well as the bundled components from <https://github.com/caltechlibrary/CL-web-components/releases>. Each component is bundled individually as well as all together in the file `cl-web-components.js`.
 
