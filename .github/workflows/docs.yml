@@ -61,8 +61,10 @@ jobs:
             css
             src
 
-      # No index-site: search.md and the Pagefind index were removed, and the
-      # Search link is commented out of the nav, so there is no page to index.
+      # Pagefind is pinned in the shared action. 1.5.2 is current; the
+      # accessibility improvements in 1.5.0 come from its new Component UI,
+      # which is a separate migration and does not require a version change.
+      - uses: caltechlibrary/workflows/.github/actions/index-site@v1
 
       - uses: caltechlibrary/workflows/.github/actions/deploy-site@v1
 
