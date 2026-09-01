@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "build": "deno bundle --platform browser --outdir=./ src/*.js ; deno bundle --platform browser mod.js --output=cl-web-components.js",
+    "build": "deno bundle --platform browser --outdir=./dist src/*.js ; deno bundle --platform browser --output=dist/cl-web-components.js mod.js",
    "release": "deno bundle --platform=browser --outdir=./dist src/*.js ; deno bundle --platform=browser --output=dist/cl-web-components.js mod.js"
   },
   "imports": {

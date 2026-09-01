@@ -9,6 +9,9 @@ bin/
 dist/
 scratch/
 
+# The site is assembled by CI and uploaded as an artifact, never committed.
+/_site/
+
 # macOS system files
 .DS_Store
 
