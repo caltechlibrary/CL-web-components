@@ -25,54 +25,42 @@ This file is included in gitignore and is **not committed to git**.
   
 Use this workflow when **only documentation (`.md`) files have changed**.
 
-## Step 1. Convert mardown files to html files
+## Step 1. Edit and push
 
-```bash
-make website
-```
-
-This command:
-
-- Converts all `*.md` files to `*.html` using **Pandoc**
-- Rebuilds the **Pagefind search index**
-
-## Step 2. Save and push your working branch
-
-If you added **new files**, stage them first:
+Documentation sources live in `docs/`. Edit the Markdown, then commit and push:
 
 ```bash
 git add <filename>
+git commit -m "your commit message"
+git push
 ```
 
-Then commit and push:
+There is no HTML to build by hand. The **Docs** workflow renders the site with
+Pandoc and publishes it to GitHub Pages on every push to `main`. The build
+lives in [caltechlibrary/workflows](https://github.com/caltechlibrary/workflows),
+so a fix there reaches this site on the next run. The Pandoc template is this
+repository's own, in `pandoc/`; the Lua filters come from the shared repository.
+
+## Step 2. Confirm the deployment
 
 ```bash
-make save msg="your commit message"
+gh run watch
 ```
 
-`make save` uses `git commit -am` which only commits already-tracked files. New files must be staged with `git add` first.
+The site updates at <https://software.library.caltech.edu/CL-web-components/>
+when the workflow completes. Pull requests build the site but do not publish
+it, so a change that breaks the docs fails in review rather than after merge.
 
-## Step 3. Publish html files to GitHub Pages
+### Previewing locally
+
+Clone the shared repository once and put its `bin/` on your `PATH`, then:
 
 ```bash
-./publish.bash
+build-pandoc.sh --docs-dir docs --extra-source "*.md" --template pandoc/page.tmpl
+open _site/index.html
 ```
 
-This script will prompt you:
-
-```
-You're in main branch
-You need to pull in changes to the gh-pages branch to publish
-process Y/n
-```
-
-Enter `y` to proceed. 
-
-It will:
-
-- Merge your current branch into `gh-pages`
-- Push the update to GitHub Pages
-- Switch you back to your working branch
+That is the same script CI runs.
 
 ---
   
@@ -100,12 +88,6 @@ This command runs `deno task build` and bundles:
 ```
 
 This shows which files will be uploaded without making changes.
-
-## Step 3. Build the documentation website
-
-```bash
-make website
-```
 
 ## Step 4. Save and push your working branch
 
@@ -135,21 +117,7 @@ This script:
 - Places them under `/cl-webcomponents/` in the S3 bucket
 - Creates a **CloudFront cache invalidation** so the CDN serves the new files
 
-## Step 6. Publish html files to GitHub Pages
-
-```bash
-./publish.bash
-```
-
-This script will prompt you:
-
-```
-You're in main branch
-You need to pull in changes to the gh-pages branch to publish
-process Y/n
-```
-
-Enter `y` to proceed.
+The documentation site redeploys on its own when the push lands on `main`.
 
 ---
    
@@ -241,9 +209,8 @@ https://github.com/caltechlibrary/CL-web-components/releases
 | Task | Command |
 |-----|---------|
 | Compile source code | `make build` |
-| Build documentation website | `make website` |
 | Save and push working branch | `make save msg="your message"` |
-| Publish docs to GitHub Pages | `./publish.bash` |
+| Deploy the docs site | Automatic on push to `main` |
 | Preview S3 deployment | `./publish_to_s3.bash dry-run` |
 | Deploy JS to S3 and invalidate CDN cache | `./publish_to_s3.bash` |
 | Invalidate CDN cache only | `./invalidate_cdn.bash` |

@@ -1,0 +1,79 @@
+name: Docs
+
+# Builds the documentation site and publishes it to GitHub Pages.
+#
+# Replaces static.yml, which uploaded the entire repository as the site. That
+# published the Makefile, codemeta.json, deno.json, page.tmpl and everything
+# else in the root -- all of them fetchable from software.library.caltech.edu
+# today -- and it served whatever HTML happened to be committed rather than
+# rendering the Markdown.
+#
+# The build itself lives in caltechlibrary/workflows, so a fix there reaches
+# this site -- and every other Caltech Library site -- on the next run, with
+# nothing written back into this repository.
+#
+# This calls the build action rather than the docs-pandoc.yml reusable
+# workflow, because the site publishes compiled component bundles and a
+# reusable workflow gives the caller nowhere to add a Deno setup step.
+#
+# The Pandoc Lua filters come from the shared repository; both are identical to
+# the copies that used to live in this root.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Bundle components
+        run: deno task build
+
+      - uses: caltechlibrary/workflows/.github/actions/build-pandoc@v1
+        with:
+          docs-dir: docs
+          # Markdown in the root is published too. cmt writes README.md and
+          # INSTALL.md there and can only write to the root.
+          extra-sources: "*.md"
+          template: pandoc/page.tmpl
+          include: |
+            dist/*.js
+            mod.js
+            LICENSE
+            css
+            src
+
+      # No index-site: search.md and the Pagefind index were removed, and the
+      # Search link is commented out of the nav, so there is no page to index.
+
+      - uses: caltechlibrary/workflows/.github/actions/deploy-site@v1
+
+  deploy:
+    needs: build
+    # Pull requests build but do not publish.
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
