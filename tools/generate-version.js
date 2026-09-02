@@ -12,6 +12,9 @@
 //   licenseText  LICENSE.txt, or LICENSE
 //
 // Run via `deno task generate-version`; `deno task build` depends on it.
+//
+// This script is vendored, not shared. See
+// docs/decisions/0004-vendor-the-version-generator-for-now.md
 
 const OUT = "src/version.js";
 
