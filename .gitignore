@@ -9,6 +9,12 @@ bin/
 dist/
 scratch/
 
+# Generated from codemeta.json by `deno task generate-version`, which
+# `deno task build` runs first. It was tracked previously, which is why the
+# CDN bundle reported 0.0.12 while codemeta.json said 0.0.16 -- nothing
+# regenerated it.
+/src/version.js
+
 # The site is assembled by CI and uploaded as an artifact, never committed.
 /_site/
 
