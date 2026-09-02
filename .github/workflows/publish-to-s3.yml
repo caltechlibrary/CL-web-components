@@ -27,7 +27,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Report what would happen without uploading or invalidating"
+        description: "Dry Run: Report what would be uploaded and invalidated, and change nothing."
         type: boolean
         default: true
 
