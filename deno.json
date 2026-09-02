@@ -1,7 +1,8 @@
 {
   "tasks": {
     "generate-version": "deno run --allow-read --allow-write --allow-run tools/generate-version.js",
-    "build": "deno task generate-version && deno bundle --platform browser --outdir=./dist src/*.js ; deno bundle --platform browser --output=dist/cl-web-components.js mod.js",
+    "copy-css": "mkdir -p dist && cp src/*.css dist/",
+    "build": "deno task generate-version && deno bundle --platform browser --outdir=./dist src/*.js ; deno bundle --platform browser --output=dist/cl-web-components.js mod.js ; deno task copy-css",
     "release": "deno task build"
   },
   "imports": {

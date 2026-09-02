@@ -88,6 +88,15 @@ This is how the standard textarea for that would look.
 - **style**: You can customize the style by providing color and font CSS. 
 - **css-href**: This will allow you to fully customize the component by providing a replacement of the default styling.
 
+The component's own stylesheet is published alongside the component, so you can
+start from it rather than from nothing:
+
+```
+https://media.library.caltech.edu/cl-webcomponents/textarea-agent-list.css
+```
+
+It is built from `src/textarea-agent-list.css`.
+
 ### Conclusion
 
 The `TextareaAgentList` component simplifies the creation of metadata applications that contain lists of people and organizations.
