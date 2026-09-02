@@ -56,9 +56,9 @@ jobs:
           template: pandoc/page.tmpl
           include: |
             dist/*.js
+            dist/*.css
             mod.js
             LICENSE
-            css
             src
 
       # Pagefind is pinned in the shared action. 1.5.2 is current; the
