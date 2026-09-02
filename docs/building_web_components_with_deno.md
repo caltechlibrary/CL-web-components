@@ -28,14 +28,6 @@ make website
 web release
 ~~~
 
-On Windows you can use the related PowerShell scripts that replace make. Example,
-
-~~~pwsh
-make.ps1 build
-make.ps1 website
-make.ps1 release
-~~~
-
 The "release" option makes the zip files needed for a GitHub release. If you are on macOS or Linux you can run the `./replace.bash` script to perform those chores if you have `gh` installed.
 
-NOTE: The bundled JavaScript files are in the root directory. The source are in the `src` directory. If you need to fix something, add something, etc. It should go in the `src/` directory. You may need to either add or edit the tasks in `deno.json`, `Makefile` or `make.ps1`.
+NOTE: The bundled JavaScript files are in the root directory. The source are in the `src` directory. If you need to fix something, add something, etc. It should go in the `src/` directory. You may need to add or edit the tasks in `deno.json`.
