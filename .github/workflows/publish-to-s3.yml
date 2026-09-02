@@ -1,0 +1,74 @@
+name: Publish components to S3
+
+# Uploads the built component bundles and stylesheets to the S3 bucket named by
+# the AWS_BUCKET_NAME secret, then invalidates the CloudFront paths for this
+# project so the change is visible.
+#
+# The bucket is a secret so it is not written down here. public-base-url below
+# is not the bucket: it is where a browser reaches the files, which is public
+# already. The two happen to resemble each other today and need not on the next
+# bucket, so do not infer one from the other.
+#
+# Replaces publish_to_s3.bash and invalidate_cdn.bash, which needed an
+# uncommitted media.env to exist on someone's machine and invalidated /* rather
+# than this project's own prefix.
+#
+# Authentication is OIDC, so no long-lived AWS keys exist anywhere. The role's
+# trust policy names this repository's subject claim:
+#
+#   repo:caltechlibrary@15038637/CL-web-components@943425900:ref:refs/heads/main
+#
+# Run it with dry_run first. It reports what would be uploaded and invalidated
+# without changing anything.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report what would happen without uploading or invalidating"
+        type: boolean
+        default: true
+
+run-name: >-
+  Publish to S3${{ github.event_name == 'workflow_dispatch' && inputs.dry_run
+  && ' (dry run)' || '' }}
+
+permissions:
+  contents: read
+  # Required for OIDC. A composite action cannot declare this.
+  id-token: write
+
+concurrency:
+  group: publish-to-s3
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Build the bundles
+        run: deno task build
+
+      - uses: caltechlibrary/workflows/.github/actions/publish-to-s3@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_ARN }}
+          bucket: ${{ secrets.AWS_BUCKET_NAME }}
+          distribution-id: ${{ secrets.AWS_DISTRIBUTION_ID }}
+          prefix: cl-webcomponents
+          public-base-url: https://media.library.caltech.edu/cl-webcomponents/
+          # The bucket requires per-object ACLs. Without this, objects
+          # upload successfully and are unreadable.
+          acl: public-read
+          # Just dist. Component stylesheets build into it alongside the
+          # bundles, and the docs theme's CSS is no longer this project's
+          # to publish.
+          sources: dist
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
