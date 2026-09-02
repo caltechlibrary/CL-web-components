@@ -19,10 +19,10 @@ DISTRIBUTION_ID
 This file is included in gitignore and is **not committed to git**.
 
 ---
-  
+
 # Deploy Documentation Changes
 
-  
+
 Use this workflow when **only documentation (`.md`) files have changed**.
 
 ## Step 1. Edit and push
@@ -63,65 +63,39 @@ open _site/index.html
 That is the same script CI runs.
 
 ---
-  
+
 # Deploy Updated Web Component Code
-  
-  
-Use this workflow when **component code in `src/` has changed** and needs to be deployed to the CDN.
 
+Use this workflow when **component code in `src/` has changed**.
 
-## Step 1. Build compiled JavaScript
+## Step 1. Edit, commit and open a pull request
 
-```bash
-make build
-```
+Sources live in `src/`. Nothing compiled is committed — the bundles in `dist/`
+are built by CI and gitignored, so there is no build step to run before
+pushing.
 
-This command runs `deno task build` and bundles:
+## Step 2. Merge
 
-- `src/*.js` > matching root-level `.js` files
-- `mod.js` > `cl-web-components.js` (combined build)
+Once the pull request has been merged, the documentation site rebuilds on its
+own and serves the new bundles at
+<https://software.library.caltech.edu/CL-web-components/>. That happens within
+a couple of minutes and needs nothing from you.
 
-## Step 2. Preview the S3 upload (optional)
+## Step 3. Publish to the CDN
 
-```bash
-./publish_to_s3.bash dry-run
-```
+The CDN copy at <https://media.library.caltech.edu/cl-webcomponents/> updates
+when a **release is published**, not on every merge. That is deliberate:
+consumers loading from the CDN get a version someone chose to ship.
 
-This shows which files will be uploaded without making changes.
+To publish outside a release, run the **Publish to S3** workflow manually from
+the Actions tab. It defaults to a dry run, which reports exactly what would be
+uploaded and invalidated without changing anything. Uncheck `dry_run` to
+publish for real.
 
-## Step 4. Save and push your working branch
+Credentials are OIDC — no AWS keys exist in the repository or on anyone's
+machine.
 
-If you added **new files**, stage them first:
-
-```bash
-git add <filename>
-```
-
-Then commit and push:
-
-```bash
-make save msg="your commit message"
-```
-
-> `make save` uses `git commit -am` which only commits already-tracked files. New files must be staged with `git add` first.
-
-## Step 5. Deploy to S3 and refresh the CDN
-
-```bash
-./publish_to_s3.bash
-```
-
-This script:
-
-- Uploads root `*.js` and `css/*.css` files
-- Places them under `/cl-webcomponents/` in the S3 bucket
-- Creates a **CloudFront cache invalidation** so the CDN serves the new files
-
-The documentation site redeploys on its own when the push lands on `main`.
-
----
-   
-# Deploy a New Release  
+# Deploy a New Release
 
 Use this workflow when creating a **versioned GitHub release**.
 
@@ -208,12 +182,11 @@ https://github.com/caltechlibrary/CL-web-components/releases
 
 | Task | Command |
 |-----|---------|
-| Compile source code | `make build` |
+| Compile source code | `deno task build` |
 | Save and push working branch | `make save msg="your message"` |
 | Deploy the docs site | Automatic on push to `main` |
-| Preview S3 deployment | `./publish_to_s3.bash dry-run` |
-| Deploy JS to S3 and invalidate CDN cache | `./publish_to_s3.bash` |
-| Invalidate CDN cache only | `./invalidate_cdn.bash` |
+| Preview the S3 upload | **Publish to S3** workflow, `dry_run` checked |
+| Publish to S3 and invalidate the CDN | Automatic when a release is published |
 | Build distribution bundle | `make dist` |
 | Create GitHub release | `./release.bash` |
 
