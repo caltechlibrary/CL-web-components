@@ -1,0 +1,98 @@
+name: Release
+
+# Cuts a release. The human does two things: starts this with a bump and a
+# sentence, then publishes the draft it produces.
+#
+# The order matters. codemeta.json is the source of truth for the version, so
+# it is bumped first; CITATION.cff and README.md are regenerated from it; and
+# the tag lands on the commit that has those regenerated files.
+#
+# Run it with Dry Run first. It builds and packages for real and reports what
+# would be released, without committing, tagging or creating anything.
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: |
+          Which part of the version to increment.
+          *Major:* backward-incompatible changes.
+          *Minor:* new features or behaviors.
+          *Patch:* bug fix or internal-facing change.
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+        required: true
+      summary:
+        description: "One line describing this release. Appears above the generated notes."
+        type: string
+        required: true
+      dry_run:
+        description: "Dry Run: Build and package, but commit, tag and create nothing."
+        type: boolean
+        default: true
+
+run-name: >-
+  Release (${{ inputs.bump }})${{ inputs.dry_run && ' — dry run' || '' }}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  # Pinned so a CMTools release cannot change what this repository generates.
+  CMT_VERSION: 0.0.46
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install cmt
+        run: |
+          curl -fsSL -o /tmp/cmt.zip \
+            "https://github.com/caltechlibrary/CMTools/releases/download/v${CMT_VERSION}/CMTools-v${CMT_VERSION}-Linux-x86_64.zip"
+          unzip -q /tmp/cmt.zip -d /tmp/cmt
+          CMT="$(find /tmp/cmt -type f -name cmt -perm -u+x | head -n 1)"
+          [ -n "$CMT" ] || { echo "cmt not found in the release archive" >&2; exit 1; }
+          install -m 0755 "$CMT" /usr/local/bin/cmt
+          cmt --version
+
+      - name: Bump the version
+        id: bump
+        run: echo "version=$(deno task --quiet bump '${{ inputs.bump }}')" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate what codemeta.json feeds
+        run: |
+          cmt codemeta.json CITATION.cff
+          cmt codemeta.json README.md
+
+      - name: Commit the bump and its derivatives
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add codemeta.json CITATION.cff README.md
+          git commit -m "Release v${{ steps.bump.outputs.version }}"
+          git push
+
+      - name: Build and package
+        run: deno task package
+
+      - name: Write the release notes
+        run: printf '%s\n' "${{ inputs.summary }}" > /tmp/release-notes.md
+
+      - uses: caltechlibrary/workflows/.github/actions/create-release@v1
+        with:
+          tag: v${{ steps.bump.outputs.version }}
+          notes-file: /tmp/release-notes.md
+          artifacts: dist/cl-web-components-${{ steps.bump.outputs.version }}.zip
+          dry-run: ${{ inputs.dry_run }}
