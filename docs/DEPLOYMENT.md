@@ -85,12 +85,9 @@ You do two things. Everything between them is mechanical.
 
 ## Step 1. Run the Release workflow
 
-From the Actions tab, choose **Release** and give it two inputs:
-
-- **bump** — Major, Minor or Patch. The workflow works out the number, so
-  there is no version string to mistype.
-- **summary** — one line describing the release. It appears above GitHub's
-  generated notes.
+From the Actions tab, choose **Release** and pick a **bump** — Major, Minor or
+Patch. The workflow works out the number, so there is no version string to
+mistype.
 
 Leave **Dry Run** checked the first time. That builds and packages for real
 and reports what would be released, without committing, tagging or creating
@@ -101,9 +98,10 @@ bumps `codemeta.json`, regenerates `CITATION.cff` and `README.md` from it,
 commits that, builds and packages, tags **that** commit, and opens a draft
 release with the archive attached.
 
-## Step 2. Publish the draft
+## Step 2. Write the notes and publish
 
-Read the notes, check the archive, press Publish.
+The draft opens with GitHub's generated commit list. Add whatever a consumer
+needs to know above it, check the archive, and press Publish.
 
 Publishing is what triggers the CDN upload — the **Publish components to S3**
 workflow runs on `release: published`. Nothing reaches

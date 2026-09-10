@@ -1,7 +1,10 @@
 name: Release
 
-# Cuts a release. The human does two things: starts this with a bump and a
-# sentence, then publishes the draft it produces.
+# Cuts a release. The human does two things: starts this with a bump, then
+# writes the notes and publishes the draft it produces.
+#
+# The draft opens with GitHub's generated commit list. Whoever publishes it
+# writes the notes above that, in the release editor.
 #
 # The order matters. codemeta.json is the source of truth for the version, so
 # it is bumped first; CITATION.cff and README.md are regenerated from it; and
@@ -22,10 +25,6 @@ on:
         type: choice
         options: [patch, minor, major]
         default: patch
-        required: true
-      summary:
-        description: "One line describing this release. Appears above the generated notes."
-        type: string
         required: true
       dry_run:
         description: "Dry Run: Build and package, but commit, tag and create nothing."
@@ -87,12 +86,8 @@ jobs:
       - name: Build and package
         run: deno task package
 
-      - name: Write the release notes
-        run: printf '%s\n' "${{ inputs.summary }}" > /tmp/release-notes.md
-
       - uses: caltechlibrary/workflows/.github/actions/create-release@v1
         with:
           tag: v${{ steps.bump.outputs.version }}
-          notes-file: /tmp/release-notes.md
           artifacts: dist/cl-web-components-${{ steps.bump.outputs.version }}.zip
           dry-run: ${{ inputs.dry_run }}
