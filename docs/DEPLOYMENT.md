@@ -4,22 +4,6 @@ This guide explains how to deploy **CL-web-components** depending on what change
 
 ---
 
-# Prerequisites
-
-A `media.env` file must exist in the project root before deploying to S3.
-
-It must contain:
-
-```
-BUCKET_NAME
-BASE_URL
-DISTRIBUTION_ID
-```
-
-This file is included in gitignore and is **not committed to git**.
-
----
-
 # Deploy Documentation Changes
 
 
@@ -97,98 +81,70 @@ machine.
 
 # Deploy a New Release
 
-Use this workflow when creating a **versioned GitHub release**.
+You do two things. Everything between them is mechanical.
 
-## Step 1. Update release metadata
+## Step 1. Run the Release workflow
 
-Edit `codemeta.json` and update:
+From the Actions tab, choose **Release** and give it two inputs:
 
-- Version number
-- Release notes
+- **bump** — Major, Minor or Patch. The workflow works out the number, so
+  there is no version string to mistype.
+- **summary** — one line describing the release. It appears above GitHub's
+  generated notes.
 
-## Step 2. Build compiled output
+Leave **Dry Run** checked the first time. That builds and packages for real
+and reports what would be released, without committing, tagging or creating
+anything.
 
-```bash
-make build
-```
+When it looks right, run it again with Dry Run unchecked. The workflow then
+bumps `codemeta.json`, regenerates `CITATION.cff` and `README.md` from it,
+commits that, builds and packages, tags **that** commit, and opens a draft
+release with the archive attached.
 
-This command also regenerates several files from `codemeta.json`:
+## Step 2. Publish the draft
 
-- `README.md`
-- `version.js`
-- `CITATION.cff`
-- `about.md`
+Read the notes, check the archive, press Publish.
 
-## Step 3. Build the distribution bundle
+Publishing is what triggers the CDN upload — the **Publish components to S3**
+workflow runs on `release: published`. Nothing reaches
+`media.library.caltech.edu` until you press that button.
 
-```bash
-make dist
-```
+## Doing it from a terminal instead
 
-This command:
-
-- Bundles files into `dist/`
-- Copies documentation files:
-  - `INSTALL.md`
-  - `README.md`
-  - `about.md`
-  - `codemeta.json`
-  - `CITATION.cff`
-  - `LICENSE`
-- Creates a release archive:
-
-```
-cl-web-components-<version>.zip
-```
-
-## Step 4. Save and push your working branch
-
-If you added **new files**, stage them first:
+The workflow is a thin wrapper around scripts you can run yourself:
 
 ```bash
-git add <filename>
+deno task bump patch          # prints the new version
+cmt codemeta.json CITATION.cff
+cmt codemeta.json README.md
+git commit -am "Release v<version>"
+deno task package             # dist/cl-web-components-<version>.zip
 ```
 
-Then commit and push:
+Commit before tagging. The tag has to land on the commit that carries the
+regenerated `CITATION.cff` and `README.md` — tag the bump alone and the
+archive ships metadata describing the previous release.
+
+Then `create-release.sh` from `caltechlibrary/workflows`, which needs `gh`
+authenticated as you:
 
 ```bash
-make save msg="your commit message"
+create-release.sh --tag v<version> --artifact dist/cl-web-components-<version>.zip
 ```
 
-> `make save` uses `git commit -am` which only commits already-tracked files. New files must be staged with `git add` first.
+It opens a draft too. Publishing stays a human act either way.
 
-## Step 5. Create a draft GitHub release
-
-```bash
-./release.bash
-```
-
-This script:
-
-- Reads the version and release notes from `codemeta.json`
-- Commits changes
-- Creates a **draft GitHub release** using the `gh` CLI
-- Uploads the `.zip` archive
-
-## Step 6. Publish the release
-
-Open the GitHub releases page and publish the draft:
-
-https://github.com/caltechlibrary/CL-web-components/releases
-
----
 
 # Command Reference
 
 | Task | Command |
 |-----|---------|
 | Compile source code | `deno task build` |
-| Save and push working branch | `make save msg="your message"` |
 | Deploy the docs site | Automatic on push to `main` |
 | Preview the S3 upload | **Publish to S3** workflow, `dry_run` checked |
 | Publish to S3 and invalidate the CDN | Automatic when a release is published |
-| Build distribution bundle | `make dist` |
-| Create GitHub release | `./release.bash` |
+| Build the release archive | `deno task package` |
+| Cut a release | **Release** workflow, or `deno task bump` + `create-release.sh` |
 
 ---
 

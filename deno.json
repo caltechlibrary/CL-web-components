@@ -1,9 +1,10 @@
 {
   "tasks": {
+    "bump": "deno run --allow-read --allow-write tools/bump-version.js",
     "generate-version": "deno run --allow-read --allow-write --allow-run tools/generate-version.js",
     "copy-css": "mkdir -p dist && cp src/*.css dist/",
     "build": "deno task generate-version && deno bundle --platform browser --outdir=./dist src/*.js ; deno bundle --platform browser --output=dist/cl-web-components.js mod.js ; deno task copy-css",
-    "release": "deno task build"
+    "package": "deno task build && deno run --allow-read --allow-write --allow-run tools/package.js"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.11",

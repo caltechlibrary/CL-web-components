@@ -5,7 +5,7 @@ Web components run in the browser as JavaScript. Generally speaking their built 
 
 ## Un-bundled sources
 
-If you are working on a web component the un-bundled source should be placed in the `src/` directory. This allows you to include remote and local modules easily. The build process maintains the `version.js` module which includes the versioning of this repository as well as license text. 
+If you are working on a web component the un-bundled source should be placed in the `src/` directory. This allows you to include remote and local modules easily. The build process maintains the `version.js` module which includes the versioning of this repository as well as license text.
 
 Current the following component(s) **require** bundling due to external dependencies.
 
@@ -19,15 +19,14 @@ deno task build
 
 ## Building CL-web-components
 
-The process to build a release is a little more complex than is convenient for a Deno task. If your are on macOS or Linux you can use GNU Make to run the Makefile.
-
+Building is a Deno task:
 
 ~~~shell
-make build
-make website
-web release
+deno task build
 ~~~
 
-The "release" option makes the zip files needed for a GitHub release. If you are on macOS or Linux you can run the `./replace.bash` script to perform those chores if you have `gh` installed.
+That bundles the sources in `src/` into `dist/`. To build the archive a
+GitHub release attaches, use `deno task package`. Releases themselves are cut
+by the **Release** workflow — see [DEPLOYMENT](DEPLOYMENT.md).
 
-NOTE: The bundled JavaScript files are in the root directory. The source are in the `src` directory. If you need to fix something, add something, etc. It should go in the `src/` directory. You may need to add or edit the tasks in `deno.json`.
+NOTE: The bundled JavaScript is built into `dist/`, which is ignored. The sources are in `src/` — that is where a fix or a new component goes. You may need to add or edit the tasks in `deno.json`.
