@@ -1,6 +1,14 @@
 {
   "fmt": {
-    "indentWidth": 2
+    "indentWidth": 2,
+    "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.mjs",
+      "**/*.cjs"
+    ]
   },
   "tasks": {
     "bump": "deno run --allow-read --allow-write tools/bump-version.js",
