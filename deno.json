@@ -1,4 +1,7 @@
 {
+  "fmt": {
+    "indentWidth": 2
+  },
   "tasks": {
     "bump": "deno run --allow-read --allow-write tools/bump-version.js",
     "generate-version": "deno run --allow-read --allow-write --allow-run tools/generate-version.js",
