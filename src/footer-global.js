@@ -470,6 +470,7 @@ export class FooterGlobal extends HTMLElement {
 
         address a {
           display: block;
+          text-decoration: underline;
         }
 
         .u-email,
@@ -609,12 +610,14 @@ export class FooterGlobal extends HTMLElement {
                         </svg>
                       </template>
                       
-              <ul class="list-unstyled">
-                <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
-                <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
-                <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
-                <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
-              </ul>
+              <nav aria-label="footer">
+                <ul class="list-unstyled">
+                  <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
+                  <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
+                  <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
+                  <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
+                </ul>
+              </nav>
             </section>
           </div>
         </div>
@@ -625,12 +628,14 @@ export class FooterGlobal extends HTMLElement {
         </div>
         <div class="footer-bottom">
         
-          <ul class="list-inline">
-            <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
-            <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
-            <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
-            <li id="footer-login"></li>
-          </ul>
+          <nav aria-label="policies">
+            <ul class="list-inline">
+              <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
+              <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
+              <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
+              <li id="footer-login"></li>
+            </ul>
+          </nav>
         </div>
       </footer>
     `;

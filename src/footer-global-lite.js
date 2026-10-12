@@ -158,7 +158,7 @@ export class FooterGlobalLite extends HTMLElement {
         .idea-container {
           margin: 2rem 0;
           padding: .5em 5rem;
-          text-align: center;
+          text-align: left;
           border-top: 1px solid #135071;
           border-bottom: 1px solid #135071;
         }
@@ -471,12 +471,14 @@ export class FooterGlobalLite extends HTMLElement {
             <div class="footer-column column1">
                 <div class="custom-links-wrapper">
                     <h2 id="column1-header">Quick Links</h2>
-                    <ul class="list-unstyled">
-                      <slot name="custom-links">
-                        <li><a href="/" aria-label="Home">Home</a></li>
-                        <li><a href="#" id="back-to-top" aria-label="Back to top of page">Back to Top</a></li>
-                      </slot>
-                    </ul>
+                    <nav aria-labelledby="column1-header">
+                      <ul class="list-unstyled">
+                        <slot name="custom-links">
+                          <li><a href="/" aria-label="Home">Home</a></li>
+                          <li><a href="#" id="back-to-top" aria-label="Back to top of page">Back to Top</a></li>
+                        </slot>
+                      </ul>
+                    </nav>
                 </div>
             </div>
 
@@ -517,10 +519,12 @@ export class FooterGlobalLite extends HTMLElement {
                       </svg>
                     </template>
                     
-                    <ul class="list-unstyled">
-                        <li id="mission-statement-item"><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
-                        <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
-                    </ul>
+                    <nav aria-label="footer">
+                      <ul class="list-unstyled">
+                          <li id="mission-statement-item"><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
+                          <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
+                      </ul>
+                    </nav>
                 </section>
               </div>
           </div>
@@ -532,11 +536,13 @@ export class FooterGlobalLite extends HTMLElement {
           </div>
 
           <div class="footer-bottom">
-            <ul class="list-inline">
-            <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
-            <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
-            <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
-            </ul>
+            <nav aria-label="policies">
+              <ul class="list-inline">
+              <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
+              <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
+              <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
+              </ul>
+            </nav>
           </div>
         </footer>
         `;
