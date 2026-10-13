@@ -107,8 +107,9 @@ export class FooterGlobal extends HTMLElement {
         .footer-container {
           display: flex;
           flex-wrap: wrap;
-          max-width: 1200px;
-          margin: auto;
+          max-width: 1440px;
+          margin: 0 auto;
+          padding: 0 2rem;
         }
 
         .footer-top {
@@ -119,7 +120,7 @@ export class FooterGlobal extends HTMLElement {
         .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
           width: 100%;
           gap:4em
         }
@@ -130,7 +131,7 @@ export class FooterGlobal extends HTMLElement {
 
         .footer-column.column1 {
           flex: 1 1 45%;
-          max-width: 400px;
+          max-width: 560px;
         }
 
         .footer-column.column2 {
@@ -146,7 +147,7 @@ export class FooterGlobal extends HTMLElement {
         :host([custom]) .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
           width: 100%;
           gap: 5em;
         }
@@ -160,23 +161,25 @@ export class FooterGlobal extends HTMLElement {
         .footer-bottom {
           flex: 1 1 100%;
           text-align: right;
-          margin: 2em 0 1em 0;
+          margin: 1.25em 0 2em 0;
         }
 
         /* IDEA statement */
 
         .idea-container {
-          margin: 2rem 0;
-          padding: .5em 5rem;
-          text-align: center;
-          border-top: 1px solid #135071;
-          border-bottom: 1px solid #135071;
+          flex: 1 1 100%;
+          margin: 1rem 0 0 0;
         }
         
         .idea-statement {
-          font-style: italic;
-          font-size: .9em;
-          line-height: 1.8rem;
+          font-style: normal;
+          font-size: 13px;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, 0.8);
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+          border-top: none;
+          margin-bottom: 0;
         }
 
         /* - - - - 
@@ -282,8 +285,6 @@ export class FooterGlobal extends HTMLElement {
         }
 
         #footer-breadcrumbs nav {
-          max-width: 1200px;
-          margin: 0 auto;
           font-size: 1em;
           color: var(--cl-white);
         }
@@ -329,10 +330,18 @@ export class FooterGlobal extends HTMLElement {
 
         @media (max-width: 1200px) {
           
-          .footer-container {
-            margin-left: 5%;
+          .footer-columns-wrapper {
+            gap:2em
           }
-          
+
+
+          .footer-column.column1 {
+            flex: 1 1 46%;
+          }
+        }
+        
+        @media (max-width: 1000px) {
+        
           .footer-columns-wrapper {
             gap:2em
           }
@@ -340,22 +349,6 @@ export class FooterGlobal extends HTMLElement {
 
           .footer-column.column1 {
             flex: 1 1 40%;
-          }
-        }
-        
-        @media (max-width: 1000px) {
-        
-           .footer-container {
-            margin-left: 4%;
-          }
-          
-          .footer-columns-wrapper {
-            gap:2em
-          }
-
-
-          .footer-column.column1 {
-            flex: 1 1 35%;
           }
         }
 
@@ -379,17 +372,12 @@ export class FooterGlobal extends HTMLElement {
           }
 
           
-          .idea-container {
-            padding: 1rem 3rem 1rem 0rem;
-            margin: 0 1rem 0 0;
-            text-align: left;
-          }
           
           
 
           .footer-bottom {
             text-align: left;
-            margin: 1.5em 0;
+            margin: 1.25em 0 2em 0;
           }
         }      
 
@@ -470,6 +458,7 @@ export class FooterGlobal extends HTMLElement {
 
         address a {
           display: block;
+          text-decoration: underline;
         }
 
         .u-email,
@@ -609,12 +598,14 @@ export class FooterGlobal extends HTMLElement {
                         </svg>
                       </template>
                       
-              <ul class="list-unstyled">
-                <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
-                <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
-                <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
-                <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
-              </ul>
+              <nav aria-label="footer">
+                <ul class="list-unstyled">
+                  <li><a href="https://library.caltech.edu/opportunities">Jobs &amp; Opportunities</a></li>
+                  <li><a href="https://library.caltech.edu/staff">Staff Directory</a></li>
+                  <li><a href="https://library.caltech.edu/mission">Mission Statement</a></li>
+                  <li><a id="donate-link" href="https://library.caltech.edu/about/support">Donate</a></li>
+                </ul>
+              </nav>
             </section>
           </div>
         </div>
@@ -625,12 +616,14 @@ export class FooterGlobal extends HTMLElement {
         </div>
         <div class="footer-bottom">
         
-          <ul class="list-inline">
-            <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
-            <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
-            <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
-            <li id="footer-login"></li>
-          </ul>
+          <nav aria-label="policies">
+            <ul class="list-inline">
+              <li><a href="https://library.caltech.edu/privacy">Privacy</a></li>
+              <li><a href="https://www.caltech.edu/claimed-copyright-infringement">Copyright</a></li>
+              <li><a href="https://library.caltech.edu/accessibility">Accessibility</a></li>
+              <li id="footer-login"></li>
+            </ul>
+          </nav>
         </div>
       </footer>
     `;
