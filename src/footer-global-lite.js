@@ -102,14 +102,15 @@ export class FooterGlobalLite extends HTMLElement {
         .footer-container {
           display: flex;
           flex-wrap: wrap;
-          max-width: 1200px;
-          margin: auto;
+          max-width: 1440px;
+          margin: 0 auto;
+          padding: 0 2rem;
         }
 
         .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
           width: 100%;
           gap:3em
         }
@@ -136,7 +137,7 @@ export class FooterGlobalLite extends HTMLElement {
         :host([custom]) .footer-columns-wrapper {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
           width: 100%;
           gap:3em
         }
@@ -150,23 +151,25 @@ export class FooterGlobalLite extends HTMLElement {
         .footer-bottom {
           flex: 1 1 100%;
           text-align: right;
-          margin: 2em 0 1em 0;
+          margin: 1.25em 0 2em 0;
         }
 
         /* IDEA statement */
 
         .idea-container {
-          margin: 2rem 0;
-          padding: .5em 5rem;
-          text-align: left;
-          border-top: 1px solid #135071;
-          border-bottom: 1px solid #135071;
+          flex: 1 1 100%;
+          margin: 1rem 0 0 0;
         }
         
         .idea-statement {
-          font-style: italic;
-          font-size: .9em;
-          line-height: 1.8rem;
+          font-style: normal;
+          font-size: 13px;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, 0.8);
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+          border-top: none;
+          margin-bottom: 0;
         }
 
         /* - - - - 
@@ -272,10 +275,6 @@ export class FooterGlobalLite extends HTMLElement {
 
         @media (max-width: 1200px) {
           
-          .footer-container {
-            margin-left: 5%;
-          }
-          
           .footer-columns-wrapper {
             gap:2em
           }
@@ -288,10 +287,6 @@ export class FooterGlobalLite extends HTMLElement {
         
         @media (max-width: 1000px) {
         
-           .footer-container {
-            margin-left: 4%;
-          }
-          
           .footer-columns-wrapper {
             gap:2em
           }
@@ -322,17 +317,12 @@ export class FooterGlobalLite extends HTMLElement {
           }
 
           
-          .idea-container {
-            padding: 1rem 3rem 1rem 0rem;
-            margin: 0 1rem 0 0;
-            text-align: left;
-          }
           
           
 
           .footer-bottom {
             text-align: left;
-            margin: 1.5em 0;
+            margin: 1.25em 0 2em 0;
           }
         }      
 
