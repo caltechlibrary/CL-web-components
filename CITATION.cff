@@ -46,8 +46,8 @@ contacts:
     email: twila@caltech.edu
 
 repository-code: "https://github.com/caltechlibrary/CL-web-components"
-version: 0.0.17
-date-released: 2026-09-10
+version: 0.0.18
+date-released: 2026-10-13
 
 license-url: "https://software.library.caltech.edu/CL-web-components/LICENSE"
 keywords:

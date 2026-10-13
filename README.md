@@ -26,11 +26,11 @@ The following are the components currently provided.
 
 ## Release Notes
 
-- version: 0.0.17
+- version: 0.0.18
 - status: wip
-- released: 2026-09-10
+- released: 2026-10-13
 
-https://github.com/caltechlibrary/CL-web-components/releases/tag/v0.0.17
+https://github.com/caltechlibrary/CL-web-components/releases/tag/v0.0.18
 
 
 ### Authors
